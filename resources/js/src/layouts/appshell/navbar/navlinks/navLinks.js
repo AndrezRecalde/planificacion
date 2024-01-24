@@ -1,14 +1,15 @@
 import {
     IconArrowsRightLeft,
     IconCategoryPlus,
-    IconChartDots3,
+    IconChartPie,
     IconCheckupList,
     IconFiles,
     IconFolders,
     IconListCheck,
+    IconListTree,
     IconNews,
     IconTrendingUp,
-    IconUsersGroup,
+    IconUsers,
 } from "@tabler/icons-react";
 
 export const lFinanciero = [
@@ -32,7 +33,7 @@ export const lFinanciero = [
 export const lCoprasPublicas = [
     {
         label: "Dashboard",
-        icon: IconChartDots3,
+        icon: IconUsers,
         links: [{ label: "Inicio", link: "/" }],
     },
     {
@@ -58,7 +59,7 @@ export const lCoprasPublicas = [
 export const lPlanificacion = [
     {
         label: "Dashboard",
-        icon: IconChartDots3,
+        icon: IconUsers,
         links: [{ label: "Inicio", link: "/" }],
     },
     {
@@ -107,12 +108,12 @@ export const lPlanificacion = [
 export const lGestiones = [
     {
         label: "Dashboard",
-        icon: IconChartDots3,
+        icon: IconChartPie,
         links: [{ label: "Inicio", link: "/" }],
     },
     {
         label: "Proveedores",
-        icon: IconUsersGroup,
+        icon: IconUsers,
         links: [{ label: "Ver proveedores", link: "/" }],
     },
     {
@@ -126,12 +127,17 @@ export const lGestiones = [
         icon: IconFiles,
         links: [{ label: "Ver proyectos", link: "/" }],
     },
+    {
+        label: "Actividades",
+        icon: IconListTree,
+        links: [{ label: "Ver actividades", link: "/" }],
+    },
 ];
 
 export const lMaximaAutoridad = [
     {
         label: "Dashboard",
-        icon: IconChartDots3,
+        icon: IconUsers,
         links: [{ label: "Inicio", link: "/" }],
     },
 ];

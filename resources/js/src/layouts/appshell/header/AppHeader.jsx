@@ -1,7 +1,7 @@
-import { Burger, Group, Image } from "@mantine/core";
-import { UserBtnHeader } from "../../../components";
-
-import logo from "../../../assets/images/LogoMediano.png";
+import { Burger, Group } from "@mantine/core";
+import { BtnSearch, UserBtnHeader } from "../../../components";
+import { Logo, BtnDarkMode } from "../../../components";
+import classes from "./AppHeaderModules/AppHeader.module.css";
 
 export const AppHeader = ({
     mobileOpened,
@@ -12,7 +12,7 @@ export const AppHeader = ({
     return (
         <Group h="100%" px="md" justify="space-between">
             <Group>
-                <Image maw={170} radius="md" src={logo} alt="logo_image" />
+                <Logo height={50} width={200} />
                 <Burger
                     opened={mobileOpened}
                     onClick={toggleMobile}
@@ -27,7 +27,11 @@ export const AppHeader = ({
                 />
             </Group>
 
-            <UserBtnHeader />
+            <Group>
+                <BtnSearch classes={classes} />
+                <BtnDarkMode classes={classes} />
+                <UserBtnHeader />
+            </Group>
         </Group>
     );
 };

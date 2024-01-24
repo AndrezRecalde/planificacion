@@ -7,9 +7,11 @@ import { TransaccionPage } from "./financiero/TransaccionPage";
 import { ReformasPage } from "./financiero/ReformasPage";
 
 /* GESTIONES */
-import { ProgramasPage } from "./gestiones/ProgramasPage";
-import { ProyectosPage } from "./gestiones/ProyectosPage";
-import { ProyectoDetailPage } from "./gestiones/ProyectoDetailPage";
+import { StatsGestionesPage } from "./gestiones/dashboard/StatsGestionesPage";
+import { ProgramasPage } from "./gestiones/programa/ProgramasPage";
+import { ProyectosPage } from "./gestiones/proyecto/ProyectosPage";
+import { ProyectoDetailPage } from "./gestiones/proyecto/ProyectoDetailPage";
+import { ProveedorPage } from "./gestiones/proveedor/ProveedorPage";
 
 
 export {
@@ -22,8 +24,10 @@ export {
     ReformasPage,
 
     /* Gestiones */
+    StatsGestionesPage,
     ProgramasPage,
     ProyectosPage,
     ProyectoDetailPage,
+    ProveedorPage,
 
  };

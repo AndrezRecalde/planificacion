@@ -7,20 +7,19 @@ import {
     MilestonesProyecto,
     OverviewProyecto,
     TitlePage,
-} from "../../components";
+} from "../../../components";
 import {
     IconList,
     IconCalendarEvent,
     IconFiles,
     IconMessage2Share,
     IconBrandDenodo,
+    IconCoin,
+    IconBrandCashapp,
 } from "@tabler/icons-react";
-import { useNavigate, useParams } from "react-router-dom";
 
 export const ProyectoDetailPage = () => {
-    const navigate = useNavigate();
-    const { tabValue } = useParams();
-    const iconStyle = { width: rem(12), height: rem(12) };
+    const iconStyle = { width: rem(15), height: rem(15) };
 
     return (
         <Container size="xl">
@@ -57,6 +56,12 @@ export const ProyectoDetailPage = () => {
                         leftSection={<IconFiles style={iconStyle} />}
                     >
                         Archivos
+                    </Tabs.Tab>
+                    <Tabs.Tab
+                        value="presupuesto"
+                        leftSection={<IconBrandCashapp style={iconStyle} />}
+                    >
+                        Presupuesto
                     </Tabs.Tab>
                     <Tabs.Tab
                         value="documental"

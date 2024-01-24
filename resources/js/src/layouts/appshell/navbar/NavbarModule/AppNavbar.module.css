@@ -1,13 +1,10 @@
 .navbar {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
-    height: rem(800px);
-    width: rem(300px);
+    background-color: var(--mantine-color-body);
+    height: 90vh;
     padding: var(--mantine-spacing-md);
-    padding-bottom: 0;
     display: flex;
     flex-direction: column;
-    border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  }
+}
 
   .header {
     width: 100%;
@@ -26,6 +23,7 @@
   }
 
   .linksInner {
+    flex: 1;
     padding-top: var(--mantine-spacing-md);
     padding-bottom: var(--mantine-spacing-md);
   }

@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core";
 
-export const TitleSection = ({
+export const TextSection = ({
     color = "dimmed",
     tt = "uppercase",
     fw,

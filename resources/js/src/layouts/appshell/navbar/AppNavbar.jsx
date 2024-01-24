@@ -1,4 +1,5 @@
-import { TitleSection } from "../../../components";
+import { Group, Badge } from "@mantine/core";
+import { TextSection } from "../../../components";
 import { LinksGroup } from "./NavbarLinksGroup";
 import {
     lCoprasPublicas,
@@ -8,6 +9,7 @@ import {
     lPlanificacion,
 } from "./navlinks/navLinks";
 import classes from "./NavbarModule/AppNavbar.module.css";
+import { AppNavfooter } from "./AppNavfooter";
 
 export const AppNavbar = ({ role }) => {
     const mockdata =
@@ -28,15 +30,11 @@ export const AppNavbar = ({ role }) => {
     ));
 
     return (
-        <div>
-            <div className={classes.header}>
-                <TitleSection
-                    title="Gestión de Tecnologías de la Información"
-                    fw={700}
-                    fz={12}
-                />
-            </div>
+        <nav className={classes.navbar}>
             <div className={classes.linksInner}>{links}</div>
-        </div>
+            <AppNavfooter />
+
+
+        </nav>
     );
 };

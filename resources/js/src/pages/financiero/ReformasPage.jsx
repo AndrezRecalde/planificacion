@@ -1,5 +1,5 @@
 import { Card, Container, Table } from "@mantine/core";
-import { TableContent, TitlePage, TitleSection } from "../../components";
+import { TableContent, TitlePage, TextSection } from "../../components";
 
 const elements_r = [
     {
@@ -55,7 +55,7 @@ export const ReformasPage = () => {
             <TitlePage title="Revisión de reformas" order={2} size="h2" />
             <Card withBorder shadow="sm" radius="md" p="lg" mt={20} mb={20}>
                 <Card.Section withBorder inheritPadding py="xs">
-                    <TitleSection title="Solicitudes de gestiones" fw={700} />
+                    <TextSection title="Solicitudes de gestiones" fw={700} />
                 </Card.Section>
                 <Card.Section withBorder inheritPadding py="xs">
                     <TableContent headings={headings} rows={rows} />

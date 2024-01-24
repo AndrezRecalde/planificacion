@@ -1,5 +1,5 @@
 import { Avatar, Card, Container, Group } from "@mantine/core";
-import { ProfileForm, TitlePage, TitleSection } from "../../components";
+import { ProfileForm, TitlePage, TextSection } from "../../components";
 import logo from "../../assets/images/icono.png";
 
 export const ProfilePage = () => {
@@ -27,7 +27,7 @@ export const ProfilePage = () => {
                     <ProfileForm />
                 </Card.Section>
                 <Card.Section withBorder inheritPadding py="xs">
-                    <TitleSection
+                    <TextSection
                         fs="italic"
                         tt=""
                         title="Si usted desea modificar los datos, comuniquese con el administrador."

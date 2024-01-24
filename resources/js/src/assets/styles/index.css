@@ -1,7 +1,11 @@
+/* body {
+    background-color: #f5f6fa !important;
+    min-height: 100vh;
+} */
 
 @font-face {
     font-family: 'Greycliff CF';
-    src: url('../fonts/GreycliffCF/GreycliffCF-Regular.woff2') format('woff2');
+    src: url('../fonts/GreycliffCF/GreycliffCF-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
   }

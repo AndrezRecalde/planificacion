@@ -1,23 +1,16 @@
 import { useForm } from "@mantine/form";
-import {
-    Text,
-    Paper,
-    Group,
-    Divider,
-    Box,
-    Container,
-} from "@mantine/core";
-import { IconChevronsRight } from "@tabler/icons-react";
-import { AuthForm, BtnServices, BtnSubmit } from "../../components";
+import { useDocumentTitle } from "@mantine/hooks";
+import { Paper, Title, Text } from "@mantine/core";
+import { AuthForm, BtnServices, Logo, TitlePage } from "../../components";
 import classes from "./AuthPageModule/AuthPageBackground.module.css";
 
 export const AuthPage = () => {
+    useDocumentTitle("Login");
     const form = useForm({
         initialValues: {
             email: "",
-            name: "",
             password: "",
-            terms: true,
+            remember: true,
         },
 
         validate: {
@@ -31,35 +24,26 @@ export const AuthPage = () => {
 
     return (
         <div className={classes.wrapper}>
-            <Container size="xs" my={50}>
-                <Paper radius="md" p="xl" withBorder>
-                    <Text size="lg" fw={700}>
-                        Sistema de Planificacion
-                    </Text>
-                    <BtnServices />
-                    <Divider
-                        label="Accede al sistema"
-                        labelPosition="center"
-                        my="lg"
-                    />
-                    <Box
-                        component="form"
-                        style={(theme) => ({
-                            padding: theme.spacing.xs,
-                        })}
-                        onSubmit={form.onSubmit(() => {})}
-                    >
-                        <AuthForm form={form} />
-                        <Group justify="flex-end" mt="lg">
-                            <BtnSubmit
-                                radius="xl"
-                                text="Acceder"
-                                LeftSection={IconChevronsRight}
-                            />
-                        </Group>
-                    </Box>
-                </Paper>
-            </Container>
+            <TitlePage
+                title="Sistema de Planificación"
+                ta="center"
+                className={classes.title}
+            />
+            <Logo height={70} width={200} />
+            <Paper
+                withBorder
+                shadow="md"
+                p={30}
+                mt={20}
+                radius="md"
+                className={classes.wrapper_paper}
+            >
+                <Text size="lg" fw={500} mb={15}>
+                    Iniciar sesión
+                </Text>
+                <AuthForm form={form} />
+                <BtnServices />
+            </Paper>
         </div>
     );
 };

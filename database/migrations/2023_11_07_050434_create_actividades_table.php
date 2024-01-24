@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_actividad');
             $table->double('ponderacion')->default(0);
-            $table->boolean('finalizado')->default(0);
+            $table->boolean('finalizado')->default(0); //TODO: Cambiarlo por un status_id
             $table->unsignedInteger('proyecto_id');
             $table->timestamps();
         });
