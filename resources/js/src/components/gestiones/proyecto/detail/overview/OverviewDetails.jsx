@@ -1,10 +1,12 @@
 import {
+    Avatar,
     Card,
     Grid,
     Group,
     List,
     Paper,
     RingProgress,
+    ScrollArea,
     Text,
     ThemeIcon,
     rem,
@@ -319,38 +321,121 @@ export const DetailProyect = () => {
 
 export const ActivitiesCenter = () => {
     return (
-        <Card withBorder shadow="xl" radius="md">
+        <Card withBorder shadow="sm" radius="md">
             <Card.Section withBorder inheritPadding py="xs">
-                Centro de actividades
+                Centro de actividades global
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <List
-                    spacing="md"
-                    size="md"
-                    center
-                    icon={
-                        <ThemeIcon color="indigo.7" size={24} radius="xl">
-                            <IconLocationCheck
-                                style={{
-                                    width: rem(16),
-                                    height: rem(16),
-                                }}
+                <ScrollArea h={450}>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
                             />
-                        </ThemeIcon>
-                    }
-                >
-                    <List.Item>
-                        Clone or download repository from GitHub
-                    </List.Item>
-                    <List.Item>Install dependencies with yarn</List.Item>
-                    <List.Item>
-                        To start development server run npm start command
-                    </List.Item>
-                    <List.Item>
-                        Run tests to make sure your changes do not break the
-                        build
-                    </List.Item>
-                </List>
+                            <div>
+                                <Text size="sm">Secretaría General</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
+                            />
+                            <div>
+                                <Text size="sm">Gestión de Planificación</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
+                            />
+                            <div>
+                                <Text size="sm">Gestión de Tecnologias</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
+                            />
+                            <div>
+                                <Text size="sm">Gestión de Planificación</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
+                            />
+                            <div>
+                                <Text size="sm">Gestión Legal</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                    <div>
+                        <Group>
+                            <Avatar
+                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                                alt="Jacob Warnhalter"
+                                radius="xl"
+                            />
+                            <div>
+                                <Text size="sm">Jacob Warnhalter</Text>
+                                <Text size="xs" c="dimmed">
+                                    10 minutes ago
+                                </Text>
+                            </div>
+                        </Group>
+                        <Text mb={20} pl={54} pt="sm" size="sm">
+                            This Pokémon likes to lick its palms that accurate.
+                        </Text>
+                    </div>
+                </ScrollArea>
             </Card.Section>
         </Card>
     );

@@ -7,8 +7,10 @@ import {
     ProyectoDetailPage,
     ProyectosPage,
     ReformasPage,
-    StatsGestionesPage,
+    DashGestionesPage,
     TransaccionPage,
+    InstrumentosPage,
+    ActividadesPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -25,7 +27,7 @@ export const PrivatePages = () => {
                 />
                 <Route path="/financiero/reformas" element={<ReformasPage />} />
                 {/* Gestiones */}
-                <Route path="/stats/gestion" element={<StatsGestionesPage />} />
+                <Route path="/stats/gestion" element={<DashGestionesPage />} />
                 <Route path="/proyectos" element={<ProyectosPage />} />
                 <Route
                     path="/proyecto/detail/"
@@ -33,8 +35,15 @@ export const PrivatePages = () => {
                 />
                 <Route path="/proveedores" element={<ProveedorPage />} />
                 <Route path="/programas" element={<ProgramasPage />} />
+                <Route path="/actividades" element={<ActividadesPage />} />
+
 
                 {/* TODO: PARAMETRO */}
+
+
+                {/* Planificacion */}
+                <Route path="/gpla/instrumentos" element={<InstrumentosPage />} />
+
             </Routes>
         </AppLayout>
     );

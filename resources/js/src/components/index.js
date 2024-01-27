@@ -1,13 +1,14 @@
 /* Elementos */
-import { BtnSubmit } from "./elements/buttons/BtnSubmit";
-import { BtnServices } from "./elements/buttons/BtnServices";
+import { BtnServicesApps, BtnSubmit, BtnSection } from "./elements/buttons/BtnServices";
 import { TextSection } from "./elements/titles/TextSection";
 import { TitlePage } from "./elements/titles/TitlePage";
 import { TableContent } from "./elements/tables/TableContent";
+import { MenuTable } from "./elements/tables/MenuTable";
 import { Logo } from "./elements/application/Logo";
 import { BtnDarkMode } from "./elements/buttons/BtnDarkMode";
 import { BtnSearch, InputSeach } from "./elements/buttons/BtnSearch";
 import { DataCombobox } from "./elements/combobox/DataCombobox";
+import { AlertSection } from "./elements/alert/AlertSection";
 
 /* Auth */
 import { AuthForm } from "./auth/AuthForm";
@@ -21,7 +22,7 @@ import { ChangePwdForm } from "./user/ChangePwdForm";
 import { CardGestiones } from "./financiero/CardGestiones";
 
 /* Gestiones */
-/* Proyectos */
+    /* Proyectos */
 import { BtnDetailProyecto } from "./gestiones/proyecto/sections/BtnDetailProyecto";
 import { OverviewProyecto } from "./gestiones/proyecto/sections/OverviewProyecto";
 import { ActivitiesProyecto } from "./gestiones/proyecto/sections/ActivitiesProyecto";
@@ -29,8 +30,10 @@ import { MilestonesProyecto } from "./gestiones/proyecto/sections/MilestonesProy
 import { FilesProyecto } from "./gestiones/proyecto/sections/FilesProyecto";
 import { DocumentalProyecto } from "./gestiones/proyecto/sections/DocumentalProyecto";
 import { FilterFormProyectos } from "./gestiones/proyecto/forms/FilterFormProyectos";
+import { ProyectoTable } from "./gestiones/proyecto/table/ProyectoTable";
+import { ProgressProyecto } from "./gestiones/proyecto/table/ProgressProyecto";
 
-/* Overview Proyecto */
+    /* Overview Proyecto */
 import {
     HeaderOverview,
     ProgressProyect,
@@ -41,21 +44,42 @@ import {
     SupplierStat
 } from "./gestiones/proyecto/detail/overview/OverviewDetails";
 
-/* Proveedores */
+    /* Milestones Proyecto */
+import { MilestoneList } from "./gestiones/proyecto/detail/milestone/MilestoneList";
+
+    /* Files Proyecto */
+import { FolderFiles } from "./gestiones/proyecto/detail/file/FolderFiles";
+
+    /* Proveedores */
 import { ProveedorList } from "./gestiones/proveedor/sections/ProveedorList";
 
+    /* Programas */
+import { ProgramaTable } from "./gestiones/programa/table/ProgramaTable";
+
+    /* Actividades */
+import { ActividadesTable } from "./gestiones/actividades/table/ActividadesTable";
+
+/* Planificacion */
+    /* Instrumentos */
+import { InstrumentosList } from "./planificacion/instrumento/InstrumentosList";
+
+
 export {
+    BtnServicesApps,
     BtnSubmit,
+    BtnSection,
     TextSection,
     TitlePage,
     TableContent,
+    MenuTable,
     Logo,
     BtnDarkMode,
     BtnSearch,
     InputSeach,
     DataCombobox,
+    AlertSection,
+
     AuthForm,
-    BtnServices,
     ProfileForm,
     UserBtnHeader,
     ChangePwdForm,
@@ -71,6 +95,8 @@ export {
     FilesProyecto,
     DocumentalProyecto,
     FilterFormProyectos,
+    ProyectoTable,
+    ProgressProyecto,
 
     /* DETALLE PROYECTO */
     HeaderOverview,
@@ -81,6 +107,21 @@ export {
     ActivitiesCenter,
     SupplierStat,
 
+    /* MILESTONE PROYECTO */
+    MilestoneList,
+
+    /* FILES PROYECTO */
+    FolderFiles,
 
     ProveedorList,
+
+
+    /* PROGRAMAS */
+    ProgramaTable,
+
+    /* ACTIVIDADES */
+    ActividadesTable,
+
+    /*PLANIFICACION */
+    InstrumentosList,
 };

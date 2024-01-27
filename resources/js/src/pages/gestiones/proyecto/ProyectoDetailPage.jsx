@@ -14,7 +14,6 @@ import {
     IconFiles,
     IconMessage2Share,
     IconBrandDenodo,
-    IconCoin,
     IconBrandCashapp,
 } from "@tabler/icons-react";
 

@@ -1,8 +1,7 @@
-import { Button, Group } from "@mantine/core";
+import { Button, Group, rem } from "@mantine/core";
 import { IconCategory, IconMailFast } from "@tabler/icons-react";
 
-
-export const BtnServices = () => {
+export const BtnServicesApps = () => {
     return (
         <Group grow mt="md">
             <Button
@@ -31,3 +30,57 @@ export const BtnServices = () => {
     );
 };
 
+export const BtnSubmit = ({
+    text,
+    fullwidth = true,
+    heigh = 45,
+    fontSize = 18,
+    IconSection,
+}) => {
+    return (
+        <Button
+            type="submit"
+            fullWidth={fullwidth}
+            mt="md"
+            mb="md"
+            rightSection={<IconSection />}
+            styles={{
+                root: {
+                    "--button-height": rem(heigh),
+                },
+                inner: {
+                    fontSize: fontSize,
+                },
+            }}
+        >
+            {text}
+        </Button>
+    );
+};
+
+export const BtnSection = ({
+    heigh = 35,
+    fontSize = 14,
+    mb = 0,
+    mt = 0,
+    children,
+}) => {
+    return (
+        <Button
+            mt={mt}
+            mb={mb}
+            color="indigo.7"
+            variant="light"
+            styles={{
+                root: {
+                    "--button-height": rem(heigh),
+                },
+                inner: {
+                    fontSize: fontSize,
+                },
+            }}
+        >
+            {children}
+        </Button>
+    );
+};

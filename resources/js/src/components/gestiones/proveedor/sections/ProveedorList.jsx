@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { Menu, rem } from "@mantine/core";
 import { MantineReactTable, useMantineReactTable } from "mantine-react-table";
-import { IconCheck, IconEditCircle, IconTrash } from "@tabler/icons-react";
+import { IconCheck } from "@tabler/icons-react";
+import { MenuTable } from "../../../elements/tables/MenuTable";
 
 const contactos = [
     {
@@ -78,18 +78,7 @@ export const ProveedorList = () => {
         enableStickyFooter: true,
         globalFilterFn: 'contains',
         renderRowActionMenuItems: ({ row }) => (
-            <>
-                <Menu.Item
-                    leftSection={
-                        <IconEditCircle
-                            style={{ width: rem(15), height: rem(15) }}
-                        />
-                    }
-                    onClick={() => console.info("editar")}
-                >
-                    Editar
-                </Menu.Item>
-            </>
+            <MenuTable />
         ),
         initialState: {
             density: "xs",

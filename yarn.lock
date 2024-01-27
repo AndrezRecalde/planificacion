@@ -473,15 +473,15 @@
   resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
   integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
 
-"@mantine/charts@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/charts/-/charts-7.4.1.tgz#3492cda6fe01708f5c7f4a30b9899513fa53e5ea"
-  integrity sha512-o9p9Zyh2zh8SY6vbjLBH9qHoxyYv/bxBm6g9ynROj5nZx0NokMkfR0iq1B3Y66RJcWkqRAtyGT7bkpEtroaa5w==
+"@mantine/charts@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/charts/-/charts-7.4.2.tgz#b1795f03c939c0c41bad4a8ca6f53dfb5a1b5fdc"
+  integrity sha512-Rh/GvplJoYEXUtukNsILMjaRoRUpfdIuQW9PV5pf7VFFsYGiLO94ZJUrCoRjrmA97D8uPW5nXDfsR06mmEVMqg==
 
-"@mantine/core@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.4.1.tgz#4eac7922ea02a465ab1493fcf8cbcd4a85893733"
-  integrity sha512-crz9BemmwR8V/h6db9FgznCp0Ssp6rCUYkBBO4JprpH8NDSEblHyWcZZo43IuA1vZptp8eyrhRNJ4nfe8CAYFQ==
+"@mantine/core@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.4.2.tgz#661f1faf4ea67b87312f0e3a8e92a77c2cbf213d"
+  integrity sha512-kXmq7NjSd1AsOIzqPwQhA7SeZS9hrbARRqhRwr4LLR3NKps9hLmVto441DnpHH/D27eL9gGLSl4GRIdogjX6mg==
   dependencies:
     "@floating-ui/react" "^0.24.8"
     clsx "2.0.0"
@@ -490,37 +490,37 @@
     react-textarea-autosize "8.5.3"
     type-fest "^3.13.1"
 
-"@mantine/dates@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-7.4.1.tgz#be8e33a83dcaa924b60aa37e8f6503b02fae12ec"
-  integrity sha512-a7DNeJmLCgnFbd9NAEQ/LP998zLFPu8IWVjtJY/YJ4OUIDLEPi56OzuopA3epVzGkMcEvL4Ak78Z23KfZPJepg==
+"@mantine/dates@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-7.4.2.tgz#93786f003af98fb5eebb5d8719895c71de24c4d7"
+  integrity sha512-nv0QuUEJh/ypFOjRLW+vZeuCCj3syxX7iI7Oz3/P7W6o5zNJdi/QUfkqiLTu0L2ckDIkDATxpHgUwH1k/GLOPA==
   dependencies:
     clsx "2.0.0"
 
-"@mantine/form@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.4.1.tgz#729fb30b37e8cf449bab3cb2aac5b8d6cd2fcacb"
-  integrity sha512-8oWD21ioJN0RYA+7D8WnJw+jyB9GufuvjuWIKGpG2sLpSVmHyIVLRQi0kqpttsx87K+JNPEJU1KmZbdtA8NuKg==
+"@mantine/form@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.4.2.tgz#6806027e811c976ca5146df5e189d6a42cf1e716"
+  integrity sha512-zlacaHazqmB9NBOp3pHE8+nDlNKUnT02QbV6q4/CNitAlfqDwbB8u9tWKsSU3E0QF6s5oAzcTY+apyD/nWgfrA==
   dependencies:
     fast-deep-equal "^3.1.3"
     klona "^2.0.6"
 
-"@mantine/hooks@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.4.1.tgz#af10daadf5df28446134a3147f098c8a0c56973f"
-  integrity sha512-7gV9YR+xZ1L69MGVaSNwV0gaxIz4bCZuGxXTtnuaamDcO/4YiNDtmvdD7/jC/RTa1iJMnZ6YiYrcPXLOn+8saQ==
+"@mantine/hooks@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.4.2.tgz#ca4d57961ef22ed1815874b95940c2cc2034564d"
+  integrity sha512-tNtn/SNOtSmjLQmIk4S5nsTJjV84Oj0AUYRrAN78HHw3bfWp6bdWbgYPtPEH9e6iFJfdxiX0hrLfWqROalAsbQ==
 
-"@mantine/spotlight@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/spotlight/-/spotlight-7.4.1.tgz#375e00f103df244168ba46e7154cc1d061f7af69"
-  integrity sha512-Ugmn259k0b6zF7xT0cxShhDRGNNutHwYSu5guYVt1fteEwq9AMnDFO5d452zyi74j9iKXhs4gcxgXYvDhWTaQg==
+"@mantine/spotlight@^7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/spotlight/-/spotlight-7.4.2.tgz#6a0fe25bd23819d699dfb2769586df6bea50ce0d"
+  integrity sha512-107+o7HNIWotSXtcdGlCOQlSiuow5OUeC7yA+2qBGsI/OPOjNEjda4gvgFsf+zH4CN1s0eieBUQ7FG1EoBR8Lw==
   dependencies:
-    "@mantine/store" "7.4.1"
+    "@mantine/store" "7.4.2"
 
-"@mantine/store@7.4.1":
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.4.1.tgz#b28fec5083e5b18224b1340689350a2d2bc9a8e6"
-  integrity sha512-BWU2b+t8Rnlc+GsPMEhGzU0hzZIuf58miZvxDXDnXr8NcBubSPhoR97bSFQ81UAvDAczI4xqOQi8vVUcoKa+ng==
+"@mantine/store@7.4.2":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.4.2.tgz#33459073dae310425239a7c76ea590c58cdcb9b7"
+  integrity sha512-XGGAKu3oUMmnpw8USe4La+T+oSVqsIhYKDjKPxRs5iQ9GKPtxwabAqBXEkPHA1y/txrsEaU5eJVu0ysyBbU4hQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

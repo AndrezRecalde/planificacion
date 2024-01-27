@@ -1,7 +1,7 @@
 import { useForm } from "@mantine/form";
 import { useDocumentTitle } from "@mantine/hooks";
-import { Paper, Title, Text } from "@mantine/core";
-import { AuthForm, BtnServices, Logo, TitlePage } from "../../components";
+import { Paper, Text } from "@mantine/core";
+import { AuthForm, BtnServicesApps, Logo, TitlePage } from "../../components";
 import classes from "./AuthPageModule/AuthPageBackground.module.css";
 
 export const AuthPage = () => {
@@ -42,7 +42,7 @@ export const AuthPage = () => {
                     Iniciar sesión
                 </Text>
                 <AuthForm form={form} />
-                <BtnServices />
+                <BtnServicesApps />
             </Paper>
         </div>
     );

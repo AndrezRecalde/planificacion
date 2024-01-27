@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_archivo');
             $table->string('archivo');
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->year('anio_inicio');
+            $table->year('anio_fin');
             $table->timestamps();
         });
     }

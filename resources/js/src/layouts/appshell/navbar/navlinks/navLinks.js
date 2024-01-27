@@ -39,10 +39,7 @@ export const lCoprasPublicas = [
     {
         label: "Seguimiento",
         icon: IconCheckupList,
-        links: [
-            { label: "Seguimiento de gestiones", link: "/" }
-
-        ],
+        links: [{ label: "Seguimiento de gestiones", link: "/" }],
     },
     {
         label: "Catálogo de PAC",
@@ -56,54 +53,58 @@ export const lCoprasPublicas = [
     },
 ];
 
-export const lPlanificacion = [
-    {
-        label: "Dashboard",
-        icon: IconUsers,
-        links: [{ label: "Inicio", link: "/" }],
-    },
-    {
-        label: "Planificacion",
-        icon: IconCheckupList,
-        links: [
-            { label: "Instrumentos", link: "/" },
-            { label: "Objetivos estratégicos y metas", link: "/" },
-        ],
-    },
-    {
-        label: "Plan de inversión",
-        icon: IconFolders,
-        links: [
-            { label: "Programas y/o proyectos", link: "/" },
-            { label: "Consolidado de programas y/o proyectos", link: "/" },
-        ],
-    },
-    {
-        label: "Avance de programas",
-        icon: IconTrendingUp,
-        links: [
-            { label: "Programación y avance físico", link: "/" },
-            { label: "Programacion y avance presupuestario", link: "/" },
-        ],
-    },
-    {
-        label: "Administrar Planificación",
-        icon: IconListCheck,
-        links: [
-            { label: "Lineas Estrategicas", link: "/" },
-            { label: "Competencias PDOT", link: "/" },
-            { label: "Componentes PDOT", link: "/" },
-            { label: "Categorias PDOT", link: "/" },
-            { label: "Objetivos Estrategicos PDOT", link: "/" },
-            { label: "Estrategias de Articulación", link: "/" },
-            { label: "Metas PDOT", link: "/" },
-            { label: "Modelo de Gestiones", link: "/" },
-            { label: "Tipos de Planificación", link: "/" },
-            { label: "Realización de Objetivos", link: "/" },
-            { label: "Programas", link: "/" },
-        ],
-    },
-];
+export const lPlanificacion = {
+    gestion: [
+        {
+            label: "Dashboard",
+            icon: IconUsers,
+            links: [{ label: "Inicio", link: "/" }],
+        },
+        {
+            label: "Planificacion",
+            icon: IconCheckupList,
+            links: [
+                { label: "Instrumentos", link: "/" },
+                { label: "Objetivos estratégicos y metas", link: "/" },
+            ],
+        },
+        {
+            label: "Plan de inversión",
+            icon: IconFolders,
+            links: [
+                { label: "Programas y/o proyectos", link: "/" },
+                { label: "Consolidado de programas y/o proyectos", link: "/" },
+            ],
+        },
+        {
+            label: "Avance de programas",
+            icon: IconTrendingUp,
+            links: [
+                { label: "Programación y avance físico", link: "/" },
+                { label: "Programacion y avance presupuestario", link: "/" },
+            ],
+        },
+    ],
+    administrar: [
+        {
+            label: "Administrar Planificación",
+            icon: IconListCheck,
+            links: [
+                { label: "Lineas Estrategicas", link: "/" },
+                { label: "Competencias PDOT", link: "/" },
+                { label: "Componentes PDOT", link: "/" },
+                { label: "Categorias PDOT", link: "/" },
+                { label: "Objetivos Estrategicos PDOT", link: "/" },
+                { label: "Estrategias de Articulación", link: "/" },
+                { label: "Metas PDOT", link: "/" },
+                { label: "Modelo de Gestiones", link: "/" },
+                { label: "Tipos de Planificación", link: "/" },
+                { label: "Realización de Objetivos", link: "/" },
+                { label: "Programas", link: "/" },
+            ],
+        },
+    ],
+};
 
 export const lGestiones = [
     {

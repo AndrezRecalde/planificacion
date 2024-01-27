@@ -9,7 +9,6 @@ import {
     rem,
     Grid,
     Card,
-    Badge,
     ThemeIcon,
     Avatar,
     ScrollArea,
@@ -21,7 +20,6 @@ import {
     IconListTree,
     IconBrandCashapp,
     IconDeviceAnalytics,
-    IconArrowUpRight,
     IconCash,
     IconReportMoney,
 } from "@tabler/icons-react";
@@ -82,9 +80,8 @@ const data2 = {
     ],
 };
 
-const PRIMARY_COL_HEIGHT = rem(300);
 
-export const StatsGestionesPage = () => {
+export const DashGestionesPage = () => {
     ChartJS.register(ArcElement, Tooltip, Legend);
 
     /* Header Stats */
