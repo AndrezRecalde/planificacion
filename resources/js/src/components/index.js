@@ -62,7 +62,19 @@ import { ActividadesTable } from "./gestiones/actividades/table/ActividadesTable
 /* Planificacion */
     /* Instrumentos */
 import { InstrumentosList } from "./planificacion/instrumento/InstrumentosList";
+    /* Objetivos */
+import { ObjetivosTable } from "./planificacion/objetivo/table/ObjetivosTable";
+    /*Programa */
+import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFormProgramaPlan";
+import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
+import { ProyectoFromPrograma } from "./planificacion/programa/table/ProyectoFromPrograma";
+import { ProgressPrograma } from "./planificacion/programa/table/ProgressPrograma";
 
+    /* Consolidado */
+import { FilterConsolidado } from "./planificacion/consolidado/form/FilterConsolidado";
+import { OverviewConsolidado } from "./planificacion/consolidado/form/OverviewConsolidado";
+import { ConsolidadosTable } from "./planificacion/consolidado/table/ConsolidadosTable";
+import { ConsolidadoProyectos } from "./planificacion/consolidado/table/ConsolidadoProyectos";
 
 export {
     BtnServicesApps,
@@ -124,4 +136,15 @@ export {
 
     /*PLANIFICACION */
     InstrumentosList,
+    ObjetivosTable,
+    FilterFormProgramaPlan,
+    ProgramaPlanTable,
+    ProyectoFromPrograma,
+    ProgressPrograma,
+
+    /* CONSOLIDADO */
+    FilterConsolidado,
+    OverviewConsolidado,
+    ConsolidadosTable,
+    ConsolidadoProyectos
 };

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('meta_detalle');
             $table->string('indicador_detalle');
             $table->unsignedInteger('tiempo_meses');
+            $table->year('anio_fiscal');
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');
             $table->unsignedInteger('departamento_id');

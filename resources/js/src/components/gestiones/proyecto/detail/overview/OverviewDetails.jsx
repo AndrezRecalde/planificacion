@@ -1,6 +1,7 @@
 import {
     Avatar,
     Card,
+    Divider,
     Grid,
     Group,
     List,
@@ -182,7 +183,7 @@ export const ActividadesOverview = () => {
     return (
         <Card withBorder shadow="sm" radius="md" mb="lg">
             <Card.Section withBorder inheritPadding py="xs">
-                Actividades
+                Actividades del proyecto
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
                 <List
@@ -201,15 +202,14 @@ export const ActividadesOverview = () => {
                     }
                 >
                     <List.Item>
-                        Clone or download repository from GitHub
+                        Despachar la solicitud de pago al area de financiero.
                     </List.Item>
-                    <List.Item>Install dependencies with yarn</List.Item>
+                    <List.Item>Realizar informe de acta parcial.</List.Item>
                     <List.Item>
-                        To start development server run npm start command
+                        Realizar informe de emisión de retención.
                     </List.Item>
                     <List.Item>
-                        Run tests to make sure your changes do not break the
-                        build
+                        Realizar informe técnico del proyecto.
                     </List.Item>
                 </List>
             </Card.Section>
@@ -320,6 +320,7 @@ export const DetailProyect = () => {
 };
 
 export const ActivitiesCenter = () => {
+    const number = [1, 2, 3, 4, 5, 6, 7];
     return (
         <Card withBorder shadow="sm" radius="md">
             <Card.Section withBorder inheritPadding py="xs">
@@ -327,114 +328,28 @@ export const ActivitiesCenter = () => {
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
                 <ScrollArea h={450}>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Secretaría General</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Gestión de Planificación</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Gestión de Tecnologias</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Gestión de Planificación</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Gestión Legal</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
-                    <div>
-                        <Group>
-                            <Avatar
-                                src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-                                alt="Jacob Warnhalter"
-                                radius="xl"
-                            />
-                            <div>
-                                <Text size="sm">Jacob Warnhalter</Text>
-                                <Text size="xs" c="dimmed">
-                                    10 minutes ago
-                                </Text>
-                            </div>
-                        </Group>
-                        <Text mb={20} pl={54} pt="sm" size="sm">
-                            This Pokémon likes to lick its palms that accurate.
-                        </Text>
-                    </div>
+                    {number.map((n) => (
+                        <div>
+                            <Group mt={10}>
+                                <Avatar
+                                    alt="Jacob Warnhalter"
+                                    radius="xl"
+                                >SG</Avatar>
+                                <div>
+                                    <Text size="sm" fw={700} fz={16}>
+                                        Secretaría General
+                                    </Text>
+                                    <Text size="xs" c="dimmed">
+                                        10 minutes ago
+                                    </Text>
+                                </div>
+                            </Group>
+                            <Text mb={20} pl={54} pt="xs" size="sm">
+                                Se ha despachado de manera correcta el informe técnico.
+                            </Text>
+                            <Divider />
+                        </div>
+                    ))}
                 </ScrollArea>
             </Card.Section>
         </Card>

@@ -1,10 +1,13 @@
 import { useMemo } from "react";
-import { ActionIcon, Card, Group, Text } from "@mantine/core";
+import { ActionIcon, Card, Group, Text, Menu, rem } from "@mantine/core";
 import { useMantineReactTable, MantineReactTable } from "mantine-react-table";
 import {
     IconDiscountCheckFilled,
+    IconEditCircle,
     IconInfoOctagon,
+    IconPencilStar,
     IconProgressAlert,
+    IconTrash,
 } from "@tabler/icons-react";
 
 const data = [
@@ -104,6 +107,7 @@ export const ActividadesTable = ({ classes }) => {
         columns,
         data, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
         enableFacetedValues: true,
+        enableRowActions: true,
         renderDetailPanel: ({ row }) => (
             <Group grow>
                 <Card withBorder padding="lg" className={classes.card}>

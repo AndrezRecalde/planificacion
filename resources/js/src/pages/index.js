@@ -16,6 +16,9 @@ import { ActividadesPage } from "./gestiones/actividades/ActividadesPage";
 
 /* PLANIFICACION */
 import { InstrumentosPage } from "./planificacion/instrumentos/InstrumentosPage";
+import { ObjetivosEstrategicosPage } from "./planificacion/objetivos/ObjetivosEstrategicosPage";
+import { ProgramasPlanPage } from "./planificacion/programas/ProgramasPlanPage";
+import { ConsolidadosPage } from "./planificacion/consolidado/ConsolidadosPage";
 
 export {
     AuthPage,
@@ -35,6 +38,9 @@ export {
     ActividadesPage,
 
     /* Planificacion */
-    InstrumentosPage
+    InstrumentosPage,
+    ObjetivosEstrategicosPage,
+    ProgramasPlanPage,
+    ConsolidadosPage
 
  };

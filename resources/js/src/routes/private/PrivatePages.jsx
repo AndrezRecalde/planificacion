@@ -11,6 +11,9 @@ import {
     TransaccionPage,
     InstrumentosPage,
     ActividadesPage,
+    ObjetivosEstrategicosPage,
+    ProgramasPlanPage,
+    ConsolidadosPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -43,6 +46,12 @@ export const PrivatePages = () => {
 
                 {/* Planificacion */}
                 <Route path="/gpla/instrumentos" element={<InstrumentosPage />} />
+                <Route path="/gpla/objetivos" element={<ObjetivosEstrategicosPage />} />
+                <Route path="/gpla/programas" element={<ProgramasPlanPage />} />
+                <Route path="/gpla/consolidados" element={<ConsolidadosPage />} />
+
+
+
 
             </Routes>
         </AppLayout>
