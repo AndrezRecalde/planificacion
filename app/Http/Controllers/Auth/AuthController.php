@@ -2,100 +2,79 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Models\User;
+use App\Repositories\Auth\AuthRepository;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    use ResponseTrait;
+    private $authRepositories;
+
+    public function __construct(AuthRepository $authRepositories)
+    {
+        $this->authRepositories = $authRepositories;
+    }
+
     function login(LoginRequest $request): JsonResponse
     {
         try {
+
             if (!Auth::attempt($request->validated())) {
-                return response()->json([
-                    'msg'   =>  'Credenciales incorrectas'
-                ], 401);
+                return $this->responseError(msg: "¡Credenciales incorrectas!", status_code: JsonResponse::HTTP_UNAUTHORIZED);
             }
 
-            $usuario = User::from('users as u')
-                ->with([
-                    'roles' => function ($query) {
-                        return $query->select('roles.id', 'roles.name');
-                    }
-                ])
-                ->selectRaw('u.id, CONCAT(u.apellidos, " ", u.nombres) AS nombres_completos, u.email, u.dni')
-                ->where('u.dni', $request->dni)
-                ->where('u.activo', 1)
-                ->first();
+            $usuario = $this->authRepositories->login($request->dni);
 
             if ($usuario) {
-                $token = $usuario->createToken('auth_token')->plainTextToken;
-                return response()->json([
-                    'status'        =>  HTTPStatus::Success,
-                    'access_token'  =>  $token,
-                    'token_type'    =>  'Bearer',
-                    'usuario'       =>  $usuario
+                $token = $this->authRepositories->getToken($usuario);
+                return $this->responseSuccess([
+                    "usuario" => $usuario,
+                    "token" => $token,
+                    "token_type" => 'Bearer'
                 ]);
             } else {
-                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Usuario no activo'], 401);
+                return $this->responseError(msg: 'Usuario no activo', status_code: JsonResponse::HTTP_UNAUTHORIZED);
             }
         } catch (\Throwable $th) {
-            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
+            return $this->responseError($th->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
     function refresh(): JsonResponse
     {
-        $usuario = User::from('users as u')
-            ->with([
-                'roles' => function ($query) {
-                    return $query->select('roles.id', 'roles.name');
-                }
-            ])
-            ->selectRaw('u.id, CONCAT(u.apellidos, " ",u.nombres) AS nombres_completos, u.email, u.dni')
-            ->where('u.id', Auth::user()->id)
-            ->first();
+        $usuario = $this->authRepositories->refresh();
 
         if ($usuario) {
-            auth()->user()->tokens()->delete();
-            $token = $usuario->createToken('auth_token')->plainTextToken;
-            return response()->json([
-                'status' => HTTPStatus::Success,
-                'access_token'  =>  $token,
-                'token_type'    =>  'Bearer',
-                'usuario'       =>  $usuario
+            $usuario->tokens()->delete();
+            $token = $this->authRepositories->getToken($usuario);
+            return $this->responseSuccess([
+                "usuario" => $usuario,
+                "token" => $token,
+                "token_type" => 'Bearer'
             ]);
         } else {
-            return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Usuario no activo'], 401);
+            return $this->responseError(msg: 'Usuario no activo', status_code: JsonResponse::HTTP_UNAUTHORIZED);
         }
     }
 
     function profile(): JsonResponse
     {
-        $profile = User::from('users as u')
-            ->with([
-                'roles' => function ($query) {
-                    return $query->select('roles.id', 'roles.name');
-                }
-            ])
-            ->selectRaw('u.id, CONCAT(u.apellidos, " ", u.nombres) AS nombres_completos, u.email, u.dni')
-            ->where('u.id', Auth::user()->id)
-            ->first();
+        $profile = $this->authRepositories->profile();
 
-        return response()->json(['status' => HTTPStatus::Success, 'profile' => $profile], 200);
+        return $this->responseSuccess([
+            'profile' => $profile
+        ]);
     }
 
     function logout(): JsonResponse
     {
         auth()->user()->tokens()->delete();
 
-        return response()->json([
-            'status' => HTTPStatus::Success,
-            'msg'   =>  'Sesión cerrada'
-        ], 200);
+        return $this->responseSuccess(message: 'Sesion finalizada');
     }
 }
