@@ -3,48 +3,83 @@ import {
     Box,
     Checkbox,
     Group,
+    LoadingOverlay,
     PasswordInput,
     Stack,
     TextInput,
 } from "@mantine/core";
-import { BtnSubmit } from "../../components";
-import { IconChevronsRight } from "@tabler/icons-react";
+import { AlertSection, BtnSubmit } from "../../components";
+import { IconChevronsRight, IconInfoCircle } from "@tabler/icons-react";
+import { useAuthStore } from "../../hooks/auth/useAuthStore";
+import { useForm } from "@mantine/form";
+import { useEffect } from "react";
 
-export const AuthForm = ({ form }) => {
+export const AuthForm = () => {
+    const { startLogin, isLoading, validate, errores } = useAuthStore();
+
+    const form = useForm({
+        initialValues: {
+            dni: "",
+            password: "",
+            remember: true,
+        },
+        /* validate: {
+            dni: isNotEmpty("Por favor digite el DNI"),
+            password: isNotEmpty("Por favor digite la contraseña"),
+        } */
+    });
+
+    useEffect(() => {
+        if (validate !== undefined) {
+            form.setErrors(validate);
+            return;
+        }
+        return () => {
+            form.clearErrors();
+        };
+    }, [validate]);
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        startLogin(form.values);
+    };
+
     return (
         <Box
+            pos="relative"
             component="form"
-            onSubmit={form.onSubmit((_, e) => console.log("clic"))}
+            onSubmit={form.onSubmit((_, e) => handleLogin(e))}
         >
+            <LoadingOverlay
+                visible={isLoading}
+                zIndex={1000}
+                overlayProps={{ radius: "sm", blur: 2 }}
+            />
             <Stack>
                 <TextInput
-                    required
-                    label="Correo electrónico"
-                    placeholder="hello@gadpe.gob.ec"
-                    value={form.values.email}
-                    onChange={(event) =>
-                        form.setFieldValue("email", event.currentTarget.value)
-                    }
-                    error={form.errors.email && "Invalid email"}
+                    label="Cédula"
+                    placeholder="Digite su cédula"
+                    {...form.getInputProps("dni")}
                 />
                 <PasswordInput
-                    required
                     label="Contraseña"
                     placeholder="Tu contraseña"
-                    value={form.values.password}
-                    onChange={(event) =>
-                        form.setFieldValue(
-                            "password",
-                            event.currentTarget.value
-                        )
-                    }
-                    error={
-                        form.errors.password &&
-                        "Password should include at least 6 characters"
-                    }
+                    {...form.getInputProps("password")}
                 />
+                {errores ? (
+                    <AlertSection
+                        variant="light"
+                        color="red.8"
+                        icon={IconInfoCircle}
+                        title="Error"
+                        text={errores}
+                    />
+                ) : null}
                 <Group justify="space-between" mt="lg">
-                    <Checkbox label="Remember me" />
+                    <Checkbox
+                        label="Remember me"
+                        {...form.getInputProps("remember", { type: 'checkbox' })}
+                    />
                     <Anchor component="button" size="sm">
                         ¿Olvidó su contraseña?
                     </Anchor>

@@ -6,7 +6,7 @@ export const AlertSection = ({ variant, color, icon:Icon, title, text }) => {
             variant={variant}
             color={color}
             title={title}
-            icon={Icon}
+            icon={<Icon />}
             mt={10}
             mb={20}
         >
