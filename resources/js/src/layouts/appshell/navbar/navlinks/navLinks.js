@@ -64,16 +64,16 @@ export const lPlanificacion = {
             label: "Planificacion",
             icon: IconCheckupList,
             links: [
-                { label: "Instrumentos", link: "/" },
-                { label: "Objetivos estratégicos y metas", link: "/" },
+                { label: "Instrumentos", link: "/gpla/instrumentos" },
+                { label: "Objetivos estratégicos y metas", link: "/gpla/objetivos" },
             ],
         },
         {
             label: "Plan de inversión",
             icon: IconFolders,
             links: [
-                { label: "Programas y/o proyectos", link: "/" },
-                { label: "Consolidado de programas y/o proyectos", link: "/" },
+                { label: "Programas y/o proyectos", link: "/gpla/programas" },
+                { label: "Consolidado de programas y/o proyectos", link: "/gpla/consolidados" },
             ],
         },
         {
@@ -110,28 +110,28 @@ export const lGestiones = [
     {
         label: "Dashboard",
         icon: IconChartPie,
-        links: [{ label: "Inicio", link: "/" }],
+        links: [{ label: "Inicio", link: "/stats/gestion" }],
     },
     {
         label: "Proveedores",
         icon: IconUsers,
-        links: [{ label: "Ver proveedores", link: "/" }],
+        links: [{ label: "Ver proveedores", link: "/proveedores" }],
     },
     {
         label: "Programas",
         icon: IconFolders,
         initiallyOpened: true,
-        links: [{ label: "Ver programas", link: "/" }],
+        links: [{ label: "Ver programas", link: "/programas" }],
     },
     {
         label: "Proyectos",
         icon: IconFiles,
-        links: [{ label: "Ver proyectos", link: "/" }],
+        links: [{ label: "Ver proyectos", link: "/proyectos" }],
     },
     {
         label: "Actividades",
         icon: IconListTree,
-        links: [{ label: "Ver actividades", link: "/" }],
+        links: [{ label: "Ver actividades", link: "/actividades" }],
     },
 ];
 

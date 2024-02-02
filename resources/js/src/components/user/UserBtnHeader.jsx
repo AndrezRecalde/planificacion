@@ -16,6 +16,7 @@ import {
     IconUserHexagon,
 } from "@tabler/icons-react";
 import classes from "./UserModule/UserHeader.module.css";
+import { useAuthStore } from "../../hooks/auth/useAuthStore";
 
 const user = {
     name: "Cristhian Recalde",
@@ -25,6 +26,7 @@ const user = {
 
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
+    const { startLogout } = useAuthStore();
     const [userMenuOpened, setUserMenuOpened] = useState(false);
     return (
         <Menu
@@ -43,11 +45,7 @@ export const UserBtnHeader = () => {
                     })}
                 >
                     <Group gap={7}>
-                        <Avatar
-                            alt={user.name}
-                            radius="xl"
-                            color="indigo.7"
-                        >
+                        <Avatar alt={user.name} radius="xl" color="indigo.7">
                             {user.abreviatura}
                         </Avatar>
                         <div style={{ flex: 1 }}>
@@ -89,6 +87,7 @@ export const UserBtnHeader = () => {
                 </Menu.Item>
                 <Menu.Label>Settings</Menu.Label>
                 <Menu.Item
+                    onClick={startLogout}
                     color="red"
                     leftSection={
                         <IconLogout
