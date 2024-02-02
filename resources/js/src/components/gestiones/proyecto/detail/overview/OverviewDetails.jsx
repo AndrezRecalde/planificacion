@@ -32,13 +32,9 @@ export const HeaderOverview = () => {
                             fw={700}
                             title="Tipo de proyecto"
                         />
-                        <TextSection
-                            fz="md"
-                            fw={500}
-                            tt=""
-                            title="PDOT"
-                            color=""
-                        />
+                        <TextSection fz="md" fw={500} tt="" color="">
+                            PDOT
+                        </TextSection>
                     </Grid.Col>
                     <Grid.Col span={{ base: 6, xs: 3 }}>
                         <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
@@ -89,8 +85,9 @@ export const ProgressProyect = () => {
                                 fw={700}
                                 ta="center"
                                 fz={20}
-                                title="60%"
-                            />
+                            >
+                                60%
+                            </TextSection>
                         }
                     />
                 </Group>
@@ -103,14 +100,12 @@ export const ProgressProyect = () => {
                             tt="uppercase"
                             fw={700}
                             color="dimmed"
-                            title="Fecha inicial"
-                        />
-                        <TextSection
-                            fz="md"
-                            color=""
-                            fw={500}
-                            title="2023-05-11"
-                        />
+                        >
+                            Fecha inicial
+                        </TextSection>
+                        <TextSection fz="md" color="" fw={500}>
+                            2023-05-11
+                        </TextSection>
                     </Grid.Col>
                     <Grid.Col span={{ base: 6, xs: 6 }}>
                         <TextSection
@@ -118,14 +113,12 @@ export const ProgressProyect = () => {
                             tt="uppercase"
                             fw={700}
                             color="dimmed"
-                            title="Fecha límite"
-                        />
-                        <TextSection
-                            fz="md"
-                            color=""
-                            fw={500}
-                            title="2023-08-10"
-                        />
+                        >
+                            Fecha límite
+                        </TextSection>
+                        <TextSection fz="md" color="" fw={500}>
+                            2023-08-10
+                        </TextSection>
                     </Grid.Col>
                 </Grid>
             </Card.Section>
@@ -160,20 +153,17 @@ export const ProgressActivities = () => {
                                 fw={700}
                                 ta="center"
                                 size="xl"
-                                title="60%"
-                            />
+                            >
+                                60%
+                            </TextSection>
                         }
                     />
                 </Group>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Resumen del progreso"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Resumen del progreso
+                </TextSection>
             </Card.Section>
         </Card>
     );
@@ -221,99 +211,57 @@ export const DetailProyect = () => {
     return (
         <Card withBorder shadow="sm" radius="md" mb="lg">
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Objetivo Estrategico"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Objetivo Estrategico
+                </TextSection>
 
-                <TextSection
-                    fz="md"
-                    fw={500}
-                    title="2. Desarrollar la conectividad tecnologica y movilidad entre
+                <TextSection fz="md" fw={500} color="" tt="">
+                    2. Desarrollar la conectividad tecnologica y movilidad entre
                     los centros poblados, zonas productivas rurales y/o urbanas
-                    para el intercambio de bienes y servicios."
-                    color=""
-                    tt=""
-                />
+                    para el intercambio de bienes y servicios.
+                </TextSection>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Tipo de Programa"
-                />
-                <TextSection fz="md" fw={500} title="PDOT" color="" tt="" />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Tipo de Programa
+                </TextSection>
+                <TextSection fz="md" fw={500} color="" tt="">
+                    PDOT
+                </TextSection>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Programa"
-                />
-                <TextSection
-                    fz="md"
-                    fw={500}
-                    color=""
-                    tt=""
-                    title="Alfabetización para mayor accecibilidad al conocimiento"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Programa
+                </TextSection>
+                <TextSection fz="md" fw={500} color="" tt="">
+                    Alfabetización para mayor accecibilidad al conocimiento
+                </TextSection>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Línea Base"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Línea Base
+                </TextSection>
 
-                <TextSection
-                    fz="md"
-                    fw={500}
-                    color=""
-                    tt=""
-                    title="200 usuarios capacitados"
-                />
+                <TextSection fz="md" fw={500} color="" tt="">
+                    200 usuarios capacitados
+                </TextSection>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Meta"
-                />
-                <TextSection
-                    fz="md"
-                    fw={500}
-                    color=""
-                    tt=""
-                    title="200 usuarios capacitados"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Meta
+                </TextSection>
+                <TextSection fz="md" fw={500} color="" tt="">
+                    200 usuarios capacitados
+                </TextSection>
             </Card.Section>
             <Card.Section withBorder inheritPadding py="xs">
-                <TextSection
-                    fz="xs"
-                    tt="uppercase"
-                    fw={700}
-                    c="dimmed"
-                    title="Indicador"
-                />
+                <TextSection fz="xs" tt="uppercase" fw={700} c="dimmed">
+                    Indicador
+                </TextSection>
 
-                <TextSection
-                    fz="md"
-                    fw={500}
-                    color=""
-                    tt=""
-                    title="200 usuarios capacitados"
-                />
+                <TextSection fz="md" fw={500} color="" tt="">
+                    200 usuarios capacitados
+                </TextSection>
             </Card.Section>
         </Card>
     );
@@ -331,10 +279,9 @@ export const ActivitiesCenter = () => {
                     {number.map((n) => (
                         <div>
                             <Group mt={10}>
-                                <Avatar
-                                    alt="Jacob Warnhalter"
-                                    radius="xl"
-                                >SG</Avatar>
+                                <Avatar alt="Jacob Warnhalter" radius="xl">
+                                    SG
+                                </Avatar>
                                 <div>
                                     <Text size="sm" fw={700} fz={16}>
                                         Secretaría General
@@ -345,7 +292,8 @@ export const ActivitiesCenter = () => {
                                 </div>
                             </Group>
                             <Text mb={20} pl={54} pt="xs" size="sm">
-                                Se ha despachado de manera correcta el informe técnico.
+                                Se ha despachado de manera correcta el informe
+                                técnico.
                             </Text>
                             <Divider />
                         </div>
@@ -384,32 +332,28 @@ export const SupplierStat = () => {
                         ta="center"
                         fw={700}
                         className={classes.title}
-                        title="El proyecto es"
                         fz="sm"
                         color=""
-                    />
-                    <TextSection
-                        ta="center"
-                        fz="md"
-                        tt=""
-                        title="Presupuestario"
-                    />
+                    >
+                        El proyecto es
+                    </TextSection>
+                    <TextSection ta="center" fz="md" tt="">
+                        Presupuestario
+                    </TextSection>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, xs: 6 }}>
                     <TextSection
                         ta="center"
                         fw={700}
                         className={classes.title}
-                        title="Proveedor"
                         fz="sm"
                         color=""
-                    />
-                    <TextSection
-                        ta="center"
-                        fz="md"
-                        tt=""
-                        title="Protelcotelsa S.A"
-                    />
+                    >
+                        Proveedor
+                    </TextSection>
+                    <TextSection ta="center" fz="md" tt="">
+                        Protelcotelsa S.A
+                    </TextSection>
                 </Grid.Col>
             </Grid>
         </Paper>

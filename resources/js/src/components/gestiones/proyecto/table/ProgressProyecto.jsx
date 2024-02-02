@@ -10,15 +10,10 @@ export const ProgressProyecto = ({ cell, classes }) => {
                     color="teal"
                     fw={700}
                     tt=""
-                    title={`${cell.getValue()}%`}
-                />
-                <TextSection
-                    fz="xs"
-                    color="red"
-                    fw={700}
-                    tt=""
-                    title={`${100 - cell.getValue()}%`}
-                />
+                >{`${cell.getValue()}%`}</TextSection>
+                <TextSection fz="xs" color="red" fw={700} tt="">{`${
+                    100 - cell.getValue()
+                }%`}</TextSection>
             </Group>
             <Progress.Root>
                 <Progress.Section

@@ -6,19 +6,14 @@ import { TextSection } from "../../components";
 
 import classes from "./navbar/NavbarModule/AppNavbar.module.css";
 
-
 export const AppLayout = ({ children }) => {
     const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
     const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
     /* Cambiarlo por el state */
-    const [role, setRole] = useState("DIR_PLANIFICACION");
+    const [role, setRole] = useState("DIR_GESTION");
 
-    const Scroll = (
-        <ScrollArea scrollbarSize={6}>
-
-        </ScrollArea>
-    )
+    const Scroll = <ScrollArea scrollbarSize={6}></ScrollArea>;
 
     return (
         <AppShell
@@ -43,11 +38,9 @@ export const AppLayout = ({ children }) => {
                     <div className={classes.header}>
                         <Group>
                             <div style={{ flex: 1 }}>
-                                <TextSection
-                                    title="Gestión de Tecnologías de la Información"
-                                    fw={700}
-                                    fz={12}
-                                />
+                                <TextSection fw={700} fz={12}>
+                                    Gestión de Tecnologías de la Información
+                                </TextSection>
                             </div>
                             <Badge radius="md" color="indigo.7">
                                 GTIC

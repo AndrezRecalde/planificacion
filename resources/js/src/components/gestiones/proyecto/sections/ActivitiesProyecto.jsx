@@ -6,11 +6,9 @@ export const ActivitiesProyecto = () => {
     return (
         <Container size="xl" my="md">
             <Group justify="space-between" mb={20}>
-                <TitlePage
-                    order={4}
-                    ta="left"
-                    title="Actividades del proyecto"
-                />
+                <TitlePage order={4} ta="left">
+                    Actividades del proyecto
+                </TitlePage>
                 <Button variant="light" color="indigo.7">
                     Agregar actividad
                 </Button>

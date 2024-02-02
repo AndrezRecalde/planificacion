@@ -52,10 +52,12 @@ export const ReformasPage = () => {
 
     return (
         <Container size="lg">
-            <TitlePage title="Revisión de reformas" order={2} size="h2" />
+            <TitlePage order={2} size="h2">
+                Revisión de reformas
+            </TitlePage>
             <Card withBorder shadow="sm" radius="md" p="lg" mt={20} mb={20}>
                 <Card.Section withBorder inheritPadding py="xs">
-                    <TextSection title="Solicitudes de gestiones" fw={700} />
+                    <TextSection fw={700}>Solicitudes de gestiones</TextSection>
                 </Card.Section>
                 <Card.Section withBorder inheritPadding py="xs">
                     <TableContent headings={headings} rows={rows} />

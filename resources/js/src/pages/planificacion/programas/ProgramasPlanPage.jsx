@@ -10,7 +10,7 @@ import classes from "../../gestiones/proyecto/ProyectoModule/Proyecto.module.css
 export const ProgramasPlanPage = () => {
     return (
         <Container size="xxl">
-            <TitlePage order={2} ta="left" title="Programas estrategicos" />
+            <TitlePage order={2} ta="left">Programas estrategicos</TitlePage>
             <Stack>
                 <FilterFormProgramaPlan />
                 <ProgramaPlanTable />

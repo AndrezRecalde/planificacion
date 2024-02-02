@@ -1,9 +1,4 @@
-import {
-    Button,
-    Container,
-    Group,
-    SimpleGrid,
-} from "@mantine/core";
+import { Button, Container, Group, SimpleGrid } from "@mantine/core";
 import { AlertSection, FolderFiles, TitlePage } from "../../../../components";
 import { IconInfoCircle } from "@tabler/icons-react";
 
@@ -12,7 +7,9 @@ export const FilesProyecto = () => {
     return (
         <Container size="xl" my="md">
             <Group justify="space-between">
-                <TitlePage order={4} ta="left" title="Archivos del proyecto" />
+                <TitlePage order={4} ta="left">
+                    Archivos del proyecto
+                </TitlePage>
                 <Button variant="light" color="yellow.7">
                     Agregar carpeta
                 </Button>

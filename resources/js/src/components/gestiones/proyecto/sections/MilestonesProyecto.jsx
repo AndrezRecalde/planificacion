@@ -1,12 +1,19 @@
 import { Card, Container, Group } from "@mantine/core";
-import { BtnSection, InputSeach, MilestoneList, TitlePage } from "../../../../components";
+import {
+    BtnSection,
+    InputSeach,
+    MilestoneList,
+    TitlePage,
+} from "../../../../components";
 import classes from "./SectionsModule/Section.module.css";
 
 export const MilestonesProyecto = () => {
     return (
         <Container size="xl" my="md">
             <Group justify="space-between">
-                <TitlePage order={4} ta="left" title="Hitos del proyecto" />
+                <TitlePage order={4} ta="left">
+                    Hitos del proyecto
+                </TitlePage>
                 <BtnSection>Agregar hito</BtnSection>
             </Group>
             <InputSeach texto="Buscar hito" />
@@ -18,7 +25,7 @@ export const MilestonesProyecto = () => {
                 p={0}
                 className={classes.card}
             >
-               <MilestoneList classes={classes} />
+                <MilestoneList classes={classes} />
             </Card>
         </Container>
     );

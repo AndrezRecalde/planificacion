@@ -9,8 +9,12 @@ import {
 export const ProveedorPage = () => {
     return (
         <Container size="xl">
-            <TitlePage order={2} ta="left" title="Proveedores" />
-            <TextSection title="GTIC tiene 30 proveedores registrados" tt="" />
+            <TitlePage order={2} ta="left">
+                Proveedores
+            </TitlePage>
+            <TextSection tt="">
+                GTIC tiene 30 proveedores registrados
+            </TextSection>
 
             <BtnSection mt={10} mb={10} heigh={40}>
                 Agregar

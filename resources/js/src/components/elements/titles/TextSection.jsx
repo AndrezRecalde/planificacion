@@ -6,12 +6,12 @@ export const TextSection = ({
     fw,
     fz = 14,
     ta = "left",
-    title,
+    children,
     fs = ""
 }) => {
     return (
         <Text c={color} fz={fz} tt={tt} ta={ta} fw={fw} fs={fs}>
-            {title}
+            {children}
         </Text>
     );
 };

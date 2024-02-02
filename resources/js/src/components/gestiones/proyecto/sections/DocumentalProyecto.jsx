@@ -7,7 +7,9 @@ import { IconArchive, IconBrandTelegram, IconInbox } from "@tabler/icons-react";
 export const DocumentalProyecto = () => {
     return (
         <Container size="xl" my="md">
-            <TitlePage order={4} ta="left" title="Archivo documental" />
+            <TitlePage order={4} ta="left">
+                Archivo documental
+            </TitlePage>
             <Tabs
                 variant="unstyled"
                 defaultValue="entrada"

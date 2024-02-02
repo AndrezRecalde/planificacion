@@ -1,9 +1,9 @@
 import { Title } from "@mantine/core";
 
-export const TitlePage = ({ order = 1, ta, title, ...props }) => {
+export const TitlePage = ({ order = 1, ta, children, ...props }) => {
     return (
         <Title ta={ta} order={order} {...props}>
-            {title}
+            {children}
         </Title>
     );
 };

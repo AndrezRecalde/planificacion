@@ -23,11 +23,9 @@ export const ProyectoDetailPage = () => {
     return (
         <Container size="xl">
             <Group justify="space-between">
-                <TitlePage
-                    title="Fortalecimiento de la seguridad informatica"
-                    order={6}
-                    size="h6"
-                />
+                <TitlePage order={6} size="h6">
+                    Fortalecimiento de la seguridad informatica
+                </TitlePage>
                 <BtnDetailProyecto />
             </Group>
             <Tabs defaultValue="resumen" color="indigo">

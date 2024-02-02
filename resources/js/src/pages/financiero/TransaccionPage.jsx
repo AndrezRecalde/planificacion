@@ -4,11 +4,9 @@ import { CardGestiones, TitlePage } from "../../components";
 export const TransaccionPage = () => {
     return (
         <Container size="lg">
-            <TitlePage
-                title="Transacciones de presupuesto"
-                order={2}
-                size="h2"
-            />
+            <TitlePage order={2} size="h2">
+                Transacciones de presupuesto
+            </TitlePage>
 
             <SimpleGrid cols={3} mt={20}>
                 <CardGestiones />

@@ -80,7 +80,6 @@ const data2 = {
     ],
 };
 
-
 export const DashGestionesPage = () => {
     ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -149,14 +148,12 @@ export const DashGestionesPage = () => {
 
     return (
         <Container size="xl" my="md">
-            <TitlePage order={2} ta="left" title="Dashboard" />
-            <TextSection
-                fz={18}
-                fw={500}
-                tt=""
-                fs="italic"
-                title="Bienvenido, Cristhian Recalde"
-            />
+            <TitlePage order={2} ta="left">
+                Dashboard
+            </TitlePage>
+            <TextSection fz={18} fw={500} tt="" fs="italic">
+                Bienvenido, Cristhian Recalde
+            </TextSection>
             <div className={classes.root}>
                 {/* Header Stats */}
                 <SimpleGrid cols={{ base: 1, xs: 2, md: 4 }} mb={20}>
@@ -296,7 +293,6 @@ export const DashGestionesPage = () => {
                                         that accurate.
                                     </Text>
                                 </div>
-
                             </ScrollArea>
                         </Card.Section>
                     </Card>
@@ -409,7 +405,6 @@ export const DashGestionesPage = () => {
                                         <Text fz="xl" fw={700}>
                                             Progreso del departamento
                                         </Text>
-
                                     </Group>
                                     <IconDeviceAnalytics
                                         size="1.4rem"
@@ -438,12 +433,9 @@ export const DashGestionesPage = () => {
                 <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
                     <Card withBorder shadow="sm" radius="md">
                         <Card.Section withBorder inheritPadding py="xs">
-                            <TextSection
-                                fz="sm"
-                                tt="uppercase"
-                                fw={700}
-                                title="Distribución de proyectos"
-                            />
+                            <TextSection fz="sm" tt="uppercase" fw={700}>
+                                Distribución de proyectos
+                            </TextSection>
                         </Card.Section>
                         <Card.Section withBorder inheritPadding py="xs">
                             <Pie
@@ -455,12 +447,9 @@ export const DashGestionesPage = () => {
                     </Card>
                     <Card withBorder shadow="sm" radius="md">
                         <Card.Section withBorder inheritPadding py="xs">
-                            <TextSection
-                                fz="sm"
-                                tt="uppercase"
-                                fw={700}
-                                title="Distribución de actividades"
-                            />
+                            <TextSection fz="sm" tt="uppercase" fw={700}>
+                                Distribución de actividades
+                            </TextSection>
                         </Card.Section>
                         <Card.Section withBorder inheritPadding py="xs">
                             <Pie

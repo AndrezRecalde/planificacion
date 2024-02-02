@@ -5,11 +5,9 @@ import { IconPlus } from "@tabler/icons-react";
 export const InstrumentosPage = () => {
     return (
         <Container size="xl">
-            <TitlePage
-                order={2}
-                ta="left"
-                title="Instrumentos de planificación"
-            />
+            <TitlePage order={2} ta="left">
+                Instrumentos de planificación
+            </TitlePage>
             <Button
                 variant="light"
                 mt="md"
