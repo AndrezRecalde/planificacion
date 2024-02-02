@@ -47,10 +47,11 @@ class AuthController extends Controller
 
     function refresh(): JsonResponse
     {
-        $usuario = $this->authRepositories->refresh();
+        $id = Auth::user()->id;
+        $usuario = $this->authRepositories->refresh($id);
 
         if ($usuario) {
-            $usuario->tokens()->delete();
+            //$usuario->tokens()->delete();
             $token = $this->authRepositories->getToken($usuario);
             return $this->responseSuccess([
                 "usuario" => $usuario,

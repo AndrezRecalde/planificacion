@@ -18,16 +18,19 @@ import {
 import classes from "./UserModule/UserHeader.module.css";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
 
-const user = {
-    name: "Cristhian Recalde",
-    email: "crecalde@gadpe.gob.ec",
-    abreviatura: "CR",
-};
 
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
     const { startLogout } = useAuthStore();
+    const usuario = JSON.parse(localStorage.getItem("service_user"));
     const [userMenuOpened, setUserMenuOpened] = useState(false);
+
+    const iniciales = () => {
+        let inicial_nombre = usuario.nombres.slice(0,1);
+        let inicial_apellido = usuario.apellidos.slice(0,1);
+        return inicial_nombre + inicial_apellido;
+    }
+
     return (
         <Menu
             width={260}
@@ -45,15 +48,15 @@ export const UserBtnHeader = () => {
                     })}
                 >
                     <Group gap={7}>
-                        <Avatar alt={user.name} radius="xl" color="indigo.7">
-                            {user.abreviatura}
+                        <Avatar alt={usuario.apellidos} radius="xl" color="indigo.7">
+                            {iniciales()}
                         </Avatar>
                         <div style={{ flex: 1 }}>
                             <Text fw={500} size="sm">
-                                {user.name}
+                                { `${usuario.nombres} ${usuario.apellidos}` }
                             </Text>
                             <Text size="xs" c="dimmed">
-                                {user.email}
+                                {usuario.email}
                             </Text>
                         </div>
                         <IconChevronRight

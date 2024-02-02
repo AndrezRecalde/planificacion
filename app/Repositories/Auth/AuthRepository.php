@@ -23,7 +23,7 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
-            ->selectRaw('u.id, CONCAT(u.apellidos, " ", u.nombres) AS nombres_completos, u.email, u.dni')
+            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni')
             ->where('u.dni', $dni)
             ->where('u.activo', 1)
             ->first();
@@ -31,7 +31,7 @@ class AuthRepository implements AuthInterface
         return $usuario;
     }
 
-    public function refresh(): User
+    public function refresh($id): User
     {
         $usuario = User::from('users as u')
             ->with([
@@ -39,8 +39,8 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
-            ->selectRaw('u.id, CONCAT(u.apellidos, " ",u.nombres) AS nombres_completos, u.email, u.dni')
-            ->where('u.id', Auth::user()->id)
+            ->selectRaw('u.id, u.apellidos ,u.nombres, u.email, u.dni')
+            ->where('u.id', $id)
             ->where('u.activo', 1)
             ->first();
         return $usuario;
@@ -54,7 +54,7 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
-            ->selectRaw('u.id, CONCAT(u.apellidos, " ", u.nombres) AS nombres_completos, u.email, u.dni')
+            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni')
             ->where('u.id', Auth::user()->id)
             ->first();
 

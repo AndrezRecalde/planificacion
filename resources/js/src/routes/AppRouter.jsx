@@ -28,7 +28,7 @@ export const AppRouter = () => {
             <Route
                 path="/*"
                 element={
-                    <PrivateRoutes token={true}>
+                    <PrivateRoutes>
                         <PrivatePages />
                     </PrivateRoutes>
                 }
