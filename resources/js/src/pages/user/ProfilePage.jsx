@@ -1,8 +1,19 @@
-import { Avatar, Card, Container, Group } from "@mantine/core";
+import { Avatar, Card, Container, Group, LoadingOverlay } from "@mantine/core";
 import { ProfileForm, TitlePage, TextSection } from "../../components";
 import logo from "../../assets/images/icono.png";
+import { useAuthStore } from "../../hooks";
+import { useEffect } from "react";
 
 export const ProfilePage = () => {
+    const { startProfile, clearProfile, isLoading } = useAuthStore();
+    useEffect(() => {
+        startProfile();
+
+      return () => {
+        clearProfile();
+      }
+    }, []);
+
     return (
         <Container size="sm">
             <TitlePage order={2} size="h2">
@@ -23,6 +34,7 @@ export const ProfilePage = () => {
                     </Group>
                 </Card.Section>
                 <Card.Section withBorder inheritPadding py="xs">
+                <LoadingOverlay visible={isLoading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
                     <ProfileForm />
                 </Card.Section>
                 <Card.Section withBorder inheritPadding py="xs">

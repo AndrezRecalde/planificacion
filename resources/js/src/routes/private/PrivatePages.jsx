@@ -22,7 +22,7 @@ export const PrivatePages = () => {
         <AppLayout>
             <Routes>
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/change/password" element={<ChangePwdPage />} />
+                <Route path="/change-password" element={<ChangePwdPage />} />
                 {/* Financiero */}
                 <Route
                     path="/financiero/transacciones"

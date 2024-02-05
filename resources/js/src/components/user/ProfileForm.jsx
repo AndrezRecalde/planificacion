@@ -1,11 +1,17 @@
+import { useMemo } from "react";
 import { Grid, Text } from "@mantine/core";
+import { useAuthStore } from "../../hooks";
 
 export const ProfileForm = () => {
+    const { profile } = useAuthStore();
+    const { administrativos } = profile;
+    const periodo = useMemo(() => administrativos?.slice(-1)[0], [profile]);
+    console.log(profile);
     return (
         <Grid>
             <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    Recalde Solano Cristhian Andrés
+                    {`${profile.nombres} ${profile.apellidos}`}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Apellidos y Nombres
@@ -13,7 +19,23 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    0802704171
+                    {profile?.roles?.map((r) => r.name).join(", ")}
+                </Text>
+                <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
+                    Role(s)
+                </Text>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
+                <Text fz="md" fw={700}>
+                    {profile.dni}
+                </Text>
+                <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
+                    Nº Cédula
+                </Text>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
+                <Text fz="md" fw={700}>
+                    {profile.email}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Nº Cédula
@@ -21,24 +43,15 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
                 <Text fz="md" fw={700}>
-                    crecalde@gadpe.gob.ec
+                    {profile.nombre_institucion}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
-                    Correo
+                    Institución {profile.tipo_gad}
                 </Text>
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
                 <Text fz="md" fw={700}>
-                    Gobierno Autónomo Descentralizado de la Provincia de
-                    Esmeraldas
-                </Text>
-                <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
-                    Institución
-                </Text>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
-                <Text fz="md" fw={700}>
-                    Gestión de Tecnologías de la Información y Comunicación
+                    {profile.nombre_departamento}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Departamento
@@ -46,7 +59,7 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 6, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    062453139
+                    {profile.telefono}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Teléfono
@@ -54,7 +67,7 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 6, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    133 - 134
+                    {profile.extension}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Extensión
@@ -62,7 +75,7 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 6, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    2022
+                    {periodo?.inicio_periodo}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Inicio Periodo Administrativo
@@ -70,7 +83,7 @@ export const ProfileForm = () => {
             </Grid.Col>
             <Grid.Col span={{ base: 6, md: 6, lg: 6 }}>
                 <Text fz="md" fw={700}>
-                    2026
+                    {periodo?.fin_periodo}
                 </Text>
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Fin Periodo Administrativo

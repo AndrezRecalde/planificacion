@@ -52,9 +52,19 @@ class AuthRepository implements AuthInterface
             ->with([
                 'roles' => function ($query) {
                     return $query->select('roles.id', 'roles.name');
+                },
+                'administrativos' => function ($query) {
+                    return $query->select('administrativos.id',
+                                          'administrativos.inicio_periodo',
+                                          'administrativos.fin_periodo');
                 }
             ])
-            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni')
+            ->join('instituciones as i', 'i.id', 'u.institucion_id')
+            ->join('departamentos as d', 'd.id', 'u.departamento_id')
+            ->join('gads as gd', 'gd.id', 'i.gad_id')
+            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni,
+                        i.nombre_institucion, i.telefono, i.logo_url,
+                        gd.tipo_gad, d.nombre_departamento, d.extension')
             ->where('u.id', Auth::user()->id)
             ->first();
 

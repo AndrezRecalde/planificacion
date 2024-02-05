@@ -17,10 +17,12 @@ import {
 } from "@tabler/icons-react";
 import classes from "./UserModule/UserHeader.module.css";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
     const { startLogout } = useAuthStore();
+    const navigate = useNavigate();
     const usuario = useMemo(
         () => JSON.parse(localStorage.getItem("service_user")),
         []
@@ -84,6 +86,7 @@ export const UserBtnHeader = () => {
             </Menu.Target>
             <Menu.Dropdown>
                 <Menu.Item
+                onClick={() => navigate("/profile")}
                     leftSection={
                         <IconUserHexagon
                             style={{ width: rem(16), height: rem(16) }}
@@ -95,6 +98,7 @@ export const UserBtnHeader = () => {
                     Ver perfil
                 </Menu.Item>
                 <Menu.Item
+                onClick={() => navigate("change-password")}
                     leftSection={
                         <IconSettings
                             style={{ width: rem(16), height: rem(16) }}

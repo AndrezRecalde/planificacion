@@ -1,18 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
     onAuthenticate,
+    onLoadErrores,
     onClearErrores,
     onClearValidates,
     onLoading,
     onLogout,
+    onLoadProfile,
     onValidate,
 } from "../../store/auth/authSlice";
 import planningApi from "../../api/planningApi";
+import { useErrorException } from "../../hooks";
 
 export const useAuthStore = () => {
-    const { isLoading, user, validate, errores } = useSelector(
+    const { isLoading, user, profile, validate, errores } = useSelector(
         (state) => state.auth
     );
+    const { ExceptionMessageError } = useErrorException(onLoadErrores);
+
     const dispatch = useDispatch();
 
     const startLogin = async ({ dni, password }) => {
@@ -64,6 +69,22 @@ export const useAuthStore = () => {
         }
     };
 
+    const startProfile = async() => {
+        try {
+            dispatch(onLoading());
+            const { data } = await planningApi.get("/profile");
+            const { data:profileUser } = data;
+            dispatch(onLoadProfile(profileUser.profile));
+        } catch (error) {
+            console.log(error);
+            ExceptionMessageError(error);
+        }
+    }
+
+    const clearProfile = () => {
+        dispatch(onLoadProfile({}));
+    }
+
     const startLogout = async () => {
         try {
             await planningApi.post("/auth/logout");
@@ -78,11 +99,14 @@ export const useAuthStore = () => {
     return {
         isLoading,
         user,
+        profile,
         validate,
         errores,
 
         startLogin,
         checkAuthToken,
+        startProfile,
+        clearProfile,
         startLogout,
     };
 };
