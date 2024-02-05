@@ -31,7 +31,7 @@ class AuthRepository implements AuthInterface
         return $usuario;
     }
 
-    public function refresh($id): User
+    public function refresh(): User
     {
         $usuario = User::from('users as u')
             ->with([
@@ -40,7 +40,7 @@ class AuthRepository implements AuthInterface
                 }
             ])
             ->selectRaw('u.id, u.apellidos ,u.nombres, u.email, u.dni')
-            ->where('u.id', $id)
+            ->where('u.id', Auth::user()->id)
             ->where('u.activo', 1)
             ->first();
         return $usuario;
@@ -61,7 +61,7 @@ class AuthRepository implements AuthInterface
         return $profile;
     }
 
-    public function getToken($usuario): string
+    public function getToken(User $usuario): string
     {
         return $usuario->createToken('auth_token')->plainTextToken;
     }
