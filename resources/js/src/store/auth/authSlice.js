@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isLoading: false,
     user: {},
+    profile: {},
     validate: undefined,
     errores: undefined,
 };
@@ -18,6 +19,10 @@ export const authSlice = createSlice({
             state.user = payload;
             state.isLoading = false;
         },
+        onLoadProfile: (state, { payload }) => {
+            state.profile = payload;
+            state.isLoading = false;
+        },
         onLogout: (state, { payload }) => {
             state.isLoading = false;
             state.user = {};
@@ -31,6 +36,9 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.validate = undefined;
         },
+        onLoadErrores: (state, { payload }) => {
+            state.errores = payload;
+        },
         onClearErrores: (state) => {
             state.errores = undefined;
         },
@@ -40,8 +48,10 @@ export const authSlice = createSlice({
 export const {
     onLoading,
     onAuthenticate,
+    onLoadProfile,
     onLogout,
     onValidate,
     onClearValidates,
+    onLoadErrores,
     onClearErrores,
 } = authSlice.actions;
