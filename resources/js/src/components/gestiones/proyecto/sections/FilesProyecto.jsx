@@ -3,7 +3,6 @@ import { AlertSection, FolderFiles, TitlePage } from "../../../../components";
 import { IconInfoCircle } from "@tabler/icons-react";
 
 export const FilesProyecto = () => {
-    const icon = <IconInfoCircle />;
     return (
         <Container size="xl" my="md">
             <Group justify="space-between">
@@ -17,7 +16,7 @@ export const FilesProyecto = () => {
             <AlertSection
                 variant="light"
                 color="yellow.7"
-                icon={icon}
+                icon={IconInfoCircle}
                 title="Información"
                 text="Crea carpetas para ordenar los archivos de los proyectos"
             />

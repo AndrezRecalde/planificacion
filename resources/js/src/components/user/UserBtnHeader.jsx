@@ -1,5 +1,5 @@
 import cx from "clsx";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
     Avatar,
     Group,
@@ -18,18 +18,30 @@ import {
 import classes from "./UserModule/UserHeader.module.css";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
 
-
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
     const { startLogout } = useAuthStore();
-    const usuario = JSON.parse(localStorage.getItem("service_user"));
+    const usuario = useMemo(
+        () => JSON.parse(localStorage.getItem("service_user")),
+        []
+    );
     const [userMenuOpened, setUserMenuOpened] = useState(false);
 
-    const iniciales = () => {
-        let inicial_nombre = usuario.nombres.slice(0,1);
-        let inicial_apellido = usuario.apellidos.slice(0,1);
+    const nombres = useCallback(() => {
+        const nombre_index = usuario.nombres.indexOf(" ");
+        const apellido_index = usuario.apellidos.indexOf(" ");
+
+        let _nombre = usuario.nombres.substring(0, nombre_index);
+        let _apellido = usuario.apellidos.substring(0, apellido_index);
+
+        return _nombre + " " + _apellido;
+    }, [usuario]);
+
+    const iniciales = useCallback(() => {
+        let inicial_nombre = usuario.nombres.slice(0, 1);
+        let inicial_apellido = usuario.apellidos.slice(0, 1);
         return inicial_nombre + inicial_apellido;
-    }
+    }, [usuario]);
 
     return (
         <Menu
@@ -48,12 +60,16 @@ export const UserBtnHeader = () => {
                     })}
                 >
                     <Group gap={7}>
-                        <Avatar alt={usuario.apellidos} radius="xl" color="indigo.7">
+                        <Avatar
+                            alt={usuario.apellidos}
+                            radius="xl"
+                            color="indigo.7"
+                        >
                             {iniciales()}
                         </Avatar>
                         <div style={{ flex: 1 }}>
                             <Text fw={500} size="sm">
-                                { `${usuario.nombres} ${usuario.apellidos}` }
+                                {nombres()}
                             </Text>
                             <Text size="xs" c="dimmed">
                                 {usuario.email}
