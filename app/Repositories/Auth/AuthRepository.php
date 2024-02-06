@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthRepository implements AuthInterface
 {
-    private $model;
+    protected $model;
     public function __construct()
     {
         $this->model = new User();
     }
 
-    public function login(string $dni): User
+    public function login(string $dni): User | null
     {
 
         $usuario = $this->model->from('users as u')

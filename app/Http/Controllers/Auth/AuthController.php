@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Repositories\Auth\AuthRepository;
@@ -25,23 +26,32 @@ class AuthController extends Controller
         try {
 
             if (!Auth::attempt($request->validated())) {
-                return $this->responseError(msg: "¡Credenciales incorrectas!", status_code: JsonResponse::HTTP_UNAUTHORIZED);
+                return response()->json([
+                    'status' => HTTPStatus::Error,
+                    'msg' => '¡Credenciales incorrectas!'
+                ], 401);
             }
 
             $usuario = $this->authRepositories->login($request->dni);
 
             if ($usuario) {
                 $token = $this->authRepositories->getToken($usuario);
-                return $this->responseSuccess([
+                return response()->json([
                     "usuario" => $usuario,
+                    "token_type" => 'Bearer',
                     "token" => $token,
-                    "token_type" => 'Bearer'
                 ]);
             } else {
-                return $this->responseError(msg: 'Usuario no activo', status_code: JsonResponse::HTTP_UNAUTHORIZED);
+                return response()->json([
+                    'status' => HTTPStatus::Error,
+                    'msg' => 'Usuario no activo'
+                ], 401);
             }
         } catch (\Throwable $th) {
-            return $this->responseError($th->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json([
+                'status'=> HTTPStatus::Error,
+                'msg'=> $th->getMessage()
+            ], 500);
         }
     }
 
@@ -50,15 +60,18 @@ class AuthController extends Controller
         $usuario = $this->authRepositories->refresh();
 
         if ($usuario) {
-            //$usuario->tokens()->delete();
+            $usuario->tokens()->delete();
             $token = $this->authRepositories->getToken($usuario);
-            return $this->responseSuccess([
+            return response()->json([
                 "usuario" => $usuario,
+                "token_type" => 'Bearer',
                 "token" => $token,
-                "token_type" => 'Bearer'
             ]);
         } else {
-            return $this->responseError(msg: 'Usuario no activo', status_code: JsonResponse::HTTP_UNAUTHORIZED);
+            return response()->json([
+                "status" => HTTPStatus::Error,
+                "msg" => "Usuario no activo"
+            ]);
         }
     }
 
@@ -66,7 +79,8 @@ class AuthController extends Controller
     {
         $profile = $this->authRepositories->profile();
 
-        return $this->responseSuccess([
+        return response()->json([
+            'status' => HTTPStatus::Success,
             'profile' => $profile
         ]);
     }
@@ -75,6 +89,9 @@ class AuthController extends Controller
     {
         auth()->user()->tokens()->delete();
 
-        return $this->responseSuccess(message: 'Sesion finalizada');
+        return response()->json([
+            'status' => HTTPStatus::Success,
+            'msg' => 'Sesión finalizada'
+        ]);
     }
 }
