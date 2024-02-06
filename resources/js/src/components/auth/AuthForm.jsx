@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
     Anchor,
     Box,
@@ -12,7 +13,6 @@ import { AlertSection, BtnSubmit } from "../../components";
 import { IconChevronsRight, IconInfoCircle } from "@tabler/icons-react";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
 import { useForm } from "@mantine/form";
-import { useEffect } from "react";
 
 export const AuthForm = () => {
     const { startLogin, isLoading, validate, errores } = useAuthStore();
@@ -23,7 +23,7 @@ export const AuthForm = () => {
             password: "",
             remember: true,
         },
-        /* validate: {
+/*         validate: {
             dni: isNotEmpty("Por favor digite el DNI"),
             password: isNotEmpty("Por favor digite la contraseña"),
         } */

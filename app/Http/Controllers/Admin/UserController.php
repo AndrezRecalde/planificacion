@@ -7,70 +7,66 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPassword;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
-use App\Models\User;
+use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Traits\ResponseTrait;
 
 class UserController extends Controller
 {
+    use ResponseTrait;
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    //TODO: Para el admin
     function getUsuariosAdmin(): JsonResponse
     {
-        $usuarios = User::from('usuarios as u')
-            ->selectRaw('u.id, u.apellidos, u.nombres,
-                         u.dni, u.email, u.activo,
-                         i.nombre_institucion as institucion,
-                        d.nombre_departamento as departamento')
-            ->join('instituciones as i', 'i.id', 'u.institucion_id')
-            ->join('departamentos as d', 'd.id', 'u.departamento_id')
-            ->get();
 
-        return response()->json(['status' => HTTPStatus::Success, 'usuarios' => $usuarios], 200);
+        $usuarios = $this->userRepository->getUsuariosAdmin();
+
+        return $this->responseSuccess([
+            'usuario' => $usuarios
+        ]);
     }
 
+    //TODO: Para el publico
     function getUsuarios(): JsonResponse
     {
-        $usuarios = User::from('usuarios as u')
-            ->selectRaw('u.id, u.apellidos, u.nombres,
-                         u.dni, u.email,
-                         i.nombre_institucion as institucion,
-                        d.nombre_departamento as departamento')
-            ->join('instituciones as i', 'i.id', 'u.institucion_id')
-            ->join('departamentos as d', 'd.id', 'u.departamento_id')
-            ->where('u.activo', 1)
-            ->get();
-        return response()->json(['status' => HTTPStatus::Success, 'usuarios' => $usuarios], 200);
+        $usuarios = $this->userRepository->getUsuarios();
+
+        return $this->responseSuccess([
+            'usuario' => $usuarios
+        ]);
     }
 
+    //TODO: Para el admin
     function store(UserRequest $request): JsonResponse
     {
         try {
-            $usuario = User::create($request->validated());
-            $usuario->assignRole($request->roles);
-            $usuario->administrativos()->attach($request->administrativo_id);
-            return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
+            $this->userRepository->store($request);
+
+            return $this->responseSuccess([
+                'msg' => HTTPStatus::Created,
+                'status_code' => JsonResponse::HTTP_CREATED
+            ]);
         } catch (\Throwable $th) {
-            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
+            //return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
+            return $this->responseError($th->getMessage(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
+    //TODO: Para el admin
     function update(UserRequest $request, int $id): JsonResponse
     {
-        $usuario = User::find($id);
-
         try {
+            $usuario = $this->userRepository->findById($id);
+
             if ($usuario) {
-                $usuario->update($request->validated());
-
-                if ($request->filled('roles')) {
-                    $usuario->roles()->detach();
-                    $usuario->assignRole($request->roles);
-                }
-
-                if ($request->filled('administrativo_id')) {
-                    $usuario->administrativos()->detach();
-                    $usuario->administrativos()->sync($request->administrativo_id);
-                }
-
+               $this->userRepository->update($request, $usuario);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -80,13 +76,14 @@ class UserController extends Controller
         }
     }
 
+    //TODO: Para el publico
     function updatePassword(UserPassword $request, int $id): JsonResponse
     {
-        $usuario = User::find($id);
+        $usuario = $this->userRepository->findById($id);
 
         try {
             if ($usuario) {
-                $usuario->update($request->validated());
+                $this->userRepository->updatePassword($request, $usuario);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -96,13 +93,14 @@ class UserController extends Controller
         }
     }
 
+    //TODO: Para el admin
     function updateActivo(UserUpdateActivo $request, int $id): JsonResponse
     {
-        $usuario = User::find($id);
+        $usuario = $this->userRepository->findById($id);
 
         try {
             if ($usuario) {
-                $usuario->update($request->validated());
+                $this->userRepository->updateActivo($request, $usuario);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -112,12 +110,13 @@ class UserController extends Controller
         }
     }
 
+    //TODO: Para el admin
     function destroy(int $id): JsonResponse
     {
-        $usuario = User::find($id);
+        $usuario = $this->userRepository->findById($id);
 
         if ($usuario) {
-            $usuario->delete();
+            $this->userRepository->destroy($usuario);
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
         } else {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);

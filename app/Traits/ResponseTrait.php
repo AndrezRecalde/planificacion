@@ -8,11 +8,11 @@ use Illuminate\Http\JsonResponse;
 trait ResponseTrait
 {
 
-    public function responseSuccess(array $data = [], string $message = '', $status_code = JsonResponse::HTTP_OK): JsonResponse
+    public function responseSuccess(array $data = [], string $msg = '', $status_code = JsonResponse::HTTP_OK): JsonResponse
     {
         return response()->json([
             'status' => HTTPStatus::Success,
-            'msg' => $message,
+            'msg' => $msg,
             'data' => $data,
         ], $status_code);
     }

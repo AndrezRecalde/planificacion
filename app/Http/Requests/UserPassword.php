@@ -24,7 +24,7 @@ class UserPassword extends FormRequest
     public function rules(): array
     {
         return [
-            'password'  =>  'required'
+            'password'  =>  'required|min:6|confirmed',
         ];
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DepartamentoController;
 use App\Http\Controllers\Admin\GadController;
 use App\Http\Controllers\Admin\GobiernoController;
 use App\Http\Controllers\Admin\InstitucionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\General\ActividadController;
 use App\Http\Controllers\General\AtrimestreController;
@@ -63,6 +64,12 @@ Route::prefix('admin')->group(function () {
     Route::put('/update/administrativo/{id}', [AdministrativoController::class, 'update']);
     Route::put('/update/status/administrativo/{id}', [AdministrativoController::class, 'updateActivo']);
     Route::delete('/delete/administrativo/{id}', [AdministrativoController::class, 'destroy']);
+
+    /* ADMIN: USUARIOS */
+    Route::get('/usuarios', [UserController::class, 'getUsuariosAdmin']);
+    Route::post('/store/usuario', [UserController::class, 'store']);
+
+
 
     /* ADMIN: ACRONIMOS */
     Route::get('/acronimos', [AcronimoController::class, 'getAcronimos']);
@@ -173,6 +180,10 @@ Route::prefix('general')->group(function () {
 
     /* GENERAL: PERIODOS ADMINISTRATIVOS ACTIVOS */
     Route::get('/administrativos', [AdministrativoController::class, 'getAdministrativos']);
+
+    /* GENERAL: USUARIOS */
+    Route::get('/usuarios', [UserController::class, 'getUsuarios']);
+
 
     /* GENERAL: INSTITUCIONES ACTIVOS */
     Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);
