@@ -3,7 +3,6 @@ import {
     onAuthenticate,
     onLoadErrores,
     onClearErrores,
-    onClearValidates,
     onLoading,
     onLogout,
     onLoadProfile,
@@ -27,15 +26,15 @@ export const useAuthStore = () => {
                 dni,
                 password,
             });
-            const { data: userData } = data;
+            const { usuario, token } = data;
             console.log(userData);
             localStorage.setItem(
                 "service_user",
-                JSON.stringify(userData.usuario)
+                JSON.stringify(usuario)
             );
-            localStorage.setItem("auth_token", userData.token);
+            localStorage.setItem("auth_token", token);
             localStorage.setItem("token_init_date", new Date().getTime());
-            dispatch(onAuthenticate(userData.usuario));
+            dispatch(onAuthenticate(usuario));
         } catch (error) {
             error.response.data.errores
                 ? dispatch(onValidate(error.response.data.errores))
@@ -54,14 +53,14 @@ export const useAuthStore = () => {
 
         try {
             const { data } = await planningApi.get("/refresh");
-            const { data: userData } = data;
+            const { usuario, token } = data;
             localStorage.setItem(
                 "service_user",
-                JSON.stringify(userData.usuario)
+                JSON.stringify(usuario)
             );
-            localStorage.setItem("auth_token", userData.token);
+            localStorage.setItem("auth_token", token);
             localStorage.setItem("token_init_date", new Date().getTime());
-            dispatch(onAuthenticate(userData.usuario));
+            dispatch(onAuthenticate(usuario));
         } catch (error) {
             console.log(error)
             localStorage.clear();
@@ -73,8 +72,8 @@ export const useAuthStore = () => {
         try {
             dispatch(onLoading());
             const { data } = await planningApi.get("/profile");
-            const { data:profileUser } = data;
-            dispatch(onLoadProfile(profileUser.profile));
+            const { profile } = data;
+            dispatch(onLoadProfile(profile));
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);

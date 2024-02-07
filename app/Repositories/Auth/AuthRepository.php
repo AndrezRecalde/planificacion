@@ -33,7 +33,7 @@ class AuthRepository implements AuthInterface
 
     public function refresh(): User
     {
-        $usuario = User::from('users as u')
+        $usuario = $this->model::from('users as u')
             ->with([
                 'roles' => function ($query) {
                     return $query->select('roles.id', 'roles.name');
@@ -46,9 +46,9 @@ class AuthRepository implements AuthInterface
         return $usuario;
     }
 
-    public function profile(): User
+    public function profile(): User | null
     {
-        $profile = User::from('users as u')
+        $profile = $this->model::from('users as u')
             ->with([
                 'roles' => function ($query) {
                     return $query->select('roles.id', 'roles.name');
