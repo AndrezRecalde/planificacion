@@ -27,15 +27,12 @@ export const useAuthStore = () => {
                 password,
             });
             const { usuario, token } = data;
-            console.log(userData);
-            localStorage.setItem(
-                "service_user",
-                JSON.stringify(usuario)
-            );
+            localStorage.setItem("service_user", JSON.stringify(usuario));
             localStorage.setItem("auth_token", token);
             localStorage.setItem("token_init_date", new Date().getTime());
             dispatch(onAuthenticate(usuario));
         } catch (error) {
+            console.log(error)
             error.response.data.errores
                 ? dispatch(onValidate(error.response.data.errores))
                 : dispatch(onLogout(error.response.data.msg));
@@ -54,21 +51,18 @@ export const useAuthStore = () => {
         try {
             const { data } = await planningApi.get("/refresh");
             const { usuario, token } = data;
-            localStorage.setItem(
-                "service_user",
-                JSON.stringify(usuario)
-            );
+            localStorage.setItem("service_user", JSON.stringify(usuario));
             localStorage.setItem("auth_token", token);
             localStorage.setItem("token_init_date", new Date().getTime());
             dispatch(onAuthenticate(usuario));
         } catch (error) {
-            console.log(error)
+            console.log(error);
             localStorage.clear();
             dispatch(onLogout());
         }
     };
 
-    const startProfile = async() => {
+    const startProfile = async () => {
         try {
             dispatch(onLoading());
             const { data } = await planningApi.get("/profile");
@@ -78,11 +72,11 @@ export const useAuthStore = () => {
             console.log(error);
             ExceptionMessageError(error);
         }
-    }
+    };
 
     const clearProfile = () => {
         dispatch(onLoadProfile({}));
-    }
+    };
 
     const startLogout = async () => {
         try {

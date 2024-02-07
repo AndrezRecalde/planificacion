@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Grid, Text } from "@mantine/core";
+import { Badge, Grid, Text } from "@mantine/core";
 import { useAuthStore } from "../../hooks";
 
 export const ProfileForm = () => {
@@ -18,9 +18,16 @@ export const ProfileForm = () => {
                 </Text>
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 6, lg: 6 }}>
-                <Text fz="md" fw={700}>
-                    {profile?.roles?.map((r) => r.name).join(", ")}
-                </Text>
+                {profile?.roles?.map((r) => (
+                    <Badge
+                        key={r.id}
+                        variant="light"
+                        color="indigo"
+                        radius="sm"
+                    >
+                        {r.name}
+                    </Badge>
+                ))}
                 <Text fz="xs" tt="uppercase" fw={600} c="dimmed">
                     Role(s)
                 </Text>
