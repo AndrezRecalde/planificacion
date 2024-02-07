@@ -9,12 +9,9 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\JsonResponse;
-use App\Models\User;
-use App\Traits\ResponseTrait;
 
 class UserController extends Controller
 {
-    use ResponseTrait;
     private $userRepository;
 
     public function __construct(UserRepository $userRepository)
@@ -28,9 +25,10 @@ class UserController extends Controller
 
         $usuarios = $this->userRepository->getUsuariosAdmin();
 
-        return $this->responseSuccess([
-            'usuario' => $usuarios
-        ]);
+        return response()->json([
+            'status' => HTTPStatus::Success,
+            'usuarios' => $usuarios
+        ], 200);
     }
 
     //TODO: Para el publico
@@ -38,9 +36,10 @@ class UserController extends Controller
     {
         $usuarios = $this->userRepository->getUsuarios();
 
-        return $this->responseSuccess([
-            'usuario' => $usuarios
-        ]);
+        return response()->json([
+            'status' => HTTPStatus::Success,
+            'usuarios' => $usuarios
+        ], 200);
     }
 
     //TODO: Para el admin
@@ -49,13 +48,12 @@ class UserController extends Controller
         try {
             $this->userRepository->store($request);
 
-            return $this->responseSuccess([
-                'msg' => HTTPStatus::Created,
-                'status_code' => JsonResponse::HTTP_CREATED
-            ]);
+            return response()->json([
+                'status' => HTTPStatus::Success,
+                'msg' => HTTPStatus::Created
+            ], 201);
         } catch (\Throwable $th) {
-            //return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
-            return $this->responseError($th->getMessage(), JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
         }
     }
 
@@ -66,7 +64,7 @@ class UserController extends Controller
             $usuario = $this->userRepository->findById($id);
 
             if ($usuario) {
-               $this->userRepository->update($request, $usuario);
+                $this->userRepository->update($request, $usuario);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);

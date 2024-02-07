@@ -6,14 +6,11 @@ use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Repositories\Auth\AuthRepository;
-use App\Traits\ResponseTrait;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    use ResponseTrait;
     private $authRepositories;
 
     public function __construct(AuthRepository $authRepositories)
