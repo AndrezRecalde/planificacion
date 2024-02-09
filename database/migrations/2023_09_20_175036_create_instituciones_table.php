@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ruc', 15)->unique();
             $table->boolean('activo')->default(0);
             $table->string('telefono');
-            $table->string('logo_url');
+            //$table->string('logo_url');
             $table->unsignedInteger('gad_id');
             $table->timestamps();
         });

@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApplicationRequest;
 use App\Models\Application;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,6 +21,7 @@ class ApplicationController extends Controller
 
     function update(ApplicationRequest $request, int $id): JsonResponse
     {
+        $this->authorize('update', Application::class);
         $application = Application::find($id);
 
         try {

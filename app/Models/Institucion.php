@@ -20,7 +20,7 @@ class Institucion extends Model
         'ruc',
         'activo',
         'telefono',
-        'logo_url',
+        //'logo_url',
         'gad_id'
     ];
 

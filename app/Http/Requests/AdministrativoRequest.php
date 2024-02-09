@@ -24,9 +24,11 @@ class AdministrativoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'inicio_periodo' => 'required',
-            'fin_periodo'   =>  'required',
-            'maxima_autoridad' => 'required'
+            'inicio_periodo'    => 'required',
+            'fin_periodo'       =>  'required',
+            'maxima_autoridad'  => 'required',
+            'institucion_id'    => 'required',
+            'logo_url'          => 'required',
         ];
     }
 
@@ -35,7 +37,9 @@ class AdministrativoRequest extends FormRequest
         return [
             'inicio_periodo.required'      =>  'El Inicio de periodo es obligatorio',
             'fin_periodo.required'         =>  'El Fin de periodo es obligatorio',
-            'maxima_autoridad.required'    =>  'La maxima autoridad es obligatoria'
+            'maxima_autoridad.required'    =>  'La maxima autoridad es obligatoria',
+            'institucion_id.required'      => 'La institucion es requerida',
+            'logo_url.required'            => 'Por favor cargue el logo de la administración actual',
         ];
     }
 

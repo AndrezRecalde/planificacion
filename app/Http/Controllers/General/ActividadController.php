@@ -9,7 +9,6 @@ use App\Http\Requests\ActividadStatus;
 use App\Models\Actividad;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Action;
 
 class ActividadController extends Controller
 {

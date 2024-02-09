@@ -14,11 +14,20 @@ class Administrativo extends Model
         'inicio_periodo',
         'fin_periodo',
         'maxima_autoridad',
-        'activo'
+        'activo',
+        'institucion_id',
+        'logo_url'
     ];
 
     function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    function scopeInstitucion($query, $institucion)
+    {
+        if ($institucion) {
+            return $query->where('a.institucion_id', $institucion);
+        }
     }
 }

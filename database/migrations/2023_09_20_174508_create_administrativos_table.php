@@ -17,6 +17,8 @@ return new class extends Migration
             $table->year('fin_periodo');
             $table->string('maxima_autoridad');
             $table->boolean('activo')->default(0);
+            $table->unsignedInteger('institucion_id');
+            $table->string('logo_url');
             $table->timestamps();
         });
     }

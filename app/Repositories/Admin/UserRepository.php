@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
 use App\Interfaces\Admin\UserInterface;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Request;
 
 class UserRepository implements UserInterface
@@ -17,9 +18,12 @@ class UserRepository implements UserInterface
         $this->model = new User();
     }
 
-    function getUsuariosAdmin(): User
+    function getUsuariosAdmin(): Collection
     {
-        $usuarios = $this->model::from('usuarios as u')
+        $usuarios = $this->model::from('users as u')
+            ->with(['roles' => function ($query) {
+                $query->select('id', 'name');
+            }])
             ->selectRaw('u.id, u.apellidos, u.nombres,
                          u.dni, u.email, u.activo,
                          i.nombre_institucion as institucion,
@@ -31,9 +35,9 @@ class UserRepository implements UserInterface
         return $usuarios;
     }
 
-    function getUsuarios(): User
+    function getUsuarios(): Collection
     {
-        $usuarios = $this->model::from('usuarios as u')
+        $usuarios = $this->model::from('users as u')
             ->selectRaw('u.id, u.apellidos, u.nombres,
                          u.dni, u.email,
                          i.nombre_institucion as institucion,
@@ -66,7 +70,6 @@ class UserRepository implements UserInterface
             $usuario->administrativos()->detach();
             $usuario->administrativos()->sync($request->administrativo_id);
         }
-
     }
 
     function updatePassword(UserPassword $request, User $usuario): void
@@ -84,7 +87,7 @@ class UserRepository implements UserInterface
         $usuario->delete();
     }
 
-    function findById(int $id): User
+    function findById(int $id): User | null
     {
         $usuario = $this->model::find($id);
         return $usuario;

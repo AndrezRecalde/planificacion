@@ -13,6 +13,7 @@ class GadController extends Controller
 {
     function getGADS(): JsonResponse
     {
+        $this->authorize("view", Gad::class);
         $gads = Gad::get(['id', 'tipo_gad']);
 
         return response()->json(['status' => HTTPStatus::Success, 'gads' => $gads], 200);
@@ -20,6 +21,7 @@ class GadController extends Controller
 
     function store(GadRequest $request): JsonResponse
     {
+        $this->authorize("create", Gad::class);
         try {
             Gad::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -30,8 +32,8 @@ class GadController extends Controller
 
     function update(GadRequest $request, int $id): JsonResponse
     {
+        $this->authorize("update", Gad::class);
         $gad = Gad::find($id);
-
         if ($gad) {
             $gad->update($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
@@ -42,6 +44,7 @@ class GadController extends Controller
 
     function destroy(int $id): JsonResponse
     {
+        $this->authorize("delete", Gad::class);
         $gad = Gad::find($id);
 
         if ($gad) {

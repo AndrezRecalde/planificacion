@@ -8,12 +8,13 @@ use App\Http\Requests\GobiernoRequest;
 use App\Http\Requests\GobiernoStatus;
 use App\Models\Gobierno;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GobiernoController extends Controller
 {
     function getGobiernosAdmin(): JsonResponse
     {
+        $this->authorize("viewAdmin", Gobierno::class);
         $gobiernos = Gobierno::get(['id', 'nombre_gobierno', 'presidente', 'fecha_inicio', 'fecha_fin', 'activo']);
 
         return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
@@ -21,6 +22,8 @@ class GobiernoController extends Controller
 
     function getGobiernoActivo(): JsonResponse
     {
+        $this->authorize("viewAny", Gobierno::class);
+
         $gobiernos = Gobierno::from('gobiernos as g')
             ->selectRaw('g.id, g.nombre_gobierno,
                          CONCAT(g.fecha_inicio, "-", g.fecha_fin) as periodo,
@@ -33,6 +36,7 @@ class GobiernoController extends Controller
 
     function store(GobiernoRequest $request): JsonResponse
     {
+        $this->authorize("create", Gobierno::class);
         try {
             Gobierno::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -44,6 +48,7 @@ class GobiernoController extends Controller
 
     function update(GobiernoRequest $request, int $id): JsonResponse
     {
+        $this->authorize("update", Gobierno::class);
         $gobierno = Gobierno::find($id);
 
         try {
@@ -61,6 +66,7 @@ class GobiernoController extends Controller
 
     function updateActivo(GobiernoStatus $request, int $id): JsonResponse
     {
+        $this->authorize("update", Gobierno::class);
         $gobierno = Gobierno::find($id);
 
         try {
@@ -78,6 +84,7 @@ class GobiernoController extends Controller
 
     function destroy(int $id): JsonResponse
     {
+        $this->authorize("delete", Gobierno::class);
         $gobierno = Gobierno::find($id);
 
         try {

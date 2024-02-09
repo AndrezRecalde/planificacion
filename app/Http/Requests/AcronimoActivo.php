@@ -6,14 +6,14 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserPassword extends FormRequest
+class AcronimoActivo extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,20 +24,16 @@ class UserPassword extends FormRequest
     public function rules(): array
     {
         return [
-            'password'  =>  'required|min:6|confirmed',
+            'activo' => 'required',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'password.required' => 'Por favor ingrese su nueva contraseña',
-            'password.confirmed' => 'Las contraseñas no coinciden',
-            'password.min' => 'La contraseña debe tener por lo menos 6 dígitos',
-
+            'activo.required' =>  'El status del acrónimo es obligatorio',
         ];
     }
-
 
     protected function failedValidation(Validator $validator)
     {

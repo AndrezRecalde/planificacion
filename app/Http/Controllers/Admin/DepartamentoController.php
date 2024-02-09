@@ -13,22 +13,26 @@ use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
 {
-    function getDepartamentos(): JsonResponse
+    function getDepartamentos(Request $request): JsonResponse /* NO USARLO */
     {
+        $this->authorize("viewAny", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
             ->selectRaw('d.id, d.nombre_departamento,
                                 d.siglas, d.extension,
-                                i.siglas as siglas_institucion, ac.nombre_acronimo, ac.siglas as acronimo')
+                                i.siglas as siglas_institucion, ac.nombre_acronimo,
+                                ac.siglas as acronimo')
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
             ->where('d.activo', 1)
+            ->acronimo($request->acronimo_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
     }
 
-    function getDepartamentosAdmin(): JsonResponse
+    function getDepartamentosAdmin(Request $request): JsonResponse
     {
+        $this->authorize("viewAdmin", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
             ->with([
                 'directores' => function ($query) {
@@ -47,6 +51,7 @@ class DepartamentoController extends Controller
                                 i.nombre_institucion, ac.nombre_acronimo, ac.siglas as acronimo')
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
+            ->institucion($request->institucion_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -54,10 +59,17 @@ class DepartamentoController extends Controller
 
     function getDepartamentosxInstitucion(Request $request): JsonResponse
     {
+        $this->authorize("viewAny", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
-            ->selectRaw('d.id, d.nombre_departamento, d.siglas, d.extension')
+            ->selectRaw('d.id, d.nombre_departamento,
+                                d.siglas, d.extension,
+                                i.siglas as siglas_institucion, ac.nombre_acronimo,
+                                ac.siglas as acronimo')
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
-            ->where('i.id', $request->institucion_id)
+            ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
+            ->where('d.activo', 1)
+            ->institucion($request->institucion_id)
+            ->acronimo($request->acronimo_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -65,6 +77,7 @@ class DepartamentoController extends Controller
 
     function store(DepartamentoRequest $request): JsonResponse
     {
+        $this->authorize("create", Departamento::class);
         try {
             Departamento::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -75,8 +88,8 @@ class DepartamentoController extends Controller
 
     function update(DepartamentoRequest $request, int $id): JsonResponse
     {
+        $this->authorize("update", Departamento::class);
         $departamento = Departamento::find($id);
-
         if ($departamento) {
             $departamento->update($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
@@ -87,6 +100,7 @@ class DepartamentoController extends Controller
 
     function updateActivo(DepartamentoStatus $request, int $id): JsonResponse
     {
+        $this->authorize("update", Departamento::class);
         $departamento = Departamento::find($id);
 
         if ($departamento) {
@@ -99,8 +113,8 @@ class DepartamentoController extends Controller
 
     function addDirectores(AddDirectoresRequest $request, int $id): JsonResponse
     {
+        $this->authorize("create", Departamento::class);
         $departamento = Departamento::find($id);
-
         try {
             if ($departamento) {
                 $departamento->directores()->attach(
@@ -123,8 +137,8 @@ class DepartamentoController extends Controller
 
     function destroy(int $id): JsonResponse
     {
+        $this->authorize("delete", Departamento::class);
         $departamento = Departamento::find($id);
-
         if ($departamento) {
             $departamento->delete();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);

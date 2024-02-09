@@ -19,13 +19,17 @@ class AdministrativoSeeder extends Seeder
                 'inicio_periodo'    =>  2019,
                 'fin_periodo'       =>  2022,
                 'maxima_autoridad'  =>  'María Roberta Zambrano Ortíz',
-                'activo'            =>  0
+                'activo'            =>  0,
+                'institucion_id'       => 1,
+                'logo_url'          => '/logo/app.png',
             ],
             [
                 'inicio_periodo'    =>  2022,
                 'fin_periodo'       =>  2026,
                 'maxima_autoridad'  =>  'María Roberta Zambrano Ortíz',
-                'activo'            =>  1
+                'activo'            =>  1,
+                'institucion_id'       => 1,
+                'logo_url'          => '/logo/app.png',
             ]
         ];
 

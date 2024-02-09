@@ -21,7 +21,6 @@ class InstitucionSeeder extends Seeder
                 'ruc' => '0800784118001',
                 'activo'  => 1,
                 'telefono'  => '(06) 272-1433',
-                'logo_url'  => '/app/logo/',
                 'gad_id'    => 1
             ],
             [
@@ -30,7 +29,6 @@ class InstitucionSeeder extends Seeder
                 'ruc' => '0860044290001',
                 'activo'  => 1,
                 'telefono'  => '(06) 272-1433',
-                'logo_url'  => '/app/logo/',
                 'gad_id'    => 1
             ],
             [
@@ -39,7 +37,6 @@ class InstitucionSeeder extends Seeder
                 'ruc' => '0801010101001',
                 'activo'  => 1,
                 'telefono'  => '(06) 272-1433',
-                'logo_url'  => '/app/logo/',
                 'gad_id'    => 1
             ]
         ];

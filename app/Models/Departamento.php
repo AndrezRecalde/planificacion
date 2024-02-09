@@ -55,4 +55,18 @@ class Departamento extends Model
     {
         return $this->hasMany(Proveedor::class);
     }
+
+    function scopeInstitucion($query, $institucion_id)
+    {
+        if ($institucion_id) {
+            return $query->where('d.institucion_id', $institucion_id);
+        }
+    }
+
+    function scopeAcronimo($query, $acronimo_id)
+    {
+        if ($acronimo_id) {
+            return $query->where('d.acronimo_id', $acronimo_id);
+        }
+    }
 }

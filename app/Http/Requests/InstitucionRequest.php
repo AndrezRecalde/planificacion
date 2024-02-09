@@ -30,7 +30,6 @@ class InstitucionRequest extends FormRequest
             'ruc'                   =>  ['required', Rule::unique('instituciones')->ignore($this->request->get('id'))],
             //'activo'    =>  'required',
             'telefono'  =>  'required',
-            'logo_url'  =>  'required',
             'gad_id'    =>  'required'
         ];
     }
@@ -44,7 +43,6 @@ class InstitucionRequest extends FormRequest
             'ruc.unique'        =>  'La institución ya está registrada',
             //'activo.required'   =>  'El status de la institución es obligatorio',
             'telefono.required' =>  'El teléfono es obligatorio',
-            'logo_url.required' =>  'El logo es obligatorio',
             'gad_id.required'   =>  'El tipo de gad es obligatorio',
 
         ];
