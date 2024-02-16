@@ -110,6 +110,11 @@ Route::group(
         Route::put('/update/status/institucion/{id}', [InstitucionController::class, 'updateActivo']);
         Route::delete('/delete/institucion/{id}', [InstitucionController::class, 'destroy']);
 
+        /* ADMIN: PROVEEDORES */
+        Route::get('/proveedores', [ProveedorController::class, 'getProveedoresAdmin']);
+        Route::delete('/delete/proveedor/{id}', [ProveedorController::class, 'destroy']);
+
+
     }
 );
 
@@ -132,6 +137,14 @@ Route::group([
 
     /* GENERAL: INSTITUCION */
     Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);
+
+    /* GENERAL: PROVEEDORES */
+    Route::post('/proveedores', [ProveedorController::class, 'getProveedores']);
+    Route::post('/store/proveedor', [ProveedorController::class, 'store']);
+    Route::put('/update/proveedor/{id}', [ProveedorController::class, 'update']);
+
+
+
 
 
 
