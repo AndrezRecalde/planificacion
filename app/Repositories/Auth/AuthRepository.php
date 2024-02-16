@@ -63,7 +63,7 @@ class AuthRepository implements AuthInterface
             ->join('departamentos as d', 'd.id', 'u.departamento_id')
             ->join('gads as gd', 'gd.id', 'i.gad_id')
             ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni,
-                        i.nombre_institucion, i.telefono, i.logo_url,
+                        i.nombre_institucion, i.telefono,
                         gd.tipo_gad, d.nombre_departamento, d.extension')
             ->where('u.id', Auth::user()->id)
             ->first();
