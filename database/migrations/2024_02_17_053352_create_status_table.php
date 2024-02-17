@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actividades', function (Blueprint $table) {
+        Schema::create('status', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_actividad');
-            $table->double('ponderacion')->default(0);
-            $table->unsignedInteger('status_id')->default(1);
-            $table->unsignedInteger('proyecto_id');
+            $table->string('nombre_status');
+            $table->string('color');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actividades');
+        Schema::dropIfExists('statuses');
     }
 };
