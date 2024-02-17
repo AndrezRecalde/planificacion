@@ -17,9 +17,13 @@ class Actividad extends Model
     protected $fillable = [
         'nombre_actividad',
         'ponderacion',
-        'finalizada',
+        'status_id',
         'proyecto_id'
     ];
+
+    function status() : BelongsTo {
+        return $this->belongsTo(Status::class, 'status_id');
+    }
 
     function proyecto(): BelongsTo
     {

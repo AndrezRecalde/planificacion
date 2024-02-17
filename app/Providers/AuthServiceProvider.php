@@ -5,11 +5,14 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Policies\AcronimoPolicy;
+use App\Policies\ActividadPolicy;
 use App\Policies\AdministrativoPolicy;
 use App\Policies\ApplicationPolicy;
 use App\Policies\DepartamentoPolicy;
+use App\Policies\GadPolicy;
 use App\Policies\GobiernoPolicy;
 use App\Policies\InstitucionPolicy;
+use App\Policies\ProveedorPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -26,10 +29,11 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Administrativo' => AdministrativoPolicy::class,
         'App\Models\Application' => ApplicationPolicy::class,
         'App\Models\Departamento' => DepartamentoPolicy::class,
+        'App\Models\Gad' => GadPolicy::class,
         'App\Models\Gobierno' => GobiernoPolicy::class,
         'App\Models\Institucion' => InstitucionPolicy::class,
-
-
+        'App\Models\Proveedor' => ProveedorPolicy::class,
+        'App\Models\Actividad' => ActividadPolicy::class,
 
     ];
 

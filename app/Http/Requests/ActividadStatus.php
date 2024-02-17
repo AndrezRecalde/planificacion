@@ -24,14 +24,14 @@ class ActividadStatus extends FormRequest
     public function rules(): array
     {
         return [
-            'finalizada' => 'required'
+            'status_id' => 'required'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'finalizada.required'   =>  'El status es obligatorio',
+            'status_id.required'   =>  'El estado es obligatorio',
         ];
     }
 
