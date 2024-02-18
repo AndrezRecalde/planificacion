@@ -47,20 +47,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::get('/refresh', [AuthController::class, 'refresh'])->middleware('auth:sanctum');;
-Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');;
-Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');;
+Route::get('/refresh', [AuthController::class, 'refresh'])->middleware('auth:sanctum');
+Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
+Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::group(
+    [
+        'prefix' => 'public',
+        //'middleware' => ['auth:sanctum']
+    ],
+    function () {
+        Route::get('/logo', [ApplicationController::class, 'getLogoImage']);
+    }
+);
 
 Route::group(
     [
         'prefix' => 'admin',
-        'middleware' => ['auth:sanctum']
+        'middleware' => ['auth:sanctum', 'role:ADMIN']
     ],
     function () {
 
         /* ADMIN: APPLICATION */
         Route::get('/application', [ApplicationController::class, 'show']);
-        Route::put('/update/application/{id}', [ApplicationController::class, 'update']);
+        Route::post('/update/application/{id}', [ApplicationController::class, 'update']); //TODO: CAMBIARLO A PUT
 
         /* ADMIN: USUARIOS */
         Route::get('/usuarios', [UserAdminController::class, 'getUsuariosAdmin']);
@@ -114,13 +124,15 @@ Route::group(
         Route::get('/proveedores', [ProveedorController::class, 'getProveedoresAdmin']);
         Route::delete('/delete/proveedor/{id}', [ProveedorController::class, 'destroy']);
 
+        /* ADMIN: LINEAS PDOT */
+        Route::delete('/delete/linea/pdot/{id}', [LineapdotController::class, 'destroy']);
 
     }
 );
 
 Route::group([
     'prefix' => 'general',
-    'middleware' => ['auth:sanctum']
+    'middleware' => ['auth:sanctum', 'role:DIR_GESTION|ADMIN']
 ], function () {
 
     /*GENERAL: USUARIOS */
@@ -129,23 +141,31 @@ Route::group([
 
 
     /* GENERAL: DEPARTAMENTOS */
-    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);
-    Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);
+    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);  // VIEWANY
+    Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);  //VIEWANY
 
     /* GENERAL: GOBIERNOS */
-    Route::get('/gobiernos', [GobiernoController::class, 'getGobiernoActivo']);
+    Route::get('/gobiernos', [GobiernoController::class, 'getGobiernoActivo']);   //VIEWANY
 
     /* GENERAL: INSTITUCION */
-    Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);
+    Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);  //VIEWANY
 
     /* GENERAL: PROVEEDORES */
     Route::post('/proveedores', [ProveedorController::class, 'getProveedores']);
     Route::post('/store/proveedor', [ProveedorController::class, 'store']);
     Route::put('/update/proveedor/{id}', [ProveedorController::class, 'update']);
+});
 
 
+Route::group([
+    'prefix' => '',
+    'middleware' => ['auth:sanctum', 'role:DIR_PLANIFICACION|ADMIN']
+], function () {
 
-
+    /* GENERAL: LINEAS PDOT */
+    Route::get('/lineas/pdot', [LineapdotController::class, 'getLineaspdot']);
+    Route::post('/store/linea/pdot', [LineapdotController::class, 'store']);
+    Route::put('/update/linea/pdot/{id}', [LineapdotController::class, 'update']);
 
 
 });

@@ -20,7 +20,7 @@ class UserController extends Controller
     //TODO: Para el publico
     function getUsuarios(): JsonResponse
     {
-        $this->authorize("viewGeneral", User::class);
+        //$this->authorize("viewGeneral", User::class);
         $usuarios = $this->userRepository->getUsuarios();
 
         return response()->json([
@@ -32,10 +32,10 @@ class UserController extends Controller
     //TODO: Para el publico
     function updatePassword(UserPassword $request, int $id): JsonResponse
     {
-
+        $usuario = $this->userRepository->findById($id);
+        $this->authorize("updatePassword", $usuario);
         try {
-            $usuario = $this->userRepository->findById($id);
-            $this->authorize("updatePassword", $usuario);
+
             if ($usuario) {
                 $this->userRepository->updatePassword($request, $usuario);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);

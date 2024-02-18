@@ -15,7 +15,7 @@ class DepartamentoController extends Controller
 {
     function getDepartamentos(Request $request): JsonResponse /* NO USARLO */
     {
-        $this->authorize("viewAny", Departamento::class);
+        //$this->authorize("viewAny", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
             ->selectRaw('d.id, d.nombre_departamento,
                                 d.siglas, d.extension,
@@ -32,7 +32,7 @@ class DepartamentoController extends Controller
 
     function getDepartamentosAdmin(Request $request): JsonResponse
     {
-        $this->authorize("viewAdmin", Departamento::class);
+        //$this->authorize("viewAdmin", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
             ->with([
                 'directores' => function ($query) {
@@ -59,7 +59,7 @@ class DepartamentoController extends Controller
 
     function getDepartamentosxInstitucion(Request $request): JsonResponse
     {
-        $this->authorize("viewAny", Departamento::class);
+        //$this->authorize("viewAny", Departamento::class);
         $departamentos = Departamento::from('departamentos as d')
             ->selectRaw('d.id, d.nombre_departamento,
                                 d.siglas, d.extension,
@@ -77,7 +77,7 @@ class DepartamentoController extends Controller
 
     function store(DepartamentoRequest $request): JsonResponse
     {
-        $this->authorize("create", Departamento::class);
+        //$this->authorize("create", Departamento::class);
         try {
             Departamento::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -88,7 +88,7 @@ class DepartamentoController extends Controller
 
     function update(DepartamentoRequest $request, int $id): JsonResponse
     {
-        $this->authorize("update", Departamento::class);
+        //$this->authorize("update", Departamento::class);
         $departamento = Departamento::find($id);
         if ($departamento) {
             $departamento->update($request->validated());
@@ -100,7 +100,7 @@ class DepartamentoController extends Controller
 
     function updateActivo(DepartamentoStatus $request, int $id): JsonResponse
     {
-        $this->authorize("update", Departamento::class);
+        //$this->authorize("update", Departamento::class);
         $departamento = Departamento::find($id);
 
         if ($departamento) {
@@ -113,7 +113,7 @@ class DepartamentoController extends Controller
 
     function addDirectores(AddDirectoresRequest $request, int $id): JsonResponse
     {
-        $this->authorize("create", Departamento::class);
+        //$this->authorize("create", Departamento::class);
         $departamento = Departamento::find($id);
         try {
             if ($departamento) {
@@ -137,7 +137,7 @@ class DepartamentoController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $this->authorize("delete", Departamento::class);
+        //$this->authorize("delete", Departamento::class);
         $departamento = Departamento::find($id);
         if ($departamento) {
             $departamento->delete();

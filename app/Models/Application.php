@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Application extends Model
 {
@@ -16,4 +17,9 @@ class Application extends Model
         'logo_url',
         'color'
     ];
+
+    function getUrlPathAttribute(): string
+    {
+        return Storage::url($this->logo_url);
+    }
 }

@@ -16,7 +16,7 @@ class AdministrativoController extends Controller
 {
     function getAdministrativosAdmin(Request $request): JsonResponse
     {
-        $this->authorize("viewAdmin", Administrativo::class);
+        //$this->authorize("viewAdmin", Administrativo::class);
         $administrativos = Administrativo::from('administrativos as a')
             ->selectRaw('a.id, a.inicio_periodo, a.fin_periodo,
                          a.maxima_autoridad, a.activo,
@@ -42,7 +42,7 @@ class AdministrativoController extends Controller
 
     function store(AdministrativoRequest $request): JsonResponse
     {
-        $this->authorize("create", Administrativo::class);
+        //$this->authorize("create", Administrativo::class);
         try {
             $administrativo = Administrativo::create($request->validated());
 
@@ -69,6 +69,8 @@ class AdministrativoController extends Controller
 
             if ($resp) {
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error al crear'], 500);
             }
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
@@ -77,7 +79,7 @@ class AdministrativoController extends Controller
 
     function update(AdministrativoRequest $request, int $id): JsonResponse
     {
-        $this->authorize("update", Administrativo::class);
+        //$this->authorize("update", Administrativo::class);
         $administrativo = Administrativo::find($id);
 
         try {
@@ -112,6 +114,8 @@ class AdministrativoController extends Controller
             }
             if ($resp) {
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error al Actualizar'], 500);
             }
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
@@ -120,7 +124,7 @@ class AdministrativoController extends Controller
 
     function updateActivo(AdministrativoActivo $request, int $id): JsonResponse
     {
-        $this->authorize('update', Administrativo::class);
+        //$this->authorize('update', Administrativo::class);
         $administrativo = Administrativo::find($id);
 
         try {
@@ -137,7 +141,7 @@ class AdministrativoController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $this->authorize('delete', Administrativo::class);
+        //$this->authorize('delete', Administrativo::class);
         $administrativo = Administrativo::find($id);
 
         if ($administrativo) {

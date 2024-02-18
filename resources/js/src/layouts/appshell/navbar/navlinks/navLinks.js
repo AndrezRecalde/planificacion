@@ -90,6 +90,7 @@ export const lPlanificacion = {
             label: "Administrar Planificación",
             icon: IconListCheck,
             links: [
+                { label: "Lineas PDOT", link: "/" },
                 { label: "Lineas Estrategicas", link: "/" },
                 { label: "Competencias PDOT", link: "/" },
                 { label: "Componentes PDOT", link: "/" },

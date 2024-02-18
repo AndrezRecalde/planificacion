@@ -22,7 +22,7 @@ class UserAdminController extends Controller
     //TODO: Para el admin
     function getUsuariosAdmin(): JsonResponse
     {
-        $this->authorize("viewAdmin", User::class);
+        //$this->authorize("viewAdmin", User::class);
         $usuarios = $this->userRepository->getUsuariosAdmin();
 
         return response()->json([
@@ -34,7 +34,7 @@ class UserAdminController extends Controller
     //TODO: Para el admin
     function store(UserRequest $request): JsonResponse
     {
-        $this->authorize("create", User::class);
+        //$this->authorize("create", User::class);
         try {
             $this->userRepository->store($request);
 
@@ -50,7 +50,7 @@ class UserAdminController extends Controller
     //TODO: Para el admin
     function update(UserRequest $request, int $id): JsonResponse
     {
-        $this->authorize("update", User::class);
+        //$this->authorize("update", User::class);
         try {
             $usuario = $this->userRepository->findById($id);
 
@@ -68,7 +68,7 @@ class UserAdminController extends Controller
     //TODO: Para el admin
     function updateActivo(UserUpdateActivo $request, int $id): JsonResponse
     {
-        $this->authorize("updateActivo", User::class);
+        //$this->authorize("updateActivo", User::class);
         $usuario = $this->userRepository->findById($id);
 
         try {
@@ -86,7 +86,7 @@ class UserAdminController extends Controller
     //TODO: Para el admin
     function destroy(int $id): JsonResponse
     {
-        $this->authorize("delete", User::class);
+        //$this->authorize("delete", User::class);
         $usuario = $this->userRepository->findById($id);
 
         if ($usuario) {

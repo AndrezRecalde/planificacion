@@ -13,7 +13,7 @@ class ProveedorController extends Controller
 {
     function getProveedoresAdmin(): JsonResponse
     {
-        $this->authorize("viewAdmin", Proveedor::class);
+        //$this->authorize("viewAdmin", Proveedor::class);
         $proveedores = Proveedor::from('proveedores as prov')
             ->selectRaw('prov.id, prov.nombre_proveedor, d.nombre_departamento')
             ->join('departamentos as d', 'd.id', 'prov.departamento_id')
@@ -22,7 +22,7 @@ class ProveedorController extends Controller
     }
     function getProveedores(Request $request): JsonResponse
     {
-        $this->authorize("viewAny", Proveedor::class);
+        //$this->authorize("viewAny", Proveedor::class);
         $proveedores = Proveedor::from('proveedores as prov')
             ->selectRaw('prov.id, prov.nombre_proveedor, d.nombre_departamento')
             ->join('departamentos as d', 'd.id', 'prov.departamento_id')
@@ -33,7 +33,7 @@ class ProveedorController extends Controller
 
     function store(ProveedorRequest $request): JsonResponse
     {
-        $this->authorize("create", Proveedor::class);
+        //$this->authorize("create", Proveedor::class);
         try {
             Proveedor::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -45,7 +45,7 @@ class ProveedorController extends Controller
     function update(ProveedorRequest $request, int $id): JsonResponse
     {
         $proveedor = Proveedor::find($id);
-        $this->authorize("update", $proveedor);
+        //$this->authorize("update", $proveedor);
         try {
             if ($proveedor) {
                 $proveedor->update($request->validated());
@@ -60,7 +60,7 @@ class ProveedorController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $this->authorize("delete", Proveedor::class);
+        //$this->authorize("delete", Proveedor::class);
         $proveedor = Proveedor::find($id);
         try {
             if ($proveedor) {

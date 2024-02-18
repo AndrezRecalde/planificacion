@@ -14,14 +14,14 @@ class ApplicationController extends Controller
 {
     function show(): JsonResponse
     {
-        $application = Application::first(['nombre_app', 'admin_email', 'copyright', 'logo_url', 'color']);
+        $application = Application::first(['id', 'nombre_app', 'admin_email', 'copyright', 'logo_url', 'color']);
 
         return response()->json(['status' => HTTPStatus::Success, 'application' => $application], 200);
     }
 
     function update(ApplicationRequest $request, int $id): JsonResponse
     {
-        $this->authorize('update', Application::class);
+        //$this->authorize('update', Application::class);
         $application = Application::find($id);
 
         try {
@@ -60,9 +60,17 @@ class ApplicationController extends Controller
 
             if ($resp) {
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error al Actualizar'], 500);
             }
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
         }
+    }
+
+    function getLogoImage()
+    {
+        $logo_url = Application::first(['logo_url']);
+        return response()->json(['status' => HTTPStatus::Success, 'logo_url' => $logo_url], 200);
     }
 }

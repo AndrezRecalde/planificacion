@@ -14,14 +14,14 @@ class AcronimoController extends Controller
 
     function getAcronimos(): JsonResponse
     {
-        $this->authorize("viewAdmin", Acronimo::class);
+        //$this->authorize("viewAdmin", Acronimo::class);
         $acronimos = Acronimo::get(['id', 'nombre_acronimo', 'siglas']);
         return response()->json(['status' => HTTPStatus::Success, 'acronimos' => $acronimos], 200);
     }
 
     function store(AcronimoRequest $request): JsonResponse
     {
-        $this->authorize("create", Acronimo::class);
+        //$this->authorize("create", Acronimo::class);
 
         try {
             Acronimo::create($request->validated());
@@ -33,7 +33,7 @@ class AcronimoController extends Controller
 
     function update(AcronimoRequest $request, int $id): JsonResponse
     {
-        $this->authorize("update", Acronimo::class);
+        //$this->authorize("update", Acronimo::class);
         $acronimo = Acronimo::find($id);
 
         if ($acronimo) {
@@ -46,7 +46,7 @@ class AcronimoController extends Controller
 
     function updateActivo(AcronimoActivo $request, int $id): JsonResponse
     {
-        $this->authorize("update", Acronimo::class);
+        //$this->authorize("update", Acronimo::class);
         $acronimo = Acronimo::find($id);
 
         if ($acronimo) {
@@ -59,7 +59,7 @@ class AcronimoController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $this->authorize("delete", Acronimo::class);
+        //$this->authorize("delete", Acronimo::class);
         $acronimo = Acronimo::find($id);
 
         if ($acronimo) {
