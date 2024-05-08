@@ -11,7 +11,7 @@ export const AppLayout = ({ children }) => {
     const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
     /* Cambiarlo por el state */
-    const [role, setRole] = useState("DIR_PLANIFICACION");
+    const [role, setRole] = useState("DIR_GESTION");
 
     const Scroll = <ScrollArea scrollbarSize={6}></ScrollArea>;
 

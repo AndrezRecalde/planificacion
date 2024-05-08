@@ -16,7 +16,7 @@ class ProgramaController extends Controller
     function getProgramasAdmin(): JsonResponse
     {
         $programas = Programa::from('programas as p')
-            ->selectRaw('p.id, p.nombre_programa, pt.nombre_planificacion, o.indicadorpdot')
+            ->selectRaw('p.id, p.nombre_programa, p.codigo_programa, pt.nombre_planificacion, o.indicadorpdot')
             ->join('planificaciontipos as pt', 'pt.id', 'p.planificaciontipo_id')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
             ->get();
@@ -27,7 +27,7 @@ class ProgramaController extends Controller
     function getProgramasActivosForGestion(Request $request): JsonResponse
     {
         $programas = Programa::from('programas as p')
-            ->selectRaw('p.id, p.nombre_programa, pt.nombre_planificacion, o.indicadorpdot, dep.nombre_departamento')
+            ->selectRaw('p.id, p.nombre_programa, p.codigo_programa, pt.nombre_planificacion, o.indicadorpdot, dep.nombre_departamento')
             ->join('planificaciontipos as pt', 'pt.id', 'p.planificaciontipo_id')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
             ->join('objetivo_departamento as od', 'od.objetivo_id', 'o.id')

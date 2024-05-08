@@ -25,14 +25,14 @@ class ProyectoStatus extends FormRequest
     public function rules(): array
     {
         return [
-            'archivo'  =>  'required'
+            'activo'  =>  'required'
         ];
     }
 
     public function messages(): array
     {
        return [
-        'archivo.required'     =>  'El status es obligatoria',
+        'activo.required'     =>  'El status es obligatoria',
        ];
     }
 

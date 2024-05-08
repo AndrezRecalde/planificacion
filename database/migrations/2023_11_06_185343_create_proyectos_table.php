@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_proyecto');
+            $table->string('codigo_proyecto');
             $table->unsignedInteger('programa_id');
             $table->unsignedInteger('nivel_id');
             $table->double('ponderacion')->default(0);
             $table->string('linea_base');
             $table->string('meta_detalle');
-            $table->string('indicador_detalle');
+            $table->unsignedInteger('tipounidad_id');
+            $table->integer('indicador_detalle');
             $table->unsignedInteger('tiempo_meses');
             $table->year('anio_fiscal');
             $table->date('fecha_inicio');
@@ -34,7 +36,7 @@ return new class extends Migration
             /* $table->string('latitud');
             $table->string('longitud'); */
 
-            $table->unsignedInteger('status');  //TODO
+            $table->boolean('activo');  //TODO
 
             $table->timestamps();
         });

@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 
 class ProyectoController extends Controller
 {
-    function getProyectosAdmin(Request $request): JsonResponse
+
+    function getProyectos(Request $request): JsonResponse
     {
         $proyectos = Proyecto::from('proyectos as p')
             ->selectRaw('pro.nombre_programa, p.nombre_proyecto,
@@ -23,19 +24,7 @@ class ProyectoController extends Controller
             ->departamento($request->departamento_id)
             ->nivel($request->nivel_id)
             ->programa($request->programa_id)
-            ->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'proyectos' => $proyectos], 200);
-    }
-
-    function getProyectosForGestion(Request $request): JsonResponse
-    {
-        $proyectos = Proyecto::from('proyectos as p')
-            ->selectRaw('pro.nombre_programa, p.nombre_proyecto,
-                 d.nombre_departamento')
-            ->join('programas as pro', 'pro.id', 'p.programa_id')
-            ->join('departamentos as d', 'd.id', 'p.departamento_id')
-            ->departamento($request->departamento_id)
+            ->codigo($request->codigo)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'proyectos' => $proyectos], 200);
@@ -73,22 +62,7 @@ class ProyectoController extends Controller
         }
     }
 
-    function updatePublished(ProyectoPublicado $request, int $id): JsonResponse
-    {
-        $proyecto = Proyecto::find($id);
-        try {
-            if ($proyecto) {
-                $proyecto->update($request->validated());
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
-            } else {
-                return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
-            }
-        } catch (\Throwable $th) {
-            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
-        }
-    }
-
-    function updateArchivado(ProyectoStatus $request, int $id): JsonResponse
+    function updateStatus(ProyectoStatus $request, int $id): JsonResponse
     {
         $proyecto = Proyecto::find($id);
         try {

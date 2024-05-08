@@ -14,19 +14,22 @@ class Proyecto extends Model
 
     protected $fillable = [
         'nombre_proyecto',
+        'codigo_proyecto',
         'programa_id',
         'nivel_id',
         'ponderacion',
         'linea_base',
         'meta_detalle',
+        'tipounidad_id',
         'indicador_detalle',
         'tiempo_meses',
+        'anio_fiscal',
         'fecha_inicio',
         'fecha_finalizacion',
         'departamento_id',
         'tipoproyecto_id',
         'partidapresupuestaria_id',
-        'status',
+        'activo',
     ];
 
     function programa(): BelongsTo
@@ -83,6 +86,13 @@ class Proyecto extends Model
         if ($programa) {
             return $query->where('p.programa_id', $programa);
         }
+    }
+
+    function scopeCodigo($query, $codigo)
+    {
+       if ($codigo) {
+            return $query->where('p.codigo', $codigo);
+       }
     }
 
     protected static function boot()

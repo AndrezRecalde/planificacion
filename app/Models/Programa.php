@@ -13,6 +13,7 @@ class Programa extends Model
 
     protected $fillable = [
         'nombre_programa',
+        'codigo_programa',
         'planificaciontipo_id',
         'objetivo_id',
         'activo'

@@ -27,7 +27,7 @@ class ActividadController extends Controller
 
     function store(ActividadRequest $request): JsonResponse
     {
-        $this->authorize('create', Actividad::class);
+        //$this->authorize('create', Actividad::class);
         try {
             Actividad::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
@@ -38,7 +38,7 @@ class ActividadController extends Controller
 
     function update(ActividadRequest $request, int $id): JsonResponse
     {
-        $this->authorize('update', Actividad::class);
+        //$this->authorize('update', Actividad::class);
         $actividad = Actividad::find($id);
         try {
             if ($actividad) {
@@ -54,7 +54,7 @@ class ActividadController extends Controller
 
     function updateStatus(ActividadStatus $request, int $id): JsonResponse
     {
-        $this->authorize('update', Actividad::class);
+        //$this->authorize('update', Actividad::class);
         $actividad = Actividad::find($id);
         try {
             if ($actividad) {
@@ -70,7 +70,7 @@ class ActividadController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $this->authorize('delete', Actividad::class);
+        //$this->authorize('delete', Actividad::class);
         $actividad = Actividad::find($id);
         try {
             if ($actividad) {
