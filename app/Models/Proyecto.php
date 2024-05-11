@@ -28,7 +28,6 @@ class Proyecto extends Model
         'fecha_finalizacion',
         'departamento_id',
         'tipoproyecto_id',
-        'partidapresupuestaria_id',
         'activo',
     ];
 
@@ -88,10 +87,10 @@ class Proyecto extends Model
         }
     }
 
-    function scopeCodigo($query, $codigo)
+    function scopeCodigo($query, $codigo_proyecto)
     {
-       if ($codigo) {
-            return $query->where('p.codigo', $codigo);
+       if ($codigo_proyecto) {
+            return $query->where('p.codigo_proyecto', $codigo_proyecto);
        }
     }
 

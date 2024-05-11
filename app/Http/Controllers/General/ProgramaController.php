@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramaRequest;
 use App\Http\Requests\ProgramaStatus;
 use App\Models\Programa;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class ProgramaController extends Controller
@@ -42,7 +44,15 @@ class ProgramaController extends Controller
     function store(ProgramaRequest $request): JsonResponse
     {
         try {
-            Programa::create($request->validated());
+            $programa = Programa::create($request->validated());
+            $codigoComponente = Programa::from('programas as p')
+                            ->selectRaw('p.id, comp.nombre_componente')
+                            ->join('objetivos as o', 'o.id', 'p.objetivo_id')
+                            ->join('componentepdots as comp', 'comp.id', 'o.componentepdot_id')
+                            ->where('p.id', $programa->id)
+                            ->first();
+            $programa->codigo_programa = 'PROG-' . Str::of(Str::upper(Str::substr($codigoComponente->nombre_componente, 2, 4)))->trim() . '-' . $programa->id;
+            $programa->save();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);

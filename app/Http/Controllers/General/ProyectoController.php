@@ -24,7 +24,7 @@ class ProyectoController extends Controller
             ->departamento($request->departamento_id)
             ->nivel($request->nivel_id)
             ->programa($request->programa_id)
-            ->codigo($request->codigo)
+            ->codigo($request->codigo_proyecto)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'proyectos' => $proyectos], 200);
@@ -35,6 +35,13 @@ class ProyectoController extends Controller
         try {
             $proyecto = Proyecto::create($request->validated());
             $proyecto->opndesarrollos()->attach($request->opndesarrollos);
+            $siglasDep = Proyecto::from('proyectos as p')
+                            ->selectRaw('p.id, d.siglas')
+                            ->join('departamentos as d', 'd.id', 'p.departamento_id')
+                            ->where('p.id', $proyecto->id)
+                            ->first();
+            $proyecto->codigo_proyecto = 'PROY-' . $siglasDep->siglas . $proyecto->id;
+            $proyecto->save();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);

@@ -38,7 +38,6 @@ class ProyectoRequest extends FormRequest
             'fecha_finalizacion'  =>  'required',
             'departamento_id'     =>  'required',
             'tipoproyecto_id'     =>  'required',
-            'partidapresupuestaria_id'  =>  '',
             'opndesarrollos'      =>  'required'
         ];
     }

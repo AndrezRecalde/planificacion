@@ -25,7 +25,6 @@ class ProgramaRequest extends FormRequest
     {
         return [
             'nombre_programa' => 'required',
-            'codigo_programa' => '',
             'planificaciontipo_id' => 'required',
             'objetivo_id' => 'required'
         ];

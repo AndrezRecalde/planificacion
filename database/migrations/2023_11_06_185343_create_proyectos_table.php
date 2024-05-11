@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_proyecto');
-            $table->string('codigo_proyecto');
+            $table->string('codigo_proyecto')->nullable();
             $table->unsignedInteger('programa_id');
             $table->unsignedInteger('nivel_id');
             $table->double('ponderacion')->default(0);

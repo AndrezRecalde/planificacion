@@ -16,12 +16,17 @@ class Actividad extends Model
 
     protected $fillable = [
         'nombre_actividad',
+        'descripcion',
+        'color',
+        'portada',
+        'tipoactividad_id',
         'ponderacion',
         'status_id',
         'proyecto_id'
     ];
 
-    function status() : BelongsTo {
+    function status(): BelongsTo
+    {
         return $this->belongsTo(Status::class, 'status_id');
     }
 
@@ -33,6 +38,11 @@ class Actividad extends Model
     function atrimestres(): HasMany
     {
         return $this->hasMany(Atrimestre::class);
+    }
+
+    function tipoactividad(): BelongsTo
+    {
+        return $this->belongsTo(Tipoactividad::class);
     }
 
     function scopeProyecto($query, $proyecto)

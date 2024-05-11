@@ -158,14 +158,17 @@ Route::group([
 
 
 Route::group([
-    'prefix' => '',
+    'prefix' => 'planificacion',
     'middleware' => ['auth:sanctum', 'role:DIR_PLANIFICACION|ADMIN']
 ], function () {
 
-    /* GENERAL: LINEAS PDOT */
+    /* PLANIFICACION: LINEAS PDOT */
     Route::get('/lineas/pdot', [LineapdotController::class, 'getLineaspdot']);
     Route::post('/store/linea/pdot', [LineapdotController::class, 'store']);
     Route::put('/update/linea/pdot/{id}', [LineapdotController::class, 'update']);
+
+    /* PLANIFICACION: PROGRAMAS */
+    Route::post('/store/programa', [ProgramaController::class, 'store']);
 
 
 });

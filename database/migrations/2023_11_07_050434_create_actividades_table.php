@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('actividades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_actividad');
+            $table->string('descripcion')->nullable();
+            $table->string('color')->nullable();
+            $table->string('portada')->nullable();
+            $table->unsignedInteger('tipoactividad_id');
             $table->double('ponderacion')->default(0);
             $table->unsignedInteger('status_id')->default(1);
             $table->unsignedInteger('proyecto_id');
