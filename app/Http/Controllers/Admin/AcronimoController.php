@@ -12,10 +12,16 @@ use Illuminate\Http\JsonResponse;
 class AcronimoController extends Controller
 {
 
-    function getAcronimos(): JsonResponse
+    function getAcronimosAdmin(): JsonResponse
     {
         //$this->authorize("viewAdmin", Acronimo::class);
-        $acronimos = Acronimo::get(['id', 'nombre_acronimo', 'siglas']);
+        $acronimos = Acronimo::with('departamentos')->get(['id', 'nombre_acronimo', 'siglas']);
+        return response()->json(['status' => HTTPStatus::Success, 'acronimos' => $acronimos], 200);
+    }
+
+    function getAcronimos(): JsonResponse
+    {
+        $acronimos = Acronimo::where('activo', 1)->get(['id', 'nombre_acronimo', 'siglas']);
         return response()->json(['status' => HTTPStatus::Success, 'acronimos' => $acronimos], 200);
     }
 

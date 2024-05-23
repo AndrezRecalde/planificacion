@@ -38,6 +38,20 @@ class Competenciapdot extends Model
         return $this->hasMany(Objetivo::class);
     }
 
+    function scopeLestrategiapdot($query, $lestrategiapdot_id)
+    {
+        if ($lestrategiapdot_id) {
+            return $query->where('comp.lestrategiapdot_id', $lestrategiapdot_id);
+        }
+    }
+
+    function scopeActivo($query, $activo)
+    {
+        if ($activo) {
+            return $query->where('comp.activo', $activo);
+        }
+    }
+
 
     protected static function boot()
     {

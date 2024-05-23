@@ -66,32 +66,39 @@ class Proyecto extends Model
         return $this->belongsToMany(Opndesarrollo::class, 'proyecto_opndesarrollo');
     }
 
-    function scopeDepartamento($query, $departamento)
+    function scopeDepartamento($query, $departamento_id)
     {
-        if ($departamento) {
-            return $query->where('p.departamento_id', $departamento);
+        if ($departamento_id) {
+            return $query->where('p.departamento_id', $departamento_id);
         }
     }
 
-    function scopeNivel($query, $nivel)
+    function scopeNivel($query, $nivel_id)
     {
-        if ($nivel) {
-            return $query->where('p.nivel_id', $nivel);
+        if ($nivel_id) {
+            return $query->where('p.nivel_id', $nivel_id);
         }
     }
 
-    function scopePrograma($query, $programa)
+    function scopePrograma($query, $programa_id)
     {
-        if ($programa) {
-            return $query->where('p.programa_id', $programa);
+        if ($programa_id) {
+            return $query->where('p.programa_id', $programa_id);
         }
     }
 
     function scopeCodigo($query, $codigo_proyecto)
     {
-       if ($codigo_proyecto) {
+        if ($codigo_proyecto) {
             return $query->where('p.codigo_proyecto', $codigo_proyecto);
-       }
+        }
+    }
+
+    function activo($query, $activo)
+    {
+        if ($activo) {
+            return $query->where('p.activo', $activo);
+        }
     }
 
     protected static function boot()

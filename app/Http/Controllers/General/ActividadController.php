@@ -15,8 +15,10 @@ class ActividadController extends Controller
     function getActividadesForProyecto(Request $request): JsonResponse
     {
         $actividades = Actividad::from('actividades as act')
-            ->selectRaw('act.id, act.nombre_actividad, act.status_id,
-                         s.nombr_status, p.nombre_proyecto')
+            ->selectRaw('act.id, act.nombre_actividad, act.descripcion,
+                         act.color, act.portada, act.ponderacion,
+                         ta.tipo_actividad, s.nombre_status, p.nombre_proyecto')
+            ->join('tipoactividades as ta', 'ta.id', 'a.tipoactividad_id')
             ->join('status as s', 's.id', 'act.status_id')
             ->join('proyectos as p', 'p.id', 'act.proyecto_id')
             ->proyecto($request->proyecto_id)

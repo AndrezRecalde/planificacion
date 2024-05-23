@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Gobierno extends Model
@@ -19,8 +20,12 @@ class Gobierno extends Model
         'activo'
     ];
 
-    function ejes(): HasMany
+    function ejes(): BelongsToMany
     {
-        return $this->hasMany(Eje::class);
+        return $this->belongsToMany(Eje::class, 'gobierno_eje');
+    }
+
+    function opndesarrollos() : HasMany {
+        return $this->hasMany(Opndesarrollo::class);
     }
 }

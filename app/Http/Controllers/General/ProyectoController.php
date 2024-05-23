@@ -17,14 +17,19 @@ class ProyectoController extends Controller
     function getProyectos(Request $request): JsonResponse
     {
         $proyectos = Proyecto::from('proyectos as p')
-            ->selectRaw('pro.nombre_programa, p.nombre_proyecto,
-                 d.nombre_departamento')
+            ->selectRaw('pro.nombre_programa,
+                        p.nombre_proyecto, p.codigo_proyecto,
+                        p.tiempo_meses, p.anio_fiscal,
+                        p.fecha_inicio, p.fecha_finalizacion,
+                        d.nombre_departamento')
+            ->with(['opndesarrollos'])
             ->join('programas as pro', 'pro.id', 'p.programa_id')
             ->join('departamentos as d', 'd.id', 'p.departamento_id')
             ->departamento($request->departamento_id)
             ->nivel($request->nivel_id)
             ->programa($request->programa_id)
             ->codigo($request->codigo_proyecto)
+            ->activo($request->activo)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'proyectos' => $proyectos], 200);

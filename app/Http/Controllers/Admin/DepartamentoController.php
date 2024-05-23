@@ -24,7 +24,7 @@ class DepartamentoController extends Controller
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
             ->where('d.activo', 1)
-            ->acronimo($request->acronimo_id)
+            ->acronimos($request->acronimo_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -51,7 +51,7 @@ class DepartamentoController extends Controller
                                 i.nombre_institucion, ac.nombre_acronimo, ac.siglas as acronimo')
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
-            ->institucion($request->institucion_id)
+            ->institucions($request->institucion_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -68,8 +68,8 @@ class DepartamentoController extends Controller
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
             ->where('d.activo', 1)
-            ->institucion($request->institucion_id)
-            ->acronimo($request->acronimo_id)
+            ->institucions($request->institucion_id)
+            ->acronimos($request->acronimo_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -120,7 +120,7 @@ class DepartamentoController extends Controller
                 $departamento->directores()->attach(
                     $request->director,
                     [
-                        'periodo_id'    => $request->periodo,
+                        'administrativo_id'    => $request->administrativo_id,
                         'referencia_documento' => $request->referencia_documento,
                     ]
                 );

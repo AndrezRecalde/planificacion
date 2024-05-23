@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_proveedor');
-            $table->string('ruc', 15);
-            $table->unsignedInteger('departamento_id');
+            $table->string('ruc', 15)->unique();
+            $table->string('telefono', 15)->nullable();
             $table->timestamps();
         });
     }

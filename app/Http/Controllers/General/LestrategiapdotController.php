@@ -12,22 +12,12 @@ use Illuminate\Http\Request;
 
 class LestrategiapdotController extends Controller
 {
-    function getEstrategiasPDOTAdmin(): JsonResponse
+    function getLineasEstrategiasPdot(Request $request): JsonResponse
     {
         $estrategias = Lestrategiapdot::from('lestrategiapdots as le')
             ->selectRaw('le.id, le.linea_estrategica, le.activo, l.nombre_linea')
             ->join('lineapdots as l', 'l.id', 'le.lineapdot_id')
-            ->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'estrategias' => $estrategias], 200);
-    }
-
-    function getEstrategiasForLineas(Request $request): JsonResponse
-    {
-        $estrategias = Lestrategiapdot::from('lestrategiapdots as le')
-            ->selectRaw('le.id, le.linea_estrategica, le.activo, l.nombre_linea')
-            ->join('lineapdots as l', 'l.id', 'le.lineapdot_id')
-            ->where('le.lineapdot_id', $request->lineapdot_id)
+            ->lineapdot($request->lineapdot_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'estrategias' => $estrategias], 200);

@@ -56,6 +56,8 @@ class ObjetivoController extends Controller
                     $objetivo->departamentos()->detach();
                     $objetivo->departamentos()->sync($request->departamentos);
                 }
+
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }

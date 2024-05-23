@@ -81,8 +81,6 @@ class InstitucionController extends Controller
         $institucion = Institucion::find($id);
 
         if ($institucion) {
-            $imagePath = (storage_path('app/public') . (string) $institucion->logo_url);
-            unlink($imagePath);
             $institucion->delete();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
         } else {

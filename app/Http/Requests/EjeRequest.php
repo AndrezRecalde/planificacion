@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class EjeRequest extends FormRequest
 {
@@ -24,8 +25,7 @@ class EjeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_eje'           =>  'required',
-            'gobierno_id'           =>  'required'
+            'nombre_eje'    =>  ['required', Rule::unique('ejes')->ignore($this->request->get('id'))],
         ];
     }
 
@@ -33,7 +33,7 @@ class EjeRequest extends FormRequest
     {
         return [
             'nombre_eje.required'  =>  'El eje es obligatorio',
-            'gobierno_id.required'  =>  'Seleccione a que gobierno pertenece el eje',
+            'nombre_eje.unique'    =>   'El nombre del eje ya ha sido registrado'
         ];
     }
 

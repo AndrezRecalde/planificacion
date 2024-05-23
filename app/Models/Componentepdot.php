@@ -18,7 +18,7 @@ class Componentepdot extends Model
 
     function competencias(): BelongsToMany
     {
-        return $this->belongsToMany(Competenciapdot::class, 'competencia_componente'); // TODO: REALIZAR CONTROLADOR DE COMPETENCIA ADD COMPONENTE
+        return $this->belongsToMany(Competenciapdot::class, 'competencia_componente');
     }
 
     function objetivos(): HasMany

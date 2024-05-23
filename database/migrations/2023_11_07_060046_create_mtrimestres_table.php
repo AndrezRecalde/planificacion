@@ -16,7 +16,7 @@ return new class extends Migration
             $table->double('programado');
             $table->double('devengado');
             $table->double('pagado');
-            $table->unsignedInteger('proyecto_id');
+            $table->unsignedInteger('actividad_id');
             $table->timestamps();
         });
     }

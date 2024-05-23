@@ -21,6 +21,9 @@ return new class extends Migration
             $table->double('ponderacion')->default(0);
             $table->unsignedInteger('status_id')->default(1);
             $table->unsignedInteger('proyecto_id');
+            $table->unsignedInteger('partidapresupuestaria_id')->nullable();
+            $table->unsignedInteger('tablero_id');
+            $table->unsignedInteger('proveedor_id')->nullable();
             $table->timestamps();
         });
     }

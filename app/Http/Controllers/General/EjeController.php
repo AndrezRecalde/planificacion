@@ -12,23 +12,9 @@ use Illuminate\Support\Facades\DB;
 
 class EjeController extends Controller
 {
-    function getEjesAdmin(): JsonResponse
+    function getEjes(): JsonResponse
     {
-        $ejes = Eje::from('ejes as e')
-            ->selectRaw('e.id, e.nombre_eje, g.nombre_gobierno')
-            ->join('gobiernos as g', 'g.id', 'e.gobierno_id')
-            ->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'ejes' => $ejes], 200);
-    }
-
-    function getEjes(Request $request): JsonResponse
-    {
-        $ejes = Eje::from('ejes as e')
-            ->selectRaw('e.id, e.nombre_eje, g.nombre_gobierno')
-            ->join('gobiernos as g', 'g.id', 'e.gobierno_id')
-            ->where('g.id', $request->gobierno_id)
-            ->get();
+        $ejes = Eje::get(['id', 'nombre_eje']);
 
         return response()->json(['status' => HTTPStatus::Success, 'ejes' => $ejes], 200);
     }

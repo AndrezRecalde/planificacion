@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GobiernoRequest;
 use App\Http\Requests\GobiernoStatus;
 use App\Models\Gobierno;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -15,21 +16,22 @@ class GobiernoController extends Controller
     function getGobiernosAdmin(): JsonResponse
     {
         //$this->authorize("viewAdmin", Gobierno::class);
-        $gobiernos = Gobierno::get(['id', 'nombre_gobierno', 'presidente', 'fecha_inicio', 'fecha_fin', 'activo']);
+        $gobiernos = Gobierno::with('ejes')->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
     }
 
-    function getGobiernoActivo(): JsonResponse
+    function getGobiernoActivoWithEjesAndOPN(): JsonResponse
     {
         //$this->authorize("viewAny", Gobierno::class);
-
-        $gobiernos = Gobierno::from('gobiernos as g')
-            ->selectRaw('g.id, g.nombre_gobierno,
-                         CONCAT(g.fecha_inicio, "-", g.fecha_fin) as periodo,
-                         g.activo')
-            ->where('g.activo', 1)
-            ->get();
+        $gobiernos = Gobierno::with([
+                                'ejes',
+                                'opndesarrollos' => function($query) {
+                                    $query->with('eje');
+                                }
+                                ])
+                            ->where('activo', 1)
+                            ->latest()->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
     }
@@ -38,7 +40,8 @@ class GobiernoController extends Controller
     {
         //$this->authorize("create", Gobierno::class);
         try {
-            Gobierno::create($request->validated());
+            $gobierno = Gobierno::create($request->validated());
+            $gobierno->ejes()->attach($request->ejes);
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -54,6 +57,12 @@ class GobiernoController extends Controller
         try {
             if ($gobierno) {
                 $gobierno->update($request->validated());
+
+                if ($request->filled('ejes')) {
+                    $gobierno->ejes()->detach();
+                    $gobierno->ejes()->sync($request->ejes);
+                }
+
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);

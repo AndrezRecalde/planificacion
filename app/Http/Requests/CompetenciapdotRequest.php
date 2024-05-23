@@ -26,7 +26,8 @@ class CompetenciapdotRequest extends FormRequest
         return [
             'nombre_competencia'    =>  'required',
             'lestrategiapdot_id'    =>  'required',
-            'componentes'           =>  'required'
+            'componentes'           =>  'required',
+            'cotpdots'              =>  'required'
         ];
     }
 
@@ -35,7 +36,9 @@ class CompetenciapdotRequest extends FormRequest
         return [
             'nombre_competencia.required'  =>  'El nombre de competencia es obligatorio',
             'lestrategiapdot_id.required'  =>  'La Línea estrategica es obligatoria',
-            'componentes.required'  =>  'Elija los componentes',
+            'componentes.required'         =>  'Elija los componentes',
+            'cotpdots.required'            =>  'Elija los COTS',
+
         ];
     }
 

@@ -30,7 +30,7 @@ return new class extends Migration
 
             //$table->boolean('presupuestario')->default(0);
             $table->unsignedInteger('tipoproyecto_id');
-            $table->unsignedInteger('partidapresupuestaria_id')->nullable(); // Consumir API GOLANG o .NET
+            //$table->unsignedInteger('partidapresupuestaria_id')->nullable(); // Consumir API GOLANG o .NET
 
             // Realizarlo de N:M
             /* $table->string('latitud');

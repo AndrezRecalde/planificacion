@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('departamento_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('periodo_id');
+            $table->unsignedInteger('administrativo_id');
             $table->string('referencia_documento', 150); //Se debe registrar el director por numero de MEMO DE LA MAXIMA AUTORIDAD
             $table->timestamps();
         });

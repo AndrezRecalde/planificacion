@@ -10,12 +10,10 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    { //TODAVIA NO EN FUNCIONAMIENTO
-        Schema::create('listnamelists', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre_lista');
-            $table->unsignedInteger('namechecklist_id');
-            $table->timestamps();
+    {
+        Schema::create('gobierno_eje', function (Blueprint $table) {
+            $table->unsignedInteger('gobierno_id');
+            $table->unsignedInteger('eje_id');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('listnamelists');
+        Schema::dropIfExists('gobierno_eje');
     }
 };

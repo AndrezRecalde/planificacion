@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class ProveedorRequest extends FormRequest
+class TipoactividadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +24,8 @@ class ProveedorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_proveedor'  => 'required',
-            'ruc'               => ['required', Rule::unique('proveedores')->ignore($this->request->get('id'))],
-            'telefono'          => ''
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'nombre_proveedor.required'     =>  'El nombre de la entidad es obligatoria',
-            'ruc.required'      =>  'El ruc de la entidad es obligatoria',
-            'ruc.unique'        =>  'El proveedor ya ha sido registrado'
+            'tipo_actividad' =>  'required',
+            'activo'         =>  ''
         ];
     }
 

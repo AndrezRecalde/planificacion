@@ -11,28 +11,30 @@ use Illuminate\Http\Request;
 
 class OpndesarrolloController extends Controller
 {
-    function getOPNAdmin(): JsonResponse
+    /* Consulta de Objetivos de Plan Nacional de Desarrollo por Gobierno */
+    function getOPNAdmin(Request $request): JsonResponse
     {
         $opns = Opndesarrollo::from('opndesarrollos as opn')
-            ->selectRaw('opn.id, opn.objetivo_opn, e.nombre_eje')
+            ->selectRaw('opn.id, opn.objetivo_opn, e.nombre_eje, g.nombre_gobierno')
             ->join('ejes as e', 'e.id', 'opn.eje_id')
+            ->join('gobiernos as g', 'g.id', 'opn.gobierno_id')
+            ->where('g.id', $request->gobierno_id)
+            ->orderBy('opn.id', 'DESC')
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'opns' => $opns], 200);
     }
 
-    /* Consulta de Objetivos de Plan Nacional de Desarrollo por Gobierno */
-    function getOPNForGobierno(Request $request): JsonResponse
+    function getOPNForProyecto(Request $request): JsonResponse
     {
-        $opns = Opndesarrollo::from('opndesarrollos as opn')
-            ->selectRaw('opn.id, opn.objetivo_opn,
-                            e.nombre_eje, g.nombre_gobierno')
-            ->join('ejes as e', 'e.id', 'opn.eje_id')
-            ->join('gobiernos as g', 'g.id', 'e.gobierno_id')
-            ->where('g.id', $request->gobierno_id)
+        $opn_gobierno = Opndesarrollo::with(
+            [
+                'proyectos'
+            ]
+        )->opn($request->opn_id)
             ->get();
 
-        return response()->json(['status' => HTTPStatus::Success, 'opns' => $opns], 200);
+        return response()->json(['status' => HTTPStatus::Success, 'opn_gobierno' => $opn_gobierno], 200);
     }
 
     function store(OpndesarrolloRequest $request): JsonResponse
@@ -66,7 +68,7 @@ class OpndesarrolloController extends Controller
         $opn = Opndesarrollo::find($id);
 
         try {
-            if($opn){
+            if ($opn) {
                 $opn->delete();
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
             } else {

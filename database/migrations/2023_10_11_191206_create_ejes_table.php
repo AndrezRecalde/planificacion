@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('ejes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_eje');
-            $table->unsignedInteger('gobierno_id');
+            $table->string('nombre_eje')->unique();
             $table->timestamps();
         });
     }

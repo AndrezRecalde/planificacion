@@ -13,7 +13,8 @@ class Opndesarrollo extends Model
 
     protected $fillable = [
         'objetivo_opn',
-        'eje_id'
+        'eje_id',
+        'gobierno_id'
     ];
 
     function eje(): BelongsTo
@@ -24,5 +25,12 @@ class Opndesarrollo extends Model
     function proyectos(): BelongsToMany
     {
         return $this->belongsToMany(Proyecto::class, 'proyecto_opndesarrollo');
+    }
+
+    function scopeOpn($query, $opn_id)
+    {
+        if ($opn_id) {
+            return $query->where('id', $opn_id);
+        }
     }
 }

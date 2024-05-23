@@ -16,7 +16,7 @@ class Proveedor extends Model
     protected $fillable = [
         'nombre_proveedor',
         'ruc',
-        'departamento_id'
+        'telefono'
     ];
 
     function departamento(): BelongsTo

@@ -6,17 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Acronimo extends Model
+class Tablero extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nombre_acronimo',
-        'siglas',
-        'activo'
+        'nombre_tablero',
+        'anio',
+        'departamento_id'
     ];
 
-    function departamentos() : HasMany {
-        return $this->hasMany(Departamento::class);
+    function status(): HasMany
+    {
+        return $this->hasMany(Status::class);
     }
 }

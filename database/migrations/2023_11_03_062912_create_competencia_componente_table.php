@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('competencia_componente', function (Blueprint $table) {
+        Schema::create('competenciapdot_componentepdot', function (Blueprint $table) {
             //$table->id();
             //$table->timestamps();
             $table->unsignedInteger('competenciapdot_id');

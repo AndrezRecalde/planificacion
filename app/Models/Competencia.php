@@ -22,4 +22,11 @@ class Competencia extends Model
     {
         return $this->hasMany(Objetivo::class);
     }
+
+    function scopeInstitucion($query, $institucion_id)
+    {
+        if ($institucion_id) {
+            return $query->where('c.institucion_id', $institucion_id);
+        }
+    }
 }

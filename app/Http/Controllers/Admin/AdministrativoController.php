@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AdministrativoController extends Controller
 {
+    private $ROUTEDIR = '/app/logo/';
     function getAdministrativosAdmin(Request $request): JsonResponse
     {
         //$this->authorize("viewAdmin", Administrativo::class);
@@ -49,7 +50,7 @@ class AdministrativoController extends Controller
             if ($request->hasFile('logo_url')) {
                 $administrativo->logo_url = $request->file('logo_url');
                 $filename = $administrativo->logo_url->getClientOriginalName();
-                $save_path = '/app/logo/';
+                $save_path = $this->ROUTEDIR;
                 $public_path = $save_path . $filename;
                 $path = Storage::putFileAs(
                     'public' . $save_path,
@@ -92,7 +93,7 @@ class AdministrativoController extends Controller
                     $administrativo->fill($request->validated());
                     $administrativo->logo_url = $request->file('logo_url');
                     $filename = $administrativo->logo_url->getClientOriginalName();
-                    $save_path = '/app/logo/';
+                    $save_path = $this->ROUTEDIR;
                     $public_path = $save_path . $filename;
                     $path = Storage::putFileAs(
                         'public' . $save_path,

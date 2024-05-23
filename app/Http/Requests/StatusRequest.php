@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ActividadRequest extends FormRequest
+class StatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,24 +24,18 @@ class ActividadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_actividad'  =>  'required',
-            'descripcion'       =>  '',
-            'color'             =>  '',
-            'portada'           =>  '',
-            'tipoactividad_id'  =>  'required',
-            'ponderacion'       =>  'required',
-            'proyecto_id'       =>  'required',
+            'nombre_status' =>  'required',
+            'color'         =>  '',
+            'tablero_id'    =>  'required'
         ];
     }
 
     public function messages(): array
     {
-        return [
-            'nombre_actividad.required'   =>  'El nombre de la actividad es obligatorio',
-            'tipoactividad_id.required'   =>  'El tipo de la actividad es obligatorio',
-            'ponderacion.required'        =>  'La ponderación es obligatoria',
-            'proyecto_id.required'        =>  'No se ha seleccionado el proyecto',
-        ];
+       return [
+        'nombre_status.required'     =>  'El nombre del status es obligatoria',
+        'tablero_id.required'        =>  'El tablero al que pertenece el status es obligatoria',
+       ];
     }
 
     protected function failedValidation(Validator $validator)

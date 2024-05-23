@@ -12,24 +12,14 @@ use Illuminate\Http\Request;
 
 class CompetenciapdotController extends Controller
 {
-    function getCompetenciasAdmin(): JsonResponse
+    function getCompetenciasPDOT(Request $request): JsonResponse
     {
         $competencias = Competenciapdot::from('competenciapdots as comp')
             ->selectRaw('comp.id, comp.nombre_competencia, comp.activo, le.linea_estrategica')
+            ->with(['componentes', 'cotpdots'])
             ->join('lestrategiapdots as le', 'le.id', 'comp.lestrategiapdot_id')
-            ->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'competencias' => $competencias], 200);
-    }
-
-
-    function getCompetenciasForEstrategia(Request $request): JsonResponse
-    {
-        $competencias = Competenciapdot::from('competenciapdots as comp')
-            ->selectRaw('comp.id, comp.nombre_competencia, comp.activo, le.linea_estrategica')
-            ->join('lestrategiapdots as le', 'le.id', 'comp.lestrategiapdot_id')
-            ->where('comp.lestrategiapdot_id', $request->lestrategiapdot_id)
-            ->where('comp.activo', 1)
+            ->lestrategiapdot($request->lestrategiapdot_id)
+            ->activo($request->activo)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'competencias' => $competencias], 200);

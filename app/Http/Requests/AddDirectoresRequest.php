@@ -25,9 +25,9 @@ class AddDirectoresRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'director'  =>  'required',
-            'periodo'   =>  'required',
-            'referencia_documento' =>   'required'
+            'director'             =>  'required',
+            'periodo'              =>  'required',
+            'referencia_documento' =>   'required|max:150'
         ];
     }
 

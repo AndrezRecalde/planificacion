@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('opndesarrollos', function (Blueprint $table) {
             $table->id();
             $table->string('objetivo_opn');
-            $table->unsignedInteger('eje_id')->nullable();
+            $table->unsignedInteger('eje_id');
+            $table->unsignedInteger('gobierno_id');
             $table->timestamps();
         });
     }
