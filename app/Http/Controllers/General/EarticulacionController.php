@@ -21,12 +21,12 @@ class EarticulacionController extends Controller
         return response()->json(['status' => HTTPStatus::Success, 'articulaciones' => $articulaciones], 200);
     }
 
-    function getArticulacionesForObjetivo(Request $request): JsonResponse
+    function getArticulaciones(Request $request): JsonResponse
     {
         $articulaciones = Earticulacion::from('earticulaciones as ea')
             ->selectRaw('ea.id, ea.nombre_articulacion, oe.objetivo_pdot')
             ->join('oepdots as oe', 'oe.id', 'ea.oepdot_id')
-            ->where('ea.oepdot_id', $request->oepdot_id)
+            ->objetivopdot($request->oepdot_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'articulaciones' => $articulaciones], 200);

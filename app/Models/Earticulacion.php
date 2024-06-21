@@ -11,6 +11,8 @@ class Earticulacion extends Model
 {
     use HasFactory;
 
+    // ESTRATEGIA DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA
+
     protected $fillable = [
         'nombre_articulacion',
         'oepdot_id'
@@ -29,5 +31,11 @@ class Earticulacion extends Model
     function objetivos(): HasMany
     {
         return $this->hasMany(Objetivo::class);
+    }
+
+    function scopeObjetivopdot($query, $oepdot_id) {
+        if ($oepdot_id) {
+            return $query->where('ea.oepdot_id', $oepdot_id);
+        }
     }
 }

@@ -25,4 +25,11 @@ class Metapdot extends Model
     {
         return $this->hasMany(Objetivo::class);
     }
+
+    function scopeEsarticulacion($query, $earticulacion_id)
+    {
+        if ($earticulacion_id) {
+            return $query->where('mt.earticulacion_id', $earticulacion_id);
+        }
+    }
 }

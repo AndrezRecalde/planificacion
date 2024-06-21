@@ -26,7 +26,7 @@ class MetapdotController extends Controller
         $metas = Metapdot::from('metapdots as mt')
             ->selectRaw('mt.id, mt.nombre_meta, ea.nombre_articulacion')
             ->join('earticulaciones as ea', 'ea.id', 'mt.earticulacion_id')
-            ->where('mt.earticulacion_id', $request->earticulacion_id)
+            ->esarticulacion($request->earticulacion_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'metas' => $metas], 200);

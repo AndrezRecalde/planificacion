@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('oepdots', function (Blueprint $table) {
             $table->id();
             $table->string('objetivo_pdot');
-            $table->boolean('activo')->default(0);
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

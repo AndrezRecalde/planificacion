@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // ESTRATEGIA DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA
         Schema::create('earticulaciones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_articulacion');

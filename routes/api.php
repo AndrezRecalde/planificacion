@@ -155,11 +155,27 @@ Route::group(
         /* ADMIN: LINEAS ESTRATEGICAS DEL PDOT */
         Route::delete('/delete/lineaestrategicapdot/{id}', [LestrategiapdotController::class, 'destroy']);
 
-        /* PLANIFICACION: COMPETENCIA PDOT */
+        /* ADMIN: COMPETENCIA PDOT */
         Route::delete('/delete/competenciapdot/{id}', [CompetenciapdotController::class, 'destroy']);
 
-        /* PLANIFICACION: COMPONENTES DEL PDOT */
+        /* ADMIN: COMPONENTES DEL PDOT */
         Route::delete('/delete/componentepdot/{id}', [ComponentepdotController::class, 'destroy']);
+
+        /* ADMIN: OBJETIVOS ESTRATEGICOS DEL PDOT */
+        Route::get('/oepdots', [OepdotController::class, 'getOEPDOTSAdmin']);
+        Route::delete('/delete/oepdot/{id}', [OepdotController::class, 'destroy']);
+
+        /* ADMIN: ESTRATEGIAS DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA  */
+        Route::get('/earticulaciones', [EarticulacionController::class, 'getArticulacionesAdmin']);
+        Route::delete('/delete/earticulacion/{id}', [EarticulacionController::class, 'destroy']);
+
+        /*ADMIN: METAS DEL PDOT */
+        Route::get('/metaspdot', [MetapdotController::class, 'getMetasPDOTAdmin']);
+        Route::delete('/delete/metapdot/{id}', [MetapdotController::class, 'destroy']);
+
+        /* ADMIN: GESTION DEL PDOT */
+
+
 
     }
 );
@@ -261,7 +277,22 @@ Route::group([
     Route::post('/store/componentespdot', [ComponentepdotController::class, 'store']);
     Route::put('/update/componentepdot/{id}', [ComponentepdotController::class, 'update']);
 
+    /* PLANIFICACION: OBJETIVOS ESTRATEGICOS DEL PDOT */
+    Route::get('/oepdots', [OepdotController::class, 'getOEPDOTS']);
+    Route::post('/store/oepdot', [OepdotController::class, 'store']);
+    Route::put('/update/oepdot/{id}', [OepdotController::class, 'update']);
+    Route::put('/update/status/oepdot/{id}', [OepdotController::class, 'updateActivo']);
 
+    /* PLANIFICACION: ESTRATEGIAS DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA  */
+    Route::get('/earticulaciones', [EarticulacionController::class, 'getArticulaciones']);
+    Route::post('/store/earticulacion', [EarticulacionController::class, 'store']);
+    Route::put('/update/earticulacion/{id}', [EarticulacionController::class, 'update']);
+
+
+    /*PLANIFICACION: METAS DEL PDOT */
+    Route::get('/metaspdot', [MetapdotController::class, 'getMetasForArticulaciones']);
+    Route::post('/store/metapdot', [MetapdotController::class, 'store']);
+    Route::put('/update/metapdot/{id}', [MetapdotController::class, 'update']);
 
 
 });

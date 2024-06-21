@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //GESTION RESPONSABLE DE LA MEDICION
         Schema::create('gestionpdots', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_gestion');
