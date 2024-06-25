@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('indicadorpdot');
             $table->unsignedInteger('competencia_id'); //COMPETENCIAS DEL GAD
             $table->unsignedInteger('rmedicion_id'); // FORANEA DE DEPARTAMENTOS
-            $table->unsignedInteger('oepei_id');
+            $table->unsignedInteger('oepei_id')->nullable();
             $table->year('anio_cumplimiento');
             $table->string('linea_base');
             $table->year('anio_lbase');
-            $table->boolean('activo')->default(0);
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

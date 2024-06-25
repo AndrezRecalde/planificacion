@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tablero extends Model
 {
@@ -16,8 +16,8 @@ class Tablero extends Model
         'departamento_id'
     ];
 
-    function status(): HasMany
+    function departamento(): BelongsTo
     {
-        return $this->hasMany(Status::class);
+        return $this->belongsTo(Departamento::class);
     }
 }

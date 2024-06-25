@@ -25,16 +25,15 @@ class StatusRequest extends FormRequest
     {
         return [
             'nombre_status' =>  'required',
-            'color'         =>  '',
-            'tablero_id'    =>  'required'
+            'color'         =>  'required',
         ];
     }
 
     public function messages(): array
     {
        return [
-        'nombre_status.required'     =>  'El nombre del status es obligatoria',
-        'tablero_id.required'        =>  'El tablero al que pertenece el status es obligatoria',
+        'nombre_status.required'    =>  'El nombre del status es obligatoria',
+        'color.required'            =>  'El color del status al que pertenece es obligatoria',
        ];
     }
 

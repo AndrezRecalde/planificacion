@@ -90,6 +90,9 @@ class UserRepository implements UserInterface
     function findById(int $id): User | null
     {
         $usuario = $this->model::find($id);
-        return $usuario;
+        if ($usuario) {
+            return $usuario;
+        }
+        return null;
     }
 }

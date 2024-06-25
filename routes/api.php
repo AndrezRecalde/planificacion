@@ -34,6 +34,8 @@ use App\Http\Controllers\General\ProveedorController;
 use App\Http\Controllers\General\ProyectoController;
 use App\Http\Controllers\General\StatusController;
 use App\Http\Controllers\General\TipoActividadController;
+use App\Http\Controllers\General\TipoproyectoController;
+use App\Http\Controllers\general\TipoUnidadController;
 use App\Http\Controllers\General\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -176,7 +178,39 @@ Route::group(
         /* ADMIN: GESTION DEL PDOT */
 
 
+        /* ADMIN: OBJETIVOS ESTRATEGICOS INSTITUCIONALES */
+        Route::delete('/delete/oepei/{id}', [OepeiController::class, 'destroy']);
 
+        /* ADMIN: STATUS DE LAS ACTIVIDADES */
+        Route::get('/status', [StatusController::class, 'getStatus']);
+        Route::post('/store/status', [StatusController::class, 'store']);
+        Route::put('/update/status/{id}', [StatusController::class, 'update']);
+        Route::delete('/delete/status/{id}', [StatusController::class, 'getStatus']);
+
+        /* ADMIN: OBJETIVOS DE DESARROLLO SOSTENIBLE */
+        Route::delete('/delete/odsostenible/{id}', [OdssostenibleController::class, 'destroy']);
+
+        /* ADMIN: TIPOS DE PLANIFICACION */
+        Route::delete('/delete/tipo-planificacion/{id}', [PlanificaciontipoController::class, 'destroy']);
+
+        /* ADMIN: TIPOS DE PROYECTOS */
+        Route::delete('/delete/tipo-proyecto/{id}', [TipoproyectoController::class, 'destroy']);
+
+        /* ADMIN: NIVELES */
+        Route::get('/niveles', [NivelController::class, 'getNiveles']);
+        Route::post('/store/nivel', [NivelController::class, 'store']);
+        Route::put('/update/nivel/{id}', [NivelController::class, 'update']);
+        Route::delete('/delete/nivel/{id}', [NivelController::class, 'destroy']);
+
+
+        /* ADMIN: TIPO DE UNIDADES */
+        Route::delete('/delete/tipo-unidad/{id}', [TipoUnidadController::class, 'destroy']);
+
+        /* ADMIN: INSTRUMENTOS */
+        Route::delete('/delete/instrumento/{id}', [InstrumentoController::class, 'destroy']);
+
+        /* PLANIFICACION: OBJETIVOS */
+        Route::delete('/delete/objetivo/{id}', [ObjetivoController::class, 'destroy']);
     }
 );
 
@@ -295,4 +329,44 @@ Route::group([
     Route::put('/update/metapdot/{id}', [MetapdotController::class, 'update']);
 
 
+    /* PLANIFICACION: OBJETIVOS ESTRATEGICOS INSTITUCIONALES */
+    Route::post('/oepeis', [OepeiController::class, 'getOepeis']);
+    Route::post('/store/oepei', [OepeiController::class, 'store']);
+    Route::put('/update/oepei/{id}', [OepeiController::class, 'update']);
+    Route::put('/update/status/oepei/{id}', [OepeiController::class, 'updateActivo']);
+
+
+    /* PLANIFICACION: OBJETIVOS DE DESARROLLO SOSTENIBLE */
+    Route::get('/odsostenibles', [OdssostenibleController::class, 'getObjetivosODS']);
+    Route::post('/store/odsostenible', [OdssostenibleController::class, 'store']);
+    Route::put('/update/odsostenible/{id}', [OdssostenibleController::class, 'update']);
+
+    /* PLANIFICACION: TIPOS DE PLANIFICACION */
+    Route::get('/tipos-planificacion', [PlanificaciontipoController::class, 'getTiposPlanificaciones']);
+    Route::post('/store/tipo-planificacion', [PlanificaciontipoController::class, 'store']);
+    Route::put('/update/tipo-planificacion/{id}', [PlanificaciontipoController::class, 'update']);
+
+
+    /* PLANIFICACION: TIPOS DE PROYECTOS */
+    Route::get('/tipos-proyectos', [TipoproyectoController::class, 'getTiposProyectos']);
+    Route::post('/store/tipo-proyecto', [TipoproyectoController::class, 'store']);
+    Route::post('/update/tipo-proyecto/{id}', [TipoproyectoController::class, 'update']);
+
+    /* PLANIFICACION: TIPO DE UNIDADES */
+    Route::get('/tipo-unidades', [TipoUnidadController::class, 'getTipoUnidades']);
+    Route::post('/store/tipo-unidad', [TipoUnidadController::class, 'store']);
+    Route::put('/update/tipo-unidad/{id}', [TipoUnidadController::class, 'update']);
+    Route::put('/update/status/tipo-unidad/{id}', [TipoUnidadController::class, 'updateStatus']);
+
+
+    /*PLANIFICACION: INSTRUMENTOS */
+    Route::post('/instrumentos', [InstrumentoController::class, 'getInstrumentos']);
+    Route::post('/store/instrumento', [InstrumentoController::class, 'store']);
+    Route::put('/update/instrumento/{id}', [InstrumentoController::class, 'update']);
+
+    /* PLANIFICACION: OBJETIVOS */
+    Route::post('/objetivos', [ObjetivoController::class, 'getObjetivos']);
+    Route::post('/store/objetivo', [ObjetivoController::class, 'store']);
+    Route::put('/update/objetivo/{id}', [ObjetivoController::class, 'update']);
+    Route::put('/update/status/objetivo/{id}', [ObjetivoController::class, 'update']);
 });

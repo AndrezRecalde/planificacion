@@ -19,6 +19,7 @@ class OdssostenibleController extends Controller
         $ods = Odssostenible::from('odssostenibles as ods')
             ->selectRaw('ods.id, ods.nombre_ods, ods.descripcion_ods,
                             ods.imagen_url')
+            //->with('proyectos')
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'ods' => $ods], 200);

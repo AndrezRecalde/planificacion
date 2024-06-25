@@ -5,16 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tipounidad extends Model
+class ProyectoOdsostenible extends Model
 {
     use HasFactory;
-
-    protected $table = 'tipounidades';
-
-    protected $fillable = [
-        'tipounidad',
-        'activo'
-    ];
-
-
 }

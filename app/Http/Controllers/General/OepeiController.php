@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 
 class OepeiController extends Controller
 {
-    function getOepeis(): JsonResponse
+    function getOepeis(Request $request): JsonResponse
     {
-        $oepeis = Oepei::get(['id', 'objetivo_pei']);
+        $oepeis = Oepei::with('institucion')->institution($request->institucion_id)->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'oepeis' => $oepeis], 200);
     }

@@ -12,16 +12,10 @@ use Illuminate\Http\Request;
 class StatusController extends Controller
 {
 
-    function getStatusForTablero(Request $request): JsonResponse
-    {
-        $statusForTablero = Status::from('status as s')
-            ->selectRaw('s.nombre_status, s.color, s.tablero_id,
-                                    t.nombre_tablero, t.anio')
-            ->join('tableros as t', 't.id', 's.tablero_id')
-            ->where('s.tablero_id', $request->tablero_id)
-            ->get();
+    function getStatus() : JsonResponse {
+        $estatus = Status::get(['id', 'nombre_status', 'color']);
 
-        return response()->json(['status' => HTTPStatus::Success, 'statusForTablero' => $statusForTablero], 200);
+        return response()->json(['status' => HTTPStatus::Success, 'estatus' => $estatus], 200);
     }
 
     function store(StatusRequest $request): JsonResponse

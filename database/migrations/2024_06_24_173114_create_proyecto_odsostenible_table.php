@@ -7,15 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. PLANIFICACION ESTRATEGICA INSTITUCIONAL - PEI
+     * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('oepeis', function (Blueprint $table) {
-            $table->id();
-            $table->string('objetivo_pei');
-            $table->boolean('activo')->default(1);
-            $table->unsignedInteger('institucion_id');
+        Schema::create('proyecto_odsostenible', function (Blueprint $table) {
+            $table->unsignedInteger('proyecto_id');
+            $table->unsignedInteger('odsostenible_id');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oepeis');
+        Schema::dropIfExists('proyecto_odsostenible');
     }
 };

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramaRequest;
 use App\Http\Requests\ProgramaStatus;
 use App\Models\Programa;
+use App\Repositories\General\ProgramaRepository;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Http;
 
 class ProgramaController extends Controller
 {
+    private $programaRepository;
+
+    public function __construct(ProgramaRepository $programaRepository) {
+        $this->programaRepository = $programaRepository;
+    }
+
     function getProgramasAdmin(): JsonResponse
     {
         $programas = Programa::from('programas as p')
@@ -44,15 +51,7 @@ class ProgramaController extends Controller
     function store(ProgramaRequest $request): JsonResponse
     {
         try {
-            $programa = Programa::create($request->validated());
-            $codigoComponente = Programa::from('programas as p')
-                            ->selectRaw('p.id, comp.nombre_componente')
-                            ->join('objetivos as o', 'o.id', 'p.objetivo_id')
-                            ->join('componentepdots as comp', 'comp.id', 'o.componentepdot_id')
-                            ->where('p.id', $programa->id)
-                            ->first();
-            $programa->codigo_programa = 'PROG-' . Str::of(Str::upper(Str::substr($codigoComponente->nombre_componente, 2, 4)))->trim() . '-' . $programa->id;
-            $programa->save();
+            $this->programaRepository->store($request);
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
@@ -61,10 +60,10 @@ class ProgramaController extends Controller
 
     function update(ProgramaRequest $request, int $id): JsonResponse
     {
-        $programa = Programa::find($id);
+        $programa = $this->programaRepository->findById($id);
         try {
             if ($programa) {
-                $programa->update($request->validated());
+                $this->programaRepository->update($request, $programa);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -76,10 +75,10 @@ class ProgramaController extends Controller
 
     function updateActivo(ProgramaStatus $request, int $id): JsonResponse
     {
-        $programa = Programa::find($id);
+        $programa = $this->programaRepository->findById($id);
         try {
             if ($programa) {
-                $programa->update($request->validated());
+                $this->programaRepository->updateActivo($request, $programa);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -91,10 +90,10 @@ class ProgramaController extends Controller
 
     function destroy(int $id): JsonResponse
     {
-        $programa = Programa::find($id);
+        $programa = $this->programaRepository->findById($id);
         try {
             if ($programa) {
-                $programa->delete();
+                $this->programaRepository->destroy($programa);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);

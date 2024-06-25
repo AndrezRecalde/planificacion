@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class InstrumentoController extends Controller
 {
-    function getInstrumentos(): JsonResponse
+    function getInstrumentos(Request $request): JsonResponse
     {
-        $instrumentos = Instrumento::get(['id', 'nombre_archivo', 'archivo', 'fecha_inicio', 'fecha_fin']);
+        $instrumentos = Instrumento::where('instrumento.fecha_inicio', $request->fecha_inicio)
+                        ->get(['id', 'nombre_archivo', 'archivo', 'fecha_inicio', 'fecha_fin']);
 
         return response()->json(['status' => HTTPStatus::Success, 'instrumentos' => $instrumentos], 200);
     }
@@ -81,6 +82,8 @@ class InstrumentoController extends Controller
             }
             if ($resp) {
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error en el servidor'], 500);
             }
         } catch (\Throwable $th) {
             DB::rollback();

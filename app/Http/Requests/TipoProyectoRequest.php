@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class OepeiRequest extends FormRequest
+class TipoProyectoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,8 @@ class OepeiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'objetivo_pei'   => 'required',
-            'institucion_id' => 'required'
+            'tipo_proyecto' =>  'required',
         ];
-    }
-
-    public function messages(): array
-    {
-       return [
-        'objetivo_pei.required'     =>  'El objetivo es obligatoria',
-        'institucion_id.required'     =>  'Seleccione la institución es obligatoria',
-       ];
     }
 
     protected function failedValidation(Validator $validator)

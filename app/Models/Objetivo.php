@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -87,6 +88,45 @@ class Objetivo extends Model
     function programas(): HasMany
     {
         return $this->hasMany(Objetivo::class);
+    }
+
+    function scopeByDepartamentoId(Builder $query, $departamento_id)
+    {
+        if ($departamento_id) {
+            return $query->whereHas('departamentos', function ($query) use ($departamento_id) {
+                $query->where('departamento_id', $departamento_id);
+            });
+        }
+    }
+
+    function scopeByLestrategiapdotId(Builder $query, $lestrategiapdot_id)
+    {
+        if ($lestrategiapdot_id) {
+            return $query->where('o.lestrategiapdot_id', $lestrategiapdot_id);
+        }
+    }
+
+    function scopeByCompetenciapdotId(Builder $query, $competenciapdot_id)
+    {
+        if ($competenciapdot_id) {
+            return $query->where('o.competenciapdot_id', $competenciapdot_id);
+        }
+    }
+
+    function scopeByComponentepdotId(Builder $query, $componentepdot_id)
+    {
+        if ($componentepdot_id) {
+            return $query->where('o.componentepdot_id', $componentepdot_id);
+        }
+    }
+
+    function scopeByCotpdot(Builder $query, $cotpdot_id)
+    {
+        if ($cotpdot_id) {
+            return $query->whereHas('competenciapdots.cotpdots', function ($q) use ($cotpdot_id) {
+                $q->whereIn('cotpdots.id', $cotpdot_id);
+            });
+        }
     }
 
     protected static function boot()
