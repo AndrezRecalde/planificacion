@@ -27,7 +27,8 @@ class ProveedorRequest extends FormRequest
         return [
             'nombre_proveedor'  => 'required',
             'ruc'               => ['required', Rule::unique('proveedores')->ignore($this->request->get('id'))],
-            'telefono'          => ''
+            'telefono'          => '',
+            'departamento_id'   => 'required'
         ];
     }
 
@@ -36,7 +37,8 @@ class ProveedorRequest extends FormRequest
         return [
             'nombre_proveedor.required'     =>  'El nombre de la entidad es obligatoria',
             'ruc.required'      =>  'El ruc de la entidad es obligatoria',
-            'ruc.unique'        =>  'El proveedor ya ha sido registrado'
+            'ruc.unique'        =>  'El proveedor ya ha sido registrado',
+            'departamento.required' => 'El departamento es necesario'
         ];
     }
 

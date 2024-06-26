@@ -133,16 +133,13 @@ Route::group(
         Route::delete('/delete/opndesarrollo/{id}', [OpndesarrolloController::class, 'destroy']);
 
         /* ADMIN: PROYECTOS */
-        Route::post('/proyectos', [ProyectoController::class, 'getProyectos']);
         Route::delete('/delete/proyecto/{id}', [ProyectoController::class, 'destroy']);
 
         /* ADMIN: COMPETENCIAS DEL GAD */
-        Route::post('/competencias', [CompetenciaController::class, 'getCompetencias']);
         Route::delete('/delete/competencia/{id}', [CompetenciaController::class, 'destroy']);
 
 
         /* ADMIN: PROVEEDORES */
-        Route::get('/proveedores', [ProveedorController::class, 'getProveedoresAdmin']);
         Route::delete('/delete/proveedor/{id}', [ProveedorController::class, 'destroy']);
 
         /* ADMIN: LINEAS PDOT */
@@ -209,8 +206,11 @@ Route::group(
         /* ADMIN: INSTRUMENTOS */
         Route::delete('/delete/instrumento/{id}', [InstrumentoController::class, 'destroy']);
 
-        /* PLANIFICACION: OBJETIVOS */
+        /* ADMIN: OBJETIVOS */
         Route::delete('/delete/objetivo/{id}', [ObjetivoController::class, 'destroy']);
+
+        /* ADMIN: PROGRAMAS */
+        Route::delete('/delete/programa/{id}', [ProgramaController::class, 'destroy']);
     }
 );
 
@@ -281,11 +281,11 @@ Route::group([
     Route::post('/store/opndesarrollo', [OpndesarrolloController::class, 'store']);
     Route::put('/update/opndesarrollo/{id}', [OpndesarrolloController::class, 'update']);
 
-
-    /* PLANIFICACION: PROGRAMAS */
-    Route::post('/store/programa', [ProgramaController::class, 'store']);
+    /* PLANIFICACION: PROYECTOS */
+    Route::post('/proyectos', [ProyectoController::class, 'getProyectos']);
 
     /* PLANIFICACION: COMPETENCIAS DEL GAD  */
+    Route::post('/competencias', [CompetenciaController::class, 'getCompetencias']);
     Route::post('/store/competencia', [CompetenciaController::class, 'store']);
     Route::put('/update/competencia/{id}', [CompetenciaController::class, 'update']);
 
@@ -369,4 +369,11 @@ Route::group([
     Route::post('/store/objetivo', [ObjetivoController::class, 'store']);
     Route::put('/update/objetivo/{id}', [ObjetivoController::class, 'update']);
     Route::put('/update/status/objetivo/{id}', [ObjetivoController::class, 'update']);
+
+    /* PLANIFICACION: PROGRAMAS */
+    Route::post('/programas', [ProgramaController::class, 'getProgramas']);
+    Route::post('/store/programa', [ProgramaController::class, 'store']);
+    Route::put('/update/programa/{id}', [ProgramaController::class, 'update']);
+    Route::put('/update/status/programa/{id}', [ProgramaController::class, 'update']);
+
 });

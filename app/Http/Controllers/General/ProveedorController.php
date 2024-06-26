@@ -11,16 +11,21 @@ use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
 {
-    function getProveedores(): JsonResponse
+    function getProveedores(Request $request): JsonResponse
     {
         //$this->authorize("viewAdmin", Proveedor::class);
-        $proveedores = Proveedor::get(['nombre_proveedor', 'ruc', 'telefono']);
+        $proveedores = Proveedor::from('proveedores as prov')
+            ->selectRaw('prov.id, prov.nombre_proveedor,
+                                    prov.ruc, prov.telefono, d.nombre_departamento')
+            ->join('departamentos as d', 'd.id', 'prov.departamento_id')
+            ->byDepartamentoId($request->departamento_id)
+            ->get();
+
         return response()->json(['status' => HTTPStatus::Success, 'proveedores' => $proveedores], 200);
     }
 
     function store(ProveedorRequest $request): JsonResponse
     {
-        //$this->authorize("create", Proveedor::class);
         try {
             Proveedor::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);

@@ -38,8 +38,8 @@ class Programa extends Model
     function scopeByDepartamentoId(Builder $query, $departamento_id)
     {
         if ($departamento_id) {
-            return $query->whereHas('objetivos.departamentos', function ($q) use ($departamento_id) {
-                $q->whereIn('departamentos.id', $departamento_id);
+            return $query->whereHas('objetivo.departamentos', function ($q) use ($departamento_id) {
+                $q->whereIn('departamento_id', $departamento_id);
             });
         }
     }

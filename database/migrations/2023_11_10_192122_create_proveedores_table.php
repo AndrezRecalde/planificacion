@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre_proveedor');
             $table->string('ruc', 15)->unique();
             $table->string('telefono', 15)->nullable();
+            $table->unsignedInteger('departamento_id');
             $table->timestamps();
         });
     }
