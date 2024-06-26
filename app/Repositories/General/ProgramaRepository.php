@@ -8,6 +8,7 @@ use App\Interfaces\General\ProgramaInterface;
 use App\Models\Programa;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class ProgramaRepository implements ProgramaInterface
 {
@@ -19,13 +20,14 @@ class ProgramaRepository implements ProgramaInterface
         $this->model = new Programa();
     }
 
-    function getProgramas(): Collection
+    function getProgramas(Request $request): Collection
     {
 
         $programas = $this->model::from('programas as p')
             ->selectRaw('p.id, p.nombre_programa, p.codigo_programa, pt.nombre_planificacion, o.indicadorpdot')
             ->join('planificaciontipos as pt', 'pt.id', 'p.planificaciontipo_id')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
+            ->byDepartamentoId($request->departamento_id)
             ->get();
 
         return $programas;

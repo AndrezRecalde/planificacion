@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,4 +34,15 @@ class Programa extends Model
     {
         return $this->hasMany(Proyecto::class);
     }
+
+    function scopeByDepartamentoId(Builder $query, $departamento_id)
+    {
+        if ($departamento_id) {
+            return $query->whereHas('objetivos.departamentos', function ($q) use ($departamento_id) {
+                $q->whereIn('departamentos.id', $departamento_id);
+            });
+        }
+    }
 }
+
+//https://github.com/mantinedev/mantine/tree/master/apps/mantine.dev/src/components/HomePage/Components
