@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('tableros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_tablero');
-            $table->year('anio');
+            $table->string('codigo_tablero');
+            $table->text('descripcion')->nullable();
+            $table->unsignedInteger('administrativo_id');
             $table->unsignedInteger('departamento_id');
             $table->timestamps();
         });

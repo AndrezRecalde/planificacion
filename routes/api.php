@@ -33,6 +33,7 @@ use App\Http\Controllers\General\ProgramaController;
 use App\Http\Controllers\General\ProveedorController;
 use App\Http\Controllers\General\ProyectoController;
 use App\Http\Controllers\General\StatusController;
+use App\Http\Controllers\General\TableroController;
 use App\Http\Controllers\General\TipoActividadController;
 use App\Http\Controllers\General\TipoproyectoController;
 use App\Http\Controllers\general\TipoUnidadController;
@@ -211,6 +212,9 @@ Route::group(
 
         /* ADMIN: PROGRAMAS */
         Route::delete('/delete/programa/{id}', [ProgramaController::class, 'destroy']);
+
+        /* ADMIN: TABLEROS */
+        Route::post('/delete/tablero/{id}', [TableroController::class, 'destroy']);
     }
 );
 
@@ -242,7 +246,7 @@ Route::group([
     Route::put('/update/proyecto', [ProyectoController::class, 'update']);
 
 
-    /* GENERAL: STATUS */
+    /* GENERAL: STATUS PARA LOS TABLEROS */
     Route::get('/status', [StatusController::class, 'getStatusForTablero']);
     Route::post('/store/status', [StatusController::class, 'store']);
     Route::post('/update/status/{id}', [StatusController::class, 'update']);
@@ -375,5 +379,11 @@ Route::group([
     Route::post('/store/programa', [ProgramaController::class, 'store']);
     Route::put('/update/programa/{id}', [ProgramaController::class, 'update']);
     Route::put('/update/status/programa/{id}', [ProgramaController::class, 'update']);
+
+    /* PLANIFICACION: TABLEROS */
+    Route::post('/tableros', [TableroController::class, 'getTableros']);
+    Route::post('/store/tablero', [TableroController::class, 'store']);
+    Route::post('/update/tablero/{id}', [TableroController::class, 'update']);
+
 
 });

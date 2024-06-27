@@ -56,6 +56,11 @@ class Departamento extends Model
         return $this->hasMany(Proveedor::class);
     }
 
+    function tableros(): HasMany
+    {
+        return $this->hasMany(Tablero::class);
+    }
+
     function namechecklists(): HasMany
     {
         return $this->hasMany(Namechecklist::class);
