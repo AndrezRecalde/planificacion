@@ -30,7 +30,7 @@ class AtrimestreController extends Controller
             ->selectRaw('at.id, at.programado, at.avance,
                  a.nombre_actividad, p.nombre_proyecto')
             ->join('actividades as a', 'a.id', 'at.actividad_id')
-            ->actividad($request->actividad_id)
+            ->byActividadId($request->actividad_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'atrimestres' => $atrimestres], 200);
@@ -67,7 +67,7 @@ class AtrimestreController extends Controller
         try {
             if ($atrimestre) {
                 $atrimestre->delete();
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }

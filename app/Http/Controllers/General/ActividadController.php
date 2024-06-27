@@ -21,7 +21,7 @@ class ActividadController extends Controller
             ->join('tipoactividades as ta', 'ta.id', 'a.tipoactividad_id')
             ->join('status as s', 's.id', 'act.status_id')
             ->join('proyectos as p', 'p.id', 'act.proyecto_id')
-            ->proyecto($request->proyecto_id)
+            ->byProyectoId($request->proyecto_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'actividades' => $actividades], 200);
@@ -77,7 +77,7 @@ class ActividadController extends Controller
         try {
             if ($actividad) {
                 $actividad->delete();
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 201);
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }

@@ -63,7 +63,7 @@ class MetapdotController extends Controller
         try {
             if ($meta) {
                 $meta->delete();
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }

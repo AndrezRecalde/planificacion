@@ -21,13 +21,13 @@ class Actividad extends Model
         'portada',
         'tipoactividad_id',
         'ponderacion',
-        'status_id',
+        'estado_id',
         'proyecto_id'
     ];
 
-    function status(): BelongsTo
+    function estados(): BelongsTo
     {
-        return $this->belongsTo(Status::class, 'status_id');
+        return $this->belongsTo(Estado::class);
     }
 
     function proyecto(): BelongsTo
@@ -45,7 +45,7 @@ class Actividad extends Model
         return $this->belongsTo(Tipoactividad::class);
     }
 
-    function scopeProyecto($query, $proyecto)
+    function scopeByProyectoId($query, $proyecto)
     {
         if ($proyecto) {
             return $query->where('a.proyecto_id', $proyecto);

@@ -71,7 +71,7 @@ class ProgramaController extends Controller
         try {
             if ($programa) {
                 $this->programaRepository->destroy($programa);
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }

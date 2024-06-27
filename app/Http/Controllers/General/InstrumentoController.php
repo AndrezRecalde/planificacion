@@ -91,7 +91,7 @@ class InstrumentoController extends Controller
         }
     }
 
-    function delete(int $id): JsonResponse
+    function destroy(int $id): JsonResponse
     {
         $instrumento = Instrumento::find($id);
         try {

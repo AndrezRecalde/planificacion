@@ -25,6 +25,7 @@ class ProveedorRepository implements ProveedorInterface
             ->join('departamentos as d', 'd.id', 'prov.departamento_id')
             ->byDepartamentoId($request->departamento_id)
             ->get();
+
         return $proveedores;
     }
 

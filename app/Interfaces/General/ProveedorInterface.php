@@ -7,9 +7,11 @@ use App\Models\Proveedor;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
-interface ProveedorInterface {
+interface ProveedorInterface
+{
     function getProveedores(Request $request): Collection;
     function store(ProveedorRequest $request): void;
     function update(ProveedorRequest $request, Proveedor $proveedor): void;
     function destroy(Proveedor $proveedor): void;
+    function findById(int $id): Proveedor | null;
 }

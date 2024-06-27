@@ -22,7 +22,7 @@ class Atrimestre extends Model
     }
 
 
-    function scopeActividad($query, $actividad)
+    function scopeByActividadId($query, $actividad)
     {
         if ($actividad) {
             return $query->where('at.actividad_id', $actividad);

@@ -179,11 +179,8 @@ Route::group(
         /* ADMIN: OBJETIVOS ESTRATEGICOS INSTITUCIONALES */
         Route::delete('/delete/oepei/{id}', [OepeiController::class, 'destroy']);
 
-        /* ADMIN: STATUS DE LAS ACTIVIDADES */
-        Route::get('/status', [StatusController::class, 'getStatus']);
-        Route::post('/store/status', [StatusController::class, 'store']);
-        Route::put('/update/status/{id}', [StatusController::class, 'update']);
-        Route::delete('/delete/status/{id}', [StatusController::class, 'getStatus']);
+        /* ADMIN: ESTATUS DE LAS ACTIVIDADES */
+        //TODO: REALIZAR UN CONTROLLADOR PARA LOS ESTADOS DE LAS ACTIVIDADES
 
         /* ADMIN: OBJETIVOS DE DESARROLLO SOSTENIBLE */
         Route::delete('/delete/odsostenible/{id}', [OdssostenibleController::class, 'destroy']);
@@ -380,7 +377,7 @@ Route::group([
     Route::put('/update/programa/{id}', [ProgramaController::class, 'update']);
     Route::put('/update/status/programa/{id}', [ProgramaController::class, 'update']);
 
-    /* PLANIFICACION: TABLEROS */
+    /* PLANIFICACION: TABLEROS */ //TODO: PODRIA MIGRAR ESTAS RUTAS A UN NUEVO ROLE: COORD_INSTI
     Route::post('/tableros', [TableroController::class, 'getTableros']);
     Route::post('/store/tablero', [TableroController::class, 'store']);
     Route::post('/update/tablero/{id}', [TableroController::class, 'update']);

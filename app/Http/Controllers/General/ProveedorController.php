@@ -5,21 +5,22 @@ namespace App\Http\Controllers\General;
 use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProveedorRequest;
-use App\Models\Proveedor;
+use App\Repositories\General\ProveedorRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
 {
+    private $proveedorRepository;
+    public function __construct(ProveedorRepository $proveedorRepository)
+    {
+        $this->proveedorRepository = $proveedorRepository;
+    }
+
     function getProveedores(Request $request): JsonResponse
     {
         //$this->authorize("viewAdmin", Proveedor::class);
-        $proveedores = Proveedor::from('proveedores as prov')
-            ->selectRaw('prov.id, prov.nombre_proveedor,
-                                    prov.ruc, prov.telefono, d.nombre_departamento')
-            ->join('departamentos as d', 'd.id', 'prov.departamento_id')
-            ->byDepartamentoId($request->departamento_id)
-            ->get();
+        $proveedores = $this->proveedorRepository->getProveedores($request);
 
         return response()->json(['status' => HTTPStatus::Success, 'proveedores' => $proveedores], 200);
     }
@@ -27,7 +28,7 @@ class ProveedorController extends Controller
     function store(ProveedorRequest $request): JsonResponse
     {
         try {
-            Proveedor::create($request->validated());
+            $this->proveedorRepository->store($request);
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
@@ -36,11 +37,11 @@ class ProveedorController extends Controller
 
     function update(ProveedorRequest $request, int $id): JsonResponse
     {
-        $proveedor = Proveedor::find($id);
+        $proveedor = $this->proveedorRepository->findById($id);
         //$this->authorize("update", $proveedor);
         try {
             if ($proveedor) {
-                $proveedor->update($request->validated());
+                $this->proveedorRepository->update($request, $proveedor);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -53,10 +54,10 @@ class ProveedorController extends Controller
     function destroy(int $id): JsonResponse
     {
         //$this->authorize("delete", Proveedor::class);
-        $proveedor = Proveedor::find($id);
+        $proveedor = $this->proveedorRepository->findById($id);
         try {
             if ($proveedor) {
-                $proveedor->delete();
+                $this->proveedorRepository->destroy($proveedor);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);

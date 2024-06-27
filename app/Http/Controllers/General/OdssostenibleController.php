@@ -93,6 +93,8 @@ class OdssostenibleController extends Controller
 
             if ($resp) {
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error al cargar el archivo'], 201);
             }
         } catch (\Throwable $th) {
             DB::rollback();

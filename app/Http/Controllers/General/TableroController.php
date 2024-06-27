@@ -6,23 +6,22 @@ use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TableroRequest;
 use App\Models\Tablero;
+use App\Repositories\General\TableroRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TableroController extends Controller
 {
+    private $tableroRepository;
+
+    public function __construct(TableroRepository $tableroRepository)
+    {
+        $this->tableroRepository = $tableroRepository;
+    }
+
     function getTableros(Request $request): JsonResponse
     {
-        $tableros = Tablero::from('tableros as t')
-            ->selectRaw('t.id, t.nombre_tablero, t.codigo_tablero,
-                                 t.anio, t.descripcion,
-                                d.nombre_departamento,
-                                a.inicio_periodo, a.fin_periodo')
-            ->join('departamentos as d', 'd.id', 't.departamento_id')
-            ->join('administrativos as a', 'a.id', 't.administrativo_id')
-            ->byAdministrativoId($request->administrativo_id)
-            ->byDepartamentoId($request->departamento_id)
-            ->get();
+        $tableros = $this->tableroRepository->getTableros($request);
 
         return response()->json(['status' => HTTPStatus::Success, 'tableros' => $tableros], 200);
     }
@@ -30,7 +29,7 @@ class TableroController extends Controller
     function store(TableroRequest $request): JsonResponse
     {
         try {
-            Tablero::create($request->validated());
+            $this->tableroRepository->store($request);
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
@@ -39,10 +38,10 @@ class TableroController extends Controller
 
     function update(TableroRequest $request, int $id): JsonResponse
     {
-        $tablero = Tablero::find($id);
+        $tablero = $this->tableroRepository->findById($id);
         try {
             if ($tablero) {
-                $tablero->update($request->validated());
+                $this->tableroRepository->update($request, $tablero);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -57,8 +56,8 @@ class TableroController extends Controller
         $tablero = Tablero::find($id);
         try {
             if ($tablero) {
-                $tablero->delete();
-                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+                $this->tableroRepository->destroy($tablero);
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 200);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }
