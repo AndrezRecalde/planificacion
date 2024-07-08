@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useMantineReactTable } from "mantine-react-table";
-import { MenuTable, ProgressProyecto, TableContent } from "../../../../components";
+import { MenuTableEdit, ProgressProyecto, TableContent } from "../../../../components";
 
 const data = [
     {
@@ -61,7 +61,7 @@ export const ProyectoFromPrograma = (props) => {
         columns,
         data, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
         enableFacetedValues: true,
-        derRowActionMenuItems: ({ row }) => <MenuTable />,
+        derRowActionMenuItems: ({ row }) => <MenuTableEdit />,
     });
     return <TableContent table={table} />;
 };

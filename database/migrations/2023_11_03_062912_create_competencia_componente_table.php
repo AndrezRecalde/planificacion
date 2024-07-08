@@ -12,10 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('competenciapdot_componentepdot', function (Blueprint $table) {
-            //$table->id();
-            //$table->timestamps();
-            $table->unsignedInteger('competenciapdot_id');
-            $table->unsignedInteger('componentepdot_id');
+            $table->unsignedBigInteger('competenciapdot_id');
+            $table->unsignedBigInteger('componentepdot_id');
+
+            $table->primary(['competenciapdot_id', 'componentepdot_id']); // Clave primaria compuesta
+
+            // Definir relaciones foráneas
+            $table->foreign('competenciapdot_id')->references('id')->on('competenciapdots')->onDelete('cascade');
+            $table->foreign('componentepdot_id')->references('id')->on('componentepdots')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('competenciapdot_id');
+            $table->index('componentepdot_id');
+
+
         });
     }
 

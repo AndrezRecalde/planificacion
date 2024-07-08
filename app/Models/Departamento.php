@@ -61,9 +61,9 @@ class Departamento extends Model
         return $this->hasMany(Tablero::class);
     }
 
-    function namechecklists(): HasMany
+    function listas(): HasMany
     {
-        return $this->hasMany(Namechecklist::class);
+        return $this->hasMany(Lista::class);
     }
 
     function scopeInstitucions($query, $institucion_id)

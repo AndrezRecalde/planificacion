@@ -26,11 +26,16 @@ class ActividadRequest extends FormRequest
         return [
             'nombre_actividad'  =>  'required',
             'descripcion'       =>  '',
+            'estado_id'         =>  'required',
             'color'             =>  '',
             'portada'           =>  '',
-            'tipoactividad_id'  =>  'required',
             'ponderacion'       =>  'required',
+            'tipoactividad_id'  =>  'required',
             'proyecto_id'       =>  'required',
+            'partidapresupuestaria_id'       =>  '',
+            'tablero_id'        =>  'required',
+            'proveedor_id'      =>  '',
+
         ];
     }
 
@@ -38,9 +43,11 @@ class ActividadRequest extends FormRequest
     {
         return [
             'nombre_actividad.required'   =>  'El nombre de la actividad es obligatorio',
-            'tipoactividad_id.required'   =>  'El tipo de la actividad es obligatorio',
+            'estado_id.required'          =>  'Seleccione el estado de la actividad',
             'ponderacion.required'        =>  'La ponderación es obligatoria',
+            'tipoactividad_id.required'   =>  'El tipo de la actividad es obligatorio',
             'proyecto_id.required'        =>  'No se ha seleccionado el proyecto',
+            'tablero_id.required'         =>  'No se ha identificado un tablero',
         ];
     }
 

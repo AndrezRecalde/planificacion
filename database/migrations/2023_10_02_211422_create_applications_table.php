@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_app');
-            $table->string('admin_email');
-            $table->string('copyright');
+            $table->string('admin_email',100);
+            $table->string('copyright', 255);
             $table->string('logo_url');
-            $table->string('color');
+            $table->string('color', 10);
             $table->timestamps();
         });
     }

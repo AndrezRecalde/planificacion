@@ -11,13 +11,15 @@ import {
 } from "@mantine/core";
 import {
     IconChevronRight,
+    IconGrain,
     IconLogout,
     IconSettings,
     IconUserHexagon,
 } from "@tabler/icons-react";
-import classes from "./UserModule/UserHeader.module.css";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
 import { useNavigate } from "react-router-dom";
+
+import classes from "../../assets/styles/layout/UsersModules/UserHeader.module.css";
 
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
@@ -45,6 +47,38 @@ export const UserBtnHeader = () => {
         return inicial_nombre + inicial_apellido;
     }, [usuario]);
 
+    const navigation = (e, url) => {
+        e.preventDefault();
+        navigate(url);
+    };
+
+    const menuBtnUserHeader = [
+        {
+            label: "Ver perfil",
+            action: "/profile",
+            icon: IconUserHexagon,
+            color: theme.colors.indigo[6],
+        },
+        {
+            label: "Cambiar contraseña",
+            action: "/change-password",
+            icon: IconSettings,
+            color: theme.colors.gray[6],
+        },
+        {
+            label: "Mi actividad",
+            action: "/change-password",
+            icon: IconGrain,
+            color: theme.colors.teal[6],
+        },
+        {
+            label: "Cerrar sesión",
+            action: startLogout,
+            icon: IconLogout,
+            color: theme.colors.red[6],
+        },
+    ];
+
     return (
         <Menu
             width={260}
@@ -66,9 +100,8 @@ export const UserBtnHeader = () => {
                             alt={usuario.apellidos}
                             radius="xl"
                             color="indigo.7"
-                        >
-                            {iniciales()}
-                        </Avatar>
+                            name={iniciales()}
+                        />
                         <div style={{ flex: 1 }}>
                             <Text fw={500} size="sm">
                                 {nombres()}
@@ -84,43 +117,31 @@ export const UserBtnHeader = () => {
                     </Group>
                 </UnstyledButton>
             </Menu.Target>
+
             <Menu.Dropdown>
-                <Menu.Item
-                onClick={() => navigate("/profile")}
-                    leftSection={
-                        <IconUserHexagon
-                            style={{ width: rem(16), height: rem(16) }}
-                            color={theme.colors.indigo[6]}
-                            stroke={1.5}
-                        />
-                    }
-                >
-                    Ver perfil
-                </Menu.Item>
-                <Menu.Item
-                onClick={() => navigate("change-password")}
-                    leftSection={
-                        <IconSettings
-                            style={{ width: rem(16), height: rem(16) }}
-                            stroke={1.5}
-                        />
-                    }
-                >
-                    Cambiar contraseña
-                </Menu.Item>
-                <Menu.Label>Settings</Menu.Label>
-                <Menu.Item
-                    onClick={startLogout}
-                    color="red"
-                    leftSection={
-                        <IconLogout
-                            style={{ width: rem(16), height: rem(16) }}
-                            stroke={1.5}
-                        />
-                    }
-                >
-                    Cerrar sesión
-                </Menu.Item>
+                <Menu.Label>Cuenta</Menu.Label>
+                {menuBtnUserHeader.map(
+                    ({ label, action, icon: Icon, color, index }) => (
+                        <Menu.Item
+                            key={label}
+                            onClick={(e) =>
+                                typeof action === "string"
+                                    ? navigation(e, action)
+                                    : action()
+                            }
+                            leftSection={
+                                <Icon
+                                    key={label}
+                                    style={{ width: rem(16), height: rem(16) }}
+                                    color={color}
+                                    stroke={1.7}
+                                />
+                            }
+                        >
+                            {label}
+                        </Menu.Item>
+                    )
+                )}
             </Menu.Dropdown>
         </Menu>
     );

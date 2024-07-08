@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_competencia');
             $table->boolean('activo')->default(1);
-            $table->unsignedInteger('lestrategiapdot_id');
+            $table->unsignedBigInteger('lestrategiapdot_id');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('lestrategiapdot_id')->references('id')->on('lestrategiapdots')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('lestrategiapdot_id');
         });
     }
 

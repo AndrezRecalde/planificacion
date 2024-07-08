@@ -1,10 +1,10 @@
+import { useState } from "react";
+import { AppHeader, AppNavbar, AppNavfooter, AppNavplan } from "../../layouts";
 import { AppShell, Badge, Group, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { AppHeader, AppNavbar, AppNavfooter, AppNavplan } from "../../layouts";
-import { useState } from "react";
 import { TextSection } from "../../components";
 
-import classes from "./navbar/NavbarModule/AppNavbar.module.css";
+import classes from "../../assets/styles/layout/NavbarModule/AppNavbar.module.css";
 
 export const AppLayout = ({ children }) => {
     const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -17,13 +17,14 @@ export const AppLayout = ({ children }) => {
 
     return (
         <AppShell
+            layout="alt"
+            padding="md"
             header={{ height: 60 }}
             navbar={{
                 width: 310,
                 breakpoint: "sm",
                 collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
             }}
-            padding="md"
         >
             <AppShell.Header>
                 <AppHeader
@@ -34,7 +35,7 @@ export const AppLayout = ({ children }) => {
                 />
             </AppShell.Header>
             <AppShell.Navbar p="md">
-                <AppShell.Section>
+                {/* <AppShell.Section>
                     <div className={classes.header}>
                         <Group>
                             <div style={{ flex: 1 }}>
@@ -47,22 +48,20 @@ export const AppLayout = ({ children }) => {
                             </Badge>
                         </Group>
                     </div>
-                </AppShell.Section>
-                <AppShell.Section
-                    className={classes.links}
-                    grow
-                    component={ScrollArea}
-                >
+                </AppShell.Section> */}
+                <AppShell.Section grow className={classes.links} component={ScrollArea}>
                     {role !== "DIR_PLANIFICACION" ? (
-                        <AppNavbar role="DIR_GESTION" />
+                        <AppNavbar
+                            role="DIR_GESTION"
+                            toggleMobile={toggleMobile}
+                        />
                     ) : (
-                        <AppNavplan />
+                        <AppNavplan toggleMobile={toggleMobile} />
                     )}
-                    {/* TODO: Realizar condicional para que se cargue el Navbar de Planificacion */}
                 </AppShell.Section>
-                <AppShell.Section>
+                {/* <AppShell.Section>
                     <AppNavfooter />
-                </AppShell.Section>
+                </AppShell.Section> */}
             </AppShell.Navbar>
             <AppShell.Main>{children}</AppShell.Main>
         </AppShell>

@@ -12,7 +12,7 @@ import {
 import { IconArrowLeft } from "@tabler/icons-react";
 import { useUserChangePwdFormContext } from "../../context";
 
-import classes from "./UserModule/ChangePwd.module.css";
+import classes from "../../assets/styles/layout/UsersModules/ChangePwd.module.css";
 
 
 export const ChangePwdForm = () => {
@@ -30,7 +30,7 @@ export const ChangePwdForm = () => {
             component="form"
             onSubmit={form.onSubmit((_, e) => handleSubmit(e))}
         >
-            <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
+            <Paper withBorder shadow="md" p={30} radius="lg" mt="xl">
                 <Stack>
                     <PasswordInput
                         label="Digita tu nueva contraseña"

@@ -1,103 +1,133 @@
 import { useMemo } from "react";
-import { ActionIcon, Card, Group, Text, Menu, rem } from "@mantine/core";
+import {
+    Group,
+    Menu,
+    rem,
+    UnstyledButton,
+    Spoiler,
+    ActionIcon,
+} from "@mantine/core";
 import { useMantineReactTable, MantineReactTable } from "mantine-react-table";
 import {
-    IconDiscountCheckFilled,
     IconEditCircle,
-    IconInfoOctagon,
+    IconEye,
     IconPencilStar,
-    IconProgressAlert,
     IconTrash,
 } from "@tabler/icons-react";
+import { TextSection } from "../../../elements/titles/TextSection";
+import { ProgressProyecto } from "../../proyecto/table/ProgressProyecto";
 
 const data = [
     {
-        nombre_actividad: "Nombre de actividad 1 de gestion de TIC",
+        id: 1,
+        nombre_actividad: "Capacitaciones mediante Plataforma Moodle",
         ponderacion: 5,
-        status_id: 1,
+        estado_id: 1,
+        tipo_actividad: "Operativa",
+        estado: "Inicial",
         proyecto_id: "Proyecto numero 1 de GTIC",
+        presupuesto: "20.000",
+        progress: 20,
     },
     {
-        nombre_actividad: "Nombre de actividad 2 de Gestion de TIC",
+        id: 2,
+        nombre_actividad:
+            "Capacitaciones presenciales para usuarios externos e internos",
         ponderacion: 20,
-        status_id: 2,
+        estado_id: 2,
+        tipo_actividad: "Presupuestaria",
+        estado: "En Progreso",
         proyecto_id: "Proyecto numero 2 de GTIC",
+        presupuesto: "17.850",
+        progress: 80,
     },
     {
-        nombre_actividad: "Nombre de actividad 2 de Gestion de TIC",
+        id: 3,
+        nombre_actividad:
+            "Adquisicion de herramientas, partes y piezas e insumos para mantenimiento de equipos de computo",
         ponderacion: 10,
-        status_id: 1,
+        estado_id: 2,
+        tipo_actividad: "Presupuestaria",
+        estado: "En Progreso",
         proyecto_id: "Proyecto numero 2 de GTIC",
-    },
-    {
-        nombre_actividad: "Nombre de actividad 2 de Gestion de TIC",
-        ponderacion: 10,
-        status_id: 3,
-        proyecto_id: "Proyecto numero 2 de GTIC",
-    },
-    {
-        nombre_actividad: "Nombre de actividad 2 de Gestion de TIC",
-        ponderacion: 20,
-        status_id: 2,
-        proyecto_id: "Proyecto numero 2 de GTIC",
+        presupuesto: "37.850",
+        progress: 15,
     },
 ];
 
-const stats = [
-    { title: "Planeado", value: "5" },
-    { title: "Ejecutado", value: "4" },
-];
-
-export const ActividadesTable = ({ classes }) => {
-
-    const items = stats.map((stat) => (
-        <div key={stat.title}>
-            <Text size="xs" c="dimmed">
-                {stat.title}
-            </Text>
-            <Text fw={500} size="sm">
-                {stat.value}
-            </Text>
-        </div>
-    ));
-
+export const ActividadesTable = (props) => {
     const columns = useMemo(
         () => [
+            /* {
+                accessorKey: "id", //access nested data with dot notation
+                header: "Ver",
+                Cell: ({ cell }) => (
+                    <ActionIcon
+                        size="lg"
+                        radius="lg"
+                        variant="transparent"
+                        color="gray"
+                        aria-label="Settings"
+                    >
+                        <IconEye
+                            style={{ width: "100%", height: "80%" }}
+                            stroke={2}
+                        />
+                    </ActionIcon>
+                ),
+                size: 20,
+            }, */
             {
-                accessorKey: "nombre_actividad", //access nested data with dot notation
+                accessorFn: (row) =>
+                    row.nombre_actividad.length > 60 ? (
+                        <Spoiler
+                            maxHeight={40}
+                            showLabel="Ver más"
+                            hideLabel="Ocultar"
+                        >
+                            <div style={{ cursor: "pointer" }} onClick={() => console.log("clic")}>
+                                {row.nombre_actividad}
+                            </div>
+                        </Spoiler>
+                    ) : (
+                        <div style={{ cursor: "pointer" }} onClick={() => console.log("clic")}>
+                            {row.nombre_actividad}
+                        </div>
+                    ),
                 header: "Nombre de actividad",
+            },
+            {
+                accessorKey: "tipo_actividad", //access nested data with dot notation
+                header: "Tipo Actividad",
             },
             {
                 accessorKey: "ponderacion", //access nested data with dot notation
                 header: "Ponderación",
             },
             {
-                accessorKey: "status_id", //normal accessorKey
+                accessorKey: "presupuesto", //access nested data with dot notation
+                header: "Presupuesto",
+            },
+            {
+                accessorKey: "progress",
+                header: "Progreso",
+                Cell: ({ cell }) => (
+                    <ProgressProyecto cell={cell} classes={props} />
+                ),
+            },
+            {
+                accessorKey: "estado", //normal accessorKey
                 header: "Estado",
                 Cell: ({ cell }) => (
-                    <>
-                        <ActionIcon
-                            radius="xl"
-                            variant="light"
-                            onClick={(e) => console.log("clic")}
-                            color={
-                                cell.row.original.status_id === 1
-                                    ? "teal"
-                                    : cell.row.original.status_id === 2
-                                    ? "orange"
-                                    : "indigo"
-                            }
-                        >
-                            {cell.row.original.status_id === 1 ? (
-                                <IconInfoOctagon />
-                            ) : cell.row.original.status_id === 2 ? (
-                                <IconProgressAlert />
-                            ) : (
-                                <IconDiscountCheckFilled />
-                            )}
-                        </ActionIcon>
-                    </>
+                    <UnstyledButton
+                        onDoubleClick={() => console.log("double clic")}
+                    >
+                        <TextSection fz={12} fw={500}>
+                            {cell.row.original.estado}
+                        </TextSection>
+                    </UnstyledButton>
                 ),
+                filterVariant: "autocomplete",
             },
         ],
         []
@@ -108,42 +138,7 @@ export const ActividadesTable = ({ classes }) => {
         data, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
         enableFacetedValues: true,
         enableRowActions: true,
-        renderDetailPanel: ({ row }) => (
-            <Group grow>
-                <Card withBorder padding="lg" className={classes.card}>
-                    <Text fz="sm" mb={10} fw={700} className={classes.title}>
-                        Primer Trimestre (I)
-                    </Text>
-                    <Card.Section className={classes.footer}>
-                        {items}
-                    </Card.Section>
-                </Card>
-                <Card withBorder padding="lg" className={classes.card}>
-                    <Text fz="sm" mb={10} fw={700} className={classes.title}>
-                        Segundo Trimestre (II)
-                    </Text>
-                    <Card.Section className={classes.footer}>
-                        {items}
-                    </Card.Section>
-                </Card>
-                <Card withBorder padding="lg" className={classes.card}>
-                    <Text fz="sm" mb={10} fw={700} className={classes.title}>
-                        Tercer Trimestre (III)
-                    </Text>
-                    <Card.Section className={classes.footer}>
-                        {items}
-                    </Card.Section>
-                </Card>
-                <Card withBorder padding="lg" className={classes.card}>
-                    <Text fz="sm" mb={10} fw={700} className={classes.title}>
-                        Cuarto Trimestre (IV)
-                    </Text>
-                    <Card.Section className={classes.footer}>
-                        {items}
-                    </Card.Section>
-                </Card>
-            </Group>
-        ),
+        defaultColumn: { minSize: 60, maxSize: 1000, size: 200 },
         renderRowActionMenuItems: ({ row }) => (
             <>
                 <Menu.Item
@@ -178,9 +173,21 @@ export const ActividadesTable = ({ classes }) => {
                 </Menu.Item>
             </>
         ),
+        mantineTableBodyCellProps: ({ column, cell }) => ({
+            style:
+                column.id === "estado"
+                    ? {
+                          backgroundColor:
+                              cell.row.original.estado_id === 1
+                                  ? "teal"
+                                  : cell.row.original.estado_id === 2
+                                  ? "orange"
+                                  : "indigo",
+                          color: "white",
+                      }
+                    : {},
+        }),
     });
 
-    return (
-        <MantineReactTable table={table} />
-    );
+    return <MantineReactTable table={table} />;
 };

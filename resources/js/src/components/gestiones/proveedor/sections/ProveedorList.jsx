@@ -1,47 +1,13 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { MantineReactTable, useMantineReactTable } from "mantine-react-table";
+import { MenuTableEdit, TextSection } from "../../../../components";
 import { IconCheck } from "@tabler/icons-react";
-import { MenuTable } from "../../../elements/tables/MenuTable";
+import { useProveedorStore, useUiProveedor } from "../../../../hooks";
 
-const contactos = [
-    {
-        id: 1,
-        nombre_proveedor: "Protelcotelsa",
-        ruc: "0802704171",
-        numero: "0939242242",
-        departamento_id: 1,
-    },
-    {
-        id: 1,
-        nombre_proveedor: "Banecuador",
-        ruc: "0802704444",
-        numero: "0939242242",
-        departamento_id: 1,
-    },
-    {
-        id: 1,
-        nombre_proveedor: "Mercado Libre",
-        ruc: "0802704656",
-        numero: "0939242242",
-        departamento_id: 1,
-    },
-    {
-        id: 1,
-        nombre_proveedor: "Ecodep",
-        ruc: "080270417655",
-        numero: "0939242242",
-        departamento_id: 1,
-    },
-    {
-        id: 1,
-        nombre_proveedor: "Petroecuador",
-        ruc: "080270417335",
-        numero: "093924277",
-        departamento_id: 1,
-    },
-];
 
 export const ProveedorList = () => {
+    const { isLoading, proveedores, setActivateProveedor, startDeleteProveedor } = useProveedorStore();
+    const { modalActionProveedor } = useUiProveedor();
     const columns = useMemo(
         () => [
             {
@@ -52,7 +18,7 @@ export const ProveedorList = () => {
             },
             {
                 header: "Nombre Proveedor",
-                accessorKey: "nombre_proveedor",
+                accessorFn: (row) => <TextSection fz={14} fw={700}>{row.nombre_proveedor}</TextSection>,
                 enableGrouping: false, //do not let this column be grouped
             },
             {
@@ -62,23 +28,34 @@ export const ProveedorList = () => {
             },
             {
                 header: "Número de teléfono",
-                accessorKey: "numero",
+                accessorKey: "telefono",
                 enableGrouping: false, //do not let this column be grouped
             },
         ],
         []
     );
 
+    const handleEditar = useCallback((selected) => {
+        setActivateProveedor(selected);
+        modalActionProveedor(1);
+    }, []);
+
+    const handleEliminar = useCallback((selected) => {
+        setActivateProveedor(selected);
+        startDeleteProveedor(selected);
+    }, []);
+
     const table = useMantineReactTable({
         columns,
-        data: contactos,
+        data: proveedores,
+        state: { showProgressBars: isLoading },
         enableRowActions: true,
         enableGrouping: true,
         enableStickyHeader: true,
         enableStickyFooter: true,
         globalFilterFn: 'contains',
         renderRowActionMenuItems: ({ row }) => (
-            <MenuTable />
+            <MenuTableEdit row={row} handleEditar={handleEditar} />
         ),
         initialState: {
             density: "xs",

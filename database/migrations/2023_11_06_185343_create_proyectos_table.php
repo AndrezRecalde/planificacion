@@ -15,30 +15,36 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_proyecto');
             $table->string('codigo_proyecto')->nullable();
-            $table->unsignedInteger('programa_id');
-            $table->unsignedInteger('nivel_id');
-            $table->double('ponderacion')->default(0);
+            $table->unsignedBigInteger('programa_id');
+            $table->unsignedBigInteger('nivel_id');
+            $table->double('ponderacion', 4, 2)->default(0);
             $table->string('linea_base');
             $table->string('meta_detalle');
-            $table->unsignedInteger('tipounidad_id');
+            $table->unsignedBigInteger('tipounidad_id');
             $table->integer('indicador_detalle');
             $table->unsignedInteger('tiempo_meses');
             $table->year('anio_fiscal');
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');
-            $table->unsignedInteger('departamento_id');
-
-            //$table->boolean('presupuestario')->default(0);
-            $table->unsignedInteger('tipoproyecto_id');
+            $table->unsignedBigInteger('departamento_id');
+            $table->unsignedBigInteger('tipoproyecto_id');
+            $table->boolean('activo')->default(true);
             //$table->unsignedInteger('partidapresupuestaria_id')->nullable(); // Consumir API GOLANG o .NET
-
-            // Realizarlo de N:M
-            /* $table->string('latitud');
-            $table->string('longitud'); */
-
-            $table->boolean('activo');  //TODO
-
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('programa_id')->references('id')->on('planificaciontipos')->onDelete('cascade');
+            $table->foreign('nivel_id')->references('id')->on('niveles')->onDelete('cascade');
+            $table->foreign('tipounidad_id')->references('id')->on('tipounidades')->onDelete('cascade');
+            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
+            $table->foreign('tipoproyecto_id')->references('id')->on('tipoproyectos')->onDelete('cascade');
+
+            // Añadir índices para mejorar el rendimiento de consultas
+            $table->index('programa_id');
+            $table->index('nivel_id');
+            $table->index('tipounidad_id');
+            $table->index('departamento_id');
+            $table->index('tipoproyecto_id');
         });
     }
 

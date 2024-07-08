@@ -1,12 +1,12 @@
-import { IconLogout, IconSwitchHorizontal } from "@tabler/icons-react";
+import { IconChevronsLeft } from "@tabler/icons-react";
 
-import classes from "./NavbarModule/AppNavplan.module.css";
+import classes from "../../../assets/styles/layout/NavbarModule/AppNavplan.module.css";
 
 
 export const AppNavfooter = () => {
     return (
         <div className={classes.footer}>
-            <a
+           {/*  <a
                 href="#"
                 className={classes.link}
                 onClick={(event) => event.preventDefault()}
@@ -16,14 +16,14 @@ export const AppNavfooter = () => {
                     stroke={1.5}
                 />
                 <span>Change account</span>
-            </a>
+            </a> */}
 
             <a
                 href="#"
                 className={classes.link}
                 onClick={(event) => event.preventDefault()}
             >
-                <IconLogout className={classes.linkIcon} stroke={1.5} />
+                <IconChevronsLeft className={classes.linkIcon} stroke={1.5} />
                 <span>Logout</span>
             </a>
         </div>

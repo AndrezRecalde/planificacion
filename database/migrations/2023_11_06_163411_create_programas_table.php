@@ -15,10 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_programa');
             $table->string('codigo_programa')->nullable();
-            $table->unsignedInteger('planificaciontipo_id');
-            $table->unsignedInteger('objetivo_id');
-            $table->boolean('activo')->default(1);
+            $table->unsignedBigInteger('planificaciontipo_id');
+            $table->unsignedBigInteger('objetivo_id');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('planificaciontipo_id')->references('id')->on('planificaciontipos')->onDelete('cascade');
+            $table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete('cascade');
+
+            // Añadir índices para mejorar el rendimiento de consultas
+            $table->index('planificaciontipo_id');
+            $table->index('objetivo_id');
         });
     }
 

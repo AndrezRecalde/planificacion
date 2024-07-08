@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gobierno_eje', function (Blueprint $table) {
-            $table->unsignedInteger('gobierno_id');
-            $table->unsignedInteger('eje_id');
+            $table->unsignedBigInteger('gobierno_id');
+            $table->unsignedBigInteger('eje_id');
+            $table->primary(['gobierno_id', 'eje_id']);
+
+            // Definir relaciones foráneas
+            $table->foreign('gobierno_id')->references('id')->on('gobiernos')->onDelete('cascade');
+            $table->foreign('eje_id')->references('id')->on('ejes')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('gobierno_id');
+            $table->index('eje_id');
         });
     }
 

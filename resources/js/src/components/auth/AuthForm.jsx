@@ -6,6 +6,7 @@ import {
     Group,
     LoadingOverlay,
     PasswordInput,
+    PinInput,
     Stack,
     TextInput,
 } from "@mantine/core";
@@ -13,6 +14,7 @@ import { AlertSection, BtnSubmit } from "../../components";
 import { IconChevronsRight, IconInfoCircle } from "@tabler/icons-react";
 import { useAuthStore } from "../../hooks/auth/useAuthStore";
 import { useForm } from "@mantine/form";
+import { APP_WORDS } from "../../helpers";
 
 export const AuthForm = () => {
     const { startLogin, isLoading, validate, errores } = useAuthStore();
@@ -23,7 +25,7 @@ export const AuthForm = () => {
             password: "",
             remember: true,
         },
-/*         validate: {
+        /*         validate: {
             dni: isNotEmpty("Por favor digite el DNI"),
             password: isNotEmpty("Por favor digite la contraseña"),
         } */
@@ -57,13 +59,13 @@ export const AuthForm = () => {
             />
             <Stack>
                 <TextInput
-                    label="Cédula"
-                    placeholder="Digite su cédula"
+                    label={APP_WORDS.LOGIN_DNI_TEXT}
+                    placeholder={APP_WORDS.LOGIN_PLACEHOLDER_DNI}
                     {...form.getInputProps("dni")}
                 />
                 <PasswordInput
-                    label="Contraseña"
-                    placeholder="Tu contraseña"
+                    label={APP_WORDS.LOGIN_PWD_TEXT}
+                    placeholder={APP_WORDS.LOGIN_PLACEHOLDER_PWD}
                     {...form.getInputProps("password")}
                 />
                 {errores ? (
@@ -78,13 +80,21 @@ export const AuthForm = () => {
                 <Group justify="space-between" mt="lg">
                     <Checkbox
                         label="Remember me"
-                        {...form.getInputProps("remember", { type: 'checkbox' })}
+                        {...form.getInputProps("remember", {
+                            type: "checkbox",
+                        })}
                     />
                     <Anchor component="button" size="sm">
                         ¿Olvidó su contraseña?
                     </Anchor>
                 </Group>
-                <BtnSubmit text="Acceder" IconSection={IconChevronsRight} />
+                <BtnSubmit
+                    heigh={50}
+                    text="Acceder"
+                    IconSection={IconChevronsRight}
+                >
+                    {APP_WORDS.ACCEDER}
+                </BtnSubmit>
             </Stack>
         </Box>
     );

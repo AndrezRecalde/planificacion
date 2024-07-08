@@ -1,12 +1,12 @@
 import {
     IconArrowsRightLeft,
+    IconBrandTrello,
     IconCategoryPlus,
     IconChartPie,
     IconCheckupList,
     IconFiles,
     IconFolders,
     IconListCheck,
-    IconListTree,
     IconNews,
     IconTrendingUp,
     IconUsers,
@@ -111,11 +111,13 @@ export const lGestiones = [
     {
         label: "Dashboard",
         icon: IconChartPie,
+        initiallyOpened: true,
         links: [{ label: "Inicio", link: "/stats/gestion" }],
     },
     {
         label: "Proveedores",
         icon: IconUsers,
+        initiallyOpened: true,
         links: [{ label: "Ver proveedores", link: "/proveedores" }],
     },
     {
@@ -127,12 +129,14 @@ export const lGestiones = [
     {
         label: "Proyectos",
         icon: IconFiles,
+        initiallyOpened: true,
         links: [{ label: "Ver proyectos", link: "/proyectos" }],
     },
     {
-        label: "Actividades",
-        icon: IconListTree,
-        links: [{ label: "Ver actividades", link: "/actividades" }],
+        label: "Tableros",
+        icon: IconBrandTrello,
+        initiallyOpened: true,
+        links: [{ label: "Ver mis tableros", link: "/tableros" }],
     },
 ];
 

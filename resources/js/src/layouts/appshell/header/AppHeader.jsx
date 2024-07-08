@@ -1,7 +1,7 @@
 import { Burger, Group } from "@mantine/core";
-import { BtnSearch, UserBtnHeader } from "../../../components";
+import { BtnCombobox, BtnSearch, UserBtnHeader } from "../../../components";
 import { Logo, BtnDarkMode } from "../../../components";
-import classes from "./AppHeaderModules/AppHeader.module.css";
+import classes from "../../../assets/styles/layout/AppHeaderModules/AppHeader.module.css";
 
 export const AppHeader = ({
     mobileOpened,
@@ -12,7 +12,6 @@ export const AppHeader = ({
     return (
         <Group h="100%" px="md" justify="space-between">
             <Group>
-                <Logo height={50} width={200} />
                 <Burger
                     opened={mobileOpened}
                     onClick={toggleMobile}
@@ -25,6 +24,8 @@ export const AppHeader = ({
                     visibleFrom="sm"
                     size="sm"
                 />
+                {/* <Logo height={50} width={200} /> */}
+                <BtnCombobox />
             </Group>
 
             <Group>

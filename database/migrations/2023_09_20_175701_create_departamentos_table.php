@@ -16,10 +16,19 @@ return new class extends Migration
             $table->string('nombre_departamento');
             $table->string('siglas', 10)->unique();
             $table->string('extension', 60);
-            $table->unsignedInteger('institucion_id');
-            $table->unsignedInteger('acronimo_id');
-            $table->boolean('activo')->default(0);
+            $table->unsignedBigInteger('institucion_id');
+            $table->unsignedBigInteger('acronimo_id');
+            $table->boolean('activo')->default(false);
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('institucion_id')->references('id')->on('instituciones')->onDelete('cascade');
+            $table->foreign('acronimo_id')->references('id')->on('acronimos')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('institucion_id');
+            $table->index('acronimo_id');
+
         });
     }
 

@@ -1,0 +1,35 @@
+.wrapper {
+    background-image: url('https://prefecturadeesmeraldas.gob.ec/wp-content/uploads/2024/07/background_login.png');
+    background-size: cover; /* La imagen cubre todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh; /* Asegura que el contenedor tenga al menos el alto de la ventana */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+
+.wrapper_paper {
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 450px; /* 450px es aproximadamente 28.125rem si 1rem = 16px */
+
+    /* Ajuste para pantallas medianas */
+    @media (min-width: 350px) {
+      max-width: 350px; /* 350px es aproximadamente 21.875rem si 1rem = 16px */
+    }
+
+    /* Ajuste para pantallas más grandes */
+    @media (min-width: 470px) {
+      max-width: 470px; /* 470px es aproximadamente 29.375rem si 1rem = 16px */
+    }
+}
+
+.title {
+    margin-top: auto;
+    font-family: var(--mantine-font-family);
+    font-weight: 900;
+}

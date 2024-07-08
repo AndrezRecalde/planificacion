@@ -32,12 +32,13 @@ use App\Http\Controllers\General\PlanificaciontipoController;
 use App\Http\Controllers\General\ProgramaController;
 use App\Http\Controllers\General\ProveedorController;
 use App\Http\Controllers\General\ProyectoController;
-use App\Http\Controllers\General\StatusController;
 use App\Http\Controllers\General\TableroController;
 use App\Http\Controllers\General\TipoActividadController;
 use App\Http\Controllers\General\TipoproyectoController;
 use App\Http\Controllers\general\TipoUnidadController;
+use App\Http\Controllers\General\TrimestreController;
 use App\Http\Controllers\General\UserController;
+use App\Models\Trimestre;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -211,7 +212,10 @@ Route::group(
         Route::delete('/delete/programa/{id}', [ProgramaController::class, 'destroy']);
 
         /* ADMIN: TABLEROS */
-        Route::post('/delete/tablero/{id}', [TableroController::class, 'destroy']);
+        Route::delete('/delete/tablero/{id}', [TableroController::class, 'destroy']);
+
+        /* ADMIN: TRIMESTRES */
+        Route::delete('/delete/trimestre/{id}', [TrimestreController::class, 'destroy']);
     }
 );
 
@@ -242,12 +246,6 @@ Route::group([
     Route::post('/store/proyecto', [ProyectoController::class, 'store']);
     Route::put('/update/proyecto', [ProyectoController::class, 'update']);
 
-
-    /* GENERAL: STATUS PARA LOS TABLEROS */
-    Route::get('/status', [StatusController::class, 'getStatusForTablero']);
-    Route::post('/store/status', [StatusController::class, 'store']);
-    Route::post('/update/status/{id}', [StatusController::class, 'update']);
-    Route::delete('/delete/status/{id}', [StatusController::class, 'destroy']);
 });
 
 
@@ -381,6 +379,12 @@ Route::group([
     Route::post('/tableros', [TableroController::class, 'getTableros']);
     Route::post('/store/tablero', [TableroController::class, 'store']);
     Route::post('/update/tablero/{id}', [TableroController::class, 'update']);
+
+    /* PLANIFICACION: TRIMESTRES */
+    Route::get('/trimestres', [TrimestreController::class, 'getTrimestres']);
+    Route::post('/store/trimestre', [TrimestreController::class, 'store']);
+    Route::put('/update/trimestre/{id}', [TrimestreController::class, 'update']);
+    Route::put('/update/status/trimestre/{id}', [TrimestreController::class, 'updateStatus']);
 
 
 });

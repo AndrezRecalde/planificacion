@@ -16,8 +16,14 @@ return new class extends Migration
             $table->double('programado');
             $table->double('devengado');
             $table->double('pagado');
-            $table->unsignedInteger('actividad_id');
+            $table->unsignedBigInteger('actividad_id');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('actividad_id')->references('id')->on('actividades')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('actividad_id');
         });
     }
 

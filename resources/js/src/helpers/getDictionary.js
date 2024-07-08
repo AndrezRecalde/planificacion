@@ -1,0 +1,79 @@
+export const ROLES = {
+    ADMIN: "ADMIN",
+    DIR_PLANIFICACION: "DIR_PLANIFICACION",
+    DIR_GESTION: "DIR_GESTION"
+}
+
+export const PREFIX_ROUTES = {
+    ADMIN: "admin",
+    GENERAL: "general",
+    PLANIFICACION: "planificacion",
+};
+
+export const API_URL_ROUTES = {
+    LOGIN: "/auth/login",
+    REFRESH_TOKEN: "/refresh",
+    PROFILE: "/profile",
+    LOGOUT: "/auth/logout",
+
+    /** PROVEEDORES */
+    GET_PROVEEDORES: "/proveedores",
+    STORE_PROVEEDOR: "/store/proveedor",
+    UPDATE_PROVEEDOR: "/update/proveedor",
+    DELETE_PROVEEDOR: "/delete/proveedor",
+
+    /** PROYECTOS */
+    GET_PROYECTOS: "/proyectos",
+    STORE_PROYECTO: "/store/proyecto",
+    UPDATE_PROYECTO: "/update/proyecto",
+    DELETE_PROYECTO: "/delete/proyecto",
+};
+
+export const BTN_TITLES = {
+    BTN_SAVE: "Guardar",
+    BTN_EDIT: "Editar",
+    BTN_SEARCH: "Buscar",
+
+    /* PROVEEDORES */
+    PROVEEDOR_BTN_MODAL: "Agregar Proveedor",
+
+    /* PROGRAMAS */
+    PROGRAMA_SOLI_MODAL: "Solicitar Programa",
+
+    /* PROYECTOS */
+
+
+
+}
+
+export const APP_WORDS = {
+
+    /* AUTHENTICACION */
+    ACCEDER: "Acceder",
+    LOGIN_TITLE: "Inicial sesión",
+    LOGIN_DNI_TEXT: "Cédula",
+    LOGIN_PLACEHOLDER_DNI: "Digite su cédula",
+    LOGIN_PWD_TEXT: "Contraseña",
+    LOGIN_PLACEHOLDER_PWD: "Tu contraseña",
+
+    /* PROVEEDOR */
+    PROVEEDOR_TITLE: "Proveedores",
+    PROVEEDOR_TITLE_MODAL: "Ficha Proveedor",
+
+    PROVEEDOR_TEXT_NAME: "Nombre del Proveedor",
+    PROVEEDOR_PLACEHOLDER_NAME: "Digite el nombre del proveedor",
+
+    PROVEEDOR_TEXT_RUC: "RUC",
+    PROVEEDOR_PLACEHOLDER_RUC: "Digite el RUC",
+
+    PROVEEDOR_TEXT_TELEFONO: "Teléfono",
+    PROVEEDOR_PLACEHOLDER_TELEFONO: "Digite el teléfono",
+
+
+    /* PROGRAMA */
+    PROGRAMA_TITLE: "Programas",
+
+    /* PROYECTO */
+    PROYECTO_ADD_MENU: "Agregar proyecto",
+    PROYECTO_TITLE_MODAL: "Ficha Proyecto",
+}

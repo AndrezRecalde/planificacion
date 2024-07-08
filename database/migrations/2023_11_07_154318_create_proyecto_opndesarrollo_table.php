@@ -13,9 +13,19 @@ return new class extends Migration
     {
         Schema::create('proyecto_opndesarrollo', function (Blueprint $table) {
             //$table->id();
-            $table->unsignedInteger('proyecto_id');
-            $table->unsignedInteger('opndesarrollo_id');
-           // $table->timestamps();
+            $table->unsignedBigInteger('proyecto_id');
+            $table->unsignedBigInteger('opndesarrollo_id');
+            $table->primary(['proyecto_id', 'opndesarrollo_id']);
+
+            // Definir relaciones foráneas
+            $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
+            $table->foreign('opndesarrollo_id')->references('id')->on('opndesarrollos')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('proyecto_id');
+            $table->index('opndesarrollo_id');
+
+            // $table->timestamps();
         });
     }
 

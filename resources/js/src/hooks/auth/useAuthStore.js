@@ -12,7 +12,7 @@ import planningApi from "../../api/planningApi";
 import { useErrorException } from "../../hooks";
 
 export const useAuthStore = () => {
-    const { isLoading, user, profile, validate, errores } = useSelector(
+    const { isLoading, user, token, profile, validate, errores } = useSelector(
         (state) => state.auth
     );
     const { ExceptionMessageError } = useErrorException(onLoadErrores);
@@ -45,7 +45,7 @@ export const useAuthStore = () => {
     };
 
     const checkAuthToken = async () => {
-        const token = localStorage.getItem("auth_token");
+        //const token = localStorage.getItem("auth_token");
         if (!token) return dispatch(onLogout());
 
         try {

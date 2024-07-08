@@ -5,8 +5,8 @@ import classes from "./assets/styles/Container.module.css";
 export const themeOrverride = createTheme({
   /* Put your mantine theme override here */
   //fontFamilyMonospace: 'Monaco, Courier, monospace',
-  fontFamily: 'Greycliff CF, sans-serif',
-  //headings: { fontFamily: 'Greycliff CF, sans-serif' },
+  fontFamily: 'Poppins, Greycliff CF, sans-serif',
+  headings: { fontFamily: 'Poppins, Greycliff CF, sans-serif' },
   primaryColor: 'indigo',
   components: {
     Container: Container.extend({

@@ -1,8 +1,4 @@
-import {
-    Fieldset,
-    SimpleGrid,
-    Text,
-} from "@mantine/core";
+import { Fieldset, SimpleGrid, Text } from "@mantine/core";
 import { YearPickerInput } from "@mantine/dates";
 import { BtnSubmit, DataCombobox } from "../../../../components";
 import { IconSearch } from "@tabler/icons-react";
@@ -14,12 +10,9 @@ export const FilterFormProyectos = () => {
                 <DataCombobox />
                 <YearPickerInput label="Año" placeholder="Elige el año" />
             </SimpleGrid>
-            <BtnSubmit
-                text="Buscar"
-                IconSection={IconSearch}
-                heigh={40}
-                fontSize={16}
-            />
+            <BtnSubmit IconSection={IconSearch} fontSize={16}>
+                Buscar{" "}
+            </BtnSubmit>
         </Fieldset>
     );
 };

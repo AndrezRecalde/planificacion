@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cotpdots', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_categoria');
-            $table->boolean('activo')->default(0);
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

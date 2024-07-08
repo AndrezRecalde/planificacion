@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useMantineTheme } from "@mantine/core";
 import { useMantineReactTable, MantineReactTable } from "mantine-react-table";
-import { MenuTable } from "../../../../components";
+import { MenuTableEdit } from "../../../../components";
 
 const objetivos = [
     {
@@ -54,7 +54,7 @@ export const ObjetivosTable = () => {
         data: objetivos, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
         enableFacetedValues: true,
         enableRowActions: true,
-        renderRowActionMenuItems: ({ row }) => <MenuTable />,
+        renderRowActionMenuItems: ({ row }) => <MenuTableEdit />,
         mantineTableBodyCellProps: {
             style: {
                 fontSize: "11px", //add a border between columns

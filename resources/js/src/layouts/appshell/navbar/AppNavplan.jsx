@@ -2,14 +2,13 @@ import { useState } from "react";
 import { SegmentedControl } from "@mantine/core";
 import { LinksGroup } from "./NavbarLinksGroup";
 import { lPlanificacion } from "./navlinks/navLinks";
-import classes from "./NavbarModule/AppNavplan.module.css";
+import classes from "../../../assets/styles/layout/NavbarModule/AppNavplan.module.css";
 
-
-export const AppNavplan = () => {
+export const AppNavplan = ({ toggleMobile }) => {
     const [section, setSection] = useState("gestion");
 
     const links = lPlanificacion[section].map((item) => (
-        <LinksGroup {...item} key={item.label} />
+        <LinksGroup {...item} key={item.label} toggleMobile={toggleMobile} />
     ));
 
     return (
@@ -29,7 +28,6 @@ export const AppNavplan = () => {
             </div>
 
             <div className={classes.navbarMain}>{links}</div>
-
         </nav>
     );
 };

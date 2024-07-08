@@ -14,8 +14,15 @@ return new class extends Migration
         Schema::create('metapdots', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_meta');
-            $table->unsignedInteger('earticulacion_id');
+            $table->unsignedBigInteger('earticulacion_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('earticulacion_id')->references('id')->on('earticulaciones')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('earticulacion_id');
         });
     }
 

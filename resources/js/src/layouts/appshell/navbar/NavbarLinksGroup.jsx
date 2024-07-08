@@ -9,19 +9,27 @@ import {
     rem,
 } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons-react";
-import classes from "./NavbarModule/NavbarLinksGroup.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import classes from "../../../assets/styles/layout/NavbarModule/NavbarLinksGroup.module.css";
 
-export const LinksGroup = ({ icon: Icon, label, initiallyOpened, links }) => {
+
+export const LinksGroup = ({ icon: Icon, label, initiallyOpened, links, toggleMobile }) => {
     const hasLinks = Array.isArray(links);
     const [opened, setOpened] = useState(initiallyOpened || false);
+    const location = useLocation();
+
+    const isActive = (link) => {
+        return location.pathname === link;
+    }
+
     const items = (hasLinks ? links : []).map((link) => (
         <Text
             component={Link}
-            className={classes.link}
+            className={`${classes.link} ${isActive(link.link) ? classes.linkActive : ''}`}
             to={link.link}
             key={link.label}
             //onClick={(event) => event.preventDefault()}
+            onClick={toggleMobile}
         >
             {link.label}
         </Text>
@@ -36,12 +44,12 @@ export const LinksGroup = ({ icon: Icon, label, initiallyOpened, links }) => {
                 <Group justify="space-between" gap={0}>
                     <Box style={{ display: "flex", alignItems: "center" }}>
                         <ThemeIcon
-                            variant="light"
-                            color="indigo.5"
-                            radius="md"
+                            variant="default"
+                            color="indigo.7"
+                            radius="lg"
                             size="lg"
                         >
-                            <Icon size="1.1rem" stroke={2.2} />
+                            <Icon size="1.2rem" stroke={1.7} />
                         </ThemeIcon>
                         <Box ml="md">{label}</Box>
                     </Box>

@@ -16,10 +16,16 @@ return new class extends Migration
             $table->year('inicio_periodo');
             $table->year('fin_periodo');
             $table->string('maxima_autoridad');
-            $table->boolean('activo')->default(0);
-            $table->unsignedInteger('institucion_id');
+            $table->boolean('activo')->default(false);
+            $table->unsignedBigInteger('institucion_id');
             $table->string('logo_url');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('institucion_id')->references('id')->on('instituciones')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('institucion_id');
         });
     }
 

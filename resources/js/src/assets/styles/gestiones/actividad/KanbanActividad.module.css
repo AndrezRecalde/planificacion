@@ -1,0 +1,38 @@
+.kanbanContainer {
+    padding: 20px 0;
+}
+
+.kanbanColumn {
+    flex: 0 0 300px;
+    padding: 10px;
+    min-height: 80vh;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; */
+}
+
+.kanbanColumn:last-child {
+    margin-right: 0;
+}
+
+.kanbanColumnTitle {
+    margin-bottom: 16px;
+}
+
+.kanbanTask {
+    margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    /* background-color: #fafafa; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.kanbanTask:hover {
+    transform: scale(1.05);
+}
+
+.addColumn {
+    margin-top: 20px;
+    text-align: center;
+}

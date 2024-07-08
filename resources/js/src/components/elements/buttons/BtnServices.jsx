@@ -31,7 +31,7 @@ export const BtnServicesApps = () => {
 };
 
 export const BtnSubmit = ({
-    text,
+    children,
     fullwidth = true,
     heigh = 45,
     fontSize = 18,
@@ -53,14 +53,18 @@ export const BtnSubmit = ({
                 },
             }}
         >
-            {text}
+            {children}
         </Button>
     );
 };
 
 export const BtnSection = ({
+    handleAction,
     heigh = 35,
     fontSize = 14,
+    variant = "light",
+    radius = "sm",
+    icon:Icon,
     mb = 0,
     mt = 0,
     children,
@@ -69,8 +73,11 @@ export const BtnSection = ({
         <Button
             mt={mt}
             mb={mb}
+            radius={radius}
             color="indigo.7"
-            variant="light"
+            variant={variant}
+            leftSection={<Icon color={"#4C6EF5"} />}
+            onClick={(e) => handleAction(e)}
             styles={{
                 root: {
                     "--button-height": rem(heigh),

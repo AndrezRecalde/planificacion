@@ -5,6 +5,7 @@ import { PublicRoutes } from "./public/PublicRoutes";
 import { PrivatePages, PrivateRoutes } from "./private";
 import { useAuthStore } from "../hooks";
 
+
 export const AppRouter = () => {
     const { checkAuthToken } = useAuthStore();
 

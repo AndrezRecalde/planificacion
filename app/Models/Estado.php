@@ -10,6 +10,7 @@ class Estado extends Model
 {
     use HasFactory;
 
+    //Iniciado, En Proceso, Finalizado
     protected $fillable = [
         'nombre_estado',
         'color'

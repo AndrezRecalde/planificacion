@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('linea_estrategica');
             $table->boolean('activo')->default(0);
-            $table->unsignedInteger('lineapdot_id');
+            $table->unsignedBigInteger('lineapdot_id');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('lineapdot_id')->references('id')->on('lineapdots')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('lineapdot_id');
         });
     }
 

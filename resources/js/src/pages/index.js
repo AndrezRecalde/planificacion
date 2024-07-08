@@ -10,9 +10,10 @@ import { ReformasPage } from "./financiero/ReformasPage";
 import { DashGestionesPage } from "./gestiones/dashboard/DashGestionesPage";
 import { ProgramasPage } from "./gestiones/programa/ProgramasPage";
 import { ProyectosPage } from "./gestiones/proyecto/ProyectosPage";
-import { ProyectoDetailPage } from "./gestiones/proyecto/ProyectoDetailPage";
 import { ProveedorPage } from "./gestiones/proveedor/ProveedorPage";
 import { ActividadesPage } from "./gestiones/actividades/ActividadesPage";
+import { ViewTablerosPage } from "./gestiones/tablero/ViewTablerosPage";
+import { KanbanActividadesPage } from "./gestiones/actividades/KanbanActividadesPage";
 
 /* PLANIFICACION */
 import { InstrumentosPage } from "./planificacion/instrumentos/InstrumentosPage";
@@ -33,9 +34,10 @@ export {
     DashGestionesPage,
     ProgramasPage,
     ProyectosPage,
-    ProyectoDetailPage,
     ProveedorPage,
     ActividadesPage,
+    ViewTablerosPage,
+    KanbanActividadesPage,
 
     /* Planificacion */
     InstrumentosPage,

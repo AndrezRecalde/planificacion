@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useMantineReactTable } from "mantine-react-table";
-import { BtnSection, MenuTable, ProgressProyecto, TableContent } from "../../../../components";
+import { MenuTableEdit, ProgressProyecto, TableContent } from "../../../../components";
 
 const data = [
     {
@@ -63,11 +63,11 @@ export const ProyectoTable = (props) => {
         enableFacetedValues: true,
         enableRowActions: true,
 
-        renderTopToolbarCustomActions: ({ table }) => (
-            <BtnSection>Nuevo Proyecto</BtnSection>
-        ),
+        /* renderTopToolbarCustomActions: ({ table }) => (
+            <BtnSection heigh={45} variant="light" icon={IconLibraryPlus}>Nuevo Proyecto</BtnSection>
+        ), */
         renderRowActionMenuItems: ({ row }) => (
-            <MenuTable />
+            <MenuTableEdit />
         ),
     });
 

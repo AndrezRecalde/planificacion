@@ -4,7 +4,6 @@ import {
     ProfilePage,
     ProgramasPage,
     ProveedorPage,
-    ProyectoDetailPage,
     ProyectosPage,
     ReformasPage,
     DashGestionesPage,
@@ -14,6 +13,8 @@ import {
     ObjetivosEstrategicosPage,
     ProgramasPlanPage,
     ConsolidadosPage,
+    ViewTablerosPage,
+    KanbanActividadesPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -32,14 +33,11 @@ export const PrivatePages = () => {
                 {/* Gestiones */}
                 <Route path="/stats/gestion" element={<DashGestionesPage />} />
                 <Route path="/proyectos" element={<ProyectosPage />} />
-                <Route
-                    path="/proyecto/detail/"
-                    element={<ProyectoDetailPage />}
-                />
                 <Route path="/proveedores" element={<ProveedorPage />} />
                 <Route path="/programas" element={<ProgramasPage />} />
                 <Route path="/actividades" element={<ActividadesPage />} />
-
+                <Route path="/tableros" element={<ViewTablerosPage />} />
+                <Route path="/tablero/5555" element={<KanbanActividadesPage />} />
 
                 {/* TODO: PARAMETRO */}
 

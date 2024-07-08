@@ -23,7 +23,11 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
-            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni')
+            ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni,
+                        i.id as institucion_id, i.nombre_institucion,
+                        d.id as departamento_id, d.nombre_departamento, d.siglas')
+            ->join('instituciones as i', 'i.id', 'u.institucion_id')
+            ->join('departamentos as d', 'd.id', 'u.departamento_id')
             ->where('u.dni', $dni)
             ->where('u.activo', 1)
             ->first();
@@ -39,7 +43,11 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
-            ->selectRaw('u.id, u.apellidos ,u.nombres, u.email, u.dni')
+            ->selectRaw('u.id, u.apellidos ,u.nombres, u.email, u.dni,
+                        i.id as institucion_id, i.nombre_institucion,
+                        d.id as departamento_id, d.nombre_departamento, d.siglas')
+            ->join('instituciones as i', 'i.id', 'u.institucion_id')
+            ->join('departamentos as d', 'd.id', 'u.departamento_id')
             ->where('u.id', Auth::user()->id)
             ->where('u.activo', 1)
             ->first();
@@ -54,9 +62,11 @@ class AuthRepository implements AuthInterface
                     return $query->select('roles.id', 'roles.name');
                 },
                 'administrativos' => function ($query) {
-                    return $query->select('administrativos.id',
-                                          'administrativos.inicio_periodo',
-                                          'administrativos.fin_periodo');
+                    return $query->select(
+                        'administrativos.id',
+                        'administrativos.inicio_periodo',
+                        'administrativos.fin_periodo'
+                    );
                 }
             ])
             ->join('instituciones as i', 'i.id', 'u.institucion_id')
@@ -64,7 +74,7 @@ class AuthRepository implements AuthInterface
             ->join('gads as gd', 'gd.id', 'i.gad_id')
             ->selectRaw('u.id, u.apellidos, u.nombres, u.email, u.dni,
                         i.nombre_institucion, i.telefono,
-                        gd.tipo_gad, d.nombre_departamento, d.extension')
+                        gd.tipo_gad, d.nombre_departamento, d.extension, d.siglas')
             ->where('u.id', Auth::user()->id)
             ->first();
 

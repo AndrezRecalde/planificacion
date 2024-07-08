@@ -14,9 +14,16 @@ return new class extends Migration
         Schema::create('oepeis', function (Blueprint $table) {
             $table->id();
             $table->string('objetivo_pei');
-            $table->boolean('activo')->default(1);
-            $table->unsignedInteger('institucion_id');
+            $table->boolean('activo')->default(true);
+            $table->unsignedBigInteger('institucion_id');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('institucion_id')->references('id')->on('instituciones')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('institucion_id');
         });
     }
 

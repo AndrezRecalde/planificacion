@@ -17,7 +17,7 @@ class Objetivo extends Model
         'lestrategiapdot_id',
         'competenciapdot_id',
         'componentepdot_id',
-        'gestionpdot_id',
+        'gestionpdot_id', //SE PUEDE REEMPLAZAR POR DEPARTAMENTO
         'oepdot_id',
         'earticulacion_id',
         'metapdot_id',

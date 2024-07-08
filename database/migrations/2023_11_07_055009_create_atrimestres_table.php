@@ -15,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->double('programado');
             $table->double('avance');
-            $table->unsignedInteger('actividad_id');
+            $table->unsignedBigInteger('actividad_id');
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('actividad_id')->references('id')->on('actividades')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('actividad_id');
         });
     }
 

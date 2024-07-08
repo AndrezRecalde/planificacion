@@ -7,15 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. PARA VALIDAR LOS RESPONSABLES DE CUMPLIMIENTO Y MEDICION
+     * Run the migrations. PARA VALIDAR LOS RESPONSABLES DE CUMPLIMIENTO OPERATIVO
      */
     public function up(): void
     {
         Schema::create('objetivo_departamento', function (Blueprint $table) {
             //$table->id();
-            $table->unsignedInteger('objetivo_id');
-            $table->unsignedInteger('departamento_id');
+            $table->unsignedBigInteger('objetivo_id');
+            $table->unsignedBigInteger('departamento_id');
             //$table->timestamps();
+
+            $table->primary(['objetivo_id', 'departamento_id']);
+
+             // Definir relaciones foráneas
+             $table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete('cascade');
+             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
         });
     }
 

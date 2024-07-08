@@ -14,9 +14,16 @@ return new class extends Migration
         Schema::create('competencias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_competencia');
-            $table->unsignedInteger('institucion_id');
-            $table->boolean('activo')->default(0);
+            $table->unsignedBigInteger('institucion_id');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
+
+            // Definir relaciones foráneas
+            $table->foreign('institucion_id')->references('id')->on('instituciones')->onDelete('cascade');
+
+
+            // Añadir índices
+            $table->index('institucion_id');
         });
     }
 

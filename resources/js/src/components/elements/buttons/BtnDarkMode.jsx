@@ -20,7 +20,7 @@ export const BtnDarkMode = ({ classes }) => {
                 )
             }
             size={34}
-            radius="md"
+            radius="lg"
             aria-label="Toggle color scheme"
         >
             <IconSunHigh

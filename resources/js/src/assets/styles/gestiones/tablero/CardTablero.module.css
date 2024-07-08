@@ -1,0 +1,27 @@
+.card {
+    background-color: var(--mantine-color-body);
+    margin-top: 20px;
+    cursor: pointer;
+    transition:
+        transform 150ms ease,
+        box-shadow 100ms ease;
+  padding: var(--mantine-spacing-xl);
+  padding-left: calc(var(--mantine-spacing-xl) * 2);
+
+    @mixin hover {
+        box-shadow: var(--mantine-shadow-md);
+        transform: scale(1.02);
+  }
+}
+
+  .title {
+    font-weight: bold;
+    font-family: var(--mantine-font-family);
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .body {
+    padding: var(--mantine-spacing-md);
+  }

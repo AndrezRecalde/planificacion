@@ -12,9 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('proyecto_odsostenible', function (Blueprint $table) {
-            $table->unsignedInteger('proyecto_id');
-            $table->unsignedInteger('odsostenible_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('proyecto_id');
+            $table->unsignedBigInteger('odssostenible_id');
+            $table->primary(['proyecto_id', 'odssostenible_id']);
+
+            // Definir relaciones foráneas
+            $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
+            $table->foreign('odssostenible_id')->references('id')->on('odssostenibles')->onDelete('cascade');
+
+            // Añadir índices
+            $table->index('proyecto_id');
+            $table->index('odssostenible_id');
         });
     }
 
