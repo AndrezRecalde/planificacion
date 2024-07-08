@@ -1,5 +1,12 @@
 import { Container, Card, Divider, Group } from "@mantine/core";
-import { BtnSection, ProyectoModal, TextSection, TitlePage } from "../../../components";
+import {
+    BtnSection,
+    ProyectoDrawer,
+    ProyectoModal,
+    ProyectoTable,
+    TextSection,
+    TitlePage,
+} from "../../../components";
 import { ProgramaTable } from "../../../components";
 import { IconBrandTelegram } from "@tabler/icons-react";
 import { APP_WORDS, BTN_TITLES } from "../../../helpers";
@@ -28,12 +35,23 @@ export const ProgramasPage = () => {
                 </div>
             </Group>
             <Divider my="md" />
-            <Card withBorder shadow="sm" radius="md" mt={20} mb={20}>
+            <Card withBorder shadow="sm" radius="md" mt={20} mb={80}>
                 <Card.Section>
                     <ProgramaTable />
                 </Card.Section>
             </Card>
+
+            <TitlePage order={4} ta="left">
+                {APP_WORDS.PROYECTO_TITLE_REFERENCED}
+            </TitlePage>
+            <Card withBorder shadow="sm" radius="md" mt={20} mb={20}>
+                <Card.Section>
+                    <ProyectoTable />
+                </Card.Section>
+            </Card>
+
             <ProyectoModal />
+            <ProyectoDrawer />
         </Container>
     );
 };

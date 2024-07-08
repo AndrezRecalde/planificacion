@@ -6,7 +6,7 @@ import {
     reorderTasks,
     reorderColumns,
     addColumn,
-} from "../../../store/gestion/actividad/kanbanSlice";
+} from "../../../store/actividad/kanbanSlice";
 import {
     Container,
     Paper,

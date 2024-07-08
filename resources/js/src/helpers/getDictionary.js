@@ -76,4 +76,5 @@ export const APP_WORDS = {
     /* PROYECTO */
     PROYECTO_ADD_MENU: "Agregar proyecto",
     PROYECTO_TITLE_MODAL: "Ficha Proyecto",
+    PROYECTO_TITLE_REFERENCED: "Proyectos Vinculados"
 }

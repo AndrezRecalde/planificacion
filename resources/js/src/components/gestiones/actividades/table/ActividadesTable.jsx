@@ -58,25 +58,6 @@ const data = [
 export const ActividadesTable = (props) => {
     const columns = useMemo(
         () => [
-            /* {
-                accessorKey: "id", //access nested data with dot notation
-                header: "Ver",
-                Cell: ({ cell }) => (
-                    <ActionIcon
-                        size="lg"
-                        radius="lg"
-                        variant="transparent"
-                        color="gray"
-                        aria-label="Settings"
-                    >
-                        <IconEye
-                            style={{ width: "100%", height: "80%" }}
-                            stroke={2}
-                        />
-                    </ActionIcon>
-                ),
-                size: 20,
-            }, */
             {
                 accessorFn: (row) =>
                     row.nombre_actividad.length > 60 ? (

@@ -10,7 +10,7 @@ import {
     onLoadProyectos,
     onSetActivateProyecto,
     onUpdateProyecto,
-} from "../../../store/gestion/proyecto/proyectoSlice";
+} from "../../../store/proyecto/proyectoSlice";
 import planningApi from "../../../api/planningApi";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../../helpers";
 

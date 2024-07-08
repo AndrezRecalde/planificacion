@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onOpenModalProveedor } from "../../../store/gestion/proveedor/uiProveedorSlice";
+import { onOpenModalProveedor } from "../../../store/proveedor/uiProveedorSlice";
 
 export const useUiProveedor = () => {
     const { isOpenModalProveedor } = useSelector((state) => state.uiProveedor);

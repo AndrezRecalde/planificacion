@@ -241,11 +241,13 @@ Route::group([
     Route::post('/store/proveedor', [ProveedorController::class, 'store']);
     Route::put('/update/proveedor/{id}', [ProveedorController::class, 'update']);
 
+    /* GENERAL: PROGRAMAS */
+    Route::post('/programas', [ProgramaController::class, 'getProgramas']);
+
     /* GENERAL: PROYECTOS */
     Route::post('/proyectos', [ProyectoController::class, 'getProyectos']);
     Route::post('/store/proyecto', [ProyectoController::class, 'store']);
     Route::put('/update/proyecto', [ProyectoController::class, 'update']);
-
 });
 
 
@@ -385,6 +387,4 @@ Route::group([
     Route::post('/store/trimestre', [TrimestreController::class, 'store']);
     Route::put('/update/trimestre/{id}', [TrimestreController::class, 'update']);
     Route::put('/update/status/trimestre/{id}', [TrimestreController::class, 'updateStatus']);
-
-
 });

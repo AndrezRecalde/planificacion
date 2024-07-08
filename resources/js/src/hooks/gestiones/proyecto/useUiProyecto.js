@@ -1,8 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onOpenModalProyecto } from "../../../store/gestion/proyecto/uiProyectoSlice";
+import {
+    onOpenDrawerProyecto,
+    onOpenModalProyecto,
+} from "../../../store/proyecto/uiProyectoSlice";
 
 export const useUiProyecto = () => {
-    const { isOpenModalProyecto } = useSelector((state) => state.uiProyecto);
+    const { isOpenModalProyecto, isOpenDrawerProyecto } = useSelector(
+        (state) => state.uiProyecto
+    );
 
     const dispatch = useDispatch();
 
@@ -12,9 +17,17 @@ export const useUiProyecto = () => {
             : dispatch(onOpenModalProyecto(false));
     };
 
+    const drawerActionProyecto = (behavior) => {
+        behavior === 1
+            ? dispatch(onOpenDrawerProyecto(true))
+            : dispatch(onOpenDrawerProyecto(false));
+    };
+
     return {
         isOpenModalProyecto,
+        isOpenDrawerProyecto,
 
-        modalActionProyecto
+        modalActionProyecto,
+        drawerActionProyecto
     };
 };

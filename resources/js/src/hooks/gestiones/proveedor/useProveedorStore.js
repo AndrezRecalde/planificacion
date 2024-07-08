@@ -10,7 +10,7 @@ import {
     onLoadProveedores,
     onSetActivateProveedor,
     onUpdateProveedor,
-} from "../../../store/gestion/proveedor/proveedorSlice";
+} from "../../../store/proveedor/proveedorSlice";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../../helpers";
 import planningApi from "../../../api/planningApi";
 

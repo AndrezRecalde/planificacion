@@ -3,12 +3,12 @@ import { authSlice } from "./auth/authSlice";
 
 /* GESTIONES */
 /* PROVEEDORES */
-import { proveedorSlice } from "./gestion/proveedor/proveedorSlice";
-import { uiProveedorSlice } from "./gestion/proveedor/uiProveedorSlice";
+import { proveedorSlice } from "./proveedor/proveedorSlice";
+import { uiProveedorSlice } from "./proveedor/uiProveedorSlice";
 
 /* PROYECTOS */
-import { proyectoSlice } from "./gestion/proyecto/proyectoSlice";
-import { uiProyectoSlice } from "./gestion/proyecto/uiProyectoSlice";
+import { proyectoSlice } from "./proyecto/proyectoSlice";
+import { uiProyectoSlice } from "./proyecto/uiProyectoSlice";
 
 import { store } from "./store";
 

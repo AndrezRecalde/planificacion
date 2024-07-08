@@ -29,6 +29,8 @@ import { ProyectoTable } from "./gestiones/proyecto/table/ProyectoTable";
 import { ProgressProyecto } from "./gestiones/proyecto/table/ProgressProyecto";
 import { ProyectoModal } from "./gestiones/proyecto/modal/ProyectoModal";
 import { ProyectoForm } from "./gestiones/proyecto/forms/ProyectoForm";
+import { ProyectoDrawer } from "./gestiones/proyecto/drawer/ProyectoDrawer";
+import { ProyectoDetail } from "./gestiones/proyecto/forms/ProyectoDetail";
 
     /* Overview Proyecto */
 import {
@@ -110,6 +112,8 @@ export {
     ProgressProyecto,
     ProyectoModal,
     ProyectoForm,
+    ProyectoDrawer,
+    ProyectoDetail,
 
     /* DETALLE PROYECTO */
     HeaderOverview,

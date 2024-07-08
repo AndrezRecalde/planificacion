@@ -56,11 +56,6 @@ class Proyecto extends Model
         return $this->hasMany(Actividad::class);
     }
 
-    function Mtrimestres(): HasMany
-    {
-        return $this->hasMany(Mtrimestre::class);
-    }
-
     function opndesarrollos(): BelongsToMany
     {
         return $this->belongsToMany(Opndesarrollo::class, 'proyecto_opndesarrollo');
