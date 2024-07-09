@@ -24,7 +24,7 @@ export const ProyectoDrawer = () => {
             position="right"
             size="lg"
             transitionProps={{
-                transition: "fade",
+                transition: "fade-left",
                 duration: 150,
                 timingFunction: "linear",
             }}

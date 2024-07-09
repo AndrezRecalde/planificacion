@@ -61,6 +61,11 @@ class Proyecto extends Model
         return $this->belongsToMany(Opndesarrollo::class, 'proyecto_opndesarrollo');
     }
 
+    function odssostenibles() : BelongsToMany {
+        return $this->belongsToMany(Odssostenible::class, 'proyecto_odssostenible');
+
+    }
+
     function scopeDepartamento($query, $departamento_id)
     {
         if ($departamento_id) {
