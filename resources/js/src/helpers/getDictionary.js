@@ -16,6 +16,26 @@ export const API_URL_ROUTES = {
     PROFILE: "/profile",
     LOGOUT: "/auth/logout",
 
+    /* DEPARTAMENTOS */
+    GET_DEPARTAMENTOS: "/departamentos/institucion",
+    STORE_DEPARTAMENT0: "/store/departamento",
+    UPDATE_DEPARTAMENT0: "/update/departamento",
+    UPDATE_STATUS_DEPARTAMENT0: "/update/status/departamento",
+    DELETE_DEPARTAMENT0: "/delete/departamento",
+
+    /* TIPOS PROYECTOS */
+    GET_TIPO_PROYECTOS: "/tipos-proyectos",
+    STORE_TIPO_PROYECTO: "/store/tipo-planificacion",
+    UPDATE_TIPO_PROYECTO: "/update/tipo-planificacion",
+    DELETE_TIPO_PROYECTO: "/delete/tipo-proyecto",
+
+    /* TIPO ACTIVIDADES */
+    GET_TIPO_ACTIVIDADES: "/tipo-actividades",
+    STORE_TIPO_ACTIVIDADES: "/store/tipo-actividad",
+    UPDATE_TIPO_ACTIVIDADES: "/update/tipo-actividad",
+    DELETE_TIPO_ACTIVIDADES: "/delete/tipo-actividad",
+
+
     /** PROVEEDORES */
     GET_PROVEEDORES: "/proveedores",
     STORE_PROVEEDOR: "/store/proveedor",

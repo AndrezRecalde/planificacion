@@ -230,8 +230,8 @@ Route::group([
 
 
     /* GENERAL: DEPARTAMENTOS */
-    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);  // VIEWANY
-    Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);  //VIEWANY
+    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);  // VIEWANY - EN DESUSO
+    Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);  //VIEWANY - EN USO
 
     /* GENERAL: INSTITUCION */
     Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);  //VIEWANY

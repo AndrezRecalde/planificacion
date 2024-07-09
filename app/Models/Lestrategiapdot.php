@@ -32,7 +32,7 @@ class Lestrategiapdot extends Model
         return $this->hasMany(Objetivo::class);
     }
 
-    function scopeLineapdot($query, $lineapdot_id)
+    function scopeByLineapdotId($query, $lineapdot_id)
     {
         if ($lineapdot_id) {
             return $query->where('le.lineapdot_id', $lineapdot_id);

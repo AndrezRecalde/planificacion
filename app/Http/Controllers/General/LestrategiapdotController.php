@@ -17,7 +17,7 @@ class LestrategiapdotController extends Controller
         $estrategias = Lestrategiapdot::from('lestrategiapdots as le')
             ->selectRaw('le.id, le.linea_estrategica, le.activo, l.nombre_linea')
             ->join('lineapdots as l', 'l.id', 'le.lineapdot_id')
-            ->lineapdot($request->lineapdot_id)
+            ->byLineapdotId($request->lineapdot_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'estrategias' => $estrategias], 200);

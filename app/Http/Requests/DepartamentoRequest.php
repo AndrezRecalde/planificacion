@@ -24,7 +24,7 @@ class DepartamentoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_departamento'   => 'required',
+            'nombre_departamento'   =>  'required',
             'siglas'                =>  'required',
             'extension'             =>  'required',
             //'activo'                =>  'required',

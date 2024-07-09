@@ -11,8 +11,9 @@ import {
     onSetActivateProyecto,
     onUpdateProyecto,
 } from "../../../store/proyecto/proyectoSlice";
-import planningApi from "../../../api/planningApi";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../../helpers";
+import planningApi from "../../../api/planningApi";
+
 
 export const useProyectoStore = () => {
     const { isLoading, proyectos, activateProyecto, message, errores } =
