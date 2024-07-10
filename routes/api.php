@@ -300,6 +300,7 @@ Route::group([
     Route::get('/lineasestrategicaspdot', [LestrategiapdotController::class, 'getLineasEstrategiasPdot']);
     Route::post('/store/lineasestrategicaspdot', [LestrategiapdotController::class, 'store']);
     Route::post('/update/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'update']);
+    Route::post('/update/status/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'updateStatus']);
 
     /* PLANIFICACION: COMPETENCIA PDOT */
     Route::post('/competenciaspdots', [CompetenciapdotController::class, 'getCompetenciasPDOT']);

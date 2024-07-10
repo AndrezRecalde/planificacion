@@ -14,7 +14,6 @@ import {
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../helpers";
 import planningApi from "../../api/planningApi";
 
-
 export const useDepartamentoStore = () => {
     const { isLoading, departamentos, activateDepartamento, message, errores } =
         useSelector((state) => state.departamento);
@@ -60,7 +59,7 @@ export const useDepartamentoStore = () => {
                 }, 40);
                 return;
             }
-            const {} = await planningApi.post(
+            const { data } = await planningApi.post(
                 PREFIX_ROUTES.ADMIN + API_URL_ROUTES.STORE_DEPARTAMENT0,
                 departamento
             );
@@ -70,6 +69,26 @@ export const useDepartamentoStore = () => {
                 dispatch(onLoadMessage(undefined));
             }, 40);
             return;
+        } catch (error) {
+            console.log(error);
+            ExceptionMessageError(error);
+        }
+    };
+
+    const startUpdateStatusDepartamento = async (departamento) => {
+        try {
+            const { data } = await planningApi.put(
+                `${
+                    PREFIX_ROUTES.PLANIFICACION +
+                    API_URL_ROUTES.UPDATE_STATUS_DEPARTAMENT0
+                }/${departamento.id}`,
+                departamento
+            );
+            dispatch(onUpdateDepartamento({ ...departamento }));
+            dispatch(onLoadMessage(data));
+            setTimeout(() => {
+                dispatch(onLoadMessage(undefined));
+            }, 40);
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);
@@ -96,11 +115,11 @@ export const useDepartamentoStore = () => {
 
     const startClearDepartamentos = () => {
         dispatch(onClearDepartamentos());
-    }
+    };
 
     const setActivateDepartamento = (departamento) => {
         dispatch(onSetActivateDepartamento(departamento));
-    }
+    };
 
     return {
         isLoading,
@@ -111,8 +130,9 @@ export const useDepartamentoStore = () => {
 
         startLoadDepartamentos,
         startAddDepartamento,
+        startUpdateStatusDepartamento,
         startDeleteDepartamento,
         startClearDepartamentos,
-        setActivateDepartamento
+        setActivateDepartamento,
     };
 };

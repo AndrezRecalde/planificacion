@@ -48,7 +48,7 @@ class LestrategiapdotController extends Controller
         }
     }
 
-    function updateActivo(LestrategiapdotStatus $request, int $id): JsonResponse
+    function updateStatus(LestrategiapdotStatus $request, int $id): JsonResponse
     {
         $estrategia = Lestrategiapdot::find($id);
         try {

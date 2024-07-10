@@ -1,5 +1,10 @@
 import { useAuthStore } from "./auth/useAuthStore";
 
+/* LINEA ESTRATEGICAS DEL PDOT */
+import { useLestrategiapdotStore } from "./lestrategiapdot/useLestrategiapdotStore";
+import { useUiLestrategiapdot } from "./lestrategiapdot/useUiLestrategiapdot";
+
+
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
 import { useUiTipoProyecto } from "./tipo_proyecto/useUiTipoProyecto";
@@ -29,6 +34,10 @@ import { useErrorException } from "./error/useErrorException";
 
 export {
     useAuthStore,
+
+    /* LINEA ESTRATEGICAS DEL PDOT */
+    useLestrategiapdotStore,
+    useUiLestrategiapdot,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,
