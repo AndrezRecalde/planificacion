@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tipounidad_id');
             $table->integer('indicador_detalle');
             $table->unsignedInteger('tiempo_meses');
-            $table->year('anio_fiscal');
+            //$table->year('anio_fiscal');
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');
             $table->unsignedBigInteger('departamento_id');

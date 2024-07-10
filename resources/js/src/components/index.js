@@ -31,6 +31,14 @@ import { ProyectoModal } from "./gestiones/proyecto/modal/ProyectoModal";
 import { ProyectoForm } from "./gestiones/proyecto/forms/ProyectoForm";
 import { ProyectoDrawer } from "./gestiones/proyecto/drawer/ProyectoDrawer";
 import { ProyectoDetail } from "./gestiones/proyecto/forms/ProyectoDetail";
+import { ProyectoStepperForm } from "./gestiones/proyecto/stepper/ProyectoStepperForm";
+import { ProyectoInfoForm } from "./gestiones/proyecto/forms/ProyectoInfoForm";
+import { ProyectoTiemposForm } from "./gestiones/proyecto/forms/ProyectoTiemposForm";
+import { ProyectoMetasForm } from "./gestiones/proyecto/forms/ProyectoMetasForm";
+import { ProyectoObjetivosForm } from "./gestiones/proyecto/forms/ProyectoObjetivosForm";
+
+
+
 
     /* Overview Proyecto */
 import {
@@ -114,6 +122,11 @@ export {
     ProyectoForm,
     ProyectoDrawer,
     ProyectoDetail,
+    ProyectoStepperForm,
+    ProyectoInfoForm,
+    ProyectoTiemposForm,
+    ProyectoMetasForm,
+    ProyectoObjetivosForm,
 
     /* DETALLE PROYECTO */
     HeaderOverview,

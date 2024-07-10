@@ -1,15 +1,11 @@
 import { Modal } from "@mantine/core";
-import { ProyectoForm, TextSection } from "../../../../components";
+import { ProyectoForm, ProyectoStepperForm, TextSection } from "../../../../components";
 import { useUiProyecto } from "../../../../hooks";
 import { APP_WORDS } from "../../../../helpers";
 import { useForm } from "@mantine/form";
 
 export const ProyectoModal = () => {
     const { isOpenModalProyecto, modalActionProyecto } = useUiProyecto();
-
-    const form = useForm({
-
-    });
 
     const handleCloseModal = () => {
         modalActionProyecto(0);
@@ -31,7 +27,8 @@ export const ProyectoModal = () => {
                 blur: 3,
             }}
         >
-            <ProyectoForm form={form} />
+            {/* <ProyectoForm form={form} /> */}
+            <ProyectoStepperForm />
         </Modal>
     );
 };

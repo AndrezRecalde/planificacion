@@ -23,7 +23,7 @@ class Proyecto extends Model
         'tipounidad_id',
         'indicador_detalle',
         'tiempo_meses',
-        'anio_fiscal',
+        //'anio_fiscal',
         'fecha_inicio',
         'fecha_finalizacion',
         'departamento_id',
