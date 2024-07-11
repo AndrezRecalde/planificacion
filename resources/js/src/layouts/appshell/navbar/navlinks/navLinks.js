@@ -1,10 +1,8 @@
 import {
     IconArrowsRightLeft,
-    IconBrandTrello,
     IconCategoryPlus,
     IconChartPie,
     IconCheckupList,
-    IconFiles,
     IconFolders,
     IconListCheck,
     IconNews,
@@ -120,7 +118,7 @@ export const lGestiones = [
         initiallyOpened: true,
         links: [{ label: "Ver proveedores", link: "/proveedores" }],
     },
-    {
+    /* {
         label: "Programas",
         icon: IconFolders,
         initiallyOpened: true,
@@ -131,12 +129,12 @@ export const lGestiones = [
         icon: IconFiles,
         initiallyOpened: true,
         links: [{ label: "Ver proyectos", link: "/proyectos" }],
-    },
+    }, */
     {
-        label: "Tableros",
-        icon: IconBrandTrello,
+        label: "Espacio de trabajo",
+        icon: IconCategoryPlus,
         initiallyOpened: true,
-        links: [{ label: "Ver mis tableros", link: "/tableros" }],
+        links: [{ label: "Ver mi espacio", link: "/tableros" }],
     },
 ];
 
