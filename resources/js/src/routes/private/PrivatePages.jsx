@@ -15,6 +15,7 @@ import {
     ConsolidadosPage,
     ViewTablerosPage,
     KanbanActividadesPage,
+    WorkspacesPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -36,6 +37,9 @@ export const PrivatePages = () => {
                 <Route path="/proveedores" element={<ProveedorPage />} />
                 <Route path="/programas" element={<ProgramasPage />} />
                 <Route path="/actividades" element={<ActividadesPage />} />
+
+                <Route path="/workspaces" element={<WorkspacesPage />} />
+
                 <Route path="/tableros" element={<ViewTablerosPage />} />
                 <Route path="/tablero/5555" element={<KanbanActividadesPage />} />
 

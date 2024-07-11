@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { AppHeader, AppNavbar, AppNavfooter, AppNavplan } from "../../layouts";
-import { AppShell, Badge, Group, ScrollArea } from "@mantine/core";
+import { AppHeader, AppNavbar, AppNavplan } from "../../layouts";
+import { AppShell, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { TextSection } from "../../components";
 
 import classes from "../../assets/styles/layout/NavbarModule/AppNavbar.module.css";
 

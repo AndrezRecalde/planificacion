@@ -15,6 +15,8 @@ import { ActividadesPage } from "./gestiones/actividades/ActividadesPage";
 import { ViewTablerosPage } from "./gestiones/tablero/ViewTablerosPage";
 import { KanbanActividadesPage } from "./gestiones/actividades/KanbanActividadesPage";
 
+import { WorkspacesPage } from "./gestiones/workspace/WorkspacesPage";
+
 /* PLANIFICACION */
 import { InstrumentosPage } from "./planificacion/instrumentos/InstrumentosPage";
 import { ObjetivosEstrategicosPage } from "./planificacion/objetivos/ObjetivosEstrategicosPage";
@@ -38,6 +40,7 @@ export {
     ActividadesPage,
     ViewTablerosPage,
     KanbanActividadesPage,
+    WorkspacesPage,
 
     /* Planificacion */
     InstrumentosPage,

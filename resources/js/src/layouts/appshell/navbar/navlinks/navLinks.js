@@ -3,6 +3,7 @@ import {
     IconCategoryPlus,
     IconChartPie,
     IconCheckupList,
+    IconFiles,
     IconFolders,
     IconListCheck,
     IconNews,
@@ -123,13 +124,13 @@ export const lGestiones = [
         icon: IconFolders,
         initiallyOpened: true,
         links: [{ label: "Ver programas", link: "/programas" }],
-    },
+    }, */
     {
         label: "Proyectos",
         icon: IconFiles,
         initiallyOpened: true,
         links: [{ label: "Ver proyectos", link: "/proyectos" }],
-    }, */
+    },
     {
         label: "Espacio de trabajo",
         icon: IconCategoryPlus,
