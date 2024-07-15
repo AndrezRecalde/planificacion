@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('lestrategiapdot_id');
             $table->unsignedBigInteger('competenciapdot_id');
-            $table->unsignedBigInteger('componentepdot_id');
+            //$table->unsignedBigInteger('componentepdot_id');
             $table->unsignedBigInteger('gestioncumplimiento_id'); //GESTION RESPONSABLE DEL CUMPLIMIENTO: FORANEA DE DEPARTAMENTOS
             $table->unsignedBigInteger('oepdot_id');
             $table->unsignedBigInteger('earticulacion_id');

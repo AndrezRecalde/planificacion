@@ -3,16 +3,14 @@ import { IconEditCircle, IconPlus } from "@tabler/icons-react";
 
 export const MenuTableEdit = ({ row, handleEditar }) => {
     return (
-            <Menu.Item
-                leftSection={
-                    <IconEditCircle
-                        style={{ width: rem(15), height: rem(15) }}
-                    />
-                }
-                onClick={() => handleEditar(row.original)}
-            >
-                Editar
-            </Menu.Item>
+        <Menu.Item
+            leftSection={
+                <IconEditCircle style={{ width: rem(15), height: rem(15) }} />
+            }
+            onClick={() => handleEditar(row.original)}
+        >
+            Editar
+        </Menu.Item>
     );
 };
 
@@ -26,5 +24,30 @@ export const MenuTableAdd = ({ row, title, handleAdd }) => {
         >
             {title}
         </Menu.Item>
+    );
+};
+
+export const MenuActions = ({ row, handleAdd, handleEditar }) => {
+    return (
+        <>
+            <Menu.Item
+                leftSection={
+                    <IconPlus style={{ width: rem(14), height: rem(14) }} />
+                }
+                onClick={() => handleAdd()}
+            >
+                Agregar
+            </Menu.Item>
+            <Menu.Item
+                leftSection={
+                    <IconEditCircle
+                        style={{ width: rem(15), height: rem(15) }}
+                    />
+                }
+                onClick={() => handleEditar(row.original)}
+            >
+                Editar
+            </Menu.Item>
+        </>
     );
 };

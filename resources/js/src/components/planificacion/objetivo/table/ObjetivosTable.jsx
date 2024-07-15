@@ -62,7 +62,7 @@ export const ObjetivosTable = () => {
         },
         mantineTableProps: {
             withColumnBorders: true,
-            withBorder: colorScheme === 'light',
+            withTableBorder: colorScheme === 'light',
             sx: {
                 'thead > tr': {
                   backgroundColor: 'inherit',

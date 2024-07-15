@@ -86,7 +86,7 @@ export const lPlanificacion = {
     ],
     administrar: [
         {
-            label: "Administrar Planificación",
+            label: "Administrar",
             icon: IconListCheck,
             links: [
                 { label: "Lineas PDOT", link: "/" },

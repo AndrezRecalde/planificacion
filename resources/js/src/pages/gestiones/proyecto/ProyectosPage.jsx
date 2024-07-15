@@ -15,7 +15,7 @@ export const ProyectosPage = () => {
                 <TitlePage order={2} ta="left">
                     Proyectos
                 </TitlePage>
-                <BtnSection heigh={45} variant="default" icon={IconLibraryPlus}>
+                <BtnSection heigh={45} variant="default" icon={IconLibraryPlus} handleAction={() => console.log('clic')}>
                     Nuevo Proyecto
                 </BtnSection>
             </Group>

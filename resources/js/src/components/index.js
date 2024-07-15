@@ -1,12 +1,21 @@
 /* Elementos */
-import { BtnServicesApps, BtnSubmit, BtnSection } from "./elements/buttons/BtnServices";
+import {
+    BtnServicesApps,
+    BtnSubmit,
+    BtnSection,
+} from "./elements/buttons/BtnServices";
 import { TextSection } from "./elements/titles/TextSection";
 import { TitlePage } from "./elements/titles/TitlePage";
 import { TableContent } from "./elements/tables/TableContent";
-import { MenuTableEdit, MenuTableAdd } from "./elements/tables/MenuTable";
+import {
+    MenuTableEdit,
+    MenuTableAdd,
+    MenuActions,
+} from "./elements/tables/MenuTable";
 import { Logo } from "./elements/application/Logo";
 import { BtnDarkMode } from "./elements/buttons/BtnDarkMode";
 import { BtnSearch, InputSeach } from "./elements/buttons/BtnSearch";
+import { BtnActiveStatus } from "./elements/buttons/BtnActiveStatus";
 import { DataCombobox } from "./elements/combobox/DataCombobox";
 import { BtnCombobox } from "./elements/combobox/BtnCombobox";
 import { AlertSection } from "./elements/alert/AlertSection";
@@ -23,7 +32,7 @@ import { ChangePwdForm } from "./user/ChangePwdForm";
 import { CardGestiones } from "./financiero/CardGestiones";
 
 /* Gestiones */
-    /* Proyectos */
+/* Proyectos */
 import { FilterFormProyectos } from "./gestiones/proyecto/forms/FilterFormProyectos";
 import { ProyectoTable } from "./gestiones/proyecto/table/ProyectoTable";
 import { ProgressProyecto } from "./gestiones/proyecto/table/ProgressProyecto";
@@ -37,10 +46,7 @@ import { ProyectoTiemposForm } from "./gestiones/proyecto/forms/ProyectoTiemposF
 import { ProyectoMetasForm } from "./gestiones/proyecto/forms/ProyectoMetasForm";
 import { ProyectoObjetivosForm } from "./gestiones/proyecto/forms/ProyectoObjetivosForm";
 
-
-
-
-    /* Overview Proyecto */
+/* Overview Proyecto */
 import {
     HeaderOverview,
     ProgressProyect,
@@ -48,46 +54,59 @@ import {
     ActividadesOverview,
     DetailProyect,
     ActivitiesCenter,
-    SupplierStat
+    SupplierStat,
 } from "./gestiones/proyecto/detail/overview/OverviewDetails";
 
-    /* Milestones Proyecto */
+/* Milestones Proyecto */
 import { MilestoneList } from "./gestiones/proyecto/detail/milestone/MilestoneList";
 
-    /* Files Proyecto */
+/* Files Proyecto */
 import { FolderFiles } from "./gestiones/proyecto/detail/file/FolderFiles";
 
-    /* Proveedores */
+/* Proveedores */
 import { ProveedorList } from "./gestiones/proveedor/sections/ProveedorList";
 import { ProveedorModal } from "./gestiones/proveedor/modal/ProveedorModal";
 import { ProveedorForm } from "./gestiones/proveedor/forms/ProveedorForm";
 
-
-    /* Programas */
+/* Programas */
 import { ProgramaTable } from "./gestiones/programa/table/ProgramaTable";
 import { ProgramaDetail } from "./gestiones/programa/table/ProgramaDetail";
 
-
-    /* Actividades */
+/* Actividades */
 import { BtnActividadSection } from "./gestiones/actividades/btn/BtnActividadSection";
 import { ActividadesTable } from "./gestiones/actividades/table/ActividadesTable";
 
 /* Planificacion */
-    /* Instrumentos */
+/* Instrumentos */
 import { InstrumentosList } from "./planificacion/instrumento/InstrumentosList";
-    /* Objetivos */
+/* Objetivos */
 import { ObjetivosTable } from "./planificacion/objetivo/table/ObjetivosTable";
-    /*Programa */
+/*Programa */
 import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFormProgramaPlan";
 import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
 import { ProyectoFromPrograma } from "./planificacion/programa/table/ProyectoFromPrograma";
 import { ProgressPrograma } from "./planificacion/programa/table/ProgressPrograma";
 
-    /* Consolidado */
+/* Consolidado */
 import { FilterConsolidado } from "./planificacion/consolidado/form/FilterConsolidado";
 import { OverviewConsolidado } from "./planificacion/consolidado/form/OverviewConsolidado";
 import { ConsolidadosTable } from "./planificacion/consolidado/table/ConsolidadosTable";
 import { ConsolidadoProyectos } from "./planificacion/consolidado/table/ConsolidadoProyectos";
+
+/* PLANIFICACION: ADMINISTRACION */
+    /* Lineas Estrategicas */
+import { LineaspdotTable } from "./planificacion/administracion/lineasEstrategicas/table/LineaspdotTable";
+import { LineasEstrategicasTable } from "./planificacion/administracion/lineasEstrategicas/table/LineasEstrategicasTable";
+
+    /* Competencias del PDOT */
+import { CompetenciapdotTable } from "./planificacion/administracion/competenciaspdot/table/CompetenciapdotTable";
+import { CompetenciaDetail } from "./planificacion/administracion/competenciaspdot/table/CompetenciaDetail";
+
+    /* Componentes del PDOT */
+import { ComponentepdotTable } from "./planificacion/administracion/componentespdot/table/ComponentepdotTable";
+
+    /* Categorias del PDOT */
+import { CategoriapdotTable } from "./planificacion/administracion/categoriaspdot/table/CategoriapdotTable";
 
 export {
     BtnServicesApps,
@@ -98,14 +117,15 @@ export {
     TableContent,
     MenuTableEdit,
     MenuTableAdd,
+    MenuActions,
     Logo,
     BtnDarkMode,
     BtnSearch,
     InputSeach,
+    BtnActiveStatus,
     DataCombobox,
     BtnCombobox,
     AlertSection,
-
     AuthForm,
     ProfileForm,
     UserBtnHeader,
@@ -142,11 +162,9 @@ export {
 
     /* FILES PROYECTO */
     FolderFiles,
-
     ProveedorList,
     ProveedorModal,
     ProveedorForm,
-
 
     /* PROGRAMAS */
     ProgramaTable,
@@ -168,5 +186,16 @@ export {
     FilterConsolidado,
     OverviewConsolidado,
     ConsolidadosTable,
-    ConsolidadoProyectos
+    ConsolidadoProyectos,
+
+    /* PLANIFICACION: ADMINISTRACION */
+    LineaspdotTable,
+    LineasEstrategicasTable,
+
+    CompetenciapdotTable,
+    CompetenciaDetail,
+
+    ComponentepdotTable,
+
+    CategoriapdotTable
 };

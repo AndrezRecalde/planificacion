@@ -29,6 +29,7 @@ export const ProgramasPage = () => {
                         radius="xs"
                         icon={IconBrandTelegram}
                         heigh={45}
+                        handleAction={() => console.log('clic')}
                     >
                         {BTN_TITLES.PROGRAMA_SOLI_MODAL}
                     </BtnSection>

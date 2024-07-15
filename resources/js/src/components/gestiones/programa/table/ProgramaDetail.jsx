@@ -23,11 +23,11 @@ export const ProgramaDetail = ({ row }) => {
                         </TextSection>
                     </Table.Td>
                     <Table.Td>
-                        {row.original.meta_id.map((meta) => (
-                            <List key={meta} spacing="md" size="sm">
-                                <List.Item>{meta}</List.Item>
-                            </List>
-                        ))}
+                        <List spacing="md" size="sm">
+                            {row.original.meta_id.map((meta) => (
+                                <List.Item key={meta}>{meta}</List.Item>
+                            ))}
+                        </List>
                     </Table.Td>
                 </Table.Tr>
             </Table.Tbody>

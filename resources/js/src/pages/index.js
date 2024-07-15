@@ -23,6 +23,12 @@ import { ObjetivosEstrategicosPage } from "./planificacion/objetivos/ObjetivosEs
 import { ProgramasPlanPage } from "./planificacion/programas/ProgramasPlanPage";
 import { ConsolidadosPage } from "./planificacion/consolidado/ConsolidadosPage";
 
+/* PLANIFICACION: ADMINISTRACION */
+import { LineasEstrategicasPage } from "./planificacion/administracion/lineasEstrategicas/LineasEstrategicasPage";
+import { CompetenciaspdotPage } from "./planificacion/administracion/competenciaspdot/CompetenciaspdotPage";
+import { ComponentespdotPage } from "./planificacion/administracion/componentespdot/ComponentespdotPage";
+import { CategoriaspdotPage } from "./planificacion/administracion/categoriaspdot/CategoriaspdotPage";
+
 export {
     AuthPage,
     ProfilePage,
@@ -46,6 +52,12 @@ export {
     InstrumentosPage,
     ObjetivosEstrategicosPage,
     ProgramasPlanPage,
-    ConsolidadosPage
+    ConsolidadosPage,
+
+    /*Planificacion: Administracion */
+    LineasEstrategicasPage,
+    CompetenciaspdotPage,
+    ComponentespdotPage,
+    CategoriaspdotPage
 
  };

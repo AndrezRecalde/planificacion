@@ -14,7 +14,9 @@ export const FilterConsolidado = () => {
                 IconSection={IconSearch}
                 heigh={40}
                 fontSize={16}
-            />
+            >
+                Buscar
+            </BtnSubmit>
         </Fieldset>
     );
 };

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { Button, Menu, Progress, Group, Text, rem, ActionIcon } from "@mantine/core";
+import {  Menu, Group, Text, rem, ActionIcon } from "@mantine/core";
 import { MantineReactTable, useMantineReactTable } from "mantine-react-table";
-import { IconAdjustments, IconEditCircle, IconSearch, IconTrash } from "@tabler/icons-react";
+import { IconEditCircle, IconSearch, IconTrash } from "@tabler/icons-react";
 
 const instrumentos = [
     {

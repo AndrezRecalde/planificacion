@@ -16,6 +16,10 @@ import {
     ViewTablerosPage,
     KanbanActividadesPage,
     WorkspacesPage,
+    LineasEstrategicasPage,
+    CompetenciaspdotPage,
+    ComponentespdotPage,
+    CategoriaspdotPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -53,6 +57,11 @@ export const PrivatePages = () => {
                 <Route path="/gpla/consolidados" element={<ConsolidadosPage />} />
 
 
+                {/* Planificacion: Administracion */}
+                <Route path="/gpla/lineas-estrategicas" element={<LineasEstrategicasPage />} />
+                <Route path="/gpla/competencias-pdot" element={<CompetenciaspdotPage />} />
+                <Route path="/gpla/componentes-pdot" element={<ComponentespdotPage />} />
+                <Route path="/gpla/categorias-pdot" element={<CategoriaspdotPage />} />
 
 
             </Routes>
