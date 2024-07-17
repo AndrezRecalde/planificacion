@@ -23,7 +23,7 @@ export const GestionesPages = () => {
 
             <Route path="workspaces" element={<WorkspacesPage />} />
 
-            <Route path="tableros" element={<ViewTablerosPage />} />
+            {/* <Route path="tableros" element={<ViewTablerosPage />} /> */}
             <Route path="tablero/5555" element={<KanbanActividadesPage />} />
         </RoutesNotFound>
     );

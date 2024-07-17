@@ -98,6 +98,10 @@ import { ConsolidadoProyectos } from "./planificacion/consolidado/table/Consolid
 import { LineaspdotTable } from "./planificacion/administracion/lineasEstrategicas/table/LineaspdotTable";
 import { LineasEstrategicasTable } from "./planificacion/administracion/lineasEstrategicas/table/LineasEstrategicasTable";
 
+import { LineapdotModal } from "./planificacion/administracion/lineasEstrategicas/modal/LineapdotModal";
+import { LineapdotForm } from "./planificacion/administracion/lineasEstrategicas/form/LineapdotForm";
+
+
     /* Competencias del PDOT */
 import { CompetenciapdotTable } from "./planificacion/administracion/competenciaspdot/table/CompetenciapdotTable";
 import { CompetenciaDetail } from "./planificacion/administracion/competenciaspdot/table/CompetenciaDetail";
@@ -200,6 +204,8 @@ export {
     /* PLANIFICACION: ADMINISTRACION */
     LineaspdotTable,
     LineasEstrategicasTable,
+    LineapdotModal,
+    LineapdotForm,
 
     CompetenciapdotTable,
     CompetenciaDetail,

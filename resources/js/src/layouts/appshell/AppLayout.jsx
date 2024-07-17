@@ -11,7 +11,7 @@ export const AppLayout = () => {
     const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
     /* Cambiarlo por el state */
-    const [role, setRole] = useState("DIR_GESTION");
+    const [role, setRole] = useState("DIR_PLANIFICACION");
 
     const Scroll = <ScrollArea scrollbarSize={6}></ScrollArea>;
 
@@ -56,7 +56,7 @@ export const AppLayout = () => {
                 >
                     {role !== "DIR_PLANIFICACION" ? (
                         <AppNavbar
-                            role="DIR_GESTION"
+                            role="DIR_PLANIFICACION"
                             toggleMobile={toggleMobile}
                         />
                     ) : (

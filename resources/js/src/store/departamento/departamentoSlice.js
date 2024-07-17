@@ -36,9 +36,9 @@ export const departamentoSlice = createSlice({
                     (departamento) =>
                         departamento.id === state.activateDepartamento.id
                 );
-                state.activateDepartamento = null;
-                state.errores = undefined;
             }
+            state.activateDepartamento = null;
+            state.errores = undefined;
         },
         onSetActivateDepartamento: (state, { payload }) => {
             state.activateDepartamento = payload;

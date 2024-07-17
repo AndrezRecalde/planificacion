@@ -3,12 +3,14 @@ import {
     authSlice,
     departamentoSlice,
     lestrategiapdotSlice,
+    lineapdotSlice,
     proveedorSlice,
     proyectoSlice,
     tipoActividadSlice,
     tipoProyectoSlice,
     uiDepartamentoSlice,
     uiLestrategiapdotSlice,
+    uiLineapdotSlice,
     uiProveedorSlice,
     uiProyectoSlice,
     uiTipoActividadSlice,
@@ -18,6 +20,10 @@ import {
 export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
+
+        /* Lineas del PDOT */
+        lineapdot: lineapdotSlice.reducer,
+        uiLineapdot: uiLineapdotSlice.reducer,
 
         /* Lineas estrategicas del PDOT */
         lestrategiapdot: lestrategiapdotSlice.reducer,

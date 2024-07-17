@@ -5,6 +5,10 @@ import { authSlice } from "./auth/authSlice";
 import { lestrategiapdotSlice } from "./lestrategia/lestrategiapdotSlice";
 import { uiLestrategiapdotSlice } from "./lestrategia/uiLestrategiapdotSlice";
 
+/* LINEAS DEL PDOT */
+import { lineapdotSlice } from "./lineas_pdot/lineapdotSlice";
+import { uiLineapdotSlice } from "./lineas_pdot/uiLineapdotSlice";
+
 
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
@@ -37,6 +41,10 @@ export {
     /* LINEAS ESTRATEGICAS DEL PDOT */
     lestrategiapdotSlice,
     uiLestrategiapdotSlice,
+
+    /* LINEAS DEL PDOT */
+    lineapdotSlice,
+    uiLineapdotSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

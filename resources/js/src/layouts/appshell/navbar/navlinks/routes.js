@@ -36,7 +36,7 @@ export const routes = [
         label: "Espacio de trabajo",
         icon: IconCategoryPlus,
         initiallyOpened: true,
-        links: [{ label: "Ver mi espacio", link: "/gestion/tableros" }],
+        links: [{ label: "Ver mi espacio", link: "/gestion/workspaces" }],
         role: ROLES.DIR_GESTION,
     },
 

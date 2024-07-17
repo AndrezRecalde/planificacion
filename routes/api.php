@@ -144,9 +144,6 @@ Route::group(
         /* ADMIN: PROVEEDORES */
         Route::delete('/delete/proveedor/{id}', [ProveedorController::class, 'destroy']);
 
-        /* ADMIN: LINEAS PDOT */
-        Route::delete('/delete/linea/pdot/{id}', [LineapdotController::class, 'destroy']);
-
         /* ADMIN: TIPO DE ACTIVIDADES */
         Route::delete('/delete/tipo-actividad/{id}', [TipoActividadController::class, 'destroy']);
 
@@ -255,11 +252,6 @@ Route::group([
     'prefix' => 'planificacion',
     'middleware' => ['auth:sanctum', 'role:DIR_PLANIFICACION|ADMIN']
 ], function () {
-
-    /* PLANIFICACION: LINEAS PDOT */
-    Route::get('/lineas/pdot', [LineapdotController::class, 'getLineaspdot']);
-    Route::post('/store/linea/pdot', [LineapdotController::class, 'store']);
-    Route::put('/update/linea/pdot/{id}', [LineapdotController::class, 'update']);
 
     /*PLANIFICACION: TIPO ACTIVIDADES */
     Route::get('/tipo-actividades', [TipoActividadController::class, 'getTiposdeActividades']);

@@ -23,6 +23,12 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_DEPARTAMENT0: "/update/status/departamento",
     DELETE_DEPARTAMENT0: "/delete/departamento",
 
+    /* LINEAS DEL PDOT */
+    GET_LINEASPDOT: "/lineaspdot",
+    STORE_LINEAPDOT: "/store/lineapdot",
+    UPDATE_LINEAPDOT: "/update/lineapdot",
+    DELETE_LINEAPDOT: "/delete/lineapdot",
+
     /* LINEAS ESTRATEGICAS PDOT */
     GET_LESTRATEGIAPDOTS: "/lineasestrategicaspdot",
     STORE_LESTRATEGIAPDOTS: "/store/lineasestrategicaspdot",

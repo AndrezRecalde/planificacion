@@ -34,3 +34,15 @@
       font-size: rem(32px);
     }
   }
+
+  .mobileImage {
+    @media (min-width: 48em) {
+      display: none;
+    }
+  }
+
+  .desktopImage {
+    @media (max-width: 47.99em) {
+      display: none;
+    }
+  }

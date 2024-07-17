@@ -6,23 +6,11 @@ import {
     TableContent,
 } from "../../../../../components";
 import { IconCopyPlus } from "@tabler/icons-react";
-
-const lineaspdot = [
-    {
-        id: 1,
-        nombre_linea: "Linea_1",
-    },
-    {
-        id: 2,
-        nombre_linea: "Linea_2",
-    },
-    {
-        id: 3,
-        nombre_linea: "Linea_3",
-    },
-];
+import { useLineapdotStore, useUiLineapdot } from "../../../../../hooks";
 
 export const LineaspdotTable = () => {
+    const { isLoading, lineaspdot, setActivateLineapdot } = useLineapdotStore();
+    const { modalActionLineapdot } = useUiLineapdot();
     const columns = useMemo(
         () => [
             {
@@ -33,20 +21,22 @@ export const LineaspdotTable = () => {
         [lineaspdot]
     );
 
-    const handleAgregar = useCallback(
-        () => {
-          console.log('agregar')
-        },
-        [lineaspdot],
-      )
-
-    const handleEditar = useCallback(() => {
-        console.log("editar");
+    const handleAgregar = useCallback(() => {
+        modalActionLineapdot(true);
     }, [lineaspdot]);
+
+    const handleEditar = useCallback(
+        (selected) => {
+            setActivateLineapdot(selected);
+            modalActionLineapdot(true);
+        },
+        [lineaspdot]
+    );
 
     const table = useMantineReactTable({
         columns,
         data: lineaspdot, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        state: { showProgressBars: isLoading },
         initialState: { density: "xs" },
         enableDensityToggle: false,
         enableColumnFilters: false,
@@ -57,7 +47,12 @@ export const LineaspdotTable = () => {
             <MenuTableEdit row={row} handleEditar={handleEditar} />
         ),
         renderTopToolbarCustomActions: ({ table }) => (
-            <BtnSection heigh={30} fontSize={12} icon={IconCopyPlus} handleAction={handleAgregar}>
+            <BtnSection
+                heigh={30}
+                fontSize={12}
+                icon={IconCopyPlus}
+                handleAction={handleAgregar}
+            >
                 Agregar
             </BtnSection>
         ),

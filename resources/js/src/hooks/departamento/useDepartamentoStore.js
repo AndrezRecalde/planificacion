@@ -68,7 +68,6 @@ export const useDepartamentoStore = () => {
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
             }, 40);
-            return;
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);
