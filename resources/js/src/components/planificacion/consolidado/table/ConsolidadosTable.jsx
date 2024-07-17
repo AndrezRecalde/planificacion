@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useMantineTheme } from "@mantine/core";
 import { useMantineReactTable } from "mantine-react-table";
 import { BtnSection, TableContent } from "../../../../components";
-import { IconPlus } from "@tabler/icons-react";
+import { IconCloudUpload } from "@tabler/icons-react";
 
 const data = [
     {
@@ -68,12 +68,13 @@ export const ConsolidadosTable = () => {
         enableFacetedValues: true,
         renderTopToolbarCustomActions: ({ table }) => (
             <BtnSection
-                icon={IconPlus}
+                icon={IconCloudUpload}
                 handleAction={() => console.log("clic")}
             >
                 Cargar nuevo archivo
             </BtnSection>
         ),
+
         mantineTableBodyCellProps: {
             style: {
                 fontSize: "11px", //add a border between columns

@@ -108,6 +108,15 @@ import { ComponentepdotTable } from "./planificacion/administracion/componentesp
     /* Categorias del PDOT */
 import { CategoriapdotTable } from "./planificacion/administracion/categoriaspdot/table/CategoriapdotTable";
 
+    /* Estrategias de articulacion */
+import { EarticulacionTable } from "./planificacion/administracion/earticulacion/table/EarticulacionTable";
+
+    /* Metas del PDOT */
+import { MetaspdotTable } from "./planificacion/administracion/metaspdot/table/MetaspdotTable";
+
+    /* Tipos de Planificacion */
+import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/PlanificaciontiposTable";
+
 export {
     BtnServicesApps,
     BtnSubmit,
@@ -197,5 +206,11 @@ export {
 
     ComponentepdotTable,
 
-    CategoriapdotTable
+    CategoriapdotTable,
+
+    EarticulacionTable,
+
+    MetaspdotTable,
+
+    PlanificaciontiposTable
 };

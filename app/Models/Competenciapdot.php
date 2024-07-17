@@ -22,12 +22,12 @@ class Competenciapdot extends Model
     {
         return $this->belongsTo(Lestrategiapdot::class);
     }
-
+    // COMPONENTES DEL PDOT
     function componentes(): BelongsToMany
     {
         return $this->belongsToMany(Componentepdot::class, 'competencia_componente');
     }
-
+    // CATEGORIAS DEL PDOT
     function cotpdots(): BelongsToMany
     {
         return $this->belongsToMany(Cotpdot::class, 'competencia_cot');

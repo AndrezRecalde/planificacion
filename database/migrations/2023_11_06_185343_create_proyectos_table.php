@@ -20,8 +20,9 @@ return new class extends Migration
             $table->double('ponderacion', 4, 2)->default(0);
             $table->string('linea_base');
             $table->string('meta_detalle');
-            $table->unsignedBigInteger('tipounidad_id');
-            $table->integer('indicador_detalle');
+            $table->unsignedBigInteger('tipounidad_id');  //Ejem: KILOMETROS, METROS ... ETC
+            $table->integer('indicador_numero');          //Ejem: 12
+            $table->string('indicador_detalle');          //Ejem: Numero de kilometros construido
             $table->unsignedInteger('tiempo_meses');
             //$table->year('anio_fiscal');
             $table->date('fecha_inicio');

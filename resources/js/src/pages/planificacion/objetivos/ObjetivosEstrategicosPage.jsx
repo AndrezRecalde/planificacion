@@ -1,20 +1,31 @@
-import { Container } from "@mantine/core";
+import { Container, Divider, Group } from "@mantine/core";
 import { BtnSection, TextSection, TitlePage } from "../../../components";
 import { ObjetivosTable } from "../../../components";
-import { IconPlus } from "@tabler/icons-react";
+import { IconCopyPlus } from "@tabler/icons-react";
 
 export const ObjetivosEstrategicosPage = () => {
     return (
         <Container size="xxl">
-            <TitlePage order={2} ta="left">
-                Objetivos estrategicos
-            </TitlePage>
-            <TextSection fw={500} tt="">
-                GPLA tiene 5 objetivos estrategicos documentados
-            </TextSection>
-            <BtnSection mt={10} mb={20} icon={IconPlus} handleAction={() => console.log('clic')}>
-                Agregar
-            </BtnSection>
+            <Group justify="space-between">
+                <div>
+                    <TitlePage order={2} ta="left">
+                        Objetivos estrategicos
+                    </TitlePage>
+                    <TextSection fw={500} tt="">
+                        GPLA tiene 5 objetivos estrategicos documentados
+                    </TextSection>
+                </div>
+                <div>
+                    <BtnSection
+                        mb={20}
+                        icon={IconCopyPlus}
+                        handleAction={() => console.log("clic")}
+                    >
+                        Agregar
+                    </BtnSection>
+                </div>
+            </Group>
+            <Divider my="md" />
             <ObjetivosTable />
         </Container>
     );

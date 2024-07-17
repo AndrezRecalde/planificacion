@@ -20,6 +20,10 @@ import {
     CompetenciaspdotPage,
     ComponentespdotPage,
     CategoriaspdotPage,
+    EarticulacionPage,
+    MetaspdotPage,
+    PlanificacionTiposPage,
+    ProgramasAdminPage,
 } from "../../pages";
 import { AppLayout } from "../../layouts";
 
@@ -62,6 +66,10 @@ export const PrivatePages = () => {
                 <Route path="/gpla/competencias-pdot" element={<CompetenciaspdotPage />} />
                 <Route path="/gpla/componentes-pdot" element={<ComponentespdotPage />} />
                 <Route path="/gpla/categorias-pdot" element={<CategoriaspdotPage />} />
+                <Route path="/gpla/estrategias-articulacion" element={<EarticulacionPage />} />
+                <Route path="/gpla/metas-pdot" element={<MetaspdotPage />} />
+                <Route path="/gpla/tipos-planificacion" element={<PlanificacionTiposPage />} />
+                <Route path="/gpla/planificar-programas" element={<ProgramasAdminPage />} />
 
 
             </Routes>

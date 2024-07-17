@@ -4,7 +4,6 @@ namespace App\Http\Controllers\General;
 
 use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProyectoPublicado;
 use App\Http\Requests\ProyectoRequest;
 use App\Http\Requests\ProyectoStatus;
 use App\Models\Proyecto;
@@ -17,17 +16,25 @@ class ProyectoController extends Controller
     function getProyectos(Request $request): JsonResponse
     {
         $proyectos = Proyecto::from('proyectos as p')
-            ->selectRaw('pro.nombre_programa,
-                        p.nombre_proyecto, p.codigo_proyecto,
-                        p.tiempo_meses, p.anio_fiscal,
-                        p.fecha_inicio, p.fecha_finalizacion,
-                        d.nombre_departamento')
-            ->with(['opndesarrollos'])
+            ->selectRaw('pro.programa_id as programa_id,
+                         p.nombre_proyecto, p.codigo_proyecto,
+                         p.nivel_id, n.nombre_nivel, p.activo,
+                         p.ponderacion, p.linea_base,
+                         p.meta_detalle, p.tiempo_meses,
+                         p.tipounidad_id, tu.tipounidad,
+                         p.indicador_numero, p.indicador_numero,
+                         p.fecha_inicio, p.fecha_finalizacion,
+                         p.departamento_id, d.nombre_departamento,
+                         p.tipoproyecto_id, tp.tipo_proyecto
+            ')
             ->join('programas as pro', 'pro.id', 'p.programa_id')
             ->join('departamentos as d', 'd.id', 'p.departamento_id')
-            ->departamento($request->departamento_id)
-            ->nivel($request->nivel_id)
-            ->programa($request->programa_id)
+            ->join('niveles as n', 'n.id', 'p.nivel_id')
+            ->join('tipounidades as tu', 'tu.id', 'p.tipounidad_id')
+            ->join('tipoproyectos as tp', 'tp-id', 'p.tipoproyecto_id')
+            ->byDepartamentoId($request->departamento_id)
+            ->byNivelId($request->nivel_id)
+            ->byProgramaId($request->programa_id)
             ->codigo($request->codigo_proyecto)
             ->activo($request->activo)
             ->get();
@@ -39,13 +46,13 @@ class ProyectoController extends Controller
     {
         try {
             $proyecto = Proyecto::create($request->validated());
-            $proyecto->opndesarrollos()->attach($request->opndesarrollos);
+            /* $proyecto->opndesarrollos()->attach($request->opndesarrollos); */
             $siglasDep = Proyecto::from('proyectos as p')
-                            ->selectRaw('p.id, d.siglas')
-                            ->join('departamentos as d', 'd.id', 'p.departamento_id')
-                            ->where('p.id', $proyecto->id)
-                            ->first();
-            $proyecto->codigo_proyecto = 'PROY-' . $siglasDep->siglas . $proyecto->id;
+                ->selectRaw('p.id, d.siglas')
+                ->join('departamentos as d', 'd.id', 'p.departamento_id')
+                ->where('p.id', $proyecto->id)
+                ->first();
+            $proyecto->codigo_proyecto = "PROY-" . $siglasDep->siglas . $proyecto->id;
             $proyecto->save();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
@@ -60,10 +67,10 @@ class ProyectoController extends Controller
             if ($proyecto) {
                 $proyecto->update($request->validated());
 
-                if ($request->filled('opndesarrollos')) {
+                /* if ($request->filled('opndesarrollos')) {
                     $proyecto->opndesarrollos()->detach();
                     $proyecto->componentes()->sync($request->opndesarrollos);
-                }
+                } */
 
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {

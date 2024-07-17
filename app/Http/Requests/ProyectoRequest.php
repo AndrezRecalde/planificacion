@@ -38,7 +38,6 @@ class ProyectoRequest extends FormRequest
             'fecha_finalizacion'  =>  'required',
             'departamento_id'     =>  'required',
             'tipoproyecto_id'     =>  'required',
-            'opndesarrollos'      =>  'required'
         ];
     }
 
@@ -59,9 +58,6 @@ class ProyectoRequest extends FormRequest
             'fecha_finalizacion.required' => 'La fecha de finalización es obligatorio' ,
             'departamento_id.required'  => 'El departamento es obligatorio' ,
             'tipoproyecto_id.required'  => 'El tipo proyecto es obligatorio' ,
-            'opndesarrollos.required'   => 'Los Objetivos son obligatorios' ,
-
-
         ];
     }
 

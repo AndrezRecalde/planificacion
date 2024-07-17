@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proyecto_odssostenible', function (Blueprint $table) {
-            $table->unsignedBigInteger('proyecto_id');
+        Schema::create('objetivo_odssostenible', function (Blueprint $table) {
+            $table->unsignedBigInteger('objetivo_id');
             $table->unsignedBigInteger('odssostenible_id');
-            $table->primary(['proyecto_id', 'odssostenible_id']);
+            $table->primary(['objetivo_id', 'odssostenible_id']);
 
             // Definir relaciones foráneas
-            $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
+            $table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete('cascade');
             $table->foreign('odssostenible_id')->references('id')->on('odssostenibles')->onDelete('cascade');
 
             // Añadir índices
-            $table->index('proyecto_id');
+            $table->index('objetivo_id');
             $table->index('odssostenible_id');
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proyecto_odssostenible');
+        Schema::dropIfExists('objetivo_odssostenible');
     }
 };

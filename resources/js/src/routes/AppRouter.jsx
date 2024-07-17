@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthPage } from "../pages";
 import { PublicRoutes } from "./public/PublicRoutes";
 import { PrivatePages, PrivateRoutes } from "./private";
@@ -12,6 +12,15 @@ export const AppRouter = () => {
     useEffect(() => {
         checkAuthToken();
     }, []);
+
+    const AuthRoutes = () => (
+        <PublicRoutes>
+            <Routes>
+                <Route path="auth/login/*" element={<AuthPage />} />
+                <Route path="/*" element={<Navigate replace to="/auth/login" />} />
+            </Routes>
+        </PublicRoutes>
+    );
 
     return (
         <Routes>

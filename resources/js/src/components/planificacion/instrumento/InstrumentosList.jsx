@@ -1,7 +1,9 @@
 import { useMemo } from "react";
-import {  Menu, Group, Text, rem, ActionIcon } from "@mantine/core";
+import { Menu, Group, Text, rem, ActionIcon } from "@mantine/core";
 import { MantineReactTable, useMantineReactTable } from "mantine-react-table";
 import { IconEditCircle, IconSearch, IconTrash } from "@tabler/icons-react";
+import { YearPickerInput } from "@mantine/dates";
+import { BtnSection } from "../../elements/buttons/BtnServices";
 
 const instrumentos = [
     {
@@ -14,28 +16,32 @@ const instrumentos = [
     },
     {
         id: 1,
-        nombre_archivo: "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
+        nombre_archivo:
+            "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
         archivo: "0802704444",
         anio_inicio: "03/08/2023",
         anio_fin: "05/01/2024",
     },
     {
         id: 1,
-        nombre_archivo: "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
+        nombre_archivo:
+            "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
         archivo: "0802704656",
         anio_inicio: "03/08/2023",
         anio_fin: "05/01/2024",
     },
     {
         id: 1,
-        nombre_archivo: "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
+        nombre_archivo:
+            "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
         archivo: "080270417655",
         anio_inicio: "03/08/2023",
         anio_fin: "05/01/2024",
     },
     {
         id: 1,
-        nombre_archivo: "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
+        nombre_archivo:
+            "Archivo del Plan de desarrollo y Ordenamiento Territorial (PDOT) registrado",
         archivo: "080270417335",
         anio_inicio: "03/08/2023",
         anio_fin: "05/01/2024",
@@ -72,17 +78,10 @@ export const InstrumentosList = () => {
 
         renderTopToolbarCustomActions: ({ table }) => (
             <Group>
-                <Text>2019</Text> {/* Cambiarlo por un Combobox */}
-                <ActionIcon
-                    variant="light"
-                    color="orange"
-                    aria-label="Settings"
-                >
-                    <IconSearch
-                        style={{ width: "70%", height: "70%" }}
-                        stroke={1.5}
-                    />
-                </ActionIcon>
+                <YearPickerInput placeholder="Elige año" value={new Date()} />
+                <BtnSection icon={IconSearch}>
+                    Buscar
+                </BtnSection>
             </Group>
         ),
         renderRowActionMenuItems: ({ row }) => (

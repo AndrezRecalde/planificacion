@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 interface ObjetivoInterface
 {
+    function getObjetivoExist(Request $request): Collection;
     function getObjetivos(Request $request): Collection;
     function store(ObjetivoRequest $request): void;
     function update(ObjetivoRequest $request, Objetivo $objetivo): void;

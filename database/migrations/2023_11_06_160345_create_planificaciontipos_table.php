@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('planificaciontipos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_planificacion');
+            $table->string('nombre_planificacion'); // PDOT, PEI
+            $table->boolean('activo');
             $table->timestamps();
         });
     }

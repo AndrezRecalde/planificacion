@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proyecto_opndesarrollo', function (Blueprint $table) {
-            //$table->id();
-            $table->unsignedBigInteger('proyecto_id');
+        Schema::create('objetivo_opndesarrollo', function (Blueprint $table) {
+            $table->unsignedBigInteger('objetivo_id');
             $table->unsignedBigInteger('opndesarrollo_id');
-            $table->primary(['proyecto_id', 'opndesarrollo_id']);
+            $table->primary(['objetivo_id', 'opndesarrollo_id']);
 
             // Definir relaciones foráneas
-            $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
+            $table->foreign('objetivo_id')->references('id')->on('objetivos')->onDelete('cascade');
             $table->foreign('opndesarrollo_id')->references('id')->on('opndesarrollos')->onDelete('cascade');
 
             // Añadir índices
-            $table->index('proyecto_id');
+            $table->index('objetivo_id');
             $table->index('opndesarrollo_id');
-
-            // $table->timestamps();
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proyecto_opndesarrollo');
+        Schema::dropIfExists('objetivo_opndesarrollo');
     }
 };

@@ -1,3 +1,6 @@
+/* Error */
+import { ErrorNotFound } from "./error/ErrorNotFound";
+
 import { AuthPage } from "./auth/AuthPage";
 import { ProfilePage } from "./user/ProfilePage";
 import { ChangePwdPage } from "./user/ChangePwdPage";
@@ -28,8 +31,14 @@ import { LineasEstrategicasPage } from "./planificacion/administracion/lineasEst
 import { CompetenciaspdotPage } from "./planificacion/administracion/competenciaspdot/CompetenciaspdotPage";
 import { ComponentespdotPage } from "./planificacion/administracion/componentespdot/ComponentespdotPage";
 import { CategoriaspdotPage } from "./planificacion/administracion/categoriaspdot/CategoriaspdotPage";
+import { EarticulacionPage } from "./planificacion/administracion/earticulacion/EarticulacionPage";
+import { MetaspdotPage } from "./planificacion/administracion/metaspdot/MetaspdotPage";
+import { PlanificacionTiposPage } from "./planificacion/administracion/planificaciontipos/PlanificacionTiposPage";
+import { ProgramasAdminPage } from "./planificacion/administracion/programas/ProgramasAdminPage";
 
 export {
+    ErrorNotFound,
+
     AuthPage,
     ProfilePage,
     ChangePwdPage,
@@ -58,6 +67,10 @@ export {
     LineasEstrategicasPage,
     CompetenciaspdotPage,
     ComponentespdotPage,
-    CategoriaspdotPage
+    CategoriaspdotPage,
+    EarticulacionPage,
+    MetaspdotPage,
+    PlanificacionTiposPage,
+    ProgramasAdminPage,
 
  };

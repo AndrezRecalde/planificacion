@@ -20,6 +20,16 @@ class ObjetivoController extends Controller
         $this->objetivoRepository = $objetivoRepository;
     }
 
+    function getObjetivoExist(Request $request): JsonResponse
+    {
+        $objetivos = $this->objetivoRepository->getObjetivoExist($request);
+
+        return response()->json([
+            'status' => HTTPStatus::Success,
+            'objetivos' => $objetivos
+        ], 200);
+    }
+
     function getObjetivos(Request $request): JsonResponse
     {
         $objetivos = $this->objetivoRepository->getObjetivos($request);

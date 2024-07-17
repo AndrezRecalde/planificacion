@@ -15,15 +15,10 @@ return new class extends Migration
         Schema::create('earticulaciones', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_articulacion');
-            $table->unsignedBigInteger('oepdot_id');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
 
-             // Definir relaciones foráneas
-             $table->foreign('oepdot_id')->references('id')->on('oepdots')->onDelete('cascade');
 
-
-             // Añadir índices
-             $table->index('oepdot_id');
         });
     }
 

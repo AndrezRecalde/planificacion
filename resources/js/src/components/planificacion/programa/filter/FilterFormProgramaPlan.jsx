@@ -13,9 +13,10 @@ export const FilterFormProgramaPlan = () => {
             <BtnSubmit
                 text="Buscar"
                 IconSection={IconSearch}
-                heigh={40}
                 fontSize={16}
-            />
+            >
+                Buscar
+                </BtnSubmit>
         </Fieldset>
     );
 };

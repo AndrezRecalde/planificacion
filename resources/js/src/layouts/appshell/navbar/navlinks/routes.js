@@ -1,4 +1,4 @@
-import { IconBuilding, IconCategoryPlus, IconChartPie, IconCheckupList, IconFiles, IconFolders, IconListCheck, IconTrendingUp } from "@tabler/icons-react";
+import { IconBuilding, IconBuildingBank, IconCategoryPlus, IconChartPie, IconCheckupList, IconFiles, IconFolders, IconListCheck, IconManualGearbox, IconTrendingUp } from "@tabler/icons-react";
 import { ROLES } from "../../../../helpers";
 
 
@@ -89,13 +89,32 @@ export const routes = [
                     { label: "Componentes PDOT", link: "/gpla/componentes-pdot" },
                     { label: "Categorias PDOT", link: "/gpla/categorias-pdot" },
                     { label: "Competencias PDOT", link: "/gpla/competencias-pdot" },
-                    { label: "Objetivos Estrategicos PDOT", link: "/" },
-                    { label: "Estrategias de Articulación", link: "/" },
-                    { label: "Metas PDOT", link: "/" },
-                    { label: "Modelo de Gestiones", link: "/" },
-                    { label: "Tipos de Planificación", link: "/" },
-                    { label: "Realización de Objetivos", link: "/" },
-                    { label: "Programas", link: "/" },
+                    { label: "Estrategias de Articulación", link: "/gpla/estrategias-articulacion" },
+                    { label: "Metas PDOT", link: "/gpla/metas-pdot" },
+                    { label: "Tipos de Planificación", link: "/gpla/tipos-planificacion" },
+                    { label: "Programas", link: "/gpla/planificar-programas" },
+                ],
+            },
+            {
+                label: "Gestionar Gobierno",
+                icon: IconBuildingBank,
+                initiallyOpened: false,
+                links: [
+                    //{ label: "Lineas PDOT", link: "/" },
+                    { label: "Gestionar Gobierno", link: "/gpla/lineas-estrategicas" },
+                    { label: "Gestionar Objetivos", link: "/gpla/componentes-pdot" },
+                    { label: "Objetivos Sostenibles", link: "/gpla/componentes-pdot" },
+
+
+                ],
+            },
+            {
+                label: "Gestionar Permisos",
+                icon: IconManualGearbox,
+                initiallyOpened: false,
+                links: [
+                    //{ label: "Lineas PDOT", link: "/" },
+                    { label: "Gestionar Usuarios", link: "/gpla/lineas-estrategicas" },
                 ],
             },
         ],

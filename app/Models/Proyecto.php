@@ -21,6 +21,7 @@ class Proyecto extends Model
         'linea_base',
         'meta_detalle',
         'tipounidad_id',
+        'indicador_numero',
         'indicador_detalle',
         'tiempo_meses',
         //'anio_fiscal',
@@ -56,31 +57,21 @@ class Proyecto extends Model
         return $this->hasMany(Actividad::class);
     }
 
-    function opndesarrollos(): BelongsToMany
-    {
-        return $this->belongsToMany(Opndesarrollo::class, 'proyecto_opndesarrollo');
-    }
-
-    function odssostenibles() : BelongsToMany {
-        return $this->belongsToMany(Odssostenible::class, 'proyecto_odssostenible');
-
-    }
-
-    function scopeDepartamento($query, $departamento_id)
+    function scopeByDepartamentoId($query, $departamento_id)
     {
         if ($departamento_id) {
             return $query->where('p.departamento_id', $departamento_id);
         }
     }
 
-    function scopeNivel($query, $nivel_id)
+    function scopeByNivelId($query, $nivel_id)
     {
         if ($nivel_id) {
             return $query->where('p.nivel_id', $nivel_id);
         }
     }
 
-    function scopePrograma($query, $programa_id)
+    function scopeByProgramaId($query, $programa_id)
     {
         if ($programa_id) {
             return $query->where('p.programa_id', $programa_id);
@@ -94,18 +85,10 @@ class Proyecto extends Model
         }
     }
 
-    function activo($query, $activo)
+    function scopeActivo($query, $activo)
     {
         if ($activo) {
             return $query->where('p.activo', $activo);
         }
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::deleting(function ($proyecto) {
-            $proyecto->opndesarrollos()->detach();
-        });
     }
 }

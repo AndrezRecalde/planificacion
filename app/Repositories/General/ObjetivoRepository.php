@@ -19,28 +19,51 @@ class ObjetivoRepository implements ObjetivoInterface
         $this->model = new Objetivo();
     }
 
+    function getObjetivoExist(Request $request): Collection
+    {
+        $objetivos = $this->model::from('objetivos as o')
+            ->selectRaw('o.id, o.nombre_objetivo')
+            ->when($request->departamento_id, function ($query) use ($request) {
+                $query->whereHas('departamentos', function ($q) use ($request) {
+                    $q->where('departamento_id', $request->departamento_id);
+                });
+            })
+            ->get();
+
+        return $objetivos;
+    }
+
     function getObjetivos(Request $request): Collection
     {
 
         $objetivos = $this->model::from('objetivos as o')
-            ->selectRaw('o.*, li.nombre_linea, le.linea_estrategica,
-                     co.nombre_competencia, compo.nombre_componente, ge.nombre_departamento,
-                     oe.objetivo_pdot, ea.nombre_articulacion, me.nombre_meta,
-                     comp.nombre_competencia, oep.objetivo_pei')
+            ->selectRaw('o.id, o.nombre_objetivo,
+                         o.lestrategiapdot_id, le.linea_estrategica,
+                         li.id as lineapdot_id, li.nombre_linea,
+                         o.competenciapdot_id, co.nombre_competencia,
+                         o.earticulacion_id, ea.nombre_articulacion,
+                         o.metapdot_id, me.nombre_meta as metapdot,
+                         o.competencia_id, comp.nombre_competencia,
+                         o.rmedicion_id, rm.nombre_departamento as responsable_medicion,
+                         o.anio_cumplimiento, o.linea_base,
+                         o.anio_lbase, o.activo')
+            ->with([
+                'odssostenibles', 'opndesarrollos', 'departamentos'
+            ])
             ->join('lestrategiapdots as le', 'le.id', 'o.lestrategiapdot_id')
             ->join('lineapdots as li', 'li.id', 'le.lineapdot_id')
             ->join('competenciapdots as co', 'co.id', 'o.competenciapdot_id')
-            ->join('componentepdots as compo', 'compo.id', 'o.componentepdot_id')
-            ->join('departamentos as ge', 'ge.id', 'o.gestionpdot_id')  //Reemplaza Gestionpdot por Departamento
-            ->join('oepdots as oe', 'oe.id', 'o.oepadot_id')
             ->join('earticulaciones as ea', 'ea.id', 'o.earticulacion_id')
             ->join('metapdots as me', 'me.id', 'o.metapdot_id')
             ->join('competencias as comp', 'comp.id', 'o.competencia_id')
-            ->join('oepeis as oep', 'oep.id', 'o.oepei_id')
-            ->byDepartamentoId($request->departamento_id)
+            ->join('departamentos as rm', 'rm.id', 'o.rmedicion_id')
+            ->when($request->departamento_id, function ($query) use ($request) {
+                $query->whereHas('departamentos', function ($q) use ($request) {
+                    $q->where('departamento_id', $request->departamento_id);
+                });
+            })
             ->byLestrategiapdotId($request->lestrategiapdot_id)
             ->byCompetenciapdotId($request->competenciapdot_id)
-            ->byComponentepdotId($request->componentepdot_id)
             ->get();
 
         return $objetivos;
@@ -50,6 +73,7 @@ class ObjetivoRepository implements ObjetivoInterface
     {
         $objetivo = $this->model::create($request->validated());
         $objetivo->departamentos()->attach($request->departamentos);
+        $objetivo->opndesarrollos()->attach($request->opndesarrollos);
     }
 
     function update(ObjetivoRequest $request, Objetivo $objetivo): void
@@ -59,6 +83,11 @@ class ObjetivoRepository implements ObjetivoInterface
         if ($request->filled('departamentos')) {
             $objetivo->departamentos()->detach();
             $objetivo->departamentos()->sync($request->departamentos);
+        }
+
+        if ($request->filled('opndesarrollos')) {
+            $objetivo->opndesarrollos()->detach();
+            $objetivo->componentes()->sync($request->opndesarrollos);
         }
     }
 

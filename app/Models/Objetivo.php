@@ -14,17 +14,14 @@ class Objetivo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'nombre_objetivo',
         'lestrategiapdot_id',
         'competenciapdot_id',
-        'componentepdot_id',
-        'gestionpdot_id', //SE PUEDE REEMPLAZAR POR DEPARTAMENTO
-        'oepdot_id',
         'earticulacion_id',
         'metapdot_id',
-        'indicadorpdot',
         'competencia_id',
         'rmedicion_id',
-        'oepei_id',
+        'anio_cumplimiento',
         'linea_base',
         'anio_lbase',
         'activo'
@@ -40,24 +37,10 @@ class Objetivo extends Model
         return $this->belongsTo(Lestrategiapdot::class);
     }
 
+    // COMPETENCIAS DEL PDOT
     function competenciapdot(): BelongsTo
     {
         return $this->belongsTo(Competenciapdot::class);
-    }
-
-    function componentepdot(): BelongsTo
-    {
-        return $this->belongsTo(Componentepdot::class);
-    }
-
-    function gestionpdot(): BelongsTo
-    {
-        return $this->belongsTo(Gestionpdot::class);
-    }
-
-    function oepdot(): BelongsTo
-    {
-        return $this->belongsTo(Oepdot::class);
     }
 
     function earticulacion(): BelongsTo
@@ -70,6 +53,7 @@ class Objetivo extends Model
         return $this->belongsTo(Metapdot::class);
     }
 
+    // COMPETENCIAS DEL GAD
     function competencia(): BelongsTo
     {
         return $this->belongsTo(Competencia::class);
@@ -80,9 +64,14 @@ class Objetivo extends Model
         return $this->belongsTo(Departamento::class, 'rmedicion_id', 'id');
     }
 
-    function oepei(): BelongsTo
+    function opndesarrollos(): BelongsToMany
     {
-        return $this->belongsTo(Oepei::class);
+        return $this->belongsToMany(Opndesarrollo::class, 'objetivo_opndesarrollo');
+    }
+
+    function odssostenibles() : BelongsToMany {
+        return $this->belongsToMany(Odssostenible::class, 'objetivo_odssostenible');
+
     }
 
     function programas(): HasMany
@@ -113,17 +102,17 @@ class Objetivo extends Model
         }
     }
 
-    function scopeByComponentepdotId(Builder $query, $componentepdot_id)
+    function scopeByComponentepdotId(Builder $query, $componentepdots_id)
     {
-        if ($componentepdot_id) {
-            return $query->where('o.componentepdot_id', $componentepdot_id);
+        if ($componentepdots_id) {
+            return $query->whereHas('competenciapdot.componentes', $componentepdots_id);
         }
     }
 
     function scopeByCotpdot(Builder $query, $cotpdot_id)
     {
         if ($cotpdot_id) {
-            return $query->whereHas('competenciapdots.cotpdots', function ($q) use ($cotpdot_id) {
+            return $query->whereHas('competenciapdot.cotpdots', function ($q) use ($cotpdot_id) {
                 $q->whereIn('cotpdots.id', $cotpdot_id);
             });
         }

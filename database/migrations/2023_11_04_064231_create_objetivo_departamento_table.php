@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. PARA VALIDAR LOS RESPONSABLES DE CUMPLIMIENTO OPERATIVO
+     * Run the migrations.
+     *
+     * PARA VALIDAR LOS RESPONSABLES DE CUMPLIMIENTO OPERATIVO: GESTION RESPONSABLE DEL CUMPLIMIENTO OPERATIVO
      */
     public function up(): void
     {
