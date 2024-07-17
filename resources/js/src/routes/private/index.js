@@ -1,7 +1,18 @@
-import { PrivatePages } from "./PrivatePages";
-import { PrivateRoutes } from "./PrivateRoutes";
+import { AuthGuard } from "./guard/AuthGuard";
+import { PrivateRoutes } from "./guard/PrivateRoutes";
+
+import { GestionesPages } from "./routers/GestionesPages";
+import { PlanificacionPages } from "./routers/PlanificacionPages";
+import { PrivatePages } from "./routers/PrivatePages";
+
+
+
 
 export {
-    PrivatePages,
-    PrivateRoutes
+    AuthGuard,
+    PrivateRoutes,
+
+    GestionesPages,
+    PlanificacionPages,
+    PrivatePages
 }

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { ErrorNotFound } from "../../pages"
 
-export const RoutesNotFound = () => {
+export const RoutesNotFound = ({ children }) => {
   return (
     <Routes>
         { children }

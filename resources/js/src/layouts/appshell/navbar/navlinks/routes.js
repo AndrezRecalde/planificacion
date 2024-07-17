@@ -8,14 +8,14 @@ export const routes = [
         label: "Dashboard",
         icon: IconChartPie,
         initiallyOpened: true,
-        links: [{ label: "Inicio", link: "/stats/gestion" }],
+        links: [{ label: "Inicio", link: "/gestion/stats/gestion" }],
         role: ROLES.DIR_GESTION,
     },
     {
         label: "Proveedores",
         icon: IconBuilding,
         initiallyOpened: true,
-        links: [{ label: "Ver proveedores", link: "/proveedores" }],
+        links: [{ label: "Ver proveedores", link: "/gestion/proveedores" }],
         role: ROLES.DIR_GESTION,
     },
     /* {
@@ -29,14 +29,14 @@ export const routes = [
         label: "Proyectos",
         icon: IconFiles,
         initiallyOpened: true,
-        links: [{ label: "Ver proyectos", link: "/proyectos" }],
+        links: [{ label: "Ver proyectos", link: "/gestion/proyectos" }],
         role: ROLES.DIR_GESTION,
     },
     {
         label: "Espacio de trabajo",
         icon: IconCategoryPlus,
         initiallyOpened: true,
-        links: [{ label: "Ver mi espacio", link: "/tableros" }],
+        links: [{ label: "Ver mi espacio", link: "/gestion/tableros" }],
         role: ROLES.DIR_GESTION,
     },
 

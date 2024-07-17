@@ -1,5 +1,7 @@
 /* Error */
 import { ErrorNotFound } from "./error/ErrorNotFound";
+import { ErrorAccessDenied } from "./error/ErrorAccessDenied";
+
 
 import { AuthPage } from "./auth/AuthPage";
 import { ProfilePage } from "./user/ProfilePage";
@@ -38,6 +40,7 @@ import { ProgramasAdminPage } from "./planificacion/administracion/programas/Pro
 
 export {
     ErrorNotFound,
+    ErrorAccessDenied,
 
     AuthPage,
     ProfilePage,

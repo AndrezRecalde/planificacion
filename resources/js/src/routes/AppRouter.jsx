@@ -1,10 +1,18 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthPage } from "../pages";
-import { PublicRoutes } from "./public/PublicRoutes";
-import { PrivatePages, PrivateRoutes } from "./private";
 import { useAuthStore } from "../hooks";
-
+import { AppLayout } from "../layouts";
+import { PublicRoutes } from "./public/PublicRoutes";
+import { RoutesNotFound } from "./not-found/RoutesNotFound";
+import { ROLES } from "../helpers";
+import {
+    AuthGuard,
+    GestionesPages,
+    PlanificacionPages,
+    PrivatePages,
+    PrivateRoutes,
+} from "./private";
 
 export const AppRouter = () => {
     const { checkAuthToken } = useAuthStore();
@@ -17,32 +25,46 @@ export const AppRouter = () => {
         <PublicRoutes>
             <Routes>
                 <Route path="auth/login/*" element={<AuthPage />} />
-                <Route path="/*" element={<Navigate replace to="/auth/login" />} />
+                <Route
+                    path="/*"
+                    element={<Navigate replace to="/auth/login" />}
+                />
             </Routes>
         </PublicRoutes>
     );
 
     return (
-        <Routes>
-            <Route
-                path="/auth/login/*"
-                element={
-                    <PublicRoutes>
-                        <Routes>
-                            <Route path="/*" element={<AuthPage />} />
-                        </Routes>
-                    </PublicRoutes>
-                }
-            />
+        <RoutesNotFound>
+            <Route path="/*" element={<AuthRoutes />} />
 
-            <Route
-                path="/*"
-                element={
-                    <PrivateRoutes>
-                        <PrivatePages />
-                    </PrivateRoutes>
-                }
-            />
-        </Routes>
+            <Route element={<AppLayout />}>
+                <Route
+                    path="/gestion/*"
+                    element={
+                        <PrivateRoutes requiredRole={ROLES.DIR_GESTION}>
+                            <GestionesPages />
+                        </PrivateRoutes>
+                    }
+                />
+
+                <Route
+                    path="/gpla/*"
+                    element={
+                        <PrivateRoutes requiredRole={ROLES.DIR_PLANIFICACION}>
+                            <PlanificacionPages />
+                        </PrivateRoutes>
+                    }
+                />
+
+                <Route
+                    path="/space/*"
+                    element={
+                        <AuthGuard>
+                            <PrivatePages />
+                        </AuthGuard>
+                    }
+                />
+            </Route>
+        </RoutesNotFound>
     );
 };

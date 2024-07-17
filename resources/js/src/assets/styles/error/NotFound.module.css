@@ -16,6 +16,10 @@
     }
   }
 
+  .phras {
+    margin-top: 20px;
+  }
+
   .control {
     @media (max-width: $mantine-breakpoint-sm) {
       width: 100%;

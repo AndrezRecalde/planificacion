@@ -2,15 +2,16 @@ import { useState } from "react";
 import { AppHeader, AppNavbar, AppNavplan } from "../../layouts";
 import { AppShell, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Outlet } from "react-router-dom";
 
 import classes from "../../assets/styles/layout/NavbarModule/AppNavbar.module.css";
 
-export const AppLayout = ({ children }) => {
+export const AppLayout = () => {
     const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
     const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
     /* Cambiarlo por el state */
-    const [role, setRole] = useState("DIR_PLANIFICACION");
+    const [role, setRole] = useState("DIR_GESTION");
 
     const Scroll = <ScrollArea scrollbarSize={6}></ScrollArea>;
 
@@ -48,10 +49,14 @@ export const AppLayout = ({ children }) => {
                         </Group>
                     </div>
                 </AppShell.Section> */}
-                <AppShell.Section grow className={classes.links} component={ScrollArea}>
+                <AppShell.Section
+                    grow
+                    className={classes.links}
+                    component={ScrollArea}
+                >
                     {role !== "DIR_PLANIFICACION" ? (
                         <AppNavbar
-                            role="DIR_PLANIFICACION"
+                            role="DIR_GESTION"
                             toggleMobile={toggleMobile}
                         />
                     ) : (
@@ -62,7 +67,9 @@ export const AppLayout = ({ children }) => {
                     <AppNavfooter />
                 </AppShell.Section> */}
             </AppShell.Navbar>
-            <AppShell.Main>{children}</AppShell.Main>
+            <AppShell.Main>
+                <Outlet />
+            </AppShell.Main>
         </AppShell>
     );
 };
