@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Container, Divider, Grid } from "@mantine/core";
 import {
+    LineaEstrategiaModal,
     LineapdotModal,
     LineasEstrategicasTable,
     LineaspdotTable,
     TitlePage,
 } from "../../../../components";
-import { useLineapdotStore } from "../../../../hooks";
+import { useLestrategiapdotStore, useLineapdotStore } from "../../../../hooks";
 import Swal from "sweetalert2";
 
 export const LineasEstrategicasPage = () => {
@@ -17,11 +18,20 @@ export const LineasEstrategicasPage = () => {
         errores: ErrLineapdot,
     } = useLineapdotStore();
 
+    const {
+        startLoadLestrategiapdots,
+        startClearLestrategiapdot,
+        message: MsgLestrategia,
+        errores: ErrLestrategia,
+    } = useLestrategiapdotStore();
+
     useEffect(() => {
         startLoadLineaspdot();
+        startLoadLestrategiapdots();
 
         return () => {
             startClearLineaspdot();
+            startClearLestrategiapdot();
         };
     }, []);
 
@@ -38,6 +48,18 @@ export const LineasEstrategicasPage = () => {
     }, [MsgLineapdot]);
 
     useEffect(() => {
+        if (MsgLestrategia !== undefined) {
+            Swal.fire({
+                icon: MsgLestrategia.status,
+                text: MsgLestrategia.msg,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            return;
+        }
+    }, [MsgLestrategia]);
+
+    useEffect(() => {
         if (ErrLineapdot !== undefined) {
             Swal.fire({
                 icon: "error",
@@ -49,6 +71,19 @@ export const LineasEstrategicasPage = () => {
             return;
         }
     }, [ErrLineapdot]);
+
+    useEffect(() => {
+        if (ErrLestrategia !== undefined) {
+            Swal.fire({
+                icon: "error",
+                title: "Opps...",
+                text: ErrLestrategia,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            return;
+        }
+    }, [ErrLestrategia]);
 
     return (
         <Container size="xxl">
@@ -65,6 +100,7 @@ export const LineasEstrategicasPage = () => {
                 </Grid.Col>
             </Grid>
             <LineapdotModal />
+            <LineaEstrategiaModal />
         </Container>
     );
 };

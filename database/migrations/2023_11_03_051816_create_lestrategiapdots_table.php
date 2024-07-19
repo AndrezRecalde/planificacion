@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lestrategiapdots', function (Blueprint $table) {
             $table->id();
             $table->string('linea_estrategica');
-            $table->boolean('activo')->default(0);
+            $table->boolean('activo')->default(false);
             $table->unsignedBigInteger('lineapdot_id');
             $table->timestamps();
 

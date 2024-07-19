@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
     authSlice,
+    componentepdotSlice,
     departamentoSlice,
     lestrategiapdotSlice,
     lineapdotSlice,
@@ -8,6 +9,7 @@ import {
     proyectoSlice,
     tipoActividadSlice,
     tipoProyectoSlice,
+    uiComponentepdotSlice,
     uiDepartamentoSlice,
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
@@ -28,6 +30,10 @@ export const store = configureStore({
         /* Lineas estrategicas del PDOT */
         lestrategiapdot: lestrategiapdotSlice.reducer,
         uiLestrategiapdot: uiLestrategiapdotSlice.reducer,
+
+        /* Componentes del pdot */
+        componentepdot: componentepdotSlice.reducer,
+        uiComponentepdot: uiComponentepdotSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

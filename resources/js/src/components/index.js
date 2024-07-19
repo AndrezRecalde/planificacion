@@ -101,6 +101,8 @@ import { LineasEstrategicasTable } from "./planificacion/administracion/lineasEs
 import { LineapdotModal } from "./planificacion/administracion/lineasEstrategicas/modal/LineapdotModal";
 import { LineapdotForm } from "./planificacion/administracion/lineasEstrategicas/form/LineapdotForm";
 
+import { LineaEstrategiaModal } from "./planificacion/administracion/lineasEstrategicas/modal/LineaEstrategiaModal";
+import { LineaEstrategiaForm } from "./planificacion/administracion/lineasEstrategicas/form/LineaEstrategiaForm";
 
     /* Competencias del PDOT */
 import { CompetenciapdotTable } from "./planificacion/administracion/competenciaspdot/table/CompetenciapdotTable";
@@ -206,6 +208,8 @@ export {
     LineasEstrategicasTable,
     LineapdotModal,
     LineapdotForm,
+    LineaEstrategiaModal,
+    LineaEstrategiaForm,
 
     CompetenciapdotTable,
     CompetenciaDetail,

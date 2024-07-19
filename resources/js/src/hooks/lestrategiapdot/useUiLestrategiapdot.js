@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { onOpenModalLestrategia } from "../../store/lestrategia/uiLestrategiapdotSlice";
+import { onOpenModalLestrategia, onOpenModalStatusLestrategia } from "../../store/lestrategia/uiLestrategiapdotSlice";
 
 export const useUiLestrategiapdot = () => {
-    const { isOpenModalLestrategia } = useSelector(
+    const { isOpenModalLestrategia, isOpenModalStatusLestrategia } = useSelector(
         (state) => state.uiLestrategiapdot
     );
 
@@ -12,9 +12,15 @@ export const useUiLestrategiapdot = () => {
         dispatch(onOpenModalLestrategia(behavior));
     };
 
+    const modalActionStatusLestrategiapdot = (behavior) => {
+        dispatch(onOpenModalStatusLestrategia(behavior));
+    }
+
     return {
         isOpenModalLestrategia,
+        isOpenModalStatusLestrategia,
 
-        modalActionLestrategiapdot
+        modalActionLestrategiapdot,
+        modalActionStatusLestrategiapdot
     };
 };

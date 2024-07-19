@@ -8,8 +8,9 @@ import {
     onLoadProfile,
     onValidate,
 } from "../../store/auth/authSlice";
-import planningApi from "../../api/planningApi";
 import { useErrorException } from "../../hooks";
+import { useMantineColorScheme } from "@mantine/core";
+import planningApi from "../../api/planningApi";
 
 export const useAuthStore = () => {
     const { isLoading, user, token, profile, validate, errores } = useSelector(
@@ -18,6 +19,8 @@ export const useAuthStore = () => {
     const { ExceptionMessageError } = useErrorException(onLoadErrores);
 
     const dispatch = useDispatch();
+
+    const { clearColorScheme  } = useMantineColorScheme();
 
     const startLogin = async ({ dni, password }) => {
         try {
@@ -83,6 +86,7 @@ export const useAuthStore = () => {
             await planningApi.post("/auth/logout");
             localStorage.clear();
             dispatch(onLogout());
+            clearColorScheme();
         } catch (error) {
             localStorage.clear();
             dispatch(onLogout());

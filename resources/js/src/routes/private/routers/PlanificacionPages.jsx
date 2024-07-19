@@ -20,10 +20,7 @@ export const PlanificacionPages = () => {
         <RoutesNotFound>
             {/* Planificacion */}
             <Route path="instrumentos" element={<InstrumentosPage />} />
-            <Route
-                path="objetivos"
-                element={<ObjetivosEstrategicosPage />}
-            />
+            <Route path="objetivos" element={<ObjetivosEstrategicosPage />} />
             <Route path="programas" element={<ProgramasPlanPage />} />
             <Route path="consolidados" element={<ConsolidadosPage />} />
 
@@ -36,14 +33,8 @@ export const PlanificacionPages = () => {
                 path="competencias-pdot"
                 element={<CompetenciaspdotPage />}
             />
-            <Route
-                path="componentes-pdot"
-                element={<ComponentespdotPage />}
-            />
-            <Route
-                path="categorias-pdot"
-                element={<CategoriaspdotPage />}
-            />
+            <Route path="componentes-pdot" element={<ComponentespdotPage />} />
+            <Route path="categorias-pdot" element={<CategoriaspdotPage />} />
             <Route
                 path="estrategias-articulacion"
                 element={<EarticulacionPage />}

@@ -1,5 +1,5 @@
 import cx from "clsx";
-import { useCallback, useMemo, useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
     Avatar,
     Group,
@@ -21,33 +21,38 @@ import { useNavigate } from "react-router-dom";
 
 import classes from "../../assets/styles/layout/UsersModules/UserHeader.module.css";
 
+const getUserFromLocalStorage = () => JSON.parse(localStorage.getItem("service_user"));
+
+const extractInitials = (nombres, apellidos) => `${nombres[0]}${apellidos[0]}`;
+
+const extractName = (nombres, apellidos) => {
+    const nombre_index = nombres.indexOf(" ");
+    const apellido_index = apellidos.indexOf(" ");
+    return `${nombres.substring(0, nombre_index)} ${apellidos.substring(0, apellido_index)}`;
+};
+
 export const UserBtnHeader = () => {
     const theme = useMantineTheme();
     const { startLogout } = useAuthStore();
     const navigate = useNavigate();
-    const usuario = useMemo(
-        () => JSON.parse(localStorage.getItem("service_user")),
-        []
-    );
+    const [usuario, setUsuario] = useState(null);
     const [userMenuOpened, setUserMenuOpened] = useState(false);
 
-    const nombres = useCallback(() => {
-        const nombre_index = usuario.nombres.indexOf(" ");
-        const apellido_index = usuario.apellidos.indexOf(" ");
+    useEffect(() => {
+        setUsuario(getUserFromLocalStorage());
+    }, []);
 
-        let _nombre = usuario.nombres.substring(0, nombre_index);
-        let _apellido = usuario.apellidos.substring(0, apellido_index);
-
-        return _nombre + " " + _apellido;
+    const nombres = useMemo(() => {
+        if (!usuario) return "";
+        return extractName(usuario.nombres, usuario.apellidos);
     }, [usuario]);
 
-    const iniciales = useCallback(() => {
-        let inicial_nombre = usuario.nombres.slice(0, 1);
-        let inicial_apellido = usuario.apellidos.slice(0, 1);
-        return inicial_nombre + inicial_apellido;
+    const iniciales = useMemo(() => {
+        if (!usuario) return "";
+        return extractInitials(usuario.nombres, usuario.apellidos);
     }, [usuario]);
 
-    const navigation = (e, url) => {
+    const handleNavigation = (e, url) => {
         e.preventDefault();
         navigate(url);
     };
@@ -61,13 +66,13 @@ export const UserBtnHeader = () => {
         },
         {
             label: "Cambiar contraseña",
-            action: "/change-password",
+            action: "/space/change-password",
             icon: IconSettings,
             color: theme.colors.gray[6],
         },
         {
             label: "Mi actividad",
-            action: "/change-password",
+            action: "/space/change-password",
             icon: IconGrain,
             color: theme.colors.teal[6],
         },
@@ -78,6 +83,8 @@ export const UserBtnHeader = () => {
             color: theme.colors.red[6],
         },
     ];
+
+    if (!usuario) return null;
 
     return (
         <Menu
@@ -100,11 +107,11 @@ export const UserBtnHeader = () => {
                             alt={usuario.apellidos}
                             radius="xl"
                             color="indigo.7"
-                            name={iniciales()}
+                            name={iniciales}
                         />
                         <div style={{ flex: 1 }}>
                             <Text fw={500} size="sm">
-                                {nombres()}
+                                {nombres}
                             </Text>
                             <Text size="xs" c="dimmed">
                                 {usuario.email}
@@ -120,28 +127,25 @@ export const UserBtnHeader = () => {
 
             <Menu.Dropdown>
                 <Menu.Label>Cuenta</Menu.Label>
-                {menuBtnUserHeader.map(
-                    ({ label, action, icon: Icon, color, index }) => (
-                        <Menu.Item
-                            key={label}
-                            onClick={(e) =>
-                                typeof action === "string"
-                                    ? navigation(e, action)
-                                    : action()
-                            }
-                            leftSection={
-                                <Icon
-                                    key={label}
-                                    style={{ width: rem(16), height: rem(16) }}
-                                    color={color}
-                                    stroke={1.7}
-                                />
-                            }
-                        >
-                            {label}
-                        </Menu.Item>
-                    )
-                )}
+                {menuBtnUserHeader.map(({ label, action, icon: Icon, color }) => (
+                    <Menu.Item
+                        key={label}
+                        onClick={(e) =>
+                            typeof action === "string"
+                                ? handleNavigation(e, action)
+                                : action()
+                        }
+                        leftSection={
+                            <Icon
+                                style={{ width: rem(16), height: rem(16) }}
+                                color={color}
+                                stroke={1.7}
+                            />
+                        }
+                    >
+                        {label}
+                    </Menu.Item>
+                ))}
             </Menu.Dropdown>
         </Menu>
     );

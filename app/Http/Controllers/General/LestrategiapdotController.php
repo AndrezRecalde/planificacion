@@ -15,9 +15,11 @@ class LestrategiapdotController extends Controller
     function getLineasEstrategiasPdot(Request $request): JsonResponse
     {
         $estrategias = Lestrategiapdot::from('lestrategiapdots as le')
-            ->selectRaw('le.id, le.linea_estrategica, le.activo, l.nombre_linea')
+            ->selectRaw('le.id, le.linea_estrategica, le.activo,
+                         l.id as lineapdot_id, l.nombre_linea')
             ->join('lineapdots as l', 'l.id', 'le.lineapdot_id')
             ->byLineapdotId($request->lineapdot_id)
+            ->orderBy('l.id', "ASC")
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'estrategias' => $estrategias], 200);

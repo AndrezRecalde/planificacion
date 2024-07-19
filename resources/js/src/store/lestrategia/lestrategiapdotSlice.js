@@ -13,7 +13,7 @@ export const lestrategiapdotSlice = createSlice({
         onLoading: (state, { payload }) => {
             state.isLoading = payload;
         },
-        onLoadLestrategiapdot: (state, { payload }) => {
+        onLoadLestrategiaspdot: (state, { payload }) => {
             state.lestrategias = payload;
             state.isLoading = false;
         },
@@ -37,7 +37,7 @@ export const lestrategiapdotSlice = createSlice({
                         lestrategia.id !== state.activateLestrategia.id
                 );
                 state.activateLestrategia = null;
-                state.errores;
+                state.errores = undefined;
             }
         },
         onSetActivateLestrategiapdot: (state, { payload }) => {
@@ -63,7 +63,7 @@ export const lestrategiapdotSlice = createSlice({
 
 export const {
     onLoading,
-    onLoadLestrategiapdot,
+    onLoadLestrategiaspdot,
     onAddLestrategiapdot,
     onUpdateLestrategiapdot,
     onDeleteLEstrategiapdot,

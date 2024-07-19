@@ -47,7 +47,8 @@ export const useLineapdotStore = () => {
                     }/${lineapdot.id}`,
                     lineapdot
                 );
-                dispatch(onUpdateLineapdot({ ...lineapdot }));
+                //dispatch(onUpdateLineapdot({ ...lineapdot }));
+                startLoadLineaspdot();
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -58,7 +59,8 @@ export const useLineapdotStore = () => {
                 PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.STORE_LINEAPDOT,
                 lineapdot
             );
-            dispatch(onAddLineapdot({ ...lineapdot }));
+            //dispatch(onAddLineapdot({ ...lineapdot }));
+            startLoadLineaspdot();
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));

@@ -53,6 +53,7 @@ export const useDepartamentoStore = () => {
                     departamento
                 );
                 dispatch(onUpdateDepartamento({ ...departamento }));
+                //startLoadDepartamentos();
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));

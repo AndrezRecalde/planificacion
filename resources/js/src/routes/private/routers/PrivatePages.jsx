@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { RoutesNotFound } from "../../not-found/RoutesNotFound";
 import { ChangePwdPage, ProfilePage } from "../../../pages";
 

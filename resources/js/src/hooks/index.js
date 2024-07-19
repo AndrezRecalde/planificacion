@@ -8,6 +8,9 @@ import { useUiLestrategiapdot } from "./lestrategiapdot/useUiLestrategiapdot";
 import { useLineapdotStore } from "./lineapdot/useLineapdotStore";
 import { useUiLineapdot } from "./lineapdot/useUiLineapdot";
 
+/* COMPONENTES DEL PDOT */
+import { useComponentepdotStore } from "./componentepdot/useComponentepdotStore";
+import { useUiComponenteStore } from "./componentepdot/useUiComponenteStore";
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -46,6 +49,10 @@ export {
     /* LINEAS DEL PDOT */
     useLineapdotStore,
     useUiLineapdot,
+
+    /* COMPONENTES DEL PDOT */
+    useComponentepdotStore,
+    useUiComponenteStore,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,

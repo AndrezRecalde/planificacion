@@ -1,6 +1,16 @@
-import { IconBuilding, IconBuildingBank, IconCategoryPlus, IconChartPie, IconCheckupList, IconFiles, IconFolders, IconListCheck, IconManualGearbox, IconTrendingUp } from "@tabler/icons-react";
+import {
+    IconBuilding,
+    IconBuildingBank,
+    IconCategoryPlus,
+    IconChartPie,
+    IconCheckupList,
+    IconFiles,
+    IconFolders,
+    IconListCheck,
+    IconManualGearbox,
+    IconTrendingUp,
+} from "@tabler/icons-react";
 import { ROLES } from "../../../../helpers";
-
 
 export const routes = [
     /* GESTIONES */
@@ -18,13 +28,6 @@ export const routes = [
         links: [{ label: "Ver proveedores", link: "/gestion/proveedores" }],
         role: ROLES.DIR_GESTION,
     },
-    /* {
-        label: "Programas",
-        icon: IconFolders,
-        initiallyOpened: true,
-        links: [{ label: "Ver programas", link: "/programas" }],
-        role: ROLES.DIR_GESTION,
-    }, */
     {
         label: "Proyectos",
         icon: IconFiles,
@@ -56,7 +59,10 @@ export const routes = [
                 initiallyOpened: true,
                 links: [
                     { label: "Instrumentos", link: "/gpla/instrumentos" },
-                    { label: "Objetivos estratégicos y metas", link: "/gpla/objetivos" },
+                    {
+                        label: "Objetivos estratégicos y metas",
+                        link: "/gpla/objetivos",
+                    },
                 ],
             },
             {
@@ -64,8 +70,14 @@ export const routes = [
                 icon: IconFolders,
                 initiallyOpened: true,
                 links: [
-                    { label: "Programas y/o proyectos", link: "/gpla/programas" },
-                    { label: "Consolidado de programas y/o proyectos", link: "/gpla/consolidados" },
+                    {
+                        label: "Programas y/o proyectos",
+                        link: "/gpla/programas",
+                    },
+                    {
+                        label: "Consolidado de programas y/o proyectos",
+                        link: "/gpla/consolidados",
+                    },
                 ],
             },
             {
@@ -74,7 +86,10 @@ export const routes = [
                 initiallyOpened: true,
                 links: [
                     { label: "Programación y avance físico", link: "/" },
-                    { label: "Programacion y avance presupuestario", link: "/" },
+                    {
+                        label: "Programacion y avance presupuestario",
+                        link: "/",
+                    },
                 ],
             },
         ],
@@ -84,14 +99,28 @@ export const routes = [
                 icon: IconListCheck,
                 initiallyOpened: true,
                 links: [
-                    //{ label: "Lineas PDOT", link: "/" },
-                    { label: "Lineas Estrategicas", link: "/gpla/lineas-estrategicas" },
-                    { label: "Componentes PDOT", link: "/gpla/componentes-pdot" },
+                    {
+                        label: "Lineas Estrategicas",
+                        link: "/gpla/lineas-estrategicas",
+                    },
+                    {
+                        label: "Componentes PDOT",
+                        link: "/gpla/componentes-pdot",
+                    },
                     { label: "Categorias PDOT", link: "/gpla/categorias-pdot" },
-                    { label: "Competencias PDOT", link: "/gpla/competencias-pdot" },
-                    { label: "Estrategias de Articulación", link: "/gpla/estrategias-articulacion" },
+                    {
+                        label: "Competencias PDOT",
+                        link: "/gpla/competencias-pdot",
+                    },
+                    {
+                        label: "Estrategias de Articulación",
+                        link: "/gpla/estrategias-articulacion",
+                    },
                     { label: "Metas PDOT", link: "/gpla/metas-pdot" },
-                    { label: "Tipos de Planificación", link: "/gpla/tipos-planificacion" },
+                    {
+                        label: "Tipos de Planificación",
+                        link: "/gpla/tipos-planificacion",
+                    },
                     { label: "Programas", link: "/gpla/planificar-programas" },
                 ],
             },
@@ -100,12 +129,18 @@ export const routes = [
                 icon: IconBuildingBank,
                 initiallyOpened: false,
                 links: [
-                    //{ label: "Lineas PDOT", link: "/" },
-                    { label: "Gestionar Gobierno", link: "/gpla/lineas-estrategicas" },
-                    { label: "Gestionar Objetivos", link: "/gpla/componentes-pdot" },
-                    { label: "Objetivos Sostenibles", link: "/gpla/componentes-pdot" },
-
-
+                    {
+                        label: "Gestionar Gobierno",
+                        link: "/gpla/lineas-estrategicas",
+                    },
+                    {
+                        label: "Gestionar Objetivos",
+                        link: "/gpla/componentes-pdot",
+                    },
+                    {
+                        label: "Objetivos Sostenibles",
+                        link: "/gpla/componentes-pdot",
+                    },
                 ],
             },
             {
@@ -113,10 +148,12 @@ export const routes = [
                 icon: IconManualGearbox,
                 initiallyOpened: false,
                 links: [
-                    //{ label: "Lineas PDOT", link: "/" },
-                    { label: "Gestionar Usuarios", link: "/gpla/lineas-estrategicas" },
+                    {
+                        label: "Gestionar Usuarios",
+                        link: "/gpla/lineas-estrategicas",
+                    },
                 ],
             },
         ],
-    }
+    },
 ];

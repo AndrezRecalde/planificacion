@@ -36,6 +36,13 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_LESTRATEGIAPDOTS: "/update/status/lineaestrategicaspdot",
     DELETE_LESTRATEGIAPDOTS: "/delete/lineaestrategicapdot",
 
+    /* COMPONENTES DEL PDOT */
+    GET_COMPONENTESPDOT: "/componentespdot",
+    STORE_COMPONENTEPDOT: "/store/componentepdot",
+    UPDATE_COMPONENTESPDOT: "/update/componentepdot",
+    UPDATE_STATUS_COMPONENTESPDOT: "/update/status/componentepdot",
+    DELETE_COMPONENTEPDOT: "/delete/componentepdot",
+
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",

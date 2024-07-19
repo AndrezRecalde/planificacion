@@ -300,10 +300,10 @@ Route::group([
     Route::put('/update/competenciapdot/{id}', [CompetenciapdotController::class, 'update']);
 
     /* PLANIFICACION: COMPONENTES DEL PDOT */
-    Route::get('/componentespdot', [ComponentepdotController::class, 'getComponentesAdmin']);
-    Route::get('/componentespdot-activos', [ComponentepdotController::class, 'getComponentesActivos']);
+    Route::post('/componentespdot', [ComponentepdotController::class, 'getComponentesAdmin']);
     Route::post('/store/componentespdot', [ComponentepdotController::class, 'store']);
     Route::put('/update/componentepdot/{id}', [ComponentepdotController::class, 'update']);
+    Route::put('/update/status/componentepdot/{id}', [ComponentepdotController::class, 'updateStatus']);
 
     /* PLANIFICACION: OBJETIVOS ESTRATEGICOS DEL PDOT */
     Route::get('/oepdots', [OepdotController::class, 'getOEPDOTS']);

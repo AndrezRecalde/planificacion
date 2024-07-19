@@ -6,13 +6,13 @@ import {
     onDeleteLEstrategiapdot,
     onLoadErrores,
     onLoading,
-    onLoadLestrategiapdot,
+    onLoadLestrategiaspdot,
     onLoadMessage,
     onSetActivateLestrategiapdot,
     onUpdateLestrategiapdot,
 } from "../../store/lestrategia/lestrategiapdotSlice";
-import planningApi from "../../api/planningApi";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../helpers";
+import planningApi from "../../api/planningApi";
 
 export const useLestrategiapdotStore = () => {
     const { isLoading, lestrategias, activateLestrategia, message, errores } =
@@ -24,13 +24,13 @@ export const useLestrategiapdotStore = () => {
 
     const startLoadLestrategiapdots = async () => {
         try {
-            dispatch(onLoading());
+            dispatch(onLoading(true));
             const { data } = await planningApi.get(
                 PREFIX_ROUTES.PLANIFICACION +
                     API_URL_ROUTES.GET_LESTRATEGIAPDOTS
             );
             const { estrategias } = data;
-            dispatch(onLoadLestrategiapdot(estrategias));
+            dispatch(onLoadLestrategiaspdot(estrategias));
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);
@@ -47,7 +47,8 @@ export const useLestrategiapdotStore = () => {
                     }/${lestrategia.id}`,
                     lestrategia
                 );
-                dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
+                //dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
+                startLoadLestrategiapdots();
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -59,7 +60,8 @@ export const useLestrategiapdotStore = () => {
                     API_URL_ROUTES.STORE_LESTRATEGIAPDOTS,
                 lestrategia
             );
-            dispatch(onAddLestrategiapdot({ ...lestrategia }));
+            //dispatch(onAddLestrategiapdot({ ...lestrategia }));
+            startLoadLestrategiapdots();
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -80,7 +82,8 @@ export const useLestrategiapdotStore = () => {
                 }/${lestrategia.id}`,
                 lestrategia
             );
-            dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
+            //dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
+            startLoadLestrategiapdots();
             dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));

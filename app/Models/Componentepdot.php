@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -24,5 +25,12 @@ class Componentepdot extends Model
     function objetivos(): HasMany
     {
         return $this->hasMany(Objetivo::class);
+    }
+
+    function scopeActivo(Builder $query, $activo)
+    {
+        if ($activo) {
+            return $query->where('compo.activo', $activo);
+        }
     }
 }

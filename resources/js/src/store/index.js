@@ -9,6 +9,10 @@ import { uiLestrategiapdotSlice } from "./lestrategia/uiLestrategiapdotSlice";
 import { lineapdotSlice } from "./lineas_pdot/lineapdotSlice";
 import { uiLineapdotSlice } from "./lineas_pdot/uiLineapdotSlice";
 
+/* COMPONENTES DEL PDOT */
+import { componentepdotSlice } from "./componentepdot/componentepdotSlice";
+import { uiComponentepdotSlice } from "./componentepdot/uiComponentepdotSlice";
+
 
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
@@ -45,6 +49,10 @@ export {
     /* LINEAS DEL PDOT */
     lineapdotSlice,
     uiLineapdotSlice,
+
+    /* COMPONENTES DEL PDOT */
+    componentepdotSlice,
+    uiComponentepdotSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

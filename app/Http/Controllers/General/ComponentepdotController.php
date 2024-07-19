@@ -12,28 +12,14 @@ use Illuminate\Http\Request;
 
 class ComponentepdotController extends Controller
 {
-    function getComponentesAdmin(): JsonResponse
+    function getComponentes(Request $request): JsonResponse
     {
-        $componentes = Componentepdot::get(['id', 'nombre_componente', 'activo']);
-
-        return response()->json(['status' => HTTPStatus::Success, 'componentes' => $componentes], 200);
-    }
-
-    function getComponentesActivos(): JsonResponse
-    {
-        $componentes = Componentepdot::where('activo', 1)->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'componentes' => $componentes], 200);
-    }
-
-    function getComponentesForCompetencia(Request $request): JsonResponse
-    {
-        $componentes = Componentepdot::from('componentepdots as compo')
-            ->selectRaw('compo.id, compo.nombre_componente')
-            ->join('competencia_componente as cc', 'cc.componentepdot_id', 'compo.id')
-            ->where('cc.competenciapdot_id', $request->competenciapdot_id)
+        $componentespdot = Componentepdot::from('componentepdots as compo')
+            ->selectRaw('compo.id, compo.nombre_componente, compo.activo')
+            ->activo($request->activo)
             ->get();
-        return response()->json(['status' => HTTPStatus::Success, 'componentes' => $componentes], 200);
+
+        return response()->json(['status' => HTTPStatus::Success, 'componentespdot' => $componentespdot], 200);
     }
 
     function store(ComponentepdotRequest $request): JsonResponse
@@ -61,7 +47,7 @@ class ComponentepdotController extends Controller
         }
     }
 
-    function updateActivo(ComponentepdotStatus $request, int $id): JsonResponse
+    function updateStatus(ComponentepdotStatus $request, int $id): JsonResponse
     {
         $componente = Componentepdot::find($id);
         try {
