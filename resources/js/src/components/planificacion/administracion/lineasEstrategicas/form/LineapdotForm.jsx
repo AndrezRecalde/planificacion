@@ -3,9 +3,11 @@ import { Box, Divider, Stack, TextInput } from "@mantine/core";
 import { BtnSubmit } from "../../../../../components";
 import { IconChecks } from "@tabler/icons-react";
 import { useLineapdotStore, useUiLineapdot } from "../../../../../hooks";
+import { APP_WORDS, BTN_TITLES } from "../../../../../helpers";
 
 export const LineapdotForm = ({ form }) => {
-    const { startAddLineapdot, activeLineapdot } = useLineapdotStore();
+    const { startAddLineapdot, activeLineapdot, setActivateLineapdot } =
+        useLineapdotStore();
     const { modalActionLineapdot } = useUiLineapdot();
 
     useEffect(() => {
@@ -17,6 +19,9 @@ export const LineapdotForm = ({ form }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         startAddLineapdot(form.getValues());
+        if (activeLineapdot !== null) {
+            setActivateLineapdot(null);
+        }
         form.reset();
         modalActionLineapdot(false);
     };
@@ -39,13 +44,15 @@ export const LineapdotForm = ({ form }) => {
                 <Divider />
                 <TextInput
                     radius="sm"
-                    label="Nombre de la línea"
+                    label={APP_WORDS.LINEAPDOT_TEXT_NOMBRELINEA}
                     withAsterisk
-                    placeholder="Digite el nombre"
+                    placeholder={APP_WORDS.LINEAPDOT_PLACEHOLDER_NOMBRELINEA}
                     key={form.key("nombre_linea")}
                     {...form.getInputProps("nombre_linea")}
                 />
-                <BtnSubmit IconSection={IconChecks}>Guardar</BtnSubmit>
+                <BtnSubmit IconSection={IconChecks}>
+                    {BTN_TITLES.BTN_SAVE}
+                </BtnSubmit>
             </Stack>
         </Box>
     );

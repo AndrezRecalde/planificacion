@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('vicepresidente');
             $table->year('fecha_inicio');
             $table->year('fecha_fin');
-            $table->boolean('activo')->default(true);
+            $table->boolean('activo')->default(false);
             $table->timestamps();
         });
     }

@@ -10,7 +10,16 @@ import { useUiLineapdot } from "./lineapdot/useUiLineapdot";
 
 /* COMPONENTES DEL PDOT */
 import { useComponentepdotStore } from "./componentepdot/useComponentepdotStore";
-import { useUiComponenteStore } from "./componentepdot/useUiComponenteStore";
+import { useUiComponentepdot } from "./componentepdot/useUiComponentepdot";
+
+/* CATEGORIAS PDOT COTS */
+import { useCategoriapdotStore } from "./categoriapdot/useCategoriapdotStore";
+import { useUiCategoriapdot } from "./categoriapdot/useUiCategoriapdot";
+
+/* COMPETENCIAS DEL PDOT */
+import { useCompetenciapdotStore } from "./competenciapdot/useCompetenciapdotStore";
+import { useUiCompetenciapdot } from "./competenciapdot/useUiCompetenciapdot";
+
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -52,7 +61,15 @@ export {
 
     /* COMPONENTES DEL PDOT */
     useComponentepdotStore,
-    useUiComponenteStore,
+    useUiComponentepdot,
+
+    /* CATEGORIAS DEL PDOT */
+    useCategoriapdotStore,
+    useUiCategoriapdot,
+
+    /* COMPETENCIAS DEL PDOT */
+    useCompetenciapdotStore,
+    useUiCompetenciapdot,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,

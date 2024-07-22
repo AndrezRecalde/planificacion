@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Box, Divider, Select, Stack, TextInput } from "@mantine/core";
 import { BtnSubmit } from "../../../../../components";
 import { IconChecks } from "@tabler/icons-react";
@@ -6,15 +7,33 @@ import {
     useLineapdotStore,
     useUiLestrategiapdot,
 } from "../../../../../hooks";
+import { APP_WORDS, BTN_TITLES } from "../../../../../helpers";
 
 export const LineaEstrategiaForm = ({ form }) => {
-    const { startAddLestrategiapdot } = useLestrategiapdotStore();
+    const {
+        startAddLestrategiapdot,
+        activateLestrategia,
+        setActivateLestrategia,
+    } = useLestrategiapdotStore();
     const { lineaspdot } = useLineapdotStore();
     const { modalActionLestrategiapdot } = useUiLestrategiapdot();
+
+    useEffect(() => {
+        if (activateLestrategia !== null) {
+            form.setValues({
+                ...activateLestrategia,
+                lineapdot_id: activateLestrategia.lineapdot_id.toString(),
+            });
+            return;
+        }
+    }, [activateLestrategia]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         startAddLestrategiapdot(form.getTransformedValues());
+        if (activateLestrategia !== null) {
+            setActivateLestrategia(null);
+        }
         modalActionLestrategiapdot(false);
         form.reset();
     };
@@ -37,27 +56,32 @@ export const LineaEstrategiaForm = ({ form }) => {
                 <Divider />
                 <TextInput
                     radius="sm"
-                    label="Nombre de la línea estrategica"
+                    label={APP_WORDS.LINEAESTRATEGICA_TEXT_NOMBRELINEA}
                     withAsterisk
-                    placeholder="Digite el nombre"
+                    placeholder={
+                        APP_WORDS.LINEAESTRATEGICA_PLACEHOLDER_NOMBRELINEA
+                    }
                     key={form.key("linea_estrategica")}
                     {...form.getInputProps("linea_estrategica")}
                 />
                 <Select
-                    label="Elegir Línea del PDOT"
-                    placeholder="Elige una opción"
+                    required
+                    label={APP_WORDS.LINEAESTRATEGICA_SELECT_LINEAPDOT}
+                    placeholder={APP_WORDS.SELECT_PLACEHOLDER}
                     data={lineaspdot.map((linea) => {
                         return {
                             label: linea.nombre_linea,
                             value: linea.id.toString(),
                         };
                     })}
-                    nothingFoundMessage="Nada encontrado..."
+                    nothingFoundMessage={APP_WORDS.NOTHING_FOUND}
                     clearable
                     key={form.key("lineapdot_id")}
                     {...form.getInputProps("lineapdot_id")}
                 />
-                <BtnSubmit IconSection={IconChecks}>Guardar</BtnSubmit>
+                <BtnSubmit IconSection={IconChecks}>
+                    {BTN_TITLES.BTN_SAVE}
+                </BtnSubmit>
             </Stack>
         </Box>
     );

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -32,10 +33,17 @@ class Lestrategiapdot extends Model
         return $this->hasMany(Objetivo::class);
     }
 
-    function scopeByLineapdotId($query, $lineapdot_id)
+    function scopeByLineapdotId(Builder $query, $lineapdot_id)
     {
         if ($lineapdot_id) {
             return $query->where('le.lineapdot_id', $lineapdot_id);
+        }
+    }
+
+    function scopeActivo(Builder $query, $activo)
+    {
+        if ($activo) {
+            return $query->where('le.activo', $activo);
         }
     }
 }

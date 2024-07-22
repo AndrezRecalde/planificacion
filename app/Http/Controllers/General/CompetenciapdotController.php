@@ -64,7 +64,7 @@ class CompetenciapdotController extends Controller
         }
     }
 
-    function updateActivo(CompetenciapdotStatus $request, int $id): JsonResponse
+    function updateStatus(CompetenciapdotStatus $request, int $id): JsonResponse
     {
         $competencia = Competenciapdot::find($id);
         try {

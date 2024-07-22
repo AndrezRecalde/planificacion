@@ -13,6 +13,14 @@ import { uiLineapdotSlice } from "./lineas_pdot/uiLineapdotSlice";
 import { componentepdotSlice } from "./componentepdot/componentepdotSlice";
 import { uiComponentepdotSlice } from "./componentepdot/uiComponentepdotSlice";
 
+/* CATEGORIAS DEL PDOT */
+import { categoriapdotSlice } from "./categoriapdot/categoriapdotSlice";
+import { uiCategoriapdotSlice } from "./categoriapdot/uiCategoriapdotSlice";
+
+/* COMPETENCIAS DEL PDOT */
+import { competenciapdotSlice } from "./competenciapdot/competenciapdotSlice";
+import { uiCompetenciapdotSlice } from "./competenciapdot/uiCompetenciapdotSlice";
+
 
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
@@ -53,6 +61,14 @@ export {
     /* COMPONENTES DEL PDOT */
     componentepdotSlice,
     uiComponentepdotSlice,
+
+    /* CATEGORIAS DEL PDOT */
+    categoriapdotSlice,
+    uiCategoriapdotSlice,
+
+    /* COMPETENCIAS DEL PDOT */
+    competenciapdotSlice,
+    uiCompetenciapdotSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('componentepdots', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_componente');
-            $table->boolean('activo')->default(0);
+            $table->boolean('activo')->default(false);
             $table->timestamps();
         });
     }

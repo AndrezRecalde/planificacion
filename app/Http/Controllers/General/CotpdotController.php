@@ -12,25 +12,11 @@ use Illuminate\Http\Request;
 
 class CotpdotController extends Controller
 {
-    function getCotpdotsAdmin(): JsonResponse
+    function getCotpdots(Request $request): JsonResponse
     {
-        $categorias = Cotpdot::get(['id', 'nombre_categoria', 'activo']);
-
-        return response()->json(['status' => HTTPStatus::Success, 'categorias' => $categorias], 200);
-    }
-
-    function getCotpdotsActivos(): JsonResponse
-    {
-        $categorias = Cotpdot::where('activo', 1)->get();
-        return response()->json(['status' => HTTPStatus::Success, 'categorias' => $categorias], 200);
-    }
-
-    function getCotpdotsForCompetencia(Request $request): JsonResponse
-    {
-        $categorias = Cotpdot::from('cotpdots as ct')
-            ->selectRaw('ct.id, ct.nombre_categoria')
-            ->join('competencia_cot as cc', 'cc.cotpdot_id', 'ct.id')
-            ->where('cc.competenciapdot_id', $request->competenciapdot_id)
+        $categorias = Cotpdot::from('cotpdots as cot')
+            ->selectRaw('cot.id, cot.nombre_categoria, cot.activo')
+            ->activo($request->activo)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'categorias' => $categorias], 200);
@@ -61,7 +47,7 @@ class CotpdotController extends Controller
         }
     }
 
-    function updateActivo(CotpdotStatus $request, int $id): JsonResponse
+    function updateStatus(CotpdotStatus $request, int $id): JsonResponse
     {
         $categoria = Cotpdot::find($id);
         try {

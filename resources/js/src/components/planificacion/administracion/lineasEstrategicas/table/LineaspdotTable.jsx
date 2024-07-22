@@ -7,6 +7,7 @@ import {
 } from "../../../../../components";
 import { IconCopyPlus } from "@tabler/icons-react";
 import { useLineapdotStore, useUiLineapdot } from "../../../../../hooks";
+import { BTN_TITLES } from "../../../../../helpers";
 
 export const LineaspdotTable = () => {
     const { isLoading, lineaspdot, setActivateLineapdot } = useLineapdotStore();
@@ -53,7 +54,7 @@ export const LineaspdotTable = () => {
                 icon={IconCopyPlus}
                 handleAction={handleAgregar}
             >
-                Agregar
+                {BTN_TITLES.BTN_ADD}
             </BtnSection>
         ),
     });

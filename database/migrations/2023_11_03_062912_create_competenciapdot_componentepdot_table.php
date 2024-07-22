@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('competencia_componente');
+        Schema::dropIfExists('competenciapdot_componentepdot');
     }
 };

@@ -1,58 +1,58 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-    onClearComponentespdot,
-    onDeleteComponentepdot,
-    onLoadComponentespdot,
+    onClearCategoriaspdot,
+    onDeleteCategoriapdot,
+    onLoadCategoriaspdot,
     onLoadErrores,
     onLoading,
     onLoadMessage,
-    onSetActivateComponentepdot,
-} from "../../store/componentepdot/componentepdotSlice";
+    onSetCategoriapdot,
+} from "../../store/categoriapdot/categoriapdotSlice";
 import { useErrorException } from "../../hooks";
 import planningApi from "../../api/planningApi";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../helpers";
 
-export const useComponentepdotStore = () => {
+export const useCategoriapdotStore = () => {
     const {
         isLoading,
-        componentespdot,
-        activateComponentepdot,
+        categoriaspdot,
+        activateCategoriapdot,
         message,
         errores,
-    } = useSelector((state) => state.componentepdot);
+    } = useSelector((state) => state.categoriapdot);
+
     const { ExceptionMessageError } = useErrorException(onLoadErrores);
 
     const dispatch = useDispatch();
 
-    const startLoadComponentespdot = async ({ activo = null }) => {
+    const startLoadCategoriaspdot = async ({ activo = null }) => {
         try {
             dispatch(onLoading(true));
             const { data } = await planningApi.post(
-                PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.GET_COMPONENTESPDOT,
+                PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_CATEGORIASPDOT,
                 {
                     activo,
                 }
             );
-            const { componentespdot } = data;
-            dispatch(onLoadComponentespdot(componentespdot));
+            const { categorias } = data;
+            dispatch(onLoadCategoriaspdot(categorias));
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);
         }
     };
 
-    const startAddComponentepdot = async (componentepdot) => {
+    const startAddCategoriapdot = async (categoriapdot) => {
         try {
-            if (componentepdot.id) {
+            if (categoriapdot.id) {
                 const { data } = await planningApi.put(
                     `${
                         PREFIX_ROUTES.PLANIFICACION +
-                        API_URL_ROUTES.UPDATE_COMPONENTESPDOT
-                    }/${componentepdot.id}`,
-                    componentepdot
+                        API_URL_ROUTES.UPDATE_CATEGORIAPDOT
+                    }/${categoriapdot.id}`,
+                    categoriapdot
                 );
-                startLoadComponentespdot({});
+                startLoadCategoriaspdot({});
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -61,10 +61,10 @@ export const useComponentepdotStore = () => {
             }
             const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.STORE_COMPONENTEPDOT,
-                componentepdot
+                    API_URL_ROUTES.STORE_CATEGORIAPDOT,
+                categoriapdot
             );
-            startLoadComponentespdot({});
+            startLoadCategoriaspdot({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -75,16 +75,16 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startUpdateStatusComponentepdot = async (componentepdot) => {
+    const startUpdateStatusCategoriapdot = async (categoriapdot) => {
         try {
             const { data } = await planningApi.put(
                 `${
                     PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.UPDATE_STATUS_COMPONENTESPDOT
-                }/${componentepdot.id}`,
-                componentepdot
+                    API_URL_ROUTES.UPDATE_STATUS_CATEGORIAPDOT
+                }/${categoriapdot.id}`,
+                categoriapdot
             );
-            startLoadComponentespdot({});
+            startLoadCategoriaspdot({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -95,14 +95,14 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startDeleteComponentepdot = async (componentepdot) => {
+    const startDeleteCategoriapdot = async (categoriapdot) => {
         try {
             const { data } = await planningApi.delete(
-                `${
-                    PREFIX_ROUTES.ADMIN + API_URL_ROUTES.DELETE_COMPONENTEPDOT
-                }/${componentepdot.id}`
+                `${PREFIX_ROUTES.ADMIN + API_URL_ROUTES.DELETE_CATEGORIAPDOT}/${
+                    categoriapdot.id
+                }`
             );
-            dispatch(onDeleteComponentepdot());
+            dispatch(onDeleteCategoriapdot());
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -113,26 +113,26 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startClearComponentepdot = () => {
-        dispatch(onClearComponentespdot());
+    const startClearCategoriapdot = () => {
+        dispatch(onClearCategoriaspdot());
     };
 
-    const setActivateComponentepdot = (componentepdot) => {
-        dispatch(onSetActivateComponentepdot(componentepdot));
+    const setActivateCategoriapdot = (categoriapdot) => {
+        dispatch(onSetCategoriapdot(categoriapdot));
     };
 
     return {
         isLoading,
-        componentespdot,
-        activateComponentepdot,
+        categoriaspdot,
+        activateCategoriapdot,
         message,
         errores,
 
-        startLoadComponentespdot,
-        startAddComponentepdot,
-        startUpdateStatusComponentepdot,
-        startDeleteComponentepdot,
-        startClearComponentepdot,
-        setActivateComponentepdot,
+        startLoadCategoriaspdot,
+        startAddCategoriapdot,
+        startUpdateStatusCategoriapdot,
+        startDeleteCategoriapdot,
+        startClearCategoriapdot,
+        setActivateCategoriapdot,
     };
 };

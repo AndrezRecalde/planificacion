@@ -5,10 +5,16 @@ import {
     LineapdotModal,
     LineasEstrategicasTable,
     LineaspdotTable,
+    StatusModal,
     TitlePage,
 } from "../../../../components";
-import { useLestrategiapdotStore, useLineapdotStore } from "../../../../hooks";
+import {
+    useLestrategiapdotStore,
+    useLineapdotStore,
+    useUiLestrategiapdot,
+} from "../../../../hooks";
 import Swal from "sweetalert2";
+import { APP_WORDS } from "../../../../helpers";
 
 export const LineasEstrategicasPage = () => {
     const {
@@ -21,13 +27,19 @@ export const LineasEstrategicasPage = () => {
     const {
         startLoadLestrategiapdots,
         startClearLestrategiapdot,
+        setActivateLestrategia,
+        activateLestrategia,
+        startUpdateStatusLestrategiapdot,
         message: MsgLestrategia,
         errores: ErrLestrategia,
     } = useLestrategiapdotStore();
 
+    const { isOpenModalStatusLestrategia, modalActionStatusLestrategiapdot } =
+        useUiLestrategiapdot();
+
     useEffect(() => {
         startLoadLineaspdot();
-        startLoadLestrategiapdots();
+        startLoadLestrategiapdots({});
 
         return () => {
             startClearLineaspdot();
@@ -85,10 +97,12 @@ export const LineasEstrategicasPage = () => {
         }
     }, [ErrLestrategia]);
 
+
+
     return (
         <Container size="xxl">
             <TitlePage order={2} ta="left">
-                Lineas Estrategicas
+                {APP_WORDS.LINEASESTRATEGICAS_TITLE}
             </TitlePage>
             <Divider my="md" />
             <Grid>
@@ -101,6 +115,15 @@ export const LineasEstrategicasPage = () => {
             </Grid>
             <LineapdotModal />
             <LineaEstrategiaModal />
+
+            <StatusModal
+                isOpenModal={isOpenModalStatusLestrategia}
+                modalAction={modalActionStatusLestrategiapdot}
+                titleModal={APP_WORDS.TITLE_MODALSTATUS}
+                startAction={startUpdateStatusLestrategiapdot}
+                activateElement={activateLestrategia}
+                setActivate={setActivateLestrategia}
+            />
         </Container>
     );
 };

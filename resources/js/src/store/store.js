@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
     authSlice,
+    categoriapdotSlice,
+    competenciapdotSlice,
     componentepdotSlice,
     departamentoSlice,
     lestrategiapdotSlice,
@@ -9,6 +11,8 @@ import {
     proyectoSlice,
     tipoActividadSlice,
     tipoProyectoSlice,
+    uiCategoriapdotSlice,
+    uiCompetenciapdotSlice,
     uiComponentepdotSlice,
     uiDepartamentoSlice,
     uiLestrategiapdotSlice,
@@ -34,6 +38,14 @@ export const store = configureStore({
         /* Componentes del pdot */
         componentepdot: componentepdotSlice.reducer,
         uiComponentepdot: uiComponentepdotSlice.reducer,
+
+        /* Categorias del pdot: Cotpots */
+        categoriapdot: categoriapdotSlice.reducer,
+        uiCategoriapdot: uiCategoriapdotSlice.reducer,
+
+        /* Competencias del pdot */
+        competenciapdot: competenciapdotSlice.reducer,
+        uiCompetenciapdot: uiCompetenciapdotSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

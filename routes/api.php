@@ -159,6 +159,10 @@ Route::group(
         /* ADMIN: COMPONENTES DEL PDOT */
         Route::delete('/delete/componentepdot/{id}', [ComponentepdotController::class, 'destroy']);
 
+        /* ADMIN: CATEGORIAS DEL PDOT COTSPDOT */
+        Route::delete('/delete/cotpdot/{id}', [CotpdotController::class, 'destroy']);
+
+
         /* ADMIN: OBJETIVOS ESTRATEGICOS DEL PDOT */
         Route::get('/oepdots', [OepdotController::class, 'getOEPDOTSAdmin']);
         Route::delete('/delete/oepdot/{id}', [OepdotController::class, 'destroy']);
@@ -289,21 +293,30 @@ Route::group([
 
 
     /*PLANIFICACION: LINEAS ESTRATEGICAS DEL PDOT */
-    Route::get('/lineasestrategicaspdot', [LestrategiapdotController::class, 'getLineasEstrategiasPdot']);
+    Route::post('/lineasestrategicaspdot', [LestrategiapdotController::class, 'getLineasEstrategiasPdot']);
     Route::post('/store/lineasestrategicaspdot', [LestrategiapdotController::class, 'store']);
-    Route::post('/update/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'update']);
-    Route::post('/update/status/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'updateStatus']);
+    Route::put('/update/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'update']);
+    Route::put('/update/status/lineaestrategicaspdot/{id}', [LestrategiapdotController::class, 'updateStatus']);
 
     /* PLANIFICACION: COMPETENCIA PDOT */
     Route::post('/competenciaspdots', [CompetenciapdotController::class, 'getCompetenciasPDOT']);
     Route::post('/store/competenciaspdot', [CompetenciapdotController::class, 'store']);
     Route::put('/update/competenciapdot/{id}', [CompetenciapdotController::class, 'update']);
+    Route::put('/update/status/competenciapdot/{id}', [CompetenciapdotController::class, 'updateStatus']);
+
 
     /* PLANIFICACION: COMPONENTES DEL PDOT */
-    Route::post('/componentespdot', [ComponentepdotController::class, 'getComponentesAdmin']);
-    Route::post('/store/componentespdot', [ComponentepdotController::class, 'store']);
+    Route::post('/componentespdot', [ComponentepdotController::class, 'getComponentes']);
+    Route::post('/store/componentepdot', [ComponentepdotController::class, 'store']);
     Route::put('/update/componentepdot/{id}', [ComponentepdotController::class, 'update']);
     Route::put('/update/status/componentepdot/{id}', [ComponentepdotController::class, 'updateStatus']);
+
+    /* PLANIFICACION: CATEGORIAS DEL PDOT */
+    Route::post('/cotspdot', [CotpdotController::class, 'getCotpdots']);
+    Route::post('/store/cotpdot', [CotpdotController::class, 'store']);
+    Route::put('/update/cotpdot/{id}', [CotpdotController::class, 'update']);
+    Route::put('/update/status/cotpdot/{id}', [CotpdotController::class, 'updateStatus']);
+
 
     /* PLANIFICACION: OBJETIVOS ESTRATEGICOS DEL PDOT */
     Route::get('/oepdots', [OepdotController::class, 'getOEPDOTS']);

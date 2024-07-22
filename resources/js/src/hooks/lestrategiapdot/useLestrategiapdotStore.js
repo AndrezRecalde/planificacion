@@ -22,12 +22,19 @@ export const useLestrategiapdotStore = () => {
 
     const dispatch = useDispatch();
 
-    const startLoadLestrategiapdots = async () => {
+    const startLoadLestrategiapdots = async ({
+        lineapdot_id = null,
+        activo = null,
+    }) => {
         try {
             dispatch(onLoading(true));
-            const { data } = await planningApi.get(
+            const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.GET_LESTRATEGIAPDOTS
+                    API_URL_ROUTES.GET_LESTRATEGIAPDOTS,
+                {
+                    lineapdot_id,
+                    activo,
+                }
             );
             const { estrategias } = data;
             dispatch(onLoadLestrategiaspdot(estrategias));
@@ -48,7 +55,7 @@ export const useLestrategiapdotStore = () => {
                     lestrategia
                 );
                 //dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
-                startLoadLestrategiapdots();
+                startLoadLestrategiapdots({});
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -61,7 +68,7 @@ export const useLestrategiapdotStore = () => {
                 lestrategia
             );
             //dispatch(onAddLestrategiapdot({ ...lestrategia }));
-            startLoadLestrategiapdots();
+            startLoadLestrategiapdots({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -83,11 +90,12 @@ export const useLestrategiapdotStore = () => {
                 lestrategia
             );
             //dispatch(onUpdateLestrategiapdot({ ...lestrategia }));
-            startLoadLestrategiapdots();
+            startLoadLestrategiapdots({});
+            setActivateLestrategia(null);
             dispatch(onLoadMessage(data));
-                setTimeout(() => {
-                    dispatch(onLoadMessage(undefined));
-                }, 40);
+            setTimeout(() => {
+                dispatch(onLoadMessage(undefined));
+            }, 40);
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);

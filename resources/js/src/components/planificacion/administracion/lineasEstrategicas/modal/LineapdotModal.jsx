@@ -1,9 +1,11 @@
 import { Modal } from "@mantine/core";
 import { LineapdotForm, TextSection } from "../../../../../components";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { useUiLineapdot } from "../../../../../hooks";
+import { useLineapdotStore, useUiLineapdot } from "../../../../../hooks";
+import { APP_WORDS } from "../../../../../helpers";
 
 export const LineapdotModal = () => {
+    const { setActivateLineapdot, activeLineapdot } = useLineapdotStore();
     const { isOpenModalLineapdot, modalActionLineapdot } = useUiLineapdot();
 
     const form = useForm({
@@ -18,6 +20,9 @@ export const LineapdotModal = () => {
 
     const handleCloseModal = () => {
         modalActionLineapdot(false);
+        if (activeLineapdot !== null) {
+            setActivateLineapdot(null);
+        }
         form.reset();
     };
 
@@ -28,7 +33,7 @@ export const LineapdotModal = () => {
             onClose={handleCloseModal}
             title={
                 <TextSection fz={18} fw={700} tt="capitalize">
-                    Ficha - Lineas del PDOT
+                    {APP_WORDS.LINEAPDOT_TITLE_MODAL}
                 </TextSection>
             }
             overlayProps={{

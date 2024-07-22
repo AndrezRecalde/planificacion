@@ -13,7 +13,7 @@ import {
 } from "../../../../../hooks";
 
 export const LineasEstrategicasTable = () => {
-    const { lestrategias, isLoading } = useLestrategiapdotStore();
+    const { lestrategias, isLoading, setActivateLestrategia } = useLestrategiapdotStore();
     const { modalActionLestrategiapdot, modalActionStatusLestrategiapdot } =
         useUiLestrategiapdot();
 
@@ -44,7 +44,8 @@ export const LineasEstrategicasTable = () => {
         [lestrategias]
     );
 
-    const handleActive = useCallback(() => {
+    const handleActive = useCallback((selected) => {
+        setActivateLestrategia(selected);
         modalActionStatusLestrategiapdot(true);
     }, [lestrategias]);
 

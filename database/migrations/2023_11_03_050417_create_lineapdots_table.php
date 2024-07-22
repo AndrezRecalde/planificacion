@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('lineapdots', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_linea');
+            $table->string('nombre_linea', 20)->unique();
             $table->timestamps();
         });
     }

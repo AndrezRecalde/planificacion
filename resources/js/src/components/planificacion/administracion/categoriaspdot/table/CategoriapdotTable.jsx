@@ -2,29 +2,12 @@ import { useMantineReactTable } from "mantine-react-table";
 import { useCallback, useMemo } from "react";
 import { BtnActiveStatus, BtnSection, MenuTableEdit, TableContent } from "../../../../../components";
 import { IconCopyPlus } from "@tabler/icons-react";
+import { useCategoriapdotStore, useUiCategoriapdot } from "../../../../../hooks";
 
-const categoriaspdot = [
-    {
-        id: 1,
-        nombre_categoria: "4. La gestión ambiental provincial",
-        activo: true,
-    },
-    {
-        id: 2,
-        nombre_categoria:
-            "6.  Fomentar las actividades productivas provinciales, especialmente las agropecuarias; y, ",
-        activo: true,
-    },
-    {
-        id: 3,
-        nombre_categoria:
-            "1. Planificar, junto con otras instituciones del sector público y actores de la sociedad, el desarrollo provincial y formular los correspondientes planes de ordenamiento territorial.",
-        activo: false,
-    },
-];
 
 export const CategoriapdotTable = () => {
-
+    const { isLoading, categoriaspdot, setActivateCategoriapdot } = useCategoriapdotStore();
+    const { modalActionCategoriapdot, modalActionStatusCategoriapdot } = useUiCategoriapdot();
     const columns = useMemo(
         () => [
             {
@@ -45,28 +28,27 @@ export const CategoriapdotTable = () => {
         [categoriaspdot]
     );
 
-    const handleActive = useCallback(() => {
-        console.log("clic");
+    const handleActive = useCallback((selected) => {
+        setActivateCategoriapdot(selected)
+        modalActionStatusCategoriapdot(true);
     }, [categoriaspdot]);
 
     const handleAgregar = useCallback(() => {
-        console.log("agregar");
+        modalActionCategoriapdot(true);
     }, [categoriaspdot]);
 
-    const handleEditar = useCallback(() => {
-        console.log("editar");
+    const handleEditar = useCallback((selected) => {
+        setActivateCategoriapdot(selected);
+        modalActionCategoriapdot(true);
     }, [categoriaspdot]);
 
     const table = useMantineReactTable({
         columns,
         data: categoriaspdot, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        state: { showProgressBars: isLoading },
         enableFacetedValues: true,
         enableDensityToggle: false,
         defaultColumn: { minSize: 80, maxSize: 200, size: 100 },
-
-        //enableColumnFilters: false,
-        //enablePagination: false,
-        //enableSorting: false,
         enableRowActions: true,
         renderRowActionMenuItems: ({ row }) => (
             <MenuTableEdit row={row} handleEditar={handleEditar} />

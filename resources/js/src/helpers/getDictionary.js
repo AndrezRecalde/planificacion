@@ -43,6 +43,20 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_COMPONENTESPDOT: "/update/status/componentepdot",
     DELETE_COMPONENTEPDOT: "/delete/componentepdot",
 
+    /* CATEGORIAS DEL PDOT */
+    GET_CATEGORIASPDOT: "/cotspdot",
+    STORE_CATEGORIAPDOT: "/store/cotpdot",
+    UPDATE_CATEGORIAPDOT: "/update/cotpdot",
+    UPDATE_STATUS_CATEGORIAPDOT: "/update/status/cotpdot",
+    DELETE_CATEGORIAPDOT: "/delete/cotpdot",
+
+    /* COMPETENCIAS DEL PDOT */
+    GET_COMPETENCIASPDOT: "/competenciaspdots",
+    STORE_COMPETENCIAPDOT: "/store/competenciaspdot",
+    UPDATE_COMPETENCIAPDOT: "/update/competenciapdot",
+    UPDATE_STATUS_COMPETENCIAPDOT: "/update/status/competenciapdot",
+    DELETE_COMPETENCIAPDOT: "/delete/competenciapdot",
+
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",
@@ -74,6 +88,7 @@ export const BTN_TITLES = {
     BTN_SAVE: "Guardar",
     BTN_EDIT: "Editar",
     BTN_SEARCH: "Buscar",
+    BTN_ADD: "Agregar",
 
     /* PROVEEDORES */
     PROVEEDOR_BTN_MODAL: "Agregar Proveedor",
@@ -89,6 +104,12 @@ export const BTN_TITLES = {
 
 export const APP_WORDS = {
 
+    /* PALABRAS DE ELEMENTOS */
+    SELECT_PLACEHOLDER: "Elige una opción",
+    NOTHING_FOUND: "Nada encontrado...",
+    TITLE_MODALSTATUS: "Activar/Desactivar Elemento",
+
+
     /* AUTHENTICACION */
     ACCEDER: "Acceder",
     LOGIN_TITLE: "Inicial sesión",
@@ -96,6 +117,21 @@ export const APP_WORDS = {
     LOGIN_PLACEHOLDER_DNI: "Digite su cédula",
     LOGIN_PWD_TEXT: "Contraseña",
     LOGIN_PLACEHOLDER_PWD: "Tu contraseña",
+
+
+    /* LINEAS DEL PDOT */
+    LINEAPDOT_TITLE_MODAL: "Ficha Lineas del PDOT",
+    LINEAPDOT_TEXT_NOMBRELINEA: "Nombre de la línea",
+    LINEAPDOT_PLACEHOLDER_NOMBRELINEA: "Digite el nombre",
+
+
+    /* LINEAS ESTRATEGICAS */
+    LINEASESTRATEGICAS_TITLE: "Lineas Estrategicas",
+    LINEAESTRATEGICA_TITLE_MODAL: "Ficha Lineas Estrategicas del PDOT",
+    LINEAESTRATEGICA_TEXT_NOMBRELINEA: "Nombre de la línea estrategica",
+    LINEAESTRATEGICA_PLACEHOLDER_NOMBRELINEA: "Nombre de la línea estrategica",
+    LINEAESTRATEGICA_SELECT_LINEAPDOT: "Elegir Línea del PDOT",
+
 
     /* PROVEEDOR */
     PROVEEDOR_TITLE: "Proveedores",

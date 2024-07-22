@@ -19,6 +19,7 @@ class LestrategiapdotController extends Controller
                          l.id as lineapdot_id, l.nombre_linea')
             ->join('lineapdots as l', 'l.id', 'le.lineapdot_id')
             ->byLineapdotId($request->lineapdot_id)
+            ->activo($request->activo)
             ->orderBy('l.id', "ASC")
             ->get();
 

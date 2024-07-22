@@ -1,9 +1,11 @@
 import { Modal } from "@mantine/core";
 import { LineaEstrategiaForm, TextSection } from "../../../../../components";
-import { useUiLestrategiapdot } from "../../../../../hooks";
+import { useLestrategiapdotStore, useUiLestrategiapdot } from "../../../../../hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
+import { APP_WORDS } from "../../../../../helpers";
 
 export const LineaEstrategiaModal = () => {
+    const { setActivateLestrategia, activateLestrategia } = useLestrategiapdotStore();
     const { modalActionLestrategiapdot, isOpenModalLestrategia } =
         useUiLestrategiapdot();
 
@@ -12,7 +14,6 @@ export const LineaEstrategiaModal = () => {
         initialValues: {
             linea_estrategica: "",
             lineapdot_id: null,
-            nombre_linea: "",
         },
         validate: {
             linea_estrategica: isNotEmpty(
@@ -30,6 +31,9 @@ export const LineaEstrategiaModal = () => {
 
     const handleCloseModal = () => {
         modalActionLestrategiapdot(false);
+        if (activateLestrategia !== null) {
+            setActivateLestrategia(null);
+        }
         form.reset();
     };
 
@@ -41,7 +45,7 @@ export const LineaEstrategiaModal = () => {
             size="lg"
             title={
                 <TextSection fz={18} fw={700} tt="capitalize">
-                    Ficha - Lineas Estrategicas del PDOT
+                    {APP_WORDS.LINEAESTRATEGICA_TITLE_MODAL}
                 </TextSection>
             }
             overlayProps={{

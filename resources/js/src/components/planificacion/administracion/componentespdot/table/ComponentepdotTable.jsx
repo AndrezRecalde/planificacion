@@ -2,28 +2,11 @@ import { useCallback, useMemo } from "react";
 import { BtnActiveStatus, BtnSection, MenuTableEdit, TableContent } from "../../../../../components";
 import { useMantineReactTable } from "mantine-react-table";
 import { IconCopyPlus } from "@tabler/icons-react";
-
-const componentespdot = [
-    {
-        id: 1,
-        nombre_componente: "4. La gestión ambiental provincial",
-        activo: true,
-    },
-    {
-        id: 2,
-        nombre_componente:
-            "6.  Fomentar las actividades productivas provinciales, especialmente las agropecuarias; y, ",
-        activo: true,
-    },
-    {
-        id: 3,
-        nombre_componente:
-            "1. Planificar, junto con otras instituciones del sector público y actores de la sociedad, el desarrollo provincial y formular los correspondientes planes de ordenamiento territorial.",
-        activo: false,
-    },
-];
+import { useComponentepdotStore, useUiComponentepdot } from "../../../../../hooks";
 
 export const ComponentepdotTable = () => {
+    const { modalActionComponentepdot, modalActionStatusComponentepdot } = useUiComponentepdot();
+    const { componentespdot, isLoading, setActivateComponentepdot } = useComponentepdotStore();
 
     const columns = useMemo(
         () => [
@@ -45,28 +28,27 @@ export const ComponentepdotTable = () => {
         [componentespdot]
     );
 
-    const handleActive = useCallback(() => {
-        console.log("clic");
+    const handleActive = useCallback((selected) => {
+        setActivateComponentepdot(selected);
+        modalActionStatusComponentepdot(true);
     }, [componentespdot]);
 
     const handleAgregar = useCallback(() => {
-        console.log("agregar");
+        modalActionComponentepdot(true);
     }, [componentespdot]);
 
-    const handleEditar = useCallback(() => {
-        console.log("editar");
+    const handleEditar = useCallback((selected) => {
+        setActivateComponentepdot(selected);
+        modalActionComponentepdot(true);
     }, [componentespdot]);
 
     const table = useMantineReactTable({
         columns,
         data: componentespdot, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        state: { showProgressBars: isLoading },
         enableFacetedValues: true,
         enableDensityToggle: false,
         defaultColumn: { minSize: 80, maxSize: 200, size: 100 },
-
-        //enableColumnFilters: false,
-        //enablePagination: false,
-        //enableSorting: false,
         enableRowActions: true,
         renderRowActionMenuItems: ({ row }) => (
             <MenuTableEdit row={row} handleEditar={handleEditar} />

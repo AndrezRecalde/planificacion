@@ -1,58 +1,61 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-    onClearComponentespdot,
-    onDeleteComponentepdot,
-    onLoadComponentespdot,
+    onClearCompetenciaspdot,
+    onDeleteCompetenciapdot,
+    onLoadCompetenciaspdot,
     onLoadErrores,
     onLoading,
     onLoadMessage,
-    onSetActivateComponentepdot,
-} from "../../store/componentepdot/componentepdotSlice";
+    onSetActivateCompetenciapdot,
+} from "../../store/competenciapdot/competenciapdotSlice";
 import { useErrorException } from "../../hooks";
 import planningApi from "../../api/planningApi";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../helpers";
 
-export const useComponentepdotStore = () => {
+export const useCompetenciapdotStore = () => {
     const {
         isLoading,
-        componentespdot,
-        activateComponentepdot,
+        competenciaspdot,
+        activateCompetenciapdot,
         message,
         errores,
-    } = useSelector((state) => state.componentepdot);
+    } = useSelector((state) => state.competenciapdot);
     const { ExceptionMessageError } = useErrorException(onLoadErrores);
-
     const dispatch = useDispatch();
 
-    const startLoadComponentespdot = async ({ activo = null }) => {
+    const startLoadCompetenciaspdot = async ({
+        lestrategiapdot_id = null,
+        activo = null,
+    }) => {
         try {
             dispatch(onLoading(true));
             const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.GET_COMPONENTESPDOT,
+                    API_URL_ROUTES.GET_COMPETENCIASPDOT,
                 {
+                    lestrategiapdot_id,
                     activo,
                 }
             );
-            const { componentespdot } = data;
-            dispatch(onLoadComponentespdot(componentespdot));
+            const { competencias } = data;
+            dispatch(onLoadCompetenciaspdot(competencias));
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);
         }
     };
 
-    const startAddComponentepdot = async (componentepdot) => {
+    const startAddCompetenciapdot = async (competenciapdot) => {
         try {
-            if (componentepdot.id) {
+            if (competenciapdot.id) {
                 const { data } = await planningApi.put(
                     `${
                         PREFIX_ROUTES.PLANIFICACION +
-                        API_URL_ROUTES.UPDATE_COMPONENTESPDOT
-                    }/${componentepdot.id}`,
-                    componentepdot
+                        API_URL_ROUTES.UPDATE_COMPETENCIAPDOT
+                    }/${competenciapdot.id}`,
+                    competenciapdot
                 );
-                startLoadComponentespdot({});
+                startLoadCompetenciaspdot({});
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -61,10 +64,10 @@ export const useComponentepdotStore = () => {
             }
             const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.STORE_COMPONENTEPDOT,
-                componentepdot
+                    API_URL_ROUTES.STORE_COMPETENCIAPDOT,
+                competenciapdot
             );
-            startLoadComponentespdot({});
+            startLoadCompetenciaspdot({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -75,16 +78,16 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startUpdateStatusComponentepdot = async (componentepdot) => {
+    const startUpdateStatusCompetenciapdot = async (competenciapdot) => {
         try {
             const { data } = await planningApi.put(
                 `${
                     PREFIX_ROUTES.PLANIFICACION +
-                    API_URL_ROUTES.UPDATE_STATUS_COMPONENTESPDOT
-                }/${componentepdot.id}`,
-                componentepdot
+                    API_URL_ROUTES.UPDATE_STATUS_COMPETENCIAPDOT
+                }/${competenciapdot.id}`,
+                competenciapdot
             );
-            startLoadComponentespdot({});
+            startLoadCompetenciaspdot({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -95,14 +98,14 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startDeleteComponentepdot = async (componentepdot) => {
+    const startDeleteCompetenciapdot = async (competenciapdot) => {
         try {
             const { data } = await planningApi.delete(
                 `${
-                    PREFIX_ROUTES.ADMIN + API_URL_ROUTES.DELETE_COMPONENTEPDOT
-                }/${componentepdot.id}`
+                    PREFIX_ROUTES.ADMIN + API_URL_ROUTES.DELETE_COMPETENCIAPDOT
+                }/${competenciapdot.id}`
             );
-            dispatch(onDeleteComponentepdot());
+            dispatch(onDeleteCompetenciapdot());
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -113,26 +116,26 @@ export const useComponentepdotStore = () => {
         }
     };
 
-    const startClearComponentepdot = () => {
-        dispatch(onClearComponentespdot());
+    const startClearCompetenciapdot = () => {
+        dispatch(onClearCompetenciaspdot());
     };
 
-    const setActivateComponentepdot = (componentepdot) => {
-        dispatch(onSetActivateComponentepdot(componentepdot));
+    const setActivateCompetenciapdot = (competenciapdot) => {
+        dispatch(onSetActivateCompetenciapdot(competenciapdot));
     };
 
     return {
         isLoading,
-        componentespdot,
-        activateComponentepdot,
+        competenciaspdot,
+        activateCompetenciapdot,
         message,
         errores,
 
-        startLoadComponentespdot,
-        startAddComponentepdot,
-        startUpdateStatusComponentepdot,
-        startDeleteComponentepdot,
-        startClearComponentepdot,
-        setActivateComponentepdot,
+        startLoadCompetenciaspdot,
+        startAddCompetenciapdot,
+        startUpdateStatusCompetenciapdot,
+        startDeleteCompetenciapdot,
+        startClearCompetenciapdot,
+        setActivateCompetenciapdot,
     };
 };

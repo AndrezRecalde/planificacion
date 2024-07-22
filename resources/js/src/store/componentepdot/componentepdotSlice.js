@@ -36,9 +36,9 @@ export const componentepdotSlice = createSlice({
                     (componente) =>
                         componente.id !== state.activateComponentepdot.id
                 );
-                state.activateComponentepdot = null;
-                state.errores = undefined;
             }
+            state.activateComponentepdot = null;
+            state.errores = undefined;
         },
         onSetActivateComponentepdot: (state, { payload }) => {
             state.activateComponentepdot = payload;

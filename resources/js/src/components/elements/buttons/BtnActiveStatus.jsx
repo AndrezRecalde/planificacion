@@ -13,9 +13,9 @@ export const BtnActiveStatus = ({ cell, handleActive }) => {
             variant="light"
             radius="xl"
             onClick={(e) => handleActivate(e)}
-            color={cell.row.original.actvo == 1 ? "teal" : "orange.5"} //Cambiar a un igual mas
+            color={cell.row.original.activo == 1 ? "teal" : "orange.5"} //Cambiar a un igual mas
         >
-            {cell.row.original.actvo == 1 ? (
+            {cell.row.original.activo == 1 ? (
                 <IconDiscountCheckFilled />
             ) : (
                 <IconAlertCircleFilled />

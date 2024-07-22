@@ -19,6 +19,8 @@ import { BtnActiveStatus } from "./elements/buttons/BtnActiveStatus";
 import { DataCombobox } from "./elements/combobox/DataCombobox";
 import { BtnCombobox } from "./elements/combobox/BtnCombobox";
 import { AlertSection } from "./elements/alert/AlertSection";
+import { StatusModal } from "./elements/modal/StatusModal";
+
 
 /* Auth */
 import { AuthForm } from "./auth/AuthForm";
@@ -107,12 +109,18 @@ import { LineaEstrategiaForm } from "./planificacion/administracion/lineasEstrat
     /* Competencias del PDOT */
 import { CompetenciapdotTable } from "./planificacion/administracion/competenciaspdot/table/CompetenciapdotTable";
 import { CompetenciaDetail } from "./planificacion/administracion/competenciaspdot/table/CompetenciaDetail";
+import { CompetenciapdotModal } from "./planificacion/administracion/competenciaspdot/modal/CompetenciapdotModal";
+import { CompetenciapdotForm } from "./planificacion/administracion/competenciaspdot/form/CompetenciapdotForm";
 
     /* Componentes del PDOT */
 import { ComponentepdotTable } from "./planificacion/administracion/componentespdot/table/ComponentepdotTable";
+import { ComponentepdotModal } from "./planificacion/administracion/componentespdot/modal/ComponentepdotModal";
+import { ComponentepdotForm } from "./planificacion/administracion/componentespdot/form/ComponentepdotForm";
 
     /* Categorias del PDOT */
 import { CategoriapdotTable } from "./planificacion/administracion/categoriaspdot/table/CategoriapdotTable";
+import { CategoriapdotModal } from "./planificacion/administracion/categoriaspdot/modal/CategoriapdotModal";
+import { CategoriapdotForm } from "./planificacion/administracion/categoriaspdot/form/CategoriapdotForm";
 
     /* Estrategias de articulacion */
 import { EarticulacionTable } from "./planificacion/administracion/earticulacion/table/EarticulacionTable";
@@ -141,6 +149,7 @@ export {
     DataCombobox,
     BtnCombobox,
     AlertSection,
+    StatusModal,
     AuthForm,
     ProfileForm,
     UserBtnHeader,
@@ -213,10 +222,16 @@ export {
 
     CompetenciapdotTable,
     CompetenciaDetail,
+    CompetenciapdotModal,
+    CompetenciapdotForm,
 
     ComponentepdotTable,
+    ComponentepdotModal,
+    ComponentepdotForm,
 
     CategoriapdotTable,
+    CategoriapdotModal,
+    CategoriapdotForm,
 
     EarticulacionTable,
 
