@@ -15,7 +15,7 @@ class CompetenciapdotController extends Controller
     function getCompetenciasPDOT(Request $request): JsonResponse
     {
         $competencias = Competenciapdot::from('competenciapdots as comp')
-            ->selectRaw('comp.id, comp.nombre_competencia, comp.activo, le.linea_estrategica')
+            ->selectRaw('comp.id, comp.nombre_competencia, comp.activo, le.id as lestrategiapdot_id, le.linea_estrategica')
             ->with(['componentes', 'cotpdots'])
             ->join('lestrategiapdots as le', 'le.id', 'comp.lestrategiapdot_id')
             ->lestrategiapdot($request->lestrategiapdot_id)

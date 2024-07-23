@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('competenciapdots', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_competencia');
-            $table->boolean('activo')->default(1);
+            $table->boolean('activo')->default(false);
             $table->unsignedBigInteger('lestrategiapdot_id');
             $table->timestamps();
 

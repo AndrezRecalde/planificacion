@@ -21,10 +21,10 @@ export const CompetenciapdotModal = () => {
         useComponentepdotStore();
     const { startLoadCategoriaspdot, startClearCategoriapdot } =
         useCategoriapdotStore();
-    const { startLoadLestrategiapdots } = useLestrategiapdotStore();
+    const { startLoadLestrategiapdots, startClearLestrategiapdot } =
+        useLestrategiapdotStore();
 
     const form = useForm({
-        mode: "uncontrolled",
         initialValues: {
             nombre_competencia: "",
             lestrategiapdot_id: null,
@@ -56,15 +56,19 @@ export const CompetenciapdotModal = () => {
     });
 
     useEffect(() => {
-        startLoadComponentespdot({ activo: true });
-        startLoadCategoriaspdot({ activo: true });
-        startLoadLestrategiapdots({ lineapdot_id: null, activo: true });
+        if (isOpenModalCompetenciapdot) {
+            startLoadLestrategiapdots({ activo: true });
+            startLoadComponentespdot({ activo: true });
+            startLoadCategoriaspdot({ activo: true });
+            return;
+        }
 
         return () => {
-            startClearComponentepdot();
-            startClearCategoriapdot();
+            //startClearComponentepdot();
+            //startClearCategoriapdot();
+            //startClearLestrategiapdot();
         };
-    }, []);
+    }, [isOpenModalCompetenciapdot]);
 
     const handleCloseModal = () => {
         modalActionCompetenciapdot(false);
@@ -81,7 +85,7 @@ export const CompetenciapdotModal = () => {
             size="xl"
             title={
                 <TextSection fz={18} fw={700} tt="capitalize">
-                    Ficha Categoria del PDOT
+                    Ficha Competencias del PDOT
                 </TextSection>
             }
             overlayProps={{

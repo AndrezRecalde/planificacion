@@ -25,12 +25,12 @@ class Competenciapdot extends Model
     // COMPONENTES DEL PDOT
     function componentes(): BelongsToMany
     {
-        return $this->belongsToMany(Componentepdot::class, 'competencia_componente');
+        return $this->belongsToMany(Componentepdot::class, 'competenciapdot_componentepdot');
     }
     // CATEGORIAS DEL PDOT
     function cotpdots(): BelongsToMany
     {
-        return $this->belongsToMany(Cotpdot::class, 'competencia_cot');
+        return $this->belongsToMany(Cotpdot::class, 'competenciapdot_cotpdot');
     }
 
     function objetivos(): HasMany

@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { Container, Divider } from "@mantine/core";
-import { CompetenciapdotModal, CompetenciapdotTable, TitlePage } from "../../../../components";
+import {
+    CompetenciapdotModal,
+    CompetenciapdotTable,
+    StatusModal,
+    TitlePage,
+} from "../../../../components";
 import {
     useCompetenciapdotStore,
     useLestrategiapdotStore,
     useUiCompetenciapdot,
 } from "../../../../hooks";
+import Swal from "sweetalert2";
 
 export const CompetenciaspdotPage = () => {
     const {
@@ -18,17 +24,16 @@ export const CompetenciaspdotPage = () => {
         errores,
     } = useCompetenciapdotStore();
 
-
     const {
         isOpenModalStatusCompetenciapdot,
         modalActionStatusCompetenciapdot,
     } = useUiCompetenciapdot();
 
     useEffect(() => {
-        startLoadCompetenciaspdot({ lineapdot_id: null, activo: true });
+        startLoadCompetenciaspdot({});
 
         return () => {
-            startClearCompetenciapdot();
+            //startClearCompetenciapdot();
         };
     }, []);
 
@@ -67,6 +72,15 @@ export const CompetenciaspdotPage = () => {
             <CompetenciapdotTable />
 
             <CompetenciapdotModal />
+
+            <StatusModal
+                isOpenModal={isOpenModalStatusCompetenciapdot}
+                modalAction={modalActionStatusCompetenciapdot}
+                titleModal="Activar/Desactivar Elemento"
+                startAction={startUpdateStatusCompetenciapdot}
+                activateElement={activateCompetenciapdot}
+                setActivate={setActivateCompetenciapdot}
+            />
         </Container>
     );
 };

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const competenciapdotSlice = createSlice({
     name: "competenciapdot",
     initialState: {
-        isLoading: 10,
+        isLoading: false,
         competenciaspdot: [],
         activateCompetenciapdot: null,
         message: undefined,

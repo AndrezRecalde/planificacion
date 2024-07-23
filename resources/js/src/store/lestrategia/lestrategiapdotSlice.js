@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const lestrategiapdotSlice = createSlice({
     name: "lestrategiapdot",
     initialState: {
-        isLoading: 10,
+        isLoading: false,
         lestrategias: [],
         activateLestrategia: null,
         message: undefined,
@@ -20,6 +20,7 @@ export const lestrategiapdotSlice = createSlice({
         onAddLestrategiapdot: (state, { payload }) => {
             state.lestrategias.push(payload);
             state.activateLestrategia = null;
+            state.isLoading = false;
         },
         onUpdateLestrategiapdot: (state, { payload }) => {
             state.lestrategias = state.lestrategias.map((lestrategia) => {

@@ -26,7 +26,7 @@ export const CompetenciapdotTable = () => {
             },
             {
                 header: "Linea estrategica",
-                accessorKey: "lestrategiapdot_id",
+                accessorKey: "linea_estrategica",
                 minSize: 100, //min size enforced during resizing
                 maxSize: 400, //max size enforced during resizing
                 size: 300, //medium column
@@ -53,7 +53,7 @@ export const CompetenciapdotTable = () => {
 
     const handleEditar = useCallback((selected) => {
         setActivateCompetenciapdot(selected);
-        modalActionStatusCompetenciapdot(true);
+        modalActionCompetenciapdot(true);
     }, [competenciaspdot]);
 
     const table = useMantineReactTable({

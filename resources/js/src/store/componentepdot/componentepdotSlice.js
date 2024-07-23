@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const componentepdotSlice = createSlice({
     name: "componentepdot",
     initialState: {
-        isLoading: 10,
+        isLoading: false,
         componentespdot: [],
         activateComponentepdot: null,
         message: undefined,

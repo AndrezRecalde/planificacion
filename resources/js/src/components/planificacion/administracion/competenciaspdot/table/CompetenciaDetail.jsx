@@ -13,10 +13,10 @@ export const CompetenciaDetail = ({ row }) => {
                 <Table.Tr>
                     <Table.Td>
                         <List spacing="md" size="sm">
-                            {row.original.componentepdot_id.map(
+                            {row.original.componentes.map(
                                 (componente, index) => (
                                     <List.Item key={index}>
-                                        {componente}
+                                        {componente.nombre_componente}
                                     </List.Item>
                                 )
                             )}
@@ -24,10 +24,10 @@ export const CompetenciaDetail = ({ row }) => {
                     </Table.Td>
                     <Table.Td>
                         <List spacing="md" size="sm">
-                            {row.original.categoriaspdot_id.map(
+                            {row.original.cotpdots.map(
                                 (categoria, index) => (
                                     <List.Item key={index}>
-                                        {categoria}
+                                        {categoria.nombre_categoria}
                                     </List.Item>
                                 )
                             )}
