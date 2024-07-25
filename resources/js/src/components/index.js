@@ -131,6 +131,17 @@ import { MetaspdotTable } from "./planificacion/administracion/metaspdot/table/M
     /* Tipos de Planificacion */
 import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/PlanificaciontiposTable";
 
+    /* Ejes del Gobierno */
+import { EjeTable } from "./planificacion/administracion/ejes/table/EjeTable";
+import { EjeModal } from "./planificacion/administracion/ejes/modal/EjeModal";
+import { EjeForm } from "./planificacion/administracion/ejes/form/EjeForm";
+
+    /* Gobierno */
+import { GobiernoTable } from "./planificacion/administracion/gobierno/table/GobiernoTable";
+import { GobiernoModal } from "./planificacion/administracion/gobierno/modal/GobiernoModal";
+import { GobiernoForm } from "./planificacion/administracion/gobierno/form/GobiernoForm";
+
+
 export {
     BtnServicesApps,
     BtnSubmit,
@@ -237,5 +248,13 @@ export {
 
     MetaspdotTable,
 
-    PlanificaciontiposTable
+    PlanificaciontiposTable,
+
+    EjeTable,
+    EjeModal,
+    EjeForm,
+
+    GobiernoTable,
+    GobiernoModal,
+    GobiernoForm
 };

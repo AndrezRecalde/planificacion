@@ -57,6 +57,18 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_COMPETENCIAPDOT: "/update/status/competenciapdot",
     DELETE_COMPETENCIAPDOT: "/delete/competenciapdot",
 
+    /* EJES DEL GOBIERNO */
+    GET_EJES: "/ejes",
+    STORE_EJE: "/store/eje",
+    UPDATE_EJE: "/update/eje",
+    DELETE_EJE: "/delete/eje",
+
+    /* GOBIERNO */
+    GET_GOBIERNOS: "/gobiernos",
+    STORE_GOBIERNO: "/store/gobierno",
+    UPDATE_GOBIERNO: "/update/gobierno",
+    UPDATE_STATUS_GOBIERNO: "/update/status/gobierno",
+    DELETE_GOBIERNO: "",
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",

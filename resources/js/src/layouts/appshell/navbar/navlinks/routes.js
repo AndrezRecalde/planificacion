@@ -130,8 +130,12 @@ export const routes = [
                 initiallyOpened: false,
                 links: [
                     {
+                        label: "Ejes de Gobierno",
+                        link: "/gpla/ejes",
+                    },
+                    {
                         label: "Gestionar Gobierno",
-                        link: "/gpla/lineas-estrategicas",
+                        link: "/gpla/gobiernos",
                     },
                     {
                         label: "Gestionar Objetivos",

@@ -37,6 +37,8 @@ import { EarticulacionPage } from "./planificacion/administracion/earticulacion/
 import { MetaspdotPage } from "./planificacion/administracion/metaspdot/MetaspdotPage";
 import { PlanificacionTiposPage } from "./planificacion/administracion/planificaciontipos/PlanificacionTiposPage";
 import { ProgramasAdminPage } from "./planificacion/administracion/programas/ProgramasAdminPage";
+import { EjesPage } from "./planificacion/administracion/eje/EjesPage";
+import { GobiernosPage } from "./planificacion/administracion/gobierno/GobiernosPage";
 
 export {
     ErrorNotFound,
@@ -75,5 +77,7 @@ export {
     MetaspdotPage,
     PlanificacionTiposPage,
     ProgramasAdminPage,
+    EjesPage,
+    GobiernosPage
 
  };

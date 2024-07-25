@@ -6,6 +6,8 @@ import {
     ComponentespdotPage,
     ConsolidadosPage,
     EarticulacionPage,
+    EjesPage,
+    GobiernosPage,
     InstrumentosPage,
     LineasEstrategicasPage,
     MetaspdotPage,
@@ -48,6 +50,11 @@ export const PlanificacionPages = () => {
                 path="planificar-programas"
                 element={<ProgramasAdminPage />}
             />
+
+             {/* ADMINISTRAR GOBIERNO */}
+             <Route path="ejes" element={<EjesPage />} />
+             <Route path="gobiernos" element={<GobiernosPage />} />
+
         </RoutesNotFound>
     );
 };

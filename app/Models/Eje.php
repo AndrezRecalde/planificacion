@@ -16,10 +16,6 @@ class Eje extends Model
         'nombre_eje',
     ];
 
-    function gobiernos(): BelongsToMany
-    {
-        return $this->belongsToMany(Gobierno::class, 'gobierno_eje');
-    }
 
     function opndesarrollos(): HasMany
     {

@@ -20,6 +20,14 @@ import { useUiCategoriapdot } from "./categoriapdot/useUiCategoriapdot";
 import { useCompetenciapdotStore } from "./competenciapdot/useCompetenciapdotStore";
 import { useUiCompetenciapdot } from "./competenciapdot/useUiCompetenciapdot";
 
+/* EJES DEL GOBIERNO */
+import { useEjeStore } from "./eje/useEjeStore";
+import { useUiEje } from "./eje/useUiEje";
+
+/* GOBIERNOS */
+import { useGobiernoStore } from "./gobierno/useGobiernoStore";
+import { useUiGobierno } from "./gobierno/useUiGobierno";
+
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -70,6 +78,14 @@ export {
     /* COMPETENCIAS DEL PDOT */
     useCompetenciapdotStore,
     useUiCompetenciapdot,
+
+    /* EJES DEL GOBIERNO */
+    useEjeStore,
+    useUiEje,
+
+    /* GOBIERNO */
+    useGobiernoStore,
+    useUiGobierno,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,

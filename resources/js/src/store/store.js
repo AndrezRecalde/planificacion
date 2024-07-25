@@ -5,6 +5,8 @@ import {
     competenciapdotSlice,
     componentepdotSlice,
     departamentoSlice,
+    ejeSlice,
+    gobiernoSlice,
     lestrategiapdotSlice,
     lineapdotSlice,
     proveedorSlice,
@@ -15,6 +17,8 @@ import {
     uiCompetenciapdotSlice,
     uiComponentepdotSlice,
     uiDepartamentoSlice,
+    uiEjeSlice,
+    uiGobiernoSlice,
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
     uiProveedorSlice,
@@ -46,6 +50,14 @@ export const store = configureStore({
         /* Competencias del pdot */
         competenciapdot: competenciapdotSlice.reducer,
         uiCompetenciapdot: uiCompetenciapdotSlice.reducer,
+
+        /* Ejes de Gobierno */
+        eje: ejeSlice.reducer,
+        uiEje: uiEjeSlice.reducer,
+
+        /* Gobiernos */
+        gobierno: gobiernoSlice.reducer,
+        uiGobierno: uiGobiernoSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

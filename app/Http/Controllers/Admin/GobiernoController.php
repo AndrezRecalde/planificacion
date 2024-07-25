@@ -13,25 +13,20 @@ use Illuminate\Support\Facades\DB;
 
 class GobiernoController extends Controller
 {
-    function getGobiernosAdmin(): JsonResponse
+    function getGobiernos(Request $request): JsonResponse
     {
-        //$this->authorize("viewAdmin", Gobierno::class);
-        $gobiernos = Gobierno::with('ejes')->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
-    }
-
-    function getGobiernoActivoWithEjesAndOPN(): JsonResponse
-    {
-        //$this->authorize("viewAny", Gobierno::class);
-        $gobiernos = Gobierno::with([
-                                'ejes',
-                                'opndesarrollos' => function($query) {
-                                    $query->with('eje');
-                                }
-                                ])
-                            ->where('activo', 1)
-                            ->latest()->get();
+        $gobiernos = Gobierno::from('gobiernos as gob')
+            ->selectRaw('gob.id, gob.nombre_gobierno,
+                         gob.presidente, gob.vicepresidente,
+                         gob.fecha_inicio, gob.fecha_fin,
+                         gob.activo')
+            ->with([
+                'opndesarrollos' => function ($query) {
+                    $query->with('eje');
+                }
+            ])
+            ->activo($request->activo)
+            ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
     }
@@ -40,8 +35,7 @@ class GobiernoController extends Controller
     {
         //$this->authorize("create", Gobierno::class);
         try {
-            $gobierno = Gobierno::create($request->validated());
-            $gobierno->ejes()->attach($request->ejes);
+            Gobierno::create($request->validated());
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -57,12 +51,6 @@ class GobiernoController extends Controller
         try {
             if ($gobierno) {
                 $gobierno->update($request->validated());
-
-                if ($request->filled('ejes')) {
-                    $gobierno->ejes()->detach();
-                    $gobierno->ejes()->sync($request->ejes);
-                }
-
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -73,7 +61,7 @@ class GobiernoController extends Controller
         }
     }
 
-    function updateActivo(GobiernoStatus $request, int $id): JsonResponse
+    function updateStatus(GobiernoStatus $request, int $id): JsonResponse
     {
         //$this->authorize("update", Gobierno::class);
         $gobierno = Gobierno::find($id);
@@ -81,6 +69,7 @@ class GobiernoController extends Controller
         try {
             if ($gobierno) {
                 $gobierno->update($request->validated());
+                Gobierno::where('id', '!=', $id)->update(['activo' => false]);
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
@@ -97,7 +86,7 @@ class GobiernoController extends Controller
         $gobierno = Gobierno::find($id);
 
         try {
-            if ($gobierno) {
+            if ($gobierno && $gobierno->activo !== true) {
                 $gobierno->delete();
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Deleted], 200);
             } else {

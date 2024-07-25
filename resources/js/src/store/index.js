@@ -22,6 +22,15 @@ import { competenciapdotSlice } from "./competenciapdot/competenciapdotSlice";
 import { uiCompetenciapdotSlice } from "./competenciapdot/uiCompetenciapdotSlice";
 
 
+/* EJES DE GOBIERNO */
+import { ejeSlice } from "./eje/ejeSlice";
+import { uiEjeSlice } from "./eje/uiEjeSlice";
+
+/* GOBIERNOS */
+import { gobiernoSlice } from "./gobierno/gobiernoSlice";
+import { uiGobiernoSlice } from "./gobierno/uiGobiernoSlice";
+
+
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
 import { uiTipoProyectoSlice } from "./tipo_proyecto/uiTipoProyectoSlice";
@@ -69,6 +78,14 @@ export {
     /* COMPETENCIAS DEL PDOT */
     competenciapdotSlice,
     uiCompetenciapdotSlice,
+
+    /* EJE DE GOBIERNOS */
+    ejeSlice,
+    uiEjeSlice,
+
+    /* GOBIERNOS */
+    gobiernoSlice,
+    uiGobiernoSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

@@ -123,11 +123,9 @@ Route::group(
 
 
         /* ADMIN: GOBIERNOS */
-        Route::get('/gobiernos-admin', [GobiernoController::class, 'getGobiernosAdmin']);
         Route::delete('/delete/gobierno/{id}', [GobiernoController::class, 'destroy']);
 
         /* ADMIN: EJES DEL GOBIERNO */
-        Route::get('/ejes-admin', [EjeController::class, 'getEjesAdmin']);
         Route::delete('/delete/eje/{id}', [EjeController::class, 'destroy']);
 
         /* ADMIN: OPNDESARROLLOS  */
@@ -263,10 +261,10 @@ Route::group([
     Route::put('/update/tipo-actividad/{id}', [TipoActividadController::class, 'update']);
 
     /* ADMIN: GOBIERNOS */
-    Route::get('/gobiernos', [GobiernoController::class, 'getGobiernoActivoWithEjesAndOPN']); //Presenta los ejes activos
+    Route::post('/gobiernos', [GobiernoController::class, 'getGobiernos']); //Presenta los ejes activos
     Route::post('/store/gobierno', [GobiernoController::class, 'store']);
     Route::put('/update/gobierno/{id}', [GobiernoController::class, 'update']);
-    Route::put('/update/status/gobierno/{id}', [GobiernoController::class, 'updateActivo']);
+    Route::put('/update/status/gobierno/{id}', [GobiernoController::class, 'updateStatus']);
 
     /* PLANIFICACION: EJES DEL GOBIERNO */
     Route::get('/ejes', [EjeController::class, 'getEjes']);
