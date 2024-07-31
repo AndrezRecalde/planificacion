@@ -25,6 +25,7 @@ class OpndesarrolloRequest extends FormRequest
     {
         return [
             'objetivo_opn'  =>  'required',
+            'gobierno_id'   =>   'required',
             'eje_id'        =>  'required',
         ];
     }
@@ -33,6 +34,7 @@ class OpndesarrolloRequest extends FormRequest
     {
         return [
             'objetivo_opn.required' =>  'El objetivo es obligatorio',
+            'gobierno_id.required'  =>  'Seleccione un gobierno es obligatorio',
             'eje_id.required'       =>  'El eje es obligatorio'
         ];
     }

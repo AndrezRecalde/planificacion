@@ -73,9 +73,9 @@ export const API_URL_ROUTES = {
 
     /* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
     GET_OPN: "/opndesarrollos",
-    STORE_OPN: "",
-    UPDATE_OPN: "",
-    DELETE_OPN: "",
+    STORE_OPN: "/store/opndesarrollo",
+    UPDATE_OPN: "/update/opndesarrollo",
+    DELETE_OPN: "/delete/opndesarrollo",
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",

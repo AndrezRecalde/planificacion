@@ -20,7 +20,7 @@ import { DataCombobox } from "./elements/combobox/DataCombobox";
 import { BtnCombobox } from "./elements/combobox/BtnCombobox";
 import { AlertSection } from "./elements/alert/AlertSection";
 import { StatusModal } from "./elements/modal/StatusModal";
-
+import { FieldFilterForm } from "./elements/fields/FieldFilterForm";
 
 /* Auth */
 import { AuthForm } from "./auth/AuthForm";
@@ -82,7 +82,7 @@ import { ActividadesTable } from "./gestiones/actividades/table/ActividadesTable
 /* Instrumentos */
 import { InstrumentosList } from "./planificacion/instrumento/InstrumentosList";
 /* Objetivos */
-import { ObjetivosTable } from "./planificacion/objetivo/table/ObjetivosTable";
+import { ObjetivosEstrategicosTable } from "./planificacion/objetivo/table/ObjetivosEstrategicosTable";
 /*Programa */
 import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFormProgramaPlan";
 import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
@@ -144,6 +144,7 @@ import { GobiernoForm } from "./planificacion/administracion/gobierno/form/Gobie
     /* Objetivos Plan Nacional de Desarrollo */
 import { ObjetivosPlanNacionalTable } from "./planificacion/administracion/opn/table/ObjetivosPlanNacionalTable";
 import { ObjetivosPlanNacionalModal } from "./planificacion/administracion/opn/modal/ObjetivosPlanNacionalModal";
+import { ObjetivoPlanNacionalForm } from "./planificacion/administracion/opn/form/ObjetivoPlanNacionalForm";
 
 export {
     BtnServicesApps,
@@ -164,6 +165,7 @@ export {
     BtnCombobox,
     AlertSection,
     StatusModal,
+    FieldFilterForm,
     AuthForm,
     ProfileForm,
     UserBtnHeader,
@@ -214,7 +216,7 @@ export {
 
     /*PLANIFICACION */
     InstrumentosList,
-    ObjetivosTable,
+    ObjetivosEstrategicosTable,
     FilterFormProgramaPlan,
     ProgramaPlanTable,
     ProyectoFromPrograma,
@@ -262,5 +264,6 @@ export {
     GobiernoForm,
 
     ObjetivosPlanNacionalTable,
-    ObjetivosPlanNacionalModal
+    ObjetivosPlanNacionalModal,
+    ObjetivoPlanNacionalForm
 };

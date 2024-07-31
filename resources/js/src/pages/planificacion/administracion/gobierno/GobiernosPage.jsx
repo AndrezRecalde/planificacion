@@ -59,7 +59,7 @@ export const GobiernosPage = () => {
     return (
         <Container size="xxl">
             <TitlePage order={2} ta="left">
-                Ejes de Gobierno
+                Gobiernos
             </TitlePage>
             <Divider my="md" />
 
@@ -69,7 +69,7 @@ export const GobiernosPage = () => {
             <StatusModal
                 isOpenModal={isOpenModalStatusGobierno}
                 modalAction={modalActionStatusGobierno}
-                title="Activar/Desactivar Elemento"
+                titleModal="Activar/Desactivar Elemento"
                 startAction={startUpdateStatusGobierno}
                 activateElement={activateGobierno}
                 setActivate={setActivateGobierno}

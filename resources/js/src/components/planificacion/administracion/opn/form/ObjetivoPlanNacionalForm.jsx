@@ -1,27 +1,39 @@
+import { useEffect } from "react";
 import { Box, Divider, Select, Stack, TextInput } from "@mantine/core";
-import { BtnSubmit } from "../../../../../components";
 import { APP_WORDS, BTN_TITLES } from "../../../../../helpers";
+import { BtnSubmit } from "../../../../../components";
+import {
+    useEjeStore,
+    useGobiernoStore,
+    useOPNStore,
+    useUiOPN,
+} from "../../../../../hooks";
 import { IconChecks } from "@tabler/icons-react";
-import { useEjeStore, useGobiernoStore, useOPNStore, useUiOPN } from "../../../../../hooks";
 
 export const ObjetivoPlanNacionalForm = ({ form }) => {
-
     const { startAddOPN, activateOPN, setActivateOPN } = useOPNStore();
     const { gobiernos } = useGobiernoStore();
     const { ejes } = useEjeStore();
     const { modalActionOPN } = useUiOPN();
 
     useEffect(() => {
-      if (activateOPN !== null) {
-        form.setValues({
-            ...activateOPN,
-            eje_id: activateOPN.eje_id.toString(),
-            gobierno_id: activateOPN.gobierno_id.toString()
-        });
-        return;
-      }
-    }, [activateOPN]);
+        if (gobiernos.length > 0) {
+            form.setFieldValue("gobierno_id", gobiernos[0]?.id.toString());
+            console.log('clic aqui')
+            return;
+        }
+    }, [gobiernos]);
 
+    useEffect(() => {
+        if (activateOPN !== null) {
+            form.setValues({
+                ...activateOPN,
+                eje_id: activateOPN.eje_id.toString(),
+                gobierno_id: activateOPN.gobierno_id.toString(),
+            });
+            return;
+        }
+    }, [activateOPN]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +43,7 @@ export const ObjetivoPlanNacionalForm = ({ form }) => {
         }
         form.reset();
         modalActionOPN(false);
-    }
+    };
 
     return (
         <Box
@@ -51,6 +63,7 @@ export const ObjetivoPlanNacionalForm = ({ form }) => {
                 <Divider />
                 <Select
                     required
+                    disabled
                     label="Gobierno"
                     placeholder="Seleccione el gobierno"
                     data={gobiernos.map((gobierno) => {
@@ -63,28 +76,26 @@ export const ObjetivoPlanNacionalForm = ({ form }) => {
                     clearable
                     {...form.getInputProps("gobierno_id")}
                 />
-                <TextInput
-                    radius="sm"
-                    label={APP_WORDS.LINEAESTRATEGICA_TEXT_NOMBRELINEA}
-                    withAsterisk
-                    placeholder={
-                        APP_WORDS.LINEAESTRATEGICA_PLACEHOLDER_NOMBRELINEA
-                    }
-                    {...form.getInputProps("linea_estrategica")}
-                />
                 <Select
                     required
-                    label={APP_WORDS.LINEAESTRATEGICA_SELECT_LINEAPDOT}
-                    placeholder={APP_WORDS.SELECT_PLACEHOLDER}
-                    data={lineaspdot.map((linea) => {
+                    label="Eje"
+                    placeholder="Seleccione el eje"
+                    data={ejes.map((eje) => {
                         return {
-                            label: linea.nombre_linea,
-                            value: linea.id.toString(),
+                            label: eje.nombre_eje,
+                            value: eje.id.toString(),
                         };
                     })}
                     nothingFoundMessage={APP_WORDS.NOTHING_FOUND}
                     clearable
-                    {...form.getInputProps("lineapdot_id")}
+                    {...form.getInputProps("eje_id")}
+                />
+                <TextInput
+                    radius="sm"
+                    label="Objetivo Nacional"
+                    withAsterisk
+                    placeholder="Digite el objetivo nacional"
+                    {...form.getInputProps("objetivo_opn")}
                 />
                 <BtnSubmit IconSection={IconChecks}>
                     {BTN_TITLES.BTN_SAVE}

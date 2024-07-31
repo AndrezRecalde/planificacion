@@ -1,6 +1,6 @@
 import { Container, Divider, Group } from "@mantine/core";
 import { BtnSection, TextSection, TitlePage } from "../../../components";
-import { ObjetivosTable } from "../../../components";
+import { ObjetivosEstrategicosTable } from "../../../components";
 import { IconCopyPlus } from "@tabler/icons-react";
 
 export const ObjetivosEstrategicosPage = () => {
@@ -26,7 +26,7 @@ export const ObjetivosEstrategicosPage = () => {
                 </div>
             </Group>
             <Divider my="md" />
-            <ObjetivosTable />
+            <ObjetivosEstrategicosTable />
         </Container>
     );
 };

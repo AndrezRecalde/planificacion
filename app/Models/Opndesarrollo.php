@@ -13,8 +13,8 @@ class Opndesarrollo extends Model
 
     protected $fillable = [
         'objetivo_opn',
+        'gobierno_id',
         'eje_id',
-        'gobierno_id'
     ];
 
     function eje(): BelongsTo

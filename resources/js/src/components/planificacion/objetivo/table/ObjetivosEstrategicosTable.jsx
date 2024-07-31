@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useMantineTheme } from "@mantine/core";
 import { useMantineReactTable, MantineReactTable } from "mantine-react-table";
-import { MenuTableEdit } from "../../../../components";
+import { MenuTableEdit } from "../../..";
 
 const objetivos = [
     {
@@ -16,7 +16,7 @@ const objetivos = [
     },
 ];
 
-export const ObjetivosTable = () => {
+export const ObjetivosEstrategicosTable = () => {
     const { colorScheme } = useMantineTheme();
 
     const columns = useMemo(

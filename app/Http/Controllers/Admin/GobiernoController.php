@@ -24,6 +24,7 @@ class GobiernoController extends Controller
                 }
             ])
             ->activo($request->activo)
+            ->orderBy('gob.activo', 'DESC')
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'gobiernos' => $gobiernos], 200);
