@@ -13,7 +13,6 @@ export const GobiernoModal = () => {
         initialValues: {
             nombre_gobierno: "",
             presidente: "",
-            vicepresidente: "",
             fecha_inicio: new Date(),
             fecha_fin: new Date(),
         },
@@ -23,9 +22,6 @@ export const GobiernoModal = () => {
             ),
             presidente: isNotEmpty(
                 "Por favor ingrese el nombre del presidente"
-            ),
-            vicepresidente: isNotEmpty(
-                "Por favor ingrese el nombre del vicepresidente"
             ),
             fecha_inicio: isNotEmpty("Por favor ingrese el inicio del periodo"),
             fecha_fin: isNotEmpty("Por favor ingrese el final del periodo"),

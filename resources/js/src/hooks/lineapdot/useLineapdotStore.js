@@ -74,7 +74,7 @@ export const useLineapdotStore = () => {
     const startDeleteLineapdot = async (lineapdot) => {
         try {
             dispatch(onLoading(true));
-            const { data } = planningApi.delete(
+            const { data } = await planningApi.delete(
                 `${PREFIX_ROUTES.ADMIN + API_URL_ROUTES.DELETE_LINEAPDOT}/${
                     lineapdot.id
                 }`

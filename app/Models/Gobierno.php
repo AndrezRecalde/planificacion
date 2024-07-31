@@ -15,7 +15,6 @@ class Gobierno extends Model
     protected $fillable = [
         'nombre_gobierno',
         'presidente',
-        'vicepresidente',
         'fecha_inicio',
         'fecha_fin',
         'activo'

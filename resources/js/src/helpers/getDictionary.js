@@ -65,10 +65,17 @@ export const API_URL_ROUTES = {
 
     /* GOBIERNO */
     GET_GOBIERNOS: "/gobiernos",
+    GET_GOBIERNO_PROYECTO: "/opndesarrollos-proyectos",
     STORE_GOBIERNO: "/store/gobierno",
     UPDATE_GOBIERNO: "/update/gobierno",
     UPDATE_STATUS_GOBIERNO: "/update/status/gobierno",
-    DELETE_GOBIERNO: "",
+    DELETE_GOBIERNO: "/delete/gobierno",
+
+    /* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
+    GET_OPN: "/opndesarrollos",
+    STORE_OPN: "",
+    UPDATE_OPN: "",
+    DELETE_OPN: "",
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",
@@ -143,6 +150,10 @@ export const APP_WORDS = {
     LINEAESTRATEGICA_TEXT_NOMBRELINEA: "Nombre de la línea estrategica",
     LINEAESTRATEGICA_PLACEHOLDER_NOMBRELINEA: "Nombre de la línea estrategica",
     LINEAESTRATEGICA_SELECT_LINEAPDOT: "Elegir Línea del PDOT",
+
+
+    /* OBJETIVOS PLAN NACIONAL DE DESARROLLO: OPN */
+    OPN_TITLE_MODAL: "Ficha Objetivo Plan Nacional",
 
 
     /* PROVEEDOR */

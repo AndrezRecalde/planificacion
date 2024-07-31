@@ -30,6 +30,11 @@ import { uiEjeSlice } from "./eje/uiEjeSlice";
 import { gobiernoSlice } from "./gobierno/gobiernoSlice";
 import { uiGobiernoSlice } from "./gobierno/uiGobiernoSlice";
 
+/* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
+import { opnSlice } from "./opn/opnSlice";
+import { uiOpnSlice } from "./opn/uiOpnSlice";
+
+
 
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
@@ -86,6 +91,10 @@ export {
     /* GOBIERNOS */
     gobiernoSlice,
     uiGobiernoSlice,
+
+    /* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
+    opnSlice,
+    uiOpnSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

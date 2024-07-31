@@ -129,7 +129,6 @@ Route::group(
         Route::delete('/delete/eje/{id}', [EjeController::class, 'destroy']);
 
         /* ADMIN: OPNDESARROLLOS  */
-        Route::post('/opndesarrollos', [OpndesarrolloController::class, 'getOPNAdmin']);
         Route::delete('/delete/opndesarrollo/{id}', [OpndesarrolloController::class, 'destroy']);
 
         /* ADMIN: PROYECTOS */
@@ -272,6 +271,7 @@ Route::group([
     Route::put('/update/eje/{id}', [EjeController::class, 'update']);
 
     /* PLANIFICACION: OPNDESARROLLOS  */
+    Route::post('/opndesarrollos', [OpndesarrolloController::class, 'getOPN']);
     Route::get('/opndesarrollos-proyectos', [OpndesarrolloController::class, 'getOPNForProyecto']);
     Route::post('/store/opndesarrollo', [OpndesarrolloController::class, 'store']);
     Route::put('/update/opndesarrollo/{id}', [OpndesarrolloController::class, 'update']);

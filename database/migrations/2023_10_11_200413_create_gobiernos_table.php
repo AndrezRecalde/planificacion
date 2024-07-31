@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_gobierno');
             $table->string('presidente');
-            $table->string('vicepresidente');
+            //$table->string('vicepresidente');
             $table->year('fecha_inicio');
             $table->year('fecha_fin');
             $table->boolean('activo')->default(false);

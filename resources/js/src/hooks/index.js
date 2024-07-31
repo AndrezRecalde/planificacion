@@ -28,6 +28,10 @@ import { useUiEje } from "./eje/useUiEje";
 import { useGobiernoStore } from "./gobierno/useGobiernoStore";
 import { useUiGobierno } from "./gobierno/useUiGobierno";
 
+/* OBJETIVOS DEL PLAN NACIONAL DE DESARROLLO: OPN */
+import { useOPNStore } from "./opn/useOPNStore";
+import { useUiOPN } from "./opn/useUiOPN";
+
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -86,6 +90,10 @@ export {
     /* GOBIERNO */
     useGobiernoStore,
     useUiGobierno,
+
+    /* OBJETIVOS DEL PLAN NACIONAL DE DESARROLLO: OPN */
+    useOPNStore,
+    useUiOPN,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,

@@ -1,11 +1,15 @@
 import { Modal } from "@mantine/core";
 import { LineaEstrategiaForm, TextSection } from "../../../../../components";
-import { useLestrategiapdotStore, useUiLestrategiapdot } from "../../../../../hooks";
+import {
+    useLestrategiapdotStore,
+    useUiLestrategiapdot,
+} from "../../../../../hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { APP_WORDS } from "../../../../../helpers";
 
 export const LineaEstrategiaModal = () => {
-    const { setActivateLestrategia, activateLestrategia } = useLestrategiapdotStore();
+    const { setActivateLestrategia, activateLestrategia } =
+        useLestrategiapdotStore();
     const { modalActionLestrategiapdot, isOpenModalLestrategia } =
         useUiLestrategiapdot();
 
@@ -30,11 +34,11 @@ export const LineaEstrategiaModal = () => {
     });
 
     const handleCloseModal = () => {
-        modalActionLestrategiapdot(false);
         if (activateLestrategia !== null) {
             setActivateLestrategia(null);
         }
         form.reset();
+        modalActionLestrategiapdot(false);
     };
 
     return (

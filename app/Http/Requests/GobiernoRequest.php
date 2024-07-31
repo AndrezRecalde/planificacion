@@ -26,7 +26,6 @@ class GobiernoRequest extends FormRequest
         return [
             'nombre_gobierno'   =>  'required',
             'presidente'        =>  'required',
-            'vicepresidente'    =>  'required',
             'fecha_inicio'      =>  'required',
             'fecha_fin'         =>  'required'
         ];
@@ -37,7 +36,6 @@ class GobiernoRequest extends FormRequest
         return [
             'nombre_gobierno.required'  =>  'El nombre de gobierno es obligatorio',
             'presidente.required'       =>  'El presidente es obligatorio',
-            'vicepresidente.required'   =>  'El vicepresidente es obligatorio',
             'fecha_inicio.required'     =>  'La fecha de inicio es obligatoria',
             'fecha_fin.required'        =>  'La fecha de fin es obligatoria'
         ];

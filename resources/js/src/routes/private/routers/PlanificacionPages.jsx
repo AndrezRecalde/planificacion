@@ -12,6 +12,7 @@ import {
     LineasEstrategicasPage,
     MetaspdotPage,
     ObjetivosEstrategicosPage,
+    ObjetivosPlanNacional,
     PlanificacionTiposPage,
     ProgramasAdminPage,
     ProgramasPlanPage,
@@ -54,6 +55,8 @@ export const PlanificacionPages = () => {
              {/* ADMINISTRAR GOBIERNO */}
              <Route path="ejes" element={<EjesPage />} />
              <Route path="gobiernos" element={<GobiernosPage />} />
+             <Route path="opn" element={<ObjetivosPlanNacional />} />
+
 
         </RoutesNotFound>
     );

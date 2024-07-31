@@ -139,7 +139,7 @@ export const routes = [
                     },
                     {
                         label: "Gestionar Objetivos",
-                        link: "/gpla/componentes-pdot",
+                        link: "/gpla/opn",
                     },
                     {
                         label: "Objetivos Sostenibles",

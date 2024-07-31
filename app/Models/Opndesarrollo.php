@@ -27,7 +27,7 @@ class Opndesarrollo extends Model
         return $this->belongsToMany(Proyecto::class, 'proyecto_opndesarrollo');
     }
 
-    function scopeOpn($query, $opn_id)
+    function scopeByOpn($query, $opn_id)
     {
         if ($opn_id) {
             return $query->where('id', $opn_id);

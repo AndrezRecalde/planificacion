@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class OpndesarrolloController extends Controller
 {
     /* Consulta de Objetivos de Plan Nacional de Desarrollo por Gobierno */
-    function getOPNAdmin(Request $request): JsonResponse
+    function getOPN(Request $request): JsonResponse
     {
         $opns = Opndesarrollo::from('opndesarrollos as opn')
             ->selectRaw('opn.id, opn.objetivo_opn, e.nombre_eje, g.nombre_gobierno')
@@ -31,7 +31,7 @@ class OpndesarrolloController extends Controller
             [
                 'proyectos'
             ]
-        )->opn($request->opn_id)
+        )->byOpn($request->opn_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'opn_gobierno' => $opn_gobierno], 200);

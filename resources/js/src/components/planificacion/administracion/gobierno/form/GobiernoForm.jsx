@@ -5,6 +5,7 @@ import { BtnSubmit } from "../../../../../components";
 import { IconChecks } from "@tabler/icons-react";
 import { BTN_TITLES } from "../../../../../helpers";
 import { useGobiernoStore, useUiGobierno } from "../../../../../hooks";
+import dayjs from "dayjs";
 
 export const GobiernoForm = ({ form }) => {
     const { startAddGobierno, activateGobierno, setActivateGobierno } =
@@ -14,7 +15,11 @@ export const GobiernoForm = ({ form }) => {
 
     useEffect(() => {
       if (activateGobierno !== null) {
-        form.setValues({ ...activateGobierno });
+        form.setValues({ ...activateGobierno,
+            fecha_inicio: dayjs(activateGobierno.fecha_inicio),
+            fecha_fin: dayjs(activateGobierno.fecha_fin),
+
+         });
         return;
       }
 
@@ -62,14 +67,6 @@ export const GobiernoForm = ({ form }) => {
                     placeholder="Digite los nombres del presidente"
                     key={form.key("presidente")}
                     {...form.getInputProps("presidente")}
-                />
-                <TextInput
-                    radius="sm"
-                    label="Nombres del Vicepresidente"
-                    withAsterisk
-                    placeholder="Digite los nombres del vicepresidente"
-                    key={form.key("vicepresidente")}
-                    {...form.getInputProps("vicepresidente")}
                 />
                 <SimpleGrid cols={{ base: 1, sm: 2, md: 2, lg: 2 }}>
                     <YearPickerInput

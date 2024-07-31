@@ -16,10 +16,8 @@ class GobiernoController extends Controller
     function getGobiernos(Request $request): JsonResponse
     {
         $gobiernos = Gobierno::from('gobiernos as gob')
-            ->selectRaw('gob.id, gob.nombre_gobierno,
-                         gob.presidente, gob.vicepresidente,
-                         gob.fecha_inicio, gob.fecha_fin,
-                         gob.activo')
+            ->selectRaw('gob.id, gob.nombre_gobierno, gob.presidente,
+                         gob.fecha_inicio, gob.fecha_fin, gob.activo')
             ->with([
                 'opndesarrollos' => function ($query) {
                     $query->with('eje');

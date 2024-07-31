@@ -19,10 +19,6 @@ export const GobiernoTable = () => {
                 accessorKey: "presidente",
             },
             {
-                header: "Vicepresidente",
-                accessorKey: "vicepresidente",
-            },
-            {
                 header: "Inicio periodo",
                 accessorKey: "fecha_inicio",
             },
