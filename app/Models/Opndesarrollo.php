@@ -27,10 +27,17 @@ class Opndesarrollo extends Model
         return $this->belongsToMany(Proyecto::class, 'proyecto_opndesarrollo');
     }
 
-    function scopeByOpn($query, $opn_id)
+    function scopeByOpnId($query, $opn_id)
     {
         if ($opn_id) {
             return $query->where('id', $opn_id);
+        }
+    }
+
+    function scopeByGobiernoId($query, $gobierno_id)
+    {
+        if ($gobierno_id) {
+            return $query->where('opn.gobierno_id', $gobierno_id);
         }
     }
 }

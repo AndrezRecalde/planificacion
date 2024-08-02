@@ -4,6 +4,7 @@ export const uiGobiernoSlice = createSlice({
     initialState: {
         isOpenModalGobierno: false,
         isOpenModalStatusGobierno: false,
+        isOpenModalViewOPNGobierno: false,
     },
     reducers: {
         onOpenModalGobierno: (state, { payload }) => {
@@ -12,8 +13,14 @@ export const uiGobiernoSlice = createSlice({
         onOpenModalStatusGobierno: (state, { payload }) => {
             state.isOpenModalStatusGobierno = payload;
         },
+        onOpenModalViewOPNGobierno: (state, { payload }) => {
+            state.isOpenModalViewOPNGobierno = payload;
+        },
     },
 });
 
-export const { onOpenModalGobierno, onOpenModalStatusGobierno } =
-    uiGobiernoSlice.actions;
+export const {
+    onOpenModalGobierno,
+    onOpenModalStatusGobierno,
+    onOpenModalViewOPNGobierno,
+} = uiGobiernoSlice.actions;

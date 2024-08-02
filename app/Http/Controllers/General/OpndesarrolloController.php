@@ -15,10 +15,12 @@ class OpndesarrolloController extends Controller
     function getOPN(Request $request): JsonResponse
     {
         $opns = Opndesarrollo::from('opndesarrollos as opn')
-            ->selectRaw('opn.id, opn.objetivo_opn, e.nombre_eje, g.nombre_gobierno')
+            ->selectRaw('opn.id, opn.objetivo_opn,
+                        opn.eje_id, e.nombre_eje,
+                        opn.gobierno_id, g.nombre_gobierno')
             ->join('ejes as e', 'e.id', 'opn.eje_id')
             ->join('gobiernos as g', 'g.id', 'opn.gobierno_id')
-            ->where('g.id', $request->gobierno_id)
+            ->byGobiernoId($request->gobierno_id)
             ->orderBy('opn.id', 'DESC')
             ->get();
 
@@ -31,7 +33,7 @@ class OpndesarrolloController extends Controller
             [
                 'proyectos'
             ]
-        )->byOpn($request->opn_id)
+        )->byOpnId($request->opn_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'opn_gobierno' => $opn_gobierno], 200);

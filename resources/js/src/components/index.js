@@ -10,7 +10,7 @@ import { TableContent } from "./elements/tables/TableContent";
 import {
     MenuTableEdit,
     MenuTableAdd,
-    MenuActions,
+    MenuActionsVE,
 } from "./elements/tables/MenuTable";
 import { Logo } from "./elements/application/Logo";
 import { BtnDarkMode } from "./elements/buttons/BtnDarkMode";
@@ -140,11 +140,15 @@ import { EjeForm } from "./planificacion/administracion/ejes/form/EjeForm";
 import { GobiernoTable } from "./planificacion/administracion/gobierno/table/GobiernoTable";
 import { GobiernoModal } from "./planificacion/administracion/gobierno/modal/GobiernoModal";
 import { GobiernoForm } from "./planificacion/administracion/gobierno/form/GobiernoForm";
+import { GobiernoSelect } from "./planificacion/administracion/gobierno/form/GobiernoSelect";
+
 
     /* Objetivos Plan Nacional de Desarrollo */
 import { ObjetivosPlanNacionalTable } from "./planificacion/administracion/opn/table/ObjetivosPlanNacionalTable";
 import { ObjetivosPlanNacionalModal } from "./planificacion/administracion/opn/modal/ObjetivosPlanNacionalModal";
 import { ObjetivoPlanNacionalForm } from "./planificacion/administracion/opn/form/ObjetivoPlanNacionalForm";
+import { ObjetivosPlanNacionalFilterForm } from "./planificacion/administracion/opn/form/ObjetivosPlanNacionalFilterForm";
+
 
 export {
     BtnServicesApps,
@@ -155,7 +159,7 @@ export {
     TableContent,
     MenuTableEdit,
     MenuTableAdd,
-    MenuActions,
+    MenuActionsVE,
     Logo,
     BtnDarkMode,
     BtnSearch,
@@ -262,8 +266,10 @@ export {
     GobiernoTable,
     GobiernoModal,
     GobiernoForm,
+    GobiernoSelect,
 
     ObjetivosPlanNacionalTable,
     ObjetivosPlanNacionalModal,
-    ObjetivoPlanNacionalForm
+    ObjetivoPlanNacionalForm,
+    ObjetivosPlanNacionalFilterForm
 };

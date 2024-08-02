@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Modal } from "@mantine/core";
 import {
     useEjeStore,
-    useGobiernoStore,
     useOPNStore,
     useUiOPN,
 } from "../../../../../hooks";
@@ -16,18 +15,16 @@ import { APP_WORDS } from "../../../../../helpers";
 export const ObjetivosPlanNacionalModal = () => {
     const { setActivateOPN, activateOPN } = useOPNStore();
     const { isOpenModalOPN, modalActionOPN } = useUiOPN();
-    const { startLoadGobiernos, startClearGobiernos } =
-        useGobiernoStore();
     const { startLoadEjes, startClearEjes } = useEjeStore();
 
     useEffect(() => {
         if (isOpenModalOPN) {
-            startLoadGobiernos({ activo: true });
+            //startLoadGobiernos({ activo: true });
             startLoadEjes();
         }
 
         return () => {
-            startClearGobiernos();
+            //startClearGobiernos();
             startClearEjes();
         };
     }, [isOpenModalOPN]);

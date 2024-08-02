@@ -1,6 +1,11 @@
 import { useCallback, useMemo } from "react";
 import { useMantineReactTable } from "mantine-react-table";
-import { BtnActiveStatus, BtnSection, MenuTableEdit, TableContent } from "../../../../../components"
+import {
+    BtnActiveStatus,
+    BtnSection,
+    MenuActionsVE,
+    TableContent,
+} from "../../../../../components";
 import { useGobiernoStore, useUiGobierno } from "../../../../../hooks";
 import { IconCopyPlus } from "@tabler/icons-react";
 
@@ -37,19 +42,25 @@ export const GobiernoTable = () => {
         [gobiernos]
     );
 
-    const handleActive = useCallback((selected) => {
-        setActivateGobierno(selected);
-        modalActionStatusGobierno(true);
-    }, [gobiernos]);
+    const handleActive = useCallback(
+        (selected) => {
+            setActivateGobierno(selected);
+            modalActionStatusGobierno(true);
+        },
+        [gobiernos]
+    );
 
     const handleAgregar = useCallback(() => {
         modalActionGobierno(true);
     }, [gobiernos]);
 
-    const handleEditar = useCallback((selected) => {
-        setActivateGobierno(selected);
-        modalActionGobierno(true);
-    }, [gobiernos]);
+    const handleEditar = useCallback(
+        (selected) => {
+            setActivateGobierno(selected);
+            modalActionGobierno(true);
+        },
+        [gobiernos]
+    );
 
     const table = useMantineReactTable({
         columns,
@@ -59,7 +70,11 @@ export const GobiernoTable = () => {
         enableDensityToggle: false,
         enableRowActions: true,
         renderRowActionMenuItems: ({ row }) => (
-            <MenuTableEdit row={row} handleEditar={handleEditar} />
+            <MenuActionsVE
+                row={row}
+                handleView={() => console.log("clic view")}
+                handleEditar={handleEditar}
+            />
         ),
         renderTopToolbarCustomActions: ({ table }) => (
             <BtnSection
@@ -73,7 +88,5 @@ export const GobiernoTable = () => {
         ),
     });
 
-  return (
-    <TableContent table={table} />
-  )
-}
+    return <TableContent table={table} />;
+};

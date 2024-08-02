@@ -2,12 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     onOpenModalGobierno,
     onOpenModalStatusGobierno,
+    onOpenModalViewOPNGobierno,
 } from "../../store/gobierno/uiGobiernoSlice";
 
 export const useUiGobierno = () => {
-    const { isOpenModalGobierno, isOpenModalStatusGobierno } = useSelector(
-        (state) => state.uiGobierno
-    );
+    const {
+        isOpenModalGobierno,
+        isOpenModalStatusGobierno,
+        isOpenModalViewOPNGobierno,
+    } = useSelector((state) => state.uiGobierno);
     const dispatch = useDispatch();
 
     const modalActionGobierno = (behavior) => {
@@ -18,11 +21,17 @@ export const useUiGobierno = () => {
         dispatch(onOpenModalStatusGobierno(behavior));
     };
 
+    const modalActionViewOPNGobierno = (behavior) => {
+        dispatch(onOpenModalViewOPNGobierno(behavior));
+    };
+
     return {
         isOpenModalGobierno,
         isOpenModalStatusGobierno,
+        isOpenModalViewOPNGobierno,
 
         modalActionGobierno,
-        modalActionStatusGobierno
+        modalActionStatusGobierno,
+        modalActionViewOPNGobierno,
     };
 };

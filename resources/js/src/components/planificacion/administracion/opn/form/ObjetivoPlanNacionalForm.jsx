@@ -18,8 +18,13 @@ export const ObjetivoPlanNacionalForm = ({ form }) => {
 
     useEffect(() => {
         if (gobiernos.length > 0) {
-            form.setFieldValue("gobierno_id", gobiernos[0]?.id.toString());
-            console.log('clic aqui')
+            form.setFieldValue(
+                "gobierno_id",
+                activateOPN.gobierno_id
+                    ? activateOPN.gobierno_id.toString()
+                    : gobiernos[0]?.id.toString()
+            );
+            console.log("clic aqui");
             return;
         }
     }, [gobiernos]);

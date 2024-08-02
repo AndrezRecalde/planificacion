@@ -65,7 +65,6 @@ export const API_URL_ROUTES = {
 
     /* GOBIERNO */
     GET_GOBIERNOS: "/gobiernos",
-    GET_GOBIERNO_PROYECTO: "/opndesarrollos-proyectos",
     STORE_GOBIERNO: "/store/gobierno",
     UPDATE_GOBIERNO: "/update/gobierno",
     UPDATE_STATUS_GOBIERNO: "/update/status/gobierno",
@@ -73,6 +72,7 @@ export const API_URL_ROUTES = {
 
     /* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
     GET_OPN: "/opndesarrollos",
+    GET_GOBIERNO_PROYECTO: "/opndesarrollos-proyectos",
     STORE_OPN: "/store/opndesarrollo",
     UPDATE_OPN: "/update/opndesarrollo",
     DELETE_OPN: "/delete/opndesarrollo",

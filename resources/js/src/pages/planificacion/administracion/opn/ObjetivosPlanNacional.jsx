@@ -1,16 +1,26 @@
 import { Container, Divider, Group } from "@mantine/core";
 import {
-    FieldFilterForm,
+    ObjetivosPlanNacionalFilterForm,
     ObjetivosPlanNacionalModal,
     ObjetivosPlanNacionalTable,
     TitlePage,
 } from "../../../../components";
-import { useOPNStore } from "../../../../hooks";
+import { useGobiernoStore, useOPNStore } from "../../../../hooks";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
 export const ObjetivosPlanNacional = () => {
     const { message, errores } = useOPNStore();
+    const { startLoadGobiernos, startClearGobiernos } = useGobiernoStore();
+
+    useEffect(() => {
+        startLoadGobiernos({});
+
+      return () => {
+        startClearGobiernos();
+      }
+    }, [])
+
 
     useEffect(() => {
         if (message !== undefined) {
@@ -45,9 +55,7 @@ export const ObjetivosPlanNacional = () => {
                 </TitlePage>
             </Group>
             <Divider my="md" />
-            <FieldFilterForm>
-
-            </FieldFilterForm>
+            <ObjetivosPlanNacionalFilterForm />
             <ObjetivosPlanNacionalTable />
 
             <ObjetivosPlanNacionalModal />

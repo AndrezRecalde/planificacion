@@ -11,7 +11,11 @@ import {
     DatesFormProvider,
     useDatesFormContext,
     useDatesForm,
-} from "./fields/useDatesContext";
+
+    GobiernoFormProvider,
+    useGobiernoFormContext,
+    useGobiernoForm,
+} from "./fields/useFilterFormsContext";
 
 export {
     /* FORM PARA USUARIO */
@@ -24,8 +28,13 @@ export {
     useUserChangePwdFormContext,
     useUserChangePwdForm,
 
-    /* FORM CAMPOS DE FECHAS */
+    /* FORM FILTER CAMPOS DE FECHAS */
     DatesFormProvider,
     useDatesFormContext,
     useDatesForm,
+
+    /* FORM SELECT FILTER GOBIERNO */
+    GobiernoFormProvider,
+    useGobiernoFormContext,
+    useGobiernoForm,
 };

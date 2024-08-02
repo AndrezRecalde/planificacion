@@ -24,12 +24,13 @@ export const useOPNStore = () => {
         try {
             dispatch(onLoading(true));
             const { data } = await planningApi.post(
-                PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_GOBIERNOS,
+                PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_OPN,
                 {
                     gobierno_id,
                 }
             );
             const { opns } = data;
+            console.log(opns)
             dispatch(onLoadOPN(opns));
         } catch (error) {
             console.log(error);
