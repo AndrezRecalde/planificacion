@@ -141,6 +141,9 @@ import { GobiernoTable } from "./planificacion/administracion/gobierno/table/Gob
 import { GobiernoModal } from "./planificacion/administracion/gobierno/modal/GobiernoModal";
 import { GobiernoForm } from "./planificacion/administracion/gobierno/form/GobiernoForm";
 import { GobiernoSelect } from "./planificacion/administracion/gobierno/form/GobiernoSelect";
+import { GobiernoWithOPNModal } from "./planificacion/administracion/gobierno/modal/GobiernoWithOPNModal";
+import { GobiernoWithOPNForm } from "./planificacion/administracion/gobierno/form/GobiernoWithOPNForm";
+
 
 
     /* Objetivos Plan Nacional de Desarrollo */
@@ -267,6 +270,8 @@ export {
     GobiernoModal,
     GobiernoForm,
     GobiernoSelect,
+    GobiernoWithOPNModal,
+    GobiernoWithOPNForm,
 
     ObjetivosPlanNacionalTable,
     ObjetivosPlanNacionalModal,

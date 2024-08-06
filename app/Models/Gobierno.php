@@ -22,7 +22,7 @@ class Gobierno extends Model
 
     function opndesarrollos(): HasMany
     {
-        return $this->hasMany(Opndesarrollo::class);
+        return $this->hasMany(Opndesarrollo::class)->join('ejes as e', 'e.id', 'opndesarrollos.eje_id');
     }
 
     function scopeActivo(Builder $query, $activo)

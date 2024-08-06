@@ -3,6 +3,7 @@ import { Container, Divider } from "@mantine/core";
 import {
     GobiernoModal,
     GobiernoTable,
+    GobiernoWithOPNModal,
     StatusModal,
     TitlePage,
 } from "../../../../components";
@@ -66,6 +67,7 @@ export const GobiernosPage = () => {
             <GobiernoTable />
 
             <GobiernoModal />
+            <GobiernoWithOPNModal />
             <StatusModal
                 isOpenModal={isOpenModalStatusGobierno}
                 modalAction={modalActionStatusGobierno}

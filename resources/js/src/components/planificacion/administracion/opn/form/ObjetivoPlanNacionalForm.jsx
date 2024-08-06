@@ -20,8 +20,8 @@ export const ObjetivoPlanNacionalForm = ({ form }) => {
         if (gobiernos.length > 0) {
             form.setFieldValue(
                 "gobierno_id",
-                activateOPN.gobierno_id
-                    ? activateOPN.gobierno_id.toString()
+                activateOPN?.gobierno_id
+                    ? activateOPN?.gobierno_id.toString()
                     : gobiernos[0]?.id.toString()
             );
             console.log("clic aqui");

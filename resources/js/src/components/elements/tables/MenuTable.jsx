@@ -47,7 +47,7 @@ export const MenuActionsVE = ({ row, handleView, handleEditar }) => {
                 leftSection={
                     <IconEye style={{ width: rem(14), height: rem(14) }} />
                 }
-                onClick={() => handleView()}
+                onClick={() => handleView(row.original)}
             >
                 Ver Objetivos
             </Menu.Item>

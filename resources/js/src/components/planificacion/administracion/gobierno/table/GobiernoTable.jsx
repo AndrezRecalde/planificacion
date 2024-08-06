@@ -11,7 +11,7 @@ import { IconCopyPlus } from "@tabler/icons-react";
 
 export const GobiernoTable = () => {
     const { isLoading, gobiernos, setActivateGobierno } = useGobiernoStore();
-    const { modalActionGobierno, modalActionStatusGobierno } = useUiGobierno();
+    const { modalActionGobierno, modalActionStatusGobierno, modalActionViewOPNGobierno } = useUiGobierno();
 
     const columns = useMemo(
         () => [
@@ -62,6 +62,14 @@ export const GobiernoTable = () => {
         [gobiernos]
     );
 
+    const handleVer = useCallback(
+        (selected) => {
+            setActivateGobierno(selected);
+            modalActionViewOPNGobierno(true);
+        },
+        [gobiernos]
+    );
+
     const table = useMantineReactTable({
         columns,
         data: gobiernos, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
@@ -72,7 +80,7 @@ export const GobiernoTable = () => {
         renderRowActionMenuItems: ({ row }) => (
             <MenuActionsVE
                 row={row}
-                handleView={() => console.log("clic view")}
+                handleView={handleVer}
                 handleEditar={handleEditar}
             />
         ),

@@ -88,6 +88,7 @@ export const UserBtnHeader = () => {
 
     return (
         <Menu
+            trapFocus={false}
             width={260}
             shadow="md"
             position="bottom-end"
