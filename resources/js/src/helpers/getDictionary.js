@@ -77,6 +77,13 @@ export const API_URL_ROUTES = {
     UPDATE_OPN: "/update/opndesarrollo",
     DELETE_OPN: "/delete/opndesarrollo",
 
+    /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
+    GET_ODS: "/odsostenibles",
+    STORE_ODS: "/store/odsostenible",
+    UPDATE_ODS: "/update/odsostenible",
+    UPDATE_STATUS_ODS: "/update/odsostenible",
+    DELETE_ODS: "/delete/odsostenible",
+
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",
     STORE_TIPO_PROYECTO: "/store/tipo-planificacion",

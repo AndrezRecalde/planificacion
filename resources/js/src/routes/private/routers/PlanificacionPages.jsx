@@ -13,6 +13,7 @@ import {
     MetaspdotPage,
     ObjetivosEstrategicosPage,
     ObjetivosPlanNacional,
+    OdssosteniblePage,
     PlanificacionTiposPage,
     ProgramasAdminPage,
     ProgramasPlanPage,
@@ -56,7 +57,7 @@ export const PlanificacionPages = () => {
              <Route path="ejes" element={<EjesPage />} />
              <Route path="gobiernos" element={<GobiernosPage />} />
              <Route path="opn" element={<ObjetivosPlanNacional />} />
-
+             <Route path="odssostenibles" element={<OdssosteniblePage />} />
 
         </RoutesNotFound>
     );

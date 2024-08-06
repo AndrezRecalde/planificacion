@@ -152,6 +152,8 @@ import { ObjetivosPlanNacionalModal } from "./planificacion/administracion/opn/m
 import { ObjetivoPlanNacionalForm } from "./planificacion/administracion/opn/form/ObjetivoPlanNacionalForm";
 import { ObjetivosPlanNacionalFilterForm } from "./planificacion/administracion/opn/form/ObjetivosPlanNacionalFilterForm";
 
+    /* Objetivos de desarrollo Sostenible */
+import { OdssostenibleTable } from "./planificacion/administracion/odssostenible/table/OdssostenibleTable";
 
 export {
     BtnServicesApps,
@@ -276,5 +278,7 @@ export {
     ObjetivosPlanNacionalTable,
     ObjetivosPlanNacionalModal,
     ObjetivoPlanNacionalForm,
-    ObjetivosPlanNacionalFilterForm
+    ObjetivosPlanNacionalFilterForm,
+
+    OdssostenibleTable
 };

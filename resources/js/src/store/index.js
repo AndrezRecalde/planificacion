@@ -34,6 +34,9 @@ import { uiGobiernoSlice } from "./gobierno/uiGobiernoSlice";
 import { opnSlice } from "./opn/opnSlice";
 import { uiOpnSlice } from "./opn/uiOpnSlice";
 
+/* OBJETIVOS DE DESARROLLO SOSTENIBLE */
+import { odssostenibleSlice } from "./odssostenible/odssostenibleSlice";
+import { uiOdssostenibleSlice } from "./odssostenible/uiOdssostenibleSlice";
 
 
 /* TIPO DE PROYECTOS */
@@ -95,6 +98,10 @@ export {
     /* OBJETIVOS DE DESARROLLO NACIONAL: OPN */
     opnSlice,
     uiOpnSlice,
+
+    /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
+    odssostenibleSlice,
+    uiOdssostenibleSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

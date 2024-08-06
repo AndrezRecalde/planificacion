@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_ods');
             $table->string('imagen_url');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

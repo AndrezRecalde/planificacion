@@ -9,6 +9,7 @@ import {
     gobiernoSlice,
     lestrategiapdotSlice,
     lineapdotSlice,
+    odssostenibleSlice,
     opnSlice,
     proveedorSlice,
     proyectoSlice,
@@ -22,6 +23,7 @@ import {
     uiGobiernoSlice,
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
+    uiOdssostenibleSlice,
     uiOpnSlice,
     uiProveedorSlice,
     uiProyectoSlice,
@@ -64,6 +66,10 @@ export const store = configureStore({
         /* Objetivos de desarrollo Nacional: OPN */
         opn: opnSlice.reducer,
         uiOPN: uiOpnSlice.reducer,
+
+        /* Objetivos de desarrollo Sostenible */
+        odssostenible: odssostenibleSlice.reducer,
+        uiOdssostenible: uiOdssostenibleSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

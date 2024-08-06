@@ -30,6 +30,7 @@ export const gobiernoSlice = createSlice({
                 return gobierno;
             });
             state.activateGobierno = null;
+            state.isLoading = false;
         },
         onDeleteGobierno: (state) => {
             if (state.activateGobierno) {

@@ -40,6 +40,7 @@ import { ProgramasAdminPage } from "./planificacion/administracion/programas/Pro
 import { EjesPage } from "./planificacion/administracion/eje/EjesPage";
 import { GobiernosPage } from "./planificacion/administracion/gobierno/GobiernosPage";
 import { ObjetivosPlanNacional } from "./planificacion/administracion/opn/ObjetivosPlanNacional";
+import { OdssosteniblePage } from "./planificacion/administracion/odssostenible/OdssosteniblePage";
 
 export {
     ErrorNotFound,
@@ -80,6 +81,7 @@ export {
     ProgramasAdminPage,
     EjesPage,
     GobiernosPage,
-    ObjetivosPlanNacional
+    ObjetivosPlanNacional,
+    OdssosteniblePage
 
  };

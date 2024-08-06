@@ -32,6 +32,10 @@ import { useUiGobierno } from "./gobierno/useUiGobierno";
 import { useOPNStore } from "./opn/useOPNStore";
 import { useUiOPN } from "./opn/useUiOPN";
 
+/* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
+import { useOdssostenibleStore } from "./odssostenible/useOdssostenibleStore";
+import { useUiOdssostenible } from "./odssostenible/useUiOdssostenible";
+
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -94,6 +98,10 @@ export {
     /* OBJETIVOS DEL PLAN NACIONAL DE DESARROLLO: OPN */
     useOPNStore,
     useUiOPN,
+
+    /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
+    useOdssostenibleStore,
+    useUiOdssostenible,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,

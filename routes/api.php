@@ -342,9 +342,11 @@ Route::group([
 
 
     /* PLANIFICACION: OBJETIVOS DE DESARROLLO SOSTENIBLE */
-    Route::get('/odsostenibles', [OdssostenibleController::class, 'getObjetivosODS']);
+    Route::post('/odsostenibles', [OdssostenibleController::class, 'getObjetivosODS']);
     Route::post('/store/odsostenible', [OdssostenibleController::class, 'store']);
     Route::put('/update/odsostenible/{id}', [OdssostenibleController::class, 'update']);
+    Route::put('/update/status/odsostenible/{id}', [OdssostenibleController::class, 'updateStatus']);
+
 
     /* PLANIFICACION: TIPOS DE PLANIFICACION */
     Route::get('/tipos-planificacion', [PlanificaciontipoController::class, 'getTiposPlanificaciones']);

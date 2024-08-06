@@ -5,6 +5,7 @@ namespace App\Http\Controllers\General;
 use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OdsRequest;
+use App\Http\Requests\OdsStatusRequest;
 use App\Models\Odssostenible;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
@@ -14,15 +15,15 @@ use Illuminate\Support\Facades\Storage;
 
 class OdssostenibleController extends Controller
 {
-    function getObjetivosODS(): JsonResponse
+    function getObjetivosODS(Request $request): JsonResponse
     {
-        $ods = Odssostenible::from('odssostenibles as ods')
-            ->selectRaw('ods.id, ods.nombre_ods, ods.descripcion_ods,
-                            ods.imagen_url')
+        $odssostenibles = Odssostenible::from('odssostenibles as ods')
+            ->selectRaw('ods.id, ods.nombre_ods, ods.imagen_url, ods.activo')
             //->with('proyectos')
+            ->byActivo($request->activo)
             ->get();
 
-        return response()->json(['status' => HTTPStatus::Success, 'ods' => $ods], 200);
+        return response()->json(['status' => HTTPStatus::Success, 'odssostenibles' => $odssostenibles], 200);
     }
 
     function store(OdsRequest $request): JsonResponse
@@ -95,6 +96,22 @@ class OdssostenibleController extends Controller
                 return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
             } else {
                 return response()->json(['status' => HTTPStatus::Error, 'msg' => 'Error al cargar el archivo'], 201);
+            }
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
+        }
+    }
+
+    function updateStatus(OdsStatusRequest $request, int $id): JsonResponse
+    {
+        $ods = Odssostenible::find($id);
+        try {
+            if ($ods) {
+                $ods->update($request->validated());
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
             }
         } catch (\Throwable $th) {
             DB::rollback();
