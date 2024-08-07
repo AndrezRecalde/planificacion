@@ -29,6 +29,7 @@ class OdssostenibleController extends Controller
     function store(OdsRequest $request): JsonResponse
     {
         try {
+            DB::beginTransaction();
             $ods = Odssostenible::create($request->validated());
 
             if ($request->file('imagen_url')) {
@@ -49,6 +50,7 @@ class OdssostenibleController extends Controller
                 $ods->imagen_url = $public_path;
                 $ods->save();
             }
+            DB::commit();
             return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Created], 201);
         } catch (\Throwable $th) {
             DB::rollBack();

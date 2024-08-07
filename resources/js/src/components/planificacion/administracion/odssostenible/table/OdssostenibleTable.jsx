@@ -2,12 +2,15 @@ import { useCallback, useMemo } from "react";
 import { BtnActiveStatus, BtnSection, MenuTableEdit, TableContent } from "../../../../../components"
 import { IconCopyPlus } from "@tabler/icons-react";
 import { useMantineReactTable } from "mantine-react-table";
+import { useOdssostenibleStore, useUiOdssostenible } from "../../../../../hooks";
 
 const odssostenibles = [
 
 ];
 
 export const OdssostenibleTable = () => {
+    const { isLoading, odssostenibles, setActivateOdssostenible } = useOdssostenibleStore();
+    const { modalActionOdssostenible } = useUiOdssostenible();
 
     const columns = useMemo(
         () => [
@@ -32,18 +35,19 @@ export const OdssostenibleTable = () => {
 
     const handleActive = useCallback(
         (selected) => {
-
+            //setActivateOdssostenible(selected);
         },
         [odssostenibles]
     );
 
     const handleAgregar = useCallback(() => {
-
+        modalActionOdssostenible(true);
     }, [odssostenibles]);
 
     const handleEditar = useCallback(
         (selected) => {
-
+            setActivateOdssostenible(selected);
+            modalActionOdssostenible(true);
         },
         [odssostenibles]
     );
@@ -51,7 +55,7 @@ export const OdssostenibleTable = () => {
     const table = useMantineReactTable({
         columns,
         data: odssostenibles, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
-        //state: { showProgressBars: isLoading },
+        state: { showProgressBars: isLoading },
         enableFacetedValues: true,
         enableDensityToggle: false,
         enableRowActions: true,
