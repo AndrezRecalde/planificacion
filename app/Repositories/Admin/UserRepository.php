@@ -8,7 +8,7 @@ use App\Http\Requests\UserUpdateActivo;
 use App\Interfaces\Admin\UserInterface;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class UserRepository implements UserInterface
 {
@@ -18,24 +18,8 @@ class UserRepository implements UserInterface
         $this->model = new User();
     }
 
-    function getUsuariosAdmin(): Collection
-    {
-        $usuarios = $this->model::from('users as u')
-            ->with(['roles' => function ($query) {
-                $query->select('id', 'name');
-            }])
-            ->selectRaw('u.id, u.apellidos, u.nombres,
-                         u.dni, u.email, u.activo,
-                         i.nombre_institucion as institucion,
-                        d.nombre_departamento as departamento')
-            ->join('instituciones as i', 'i.id', 'u.institucion_id')
-            ->join('departamentos as d', 'd.id', 'u.departamento_id')
-            ->get();
 
-        return $usuarios;
-    }
-
-    function getUsuarios(): Collection
+    function getUsuarios(Request $request): Collection
     {
         $usuarios = $this->model::from('users as u')
             ->selectRaw('u.id, u.apellidos, u.nombres,
@@ -44,7 +28,7 @@ class UserRepository implements UserInterface
                         d.nombre_departamento as departamento')
             ->join('instituciones as i', 'i.id', 'u.institucion_id')
             ->join('departamentos as d', 'd.id', 'u.departamento_id')
-            ->where('u.activo', 1)
+            ->byActivo($request->activo)
             ->get();
 
         return $usuarios;

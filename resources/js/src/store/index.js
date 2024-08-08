@@ -1,5 +1,9 @@
-/* Auth */
+/* AUTH */
 import { authSlice } from "./auth/authSlice";
+
+/* USUARIOS */
+import { userSlice } from "./user/userSlice";
+import { uiUserSlice } from "./user/uiUserSlice";
 
 /* LINEAS ESTRATEGIAS DEL PDOT */
 import { lestrategiapdotSlice } from "./lestrategia/lestrategiapdotSlice";
@@ -21,7 +25,6 @@ import { uiCategoriapdotSlice } from "./categoriapdot/uiCategoriapdotSlice";
 import { competenciapdotSlice } from "./competenciapdot/competenciapdotSlice";
 import { uiCompetenciapdotSlice } from "./competenciapdot/uiCompetenciapdotSlice";
 
-
 /* EJES DE GOBIERNO */
 import { ejeSlice } from "./eje/ejeSlice";
 import { uiEjeSlice } from "./eje/uiEjeSlice";
@@ -38,16 +41,13 @@ import { uiOpnSlice } from "./opn/uiOpnSlice";
 import { odssostenibleSlice } from "./odssostenible/odssostenibleSlice";
 import { uiOdssostenibleSlice } from "./odssostenible/uiOdssostenibleSlice";
 
-
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
 import { uiTipoProyectoSlice } from "./tipo_proyecto/uiTipoProyectoSlice";
 
-
 /* TIPO ACTIVIDADES */
 import { tipoActividadSlice } from "./tipo_actividad/tipoActividadSlice";
 import { uiTipoActividadSlice } from "./tipo_actividad/uiTipoActividadSlice";
-
 
 /* PROVEEDORES */
 import { proveedorSlice } from "./proveedor/proveedorSlice";
@@ -60,7 +60,6 @@ import { uiProyectoSlice } from "./proyecto/uiProyectoSlice";
 /* DEPARTAMENTOS */
 import { departamentoSlice } from "./departamento/departamentoSlice";
 import { uiDepartamentoSlice } from "./departamento/uiDepartamentoSlice";
-
 
 import { store } from "./store";
 
@@ -125,4 +124,8 @@ export {
 
     /* Auth */
     authSlice,
+
+    /* USUARIOS */
+    userSlice,
+    uiUserSlice,
 };

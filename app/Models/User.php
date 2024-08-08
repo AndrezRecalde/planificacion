@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -81,6 +82,12 @@ class User extends Authenticatable
     function setPasswordAttribute(string $password): string
     {
         return $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
+    }
+
+    function scopeByActivo(Builder $query, $activo) {
+        if ($activo) {
+            return $query->where('u.activo', $activo);
+        }
     }
 
     protected static function boot()

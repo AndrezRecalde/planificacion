@@ -5,3 +5,9 @@ export const [DatesFormProvider, useDatesFormContext, useDatesForm] =
 
 export const [GobiernoFormProvider, useGobiernoFormContext, useGobiernoForm] =
     createFormContext();
+
+export const [
+    DepartamentoFormProvider,
+    useDepartamentoFormContext,
+    useDepartamentoForm,
+] = createFormContext();

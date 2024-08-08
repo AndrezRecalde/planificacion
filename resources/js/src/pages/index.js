@@ -6,6 +6,7 @@ import { ErrorAccessDenied } from "./error/ErrorAccessDenied";
 import { AuthPage } from "./auth/AuthPage";
 import { ProfilePage } from "./user/ProfilePage";
 import { ChangePwdPage } from "./user/ChangePwdPage";
+import { PermissionsPage } from "./user/permissions/PermissionsPage";
 
 /* Financiero */
 import { TransaccionPage } from "./financiero/TransaccionPage";
@@ -49,6 +50,7 @@ export {
     AuthPage,
     ProfilePage,
     ChangePwdPage,
+    PermissionsPage,
 
     /* Financiero */
     TransaccionPage,

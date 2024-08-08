@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
     Box,
     Divider,
@@ -25,28 +25,35 @@ export const OdssostenibleForm = ({ form }) => {
 
     const { modalActionOdssostenible } = useUiOdssostenible();
     const [preview, setPreview] = useState(null);
+    const [file, setFile] = useState(null);
 
     useEffect(() => {
-        if (activateOdssostenible !== null) {
-            form.setValues({
-                ...activateOdssostenible,
-            });
-            setPreview('/storage' + activateOdssostenible.imagen_url);
-            return;
+        if (activateOdssostenible) {
+            form.setValues({ ...activateOdssostenible });
+            const imageUrl = '/storage' + activateOdssostenible.imagen_url;
+            setPreview(imageUrl);
+
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const file = new File([blob], activateOdssostenible.imagen_url, { type: blob.type });
+                    setFile(file);
+                    form.setFieldValue("imagen_url", file);
+                });
         }
     }, [activateOdssostenible]);
 
-    const handleImageChange = (file) => {
+    const handleImageChange = useCallback((file) => {
         if (file) {
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreview(reader.result);
-            };
+            reader.onloadend = () => setPreview(reader.result);
             reader.readAsDataURL(file);
+            setFile(file);
         } else {
             setPreview(null);
+            setFile(null);
         }
-    };
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

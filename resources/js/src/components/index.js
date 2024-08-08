@@ -30,6 +30,12 @@ import { ProfileForm } from "./user/ProfileForm";
 import { UserBtnHeader } from "./user/UserBtnHeader";
 import { ChangePwdForm } from "./user/ChangePwdForm";
 
+/* Usuarios: Permissions */
+import { PermissionsFilterForm } from "./user/permission/form/PermissionsFilterForm";
+
+/* Departamentos */
+import { DepartamentoSelect } from "./administracion/departamentos/form/DepartamentoSelect";
+
 /* Financiero */
 import { CardGestiones } from "./financiero/CardGestiones";
 
@@ -178,10 +184,18 @@ export {
     AlertSection,
     StatusModal,
     FieldFilterForm,
+
+    /* USUARIOS */
     AuthForm,
     ProfileForm,
     UserBtnHeader,
     ChangePwdForm,
+
+    /* USUARIOS: PERMISSIONS */
+    PermissionsFilterForm,
+
+    /* DEPARTAMENTOS */
+    DepartamentoSelect,
 
     /* DIR_FINANCIERO */
     CardGestiones,

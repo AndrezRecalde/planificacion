@@ -80,9 +80,7 @@ Route::group(
         Route::post('/update/application/{id}', [ApplicationController::class, 'update']); //TODO: CAMBIARLO A PUT
 
         /* ADMIN: USUARIOS */
-        Route::get('/usuarios', [UserAdminController::class, 'getUsuariosAdmin']);
         Route::post('/store/usuario', [UserAdminController::class, 'store']);
-        Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
         Route::put('/update/status/usuario/{id}', [UserAdminController::class, 'updateActivo']);
         Route::delete('/delete/usuario/{id}', [UserAdminController::class, 'destroy']);
 
@@ -223,7 +221,6 @@ Route::group([
 ], function () {
 
     /*GENERAL: USUARIOS */
-    Route::get('/usuarios', [UserController::class, 'getUsuarios']);
     Route::put('/update/password/usuario/{id}', [UserController::class, 'updatePassword']);
 
 
@@ -253,6 +250,10 @@ Route::group([
     'prefix' => 'planificacion',
     'middleware' => ['auth:sanctum', 'role:DIR_PLANIFICACION|ADMIN']
 ], function () {
+
+    /* PLANIFICACION: USUARIOS */
+    Route::get('/usuarios', [UserController::class, 'getUsuarios']);
+    Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
 
     /*PLANIFICACION: TIPO ACTIVIDADES */
     Route::get('/tipo-actividades', [TipoActividadController::class, 'getTiposdeActividades']);
@@ -344,7 +345,7 @@ Route::group([
     /* PLANIFICACION: OBJETIVOS DE DESARROLLO SOSTENIBLE */
     Route::post('/odsostenibles', [OdssostenibleController::class, 'getObjetivosODS']);
     Route::post('/store/odsostenible', [OdssostenibleController::class, 'store']);
-    Route::put('/update/odsostenible/{id}', [OdssostenibleController::class, 'update']);
+    Route::post('/update/odsostenible/{id}', [OdssostenibleController::class, 'update']);
     Route::put('/update/status/odsostenible/{id}', [OdssostenibleController::class, 'updateStatus']);
 
 

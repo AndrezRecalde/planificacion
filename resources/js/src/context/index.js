@@ -15,6 +15,10 @@ import {
     GobiernoFormProvider,
     useGobiernoFormContext,
     useGobiernoForm,
+
+    DepartamentoFormProvider,
+    useDepartamentoFormContext,
+    useDepartamentoForm,
 } from "./fields/useFilterFormsContext";
 
 export {
@@ -37,4 +41,9 @@ export {
     GobiernoFormProvider,
     useGobiernoFormContext,
     useGobiernoForm,
+
+    /* FORM SELECT FILTER DEPARTAMENTO */
+    DepartamentoFormProvider,
+    useDepartamentoFormContext,
+    useDepartamentoForm,
 };

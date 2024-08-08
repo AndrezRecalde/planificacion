@@ -8,6 +8,8 @@ use App\Http\Requests\UserPassword;
 use App\Models\User;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -17,11 +19,11 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    //TODO: Para el publico
-    function getUsuarios(): JsonResponse
+
+    function getUsuarios(Request $request): JsonResponse
     {
         //$this->authorize("viewGeneral", User::class);
-        $usuarios = $this->userRepository->getUsuarios();
+        $usuarios = $this->userRepository->getUsuarios($request);
 
         return response()->json([
             'status' => HTTPStatus::Success,

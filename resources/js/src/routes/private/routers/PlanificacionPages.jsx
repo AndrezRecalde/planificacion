@@ -14,6 +14,7 @@ import {
     ObjetivosEstrategicosPage,
     ObjetivosPlanNacional,
     OdssosteniblePage,
+    PermissionsPage,
     PlanificacionTiposPage,
     ProgramasAdminPage,
     ProgramasPlanPage,
@@ -58,6 +59,7 @@ export const PlanificacionPages = () => {
              <Route path="gobiernos" element={<GobiernosPage />} />
              <Route path="opn" element={<ObjetivosPlanNacional />} />
              <Route path="odssostenibles" element={<OdssosteniblePage />} />
+             <Route path="permissions" element={<PermissionsPage />} />
 
         </RoutesNotFound>
     );

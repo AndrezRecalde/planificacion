@@ -6,9 +6,10 @@ use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
-use App\Models\User;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
 
 class UserAdminController extends Controller
 {
@@ -17,18 +18,6 @@ class UserAdminController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-    }
-
-    //TODO: Para el admin
-    function getUsuariosAdmin(): JsonResponse
-    {
-        //$this->authorize("viewAdmin", User::class);
-        $usuarios = $this->userRepository->getUsuariosAdmin();
-
-        return response()->json([
-            'status' => HTTPStatus::Success,
-            'usuarios' => $usuarios
-        ], 200);
     }
 
     //TODO: Para el admin

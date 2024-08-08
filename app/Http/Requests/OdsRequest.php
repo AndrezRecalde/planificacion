@@ -5,6 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+
 
 class OdsRequest extends FormRequest
 {
@@ -25,7 +27,7 @@ class OdsRequest extends FormRequest
     {
         return [
             'nombre_ods'            =>  'required',
-            'imagen_url'            =>  'mimes:jpg,jpeg,bmp,png',
+            'imagen_url'            =>  ['required', Rule::unique('odssostenibles')->ignore($this->request->get('id'))],
         ];
     }
 

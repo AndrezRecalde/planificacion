@@ -16,6 +16,14 @@ export const API_URL_ROUTES = {
     PROFILE: "/profile",
     LOGOUT: "/auth/logout",
 
+    /* USUARIOS */
+    GET_USUARIOS: "/usuarios",
+    STORE_USUARIO: "/store/usuario",
+    UPDATE_USUARIO: "/update/usuario",
+    UPDATE_STATUS_USUARIO: "/update/status",
+    DELETE_USUARIO: "/delete/usuario",
+
+
     /* DEPARTAMENTOS */
     GET_DEPARTAMENTOS: "/departamentos/institucion",
     STORE_DEPARTAMENT0: "/store/departamento",
@@ -81,7 +89,7 @@ export const API_URL_ROUTES = {
     GET_ODS: "/odsostenibles",
     STORE_ODS: "/store/odsostenible",
     UPDATE_ODS: "/update/odsostenible",
-    UPDATE_STATUS_ODS: "/update/odsostenible",
+    UPDATE_STATUS_ODS: "/update/status/odsostenible",
     DELETE_ODS: "/delete/odsostenible",
 
     /* TIPOS PROYECTOS */

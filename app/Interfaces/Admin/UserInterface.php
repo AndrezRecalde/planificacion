@@ -7,11 +7,11 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 interface UserInterface {
-    function getUsuariosAdmin(): Collection;
-    function getUsuarios(): Collection;
+    //function getUsuariosAdmin(): Collection;
+    function getUsuarios(Request $request): Collection;
     function store(UserRequest $request): void;
     function update(UserRequest $request, User $usuario): void;
     function updatePassword(UserPassword $request, User $usuario): void;

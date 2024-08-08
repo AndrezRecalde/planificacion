@@ -10,7 +10,7 @@ const odssostenibles = [
 
 export const OdssostenibleTable = () => {
     const { isLoading, odssostenibles, setActivateOdssostenible } = useOdssostenibleStore();
-    const { modalActionOdssostenible } = useUiOdssostenible();
+    const { modalActionOdssostenible, modalActionStatusOdssostenible } = useUiOdssostenible();
 
     const columns = useMemo(
         () => [
@@ -35,7 +35,8 @@ export const OdssostenibleTable = () => {
 
     const handleActive = useCallback(
         (selected) => {
-            //setActivateOdssostenible(selected);
+            setActivateOdssostenible(selected);
+            modalActionStatusOdssostenible(true);
         },
         [odssostenibles]
     );

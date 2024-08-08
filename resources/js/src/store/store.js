@@ -29,11 +29,17 @@ import {
     uiProyectoSlice,
     uiTipoActividadSlice,
     uiTipoProyectoSlice,
+    uiUserSlice,
+    userSlice,
 } from "../store";
 
 export const store = configureStore({
     reducer: {
         auth: authSlice.reducer,
+
+        /* Usuarios */
+        usuario: userSlice.reducer,
+        uiUsuario: uiUserSlice.reducer,
 
         /* Lineas del PDOT */
         lineapdot: lineapdotSlice.reducer,

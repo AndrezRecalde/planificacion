@@ -41,7 +41,7 @@ export const useOdssostenibleStore = () => {
     const startAddOdssostenible = async (odssostenible) => {
         try {
             if (odssostenible.id) {
-                const { data } = await planningApi.put(
+                const { data } = await planningApi.post(
                     `${
                         PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.UPDATE_ODS
                     }/${odssostenible.id}`,
@@ -82,7 +82,10 @@ export const useOdssostenibleStore = () => {
     const startUpdateStatusOdssostenible = async (odssostenible) => {
         try {
             const { data } = await planningApi.put(
-                PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.UPDATE_STATUS_ODS,
+                `${
+                    PREFIX_ROUTES.PLANIFICACION +
+                    API_URL_ROUTES.UPDATE_STATUS_ODS
+                }/${odssostenible.id}`,
                 odssostenible
             );
             startLoadOdssostenibles({});
@@ -116,11 +119,11 @@ export const useOdssostenibleStore = () => {
 
     const startClearOdssostenibles = () => {
         dispatch(onClearOdssostenible());
-    }
+    };
 
     const setActivateOdssostenible = (odssostenible) => {
         dispatch(onSetActivateOdssostenible(odssostenible));
-    }
+    };
 
     return {
         isLoading,
@@ -134,6 +137,6 @@ export const useOdssostenibleStore = () => {
         startUpdateStatusOdssostenible,
         startDeleteOdssostenible,
         startClearOdssostenibles,
-        setActivateOdssostenible
+        setActivateOdssostenible,
     };
 };

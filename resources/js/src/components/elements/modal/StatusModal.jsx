@@ -45,7 +45,8 @@ export const StatusModal = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        startAction(form.values);
+        console.log(form.getTransformedValues())
+        startAction(form.getTransformedValues());
         form.reset();
         modalAction(false);
 

@@ -154,7 +154,7 @@ export const routes = [
                 links: [
                     {
                         label: "Gestionar Usuarios",
-                        link: "/gpla/lineas-estrategicas",
+                        link: "/gpla/permissions",
                     },
                 ],
             },

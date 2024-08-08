@@ -13,7 +13,8 @@ class Odssostenible extends Model
 
     protected $fillable = [
         'nombre_ods',
-        'imagen_url'
+        'imagen_url',
+        'activo'
     ];
 
     function proyectos(): BelongsToMany

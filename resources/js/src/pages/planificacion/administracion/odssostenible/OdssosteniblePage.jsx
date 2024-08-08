@@ -3,27 +3,32 @@ import { Container, Divider } from "@mantine/core";
 import {
     OdssostenibleModal,
     OdssostenibleTable,
+    StatusModal,
     TitlePage,
 } from "../../../../components";
-import { useOdssostenibleStore } from "../../../../hooks";
+import { useOdssostenibleStore, useUiOdssostenible } from "../../../../hooks";
 import Swal from "sweetalert2";
 
 export const OdssosteniblePage = () => {
     const {
         startLoadOdssostenibles,
+        startUpdateStatusOdssostenible,
         startClearOdssostenibles,
+        setActivateOdssostenible,
+        activateOdssostenible,
         message,
         errores,
     } = useOdssostenibleStore();
+    const { isOpenModalStatusOdssostenible, modalActionStatusOdssostenible } =
+        useUiOdssostenible();
 
     useEffect(() => {
         startLoadOdssostenibles({});
 
-      return () => {
-        startClearOdssostenibles();
-      }
-    }, [])
-
+        return () => {
+            startClearOdssostenibles();
+        };
+    }, []);
 
     useEffect(() => {
         if (message !== undefined) {
@@ -60,6 +65,15 @@ export const OdssosteniblePage = () => {
             <OdssostenibleTable />
 
             <OdssostenibleModal />
+
+            <StatusModal
+                isOpenModal={isOpenModalStatusOdssostenible}
+                modalAction={modalActionStatusOdssostenible}
+                titleModal="Activar/Desactivar Elemento"
+                startAction={startUpdateStatusOdssostenible}
+                activateElement={activateOdssostenible}
+                setActivate={setActivateOdssostenible}
+            />
         </Container>
     );
 };

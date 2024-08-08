@@ -1,5 +1,10 @@
 import { useAuthStore } from "./auth/useAuthStore";
 
+/* USUARIOS */
+import { useUsuarioStore } from "./user/useUsuarioStore";
+import { useUiUsuario } from "./user/useUiUsuario";
+
+
 /* LINEA ESTRATEGICAS DEL PDOT */
 import { useLestrategiapdotStore } from "./lestrategiapdot/useLestrategiapdotStore";
 import { useUiLestrategiapdot } from "./lestrategiapdot/useUiLestrategiapdot";
@@ -66,6 +71,10 @@ import { useErrorException } from "./error/useErrorException";
 
 export {
     useAuthStore,
+
+    /* USUARIO */
+    useUsuarioStore,
+    useUiUsuario,
 
     /* LINEA ESTRATEGICAS DEL PDOT */
     useLestrategiapdotStore,
