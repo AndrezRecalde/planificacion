@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { Container, Divider } from "@mantine/core";
-import { TitlePage } from "../../../components";
-import { useDepartamentoStore } from "../../../hooks";
+import { PermissionsFilterForm, TitlePage } from "../../../components";
+import { useDepartamentoStore, useUsuarioStore } from "../../../hooks";
 import Swal from "sweetalert2";
 
 export const PermissionsPage = () => {
+    const usuario = JSON.parse(localStorage.getItem("service_user"));
+    const { message, errores } = useUsuarioStore();
     const { startLoadDepartamentos, startClearDepartamentos } =
         useDepartamentoStore();
 
     useEffect(() => {
-        startLoadDepartamentos();
+        startLoadDepartamentos({ institucion_id: usuario.institucion_id });
 
         return () => {
             startClearDepartamentos();
@@ -47,6 +49,8 @@ export const PermissionsPage = () => {
                 Permisiones de Usuarios
             </TitlePage>
             <Divider my="md" />
+
+            <PermissionsFilterForm />
         </Container>
     );
 };

@@ -25,7 +25,7 @@ export const API_URL_ROUTES = {
 
 
     /* DEPARTAMENTOS */
-    GET_DEPARTAMENTOS: "/departamentos/institucion",
+    GET_DEPARTAMENTOS: "/departamentos",
     STORE_DEPARTAMENT0: "/store/departamento",
     UPDATE_DEPARTAMENT0: "/update/departamento",
     UPDATE_STATUS_DEPARTAMENT0: "/update/status/departamento",

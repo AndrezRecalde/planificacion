@@ -99,9 +99,7 @@ Route::group(
         Route::delete('/delete/administrativo/{id}', [AdministrativoController::class, 'destroy']);
 
         /*ADMIN: DEPARTAMENTOS */
-        Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentosAdmin']);
         Route::post('/store/departamento', [DepartamentoController::class, 'store']);
-        Route::post('/update/departamento/{id}', [DepartamentoController::class, 'update']);
         Route::post('/update/status/departamento/{id}', [DepartamentoController::class, 'updateActivo']);
         Route::delete('/delete/departamento/{id}', [DepartamentoController::class, 'delete']);
 
@@ -225,8 +223,8 @@ Route::group([
 
 
     /* GENERAL: DEPARTAMENTOS */
-    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);  // VIEWANY - EN DESUSO
-    Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);  //VIEWANY - EN USO
+    //Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);  // VIEWANY - EN DESUSO
+    //Route::post('/departamentos/institucion', [DepartamentoController::class, 'getDepartamentosxInstitucion']);  //VIEWANY - EN USO
 
     /* GENERAL: INSTITUCION */
     Route::get('/instituciones', [InstitucionController::class, 'getInstituciones']);  //VIEWANY
@@ -254,6 +252,10 @@ Route::group([
     /* PLANIFICACION: USUARIOS */
     Route::get('/usuarios', [UserController::class, 'getUsuarios']);
     Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
+
+    /* PLANIFICACION: DEPARTAMENTOS */
+    Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);
+    Route::post('/update/departamento/{id}', [DepartamentoController::class, 'update']);
 
     /*PLANIFICACION: TIPO ACTIVIDADES */
     Route::get('/tipo-actividades', [TipoActividadController::class, 'getTiposdeActividades']);

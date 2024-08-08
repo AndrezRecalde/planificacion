@@ -26,7 +26,7 @@ export const PermissionsFilterForm = () => {
     };
 
     return (
-        <FieldFilterForm title="Filtrar Objetivos del Plan Nacional">
+        <FieldFilterForm title="Filtrar Responsables de area">
             <DepartamentoFormProvider form={form}>
                 <Box
                     component="form"

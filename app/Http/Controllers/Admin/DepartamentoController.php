@@ -25,6 +25,7 @@ class DepartamentoController extends Controller
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
             ->where('d.activo', 1)
             ->acronimos($request->acronimo_id)
+            ->institucions($request->institucion_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
@@ -52,24 +53,6 @@ class DepartamentoController extends Controller
             ->join('instituciones as i', 'i.id', 'd.institucion_id')
             ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
             ->institucions($request->institucion_id)
-            ->get();
-
-        return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);
-    }
-
-    function getDepartamentosxInstitucion(Request $request): JsonResponse
-    {
-        //$this->authorize("viewAny", Departamento::class);
-        $departamentos = Departamento::from('departamentos as d')
-            ->selectRaw('d.id, d.nombre_departamento,
-                                d.siglas, d.extension,
-                                i.siglas as siglas_institucion, ac.nombre_acronimo,
-                                ac.siglas as acronimo')
-            ->join('instituciones as i', 'i.id', 'd.institucion_id')
-            ->join('acronimos as ac', 'ac.id', 'd.acronimo_id')
-            ->where('d.activo', 1)
-            ->institucions($request->institucion_id)
-            ->acronimos($request->acronimo_id)
             ->get();
 
         return response()->json(['status' => HTTPStatus::Success, 'departamentos' => $departamentos], 200);

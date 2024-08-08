@@ -11,7 +11,7 @@ export const DepartamentoSelect = () => {
         <Select
             label="Departamento"
             description="Debe filtrar el departamento para visualizar a sus responsables"
-            placeholder="Seleccione gobierno a filtrar"
+            placeholder="Seleccione departamento a filtrar"
             data={departamentos.map((departamento) => {
                 return {
                     label: departamento.nombre_departamento,

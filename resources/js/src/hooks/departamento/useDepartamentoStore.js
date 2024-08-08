@@ -22,14 +22,14 @@ export const useDepartamentoStore = () => {
 
     const dispatch = useDispatch();
 
-    const startLoadDepartamentos = async (
+    const startLoadDepartamentos = async ({
         institucion_id,
-        acronimo_id = null
-    ) => {
+        acronimo_id = null,
+    }) => {
         try {
             dispatch(onLoading());
             const { data } = await planningApi.post(
-                PREFIX_ROUTES.GENERAL + API_URL_ROUTES.GET_DEPARTAMENTOS,
+                PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_DEPARTAMENTOS,
                 {
                     institucion_id,
                     acronimo_id,
@@ -52,8 +52,8 @@ export const useDepartamentoStore = () => {
                     }/${departamento.id}`,
                     departamento
                 );
-                dispatch(onUpdateDepartamento({ ...departamento }));
-                //startLoadDepartamentos();
+                //dispatch(onUpdateDepartamento({ ...departamento }));
+                startLoadDepartamentos({});
                 dispatch(onLoadMessage(data));
                 setTimeout(() => {
                     dispatch(onLoadMessage(undefined));
@@ -64,7 +64,8 @@ export const useDepartamentoStore = () => {
                 PREFIX_ROUTES.ADMIN + API_URL_ROUTES.STORE_DEPARTAMENT0,
                 departamento
             );
-            dispatch(onAddDepartamento({ ...departamento }));
+            //dispatch(onAddDepartamento({ ...departamento }));
+            startLoadDepartamentos({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
@@ -84,7 +85,8 @@ export const useDepartamentoStore = () => {
                 }/${departamento.id}`,
                 departamento
             );
-            dispatch(onUpdateDepartamento({ ...departamento }));
+            //dispatch(onUpdateDepartamento({ ...departamento }));
+            startLoadDepartamentos({});
             dispatch(onLoadMessage(data));
             setTimeout(() => {
                 dispatch(onLoadMessage(undefined));
