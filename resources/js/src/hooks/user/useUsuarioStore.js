@@ -20,13 +20,14 @@ export const useUsuarioStore = () => {
 
     const dispatch = useDispatch();
 
-    const startLoadUsuarios = async ({ activo = null }) => {
+    const startLoadUsuarios = async ({ activo = null, departamento_id = null }) => {
         try {
             dispatch(onLoading(true));
             const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_USUARIOS,
                 {
                     activo,
+                    departamento_id
                 }
             );
             const { usuarios } = data;

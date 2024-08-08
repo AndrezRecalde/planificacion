@@ -84,9 +84,17 @@ class User extends Authenticatable
         return $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
 
-    function scopeByActivo(Builder $query, $activo) {
+    function scopeByActivo(Builder $query, $activo)
+    {
         if ($activo) {
             return $query->where('u.activo', $activo);
+        }
+    }
+
+    function scopeByDepartamentoId(Builder $query, $departamento_id)
+    {
+        if ($departamento_id) {
+            return $query->where('u.departamento_id', $departamento_id);
         }
     }
 

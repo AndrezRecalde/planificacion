@@ -26,9 +26,15 @@ class UserRepository implements UserInterface
                          u.dni, u.email,
                          i.nombre_institucion as institucion,
                         d.nombre_departamento as departamento')
+            ->with([
+                'roles' => function ($query) {
+                    return $query->select('roles.id', 'roles.name');
+                }
+            ])
             ->join('instituciones as i', 'i.id', 'u.institucion_id')
             ->join('departamentos as d', 'd.id', 'u.departamento_id')
             ->byActivo($request->activo)
+            ->byDepartamentoId($request->departamento_id)
             ->get();
 
         return $usuarios;
