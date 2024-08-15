@@ -1,33 +1,62 @@
-import { useCallback } from "react";
-import { MenuTableEdit, TableContent } from "../../../../components"
+import { useCallback, useMemo } from "react";
+import {
+    MenuTableEdit,
+    TableContent,
+    TextSection,
+} from "../../../../components";
 import { useMantineReactTable } from "mantine-react-table";
+import { Badge, List } from "@mantine/core";
+import { useUsuarioStore } from "../../../../hooks";
 
 export const PermissionsTable = () => {
+    const { isLoading, usuarios } = useUsuarioStore();
 
     const columns = useMemo(
         () => [
             {
                 header: "Departamento",
-                accessorKey: "nombre_departamento",
+                accessorKey: "departamento",
             },
             {
                 header: "Usuario",
-                accessorFn: (row) => row.apellidos + row.nombres,
+                id: "usuarios",
+                accessorFn: (row) => (
+                    <TextSection fz={14} fw={500}>
+                        {row.apellidos + " " + row.nombres}
+                    </TextSection>
+                ),
             },
             {
-                header: "Role",
-                accessorFn: (row) => row.roles.map(role => role.name),
+                header: "Roles",
+                id: "roles",
+                accessorFn: (row) => (
+                    <Badge color="cyan.5" variant="light">
+                        {row.roles?.map((role) => role?.name)}
+                    </Badge>
+                ),
+            },
+            {
+                header: "Permisos",
+                id: "permisos",
+                accessorFn: (row) => (
+                    <List>
+                        {row.permissions?.map((permission, index) => (
+                            <List.Item key={index}>
+                                {permission?.name}
+                            </List.Item>
+                        ))}
+                    </List>
+                ),
             },
         ],
-        [opndesarrollos]
+        [usuarios]
     );
 
     const handleEditar = useCallback(
         (selected) => {
-            setActivateOPN(selected);
-            modalActionOPN(true);
+            console.log("clic");
         },
-        [opndesarrollos]
+        [usuarios]
     );
 
     const table = useMantineReactTable({
@@ -40,9 +69,22 @@ export const PermissionsTable = () => {
         renderRowActionMenuItems: ({ row }) => (
             <MenuTableEdit row={row} handleEditar={handleEditar} />
         ),
+        mantineTableProps: {
+            withColumnBorders: true,
+            withTableBorder: true,
+            sx: {
+                "thead > tr": {
+                    backgroundColor: "inherit",
+                },
+                "thead > tr > th": {
+                    backgroundColor: "inherit",
+                },
+                "tbody > tr > td": {
+                    backgroundColor: "inherit",
+                },
+            },
+        },
     });
 
-  return (
-    <TableContent table={table} />
-  )
-}
+    return <TableContent table={table} />;
+};

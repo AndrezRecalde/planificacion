@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Admin;
 
+use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\UserPassword;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
@@ -31,6 +32,11 @@ class UserRepository implements UserInterface
                     return $query->select('roles.id', 'roles.name');
                 }
             ])
+            ->with([
+                'permissions' => function ($query) {
+                    return $query->select('permissions.id', 'permissions.name');
+                }
+            ])
             ->join('instituciones as i', 'i.id', 'u.institucion_id')
             ->join('departamentos as d', 'd.id', 'u.departamento_id')
             ->byActivo($request->activo)
@@ -38,6 +44,12 @@ class UserRepository implements UserInterface
             ->get();
 
         return $usuarios;
+    }
+
+    function assignPermissions(PermissionRequest $request, int $id) : void
+    {
+        $usuario = $this->model::find($id);
+        $usuario->givePermissionTo($request->permissions);
     }
 
     function store(UserRequest $request): void

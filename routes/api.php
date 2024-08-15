@@ -250,7 +250,7 @@ Route::group([
 ], function () {
 
     /* PLANIFICACION: USUARIOS */
-    Route::get('/usuarios', [UserController::class, 'getUsuarios']);
+    Route::post('/usuarios', [UserController::class, 'getUsuarios']);
     Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
 
     /* PLANIFICACION: DEPARTAMENTOS */

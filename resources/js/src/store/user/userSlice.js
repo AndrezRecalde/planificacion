@@ -10,15 +10,13 @@ const initialState = {
 
 export const userSlice = createSlice({
     name: "user",
-    initialState: {
-        initialState,
-    },
+    initialState,
     reducers: {
         onLoading: (state) => {
             state.isLoading = true;
         },
         onLoadUsers: (state, { payload }) => {
-            state.users = payload;
+            state.usuarios = payload;
             state.isLoading = false;
         },
         onAddUsuario: (state, { payload }) => {

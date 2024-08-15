@@ -32,6 +32,7 @@ import { ChangePwdForm } from "./user/ChangePwdForm";
 
 /* Usuarios: Permissions */
 import { PermissionsFilterForm } from "./user/permission/form/PermissionsFilterForm";
+import { PermissionsTable } from "./user/permission/table/PermissionsTable";
 
 /* Departamentos */
 import { DepartamentoSelect } from "./administracion/departamentos/form/DepartamentoSelect";
@@ -193,6 +194,7 @@ export {
 
     /* USUARIOS: PERMISSIONS */
     PermissionsFilterForm,
+    PermissionsTable,
 
     /* DEPARTAMENTOS */
     DepartamentoSelect,

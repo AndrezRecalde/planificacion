@@ -3,12 +3,12 @@ import { useDepartamentoStore } from "../../../../hooks";
 import { useDepartamentoFormContext } from "../../../../context";
 
 export const DepartamentoSelect = () => {
-
     const form = useDepartamentoFormContext();
     const { departamentos } = useDepartamentoStore();
 
     return (
         <Select
+            clearable
             label="Departamento"
             description="Debe filtrar el departamento para visualizar a sus responsables"
             placeholder="Seleccione departamento a filtrar"

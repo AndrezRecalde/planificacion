@@ -4,10 +4,13 @@ import {
     DepartamentoFormProvider,
     useDepartamentoForm,
 } from "../../../../context";
+import { useUsuarioStore } from "../../../../hooks";
 import { IconSearch } from "@tabler/icons-react";
 import { BTN_TITLES } from "../../../../helpers";
 
 export const PermissionsFilterForm = () => {
+
+    const { startLoadUsuarios } = useUsuarioStore();
 
     const form = useDepartamentoForm({
         mode: "uncontrolled",
@@ -22,11 +25,12 @@ export const PermissionsFilterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("clic");
+        console.log(form.getTransformedValues());
+        startLoadUsuarios(form.getTransformedValues());
     };
 
     return (
-        <FieldFilterForm title="Filtrar Responsables de area">
+        <FieldFilterForm title="Filtrar Responsables de área">
             <DepartamentoFormProvider form={form}>
                 <Box
                     component="form"

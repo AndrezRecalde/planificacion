@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
+use App\Models\User;
 use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,6 +20,16 @@ class UserAdminController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+    }
+
+    function assignPermissions(PermissionRequest $request, int $id): JsonResponse
+    {
+        $this->userRepository->assignPermissions($request, $id);
+
+        return response()->json([
+            'status' =>  HTTPStatus::Success,
+            'msg'    => 'Permisos asignados correctamente'
+        ]);
     }
 
     //TODO: Para el admin

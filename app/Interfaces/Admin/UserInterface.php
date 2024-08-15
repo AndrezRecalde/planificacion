@@ -2,6 +2,7 @@
 
 namespace App\Interfaces\Admin;
 
+use App\Http\Requests\PermissionRequest;
 use App\Http\Requests\UserPassword;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 interface UserInterface {
     //function getUsuariosAdmin(): Collection;
     function getUsuarios(Request $request): Collection;
+    function assignPermissions(PermissionRequest $request, int $id) : void;
     function store(UserRequest $request): void;
     function update(UserRequest $request, User $usuario): void;
     function updatePassword(UserPassword $request, User $usuario): void;
