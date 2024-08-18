@@ -32,6 +32,16 @@ class UserAdminController extends Controller
         ]);
     }
 
+    function updatePermissions(PermissionRequest $request, int $id): JsonResponse
+    {
+        $this->userRepository->updatePermissions($request, $id);
+
+        return response()->json([
+            'status' =>  HTTPStatus::Success,
+            'msg'    => 'Permisos asignados correctamente'
+        ]);
+    }
+
     //TODO: Para el admin
     function store(UserRequest $request): JsonResponse
     {

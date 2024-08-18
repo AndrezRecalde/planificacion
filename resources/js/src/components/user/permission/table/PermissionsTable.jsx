@@ -44,7 +44,7 @@ export const PermissionsTable = () => {
                     <List>
                         {row.permissions?.map((permission, index) => (
                             <List.Item key={index}>
-                                {permission?.name}
+                                {permission?.name + " - " + permission.expires_at}
                             </List.Item>
                         ))}
                     </List>

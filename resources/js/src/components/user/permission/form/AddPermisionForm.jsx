@@ -6,16 +6,19 @@ import { IconChecks } from "@tabler/icons-react";
 import { BTN_TITLES } from "../../../../helpers";
 import { usePermissionStore, useUiUsuario, useUsuarioStore } from "../../../../hooks";
 import classes from "../../../../assets/styles/permission/AddPermission.module.css";
+import dayjs from "dayjs";
 
 export const AddPermisionForm = ({ form }) => {
-    const { startAssignPermissions, activateUsuario } = useUsuarioStore();
-    const { isOpenModalAddPermission } = useUiUsuario();
+    const { startAssignPermissions, activateUsuario, setActivateUsuario } = useUsuarioStore();
+    const { isOpenModalAddPermission, modalActionAddPermissions } = useUiUsuario();
     const { permissions } = usePermissionStore();
 
     useEffect(() => {
       if (activateUsuario !== null && isOpenModalAddPermission) {
         form.setValues({
             ...activateUsuario,
+            expires_at: dayjs(activateUsuario?.permissions[0]?.expires_at).toDate(),
+            permissions: activateUsuario?.permissions.map(permission => permission.id.toString())
         });
         return;
       }
@@ -27,6 +30,11 @@ export const AddPermisionForm = ({ form }) => {
         e.preventDefault();
         console.log(form.getValues());
         startAssignPermissions(form.getValues());
+        if (activateUsuario !== null) {
+            setActivateUsuario(null);
+        }
+        form.reset();
+        modalActionAddPermissions(false);
     };
 
     return (
@@ -51,6 +59,7 @@ export const AddPermisionForm = ({ form }) => {
                     label="Fecha Limite"
                     description="YYYY-MM-DD"
                     placeholder="Digite la fecha limite del permiso"
+                    key={form.key('expires_at')}
                     {...form.getInputProps("expires_at")}
                 />
                 <MultiSelect
@@ -65,6 +74,7 @@ export const AddPermisionForm = ({ form }) => {
                     })}
                     searchable
                     classNames={{ pill: classes.pill }}
+                    key={form.key('permissions')}
                     {...form.getInputProps("permissions")}
                 />
                 <BtnSubmit IconSection={IconChecks}>

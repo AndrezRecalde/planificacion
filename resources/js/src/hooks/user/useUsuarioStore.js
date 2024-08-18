@@ -75,14 +75,32 @@ export const useUsuarioStore = () => {
 
     const startAssignPermissions = async (usuario) => {
         try {
+            if (usuario.permissions.length === 0) {
+                const { data } = await planningApi.put(
+                    `${
+                        PREFIX_ROUTES.PLANIFICACION +
+                        API_URL_ROUTES.ASSIGN_PERMISSION
+                    }/${usuario.id}`,
+                    usuario
+                );
+                dispatch(onLoadMessage(data));
+                setTimeout(() => {
+                    dispatch(onLoadMessage(undefined));
+                }, 40);
+                return;
+            }
+
             const { data } = await planningApi.put(
-                `${ PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.ASSIGN_PERMISSION }/${usuario.id}`,
+                `${
+                    PREFIX_ROUTES.PLANIFICACION +
+                    API_URL_ROUTES.UPDATE_PERMISSION
+                }/${usuario.id}`,
                 usuario
             );
             dispatch(onLoadMessage(data));
-            setTimeout(() => {
-                dispatch(onLoadMessage(undefined));
-            }, 40);
+                setTimeout(() => {
+                    dispatch(onLoadMessage(undefined));
+                }, 40);
         } catch (error) {
             console.log(error);
             ExceptionMessageError(error);

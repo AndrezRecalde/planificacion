@@ -254,6 +254,7 @@ Route::group([
     Route::post('/usuarios', [UserController::class, 'getUsuarios']);
     Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
     Route::put('/assign/permission/usuario/{id}', [UserAdminController::class, 'assignPermissions']);
+    Route::put('/update/permission/usuario/{id}', [UserAdminController::class, 'updatePermissions']);
 
 
     /* PLANIFICACION: PERMISSIONS */

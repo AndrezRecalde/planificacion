@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('model_has_permissions', function (Blueprint $table) {
-            $table->timestamp('expires_at')->nullable();
+            $table->date('expires_at')->nullable();
         });
     }
 };

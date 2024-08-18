@@ -38,7 +38,7 @@ class UserRepository implements UserInterface
             ])
             ->with([
                 'permissions' => function ($query) {
-                    return $query->select('permissions.id', 'permissions.name');
+                    return $query->select('permissions.id', 'permissions.name', 'model_has_permissions.expires_at');
                 }
             ])
             ->join('instituciones as i', 'i.id', 'u.institucion_id')
@@ -61,7 +61,23 @@ class UserRepository implements UserInterface
             DB::table('model_has_permissions')
                 ->where('model_id', $usuario->id)
                 ->where('permission_id', $permissionId)
-                ->update(['expires_at' => $request->expires_at]);
+                ->update(['expires_at' => Carbon::parse($request->expires_at)->format('Y-m-d')]);
+        }
+    }
+
+    function updatePermissions(PermissionRequest $request, int $id): void
+    {
+        $usuario = $this->model::find($id);
+        $usuario->permissions()->detach();
+        $usuario->givePermissionTo($request->permissions);
+
+        //$permissions = Permission::whereIn('id', $request->permissions)->get();
+
+        foreach ($request->permissions as $permissionId) {
+            DB::table('model_has_permissions')
+                ->where('model_id', $usuario->id)
+                ->where('permission_id', $permissionId)
+                ->update(['expires_at' => Carbon::parse($request->expires_at)->format('Y-m-d')]);
         }
     }
 
