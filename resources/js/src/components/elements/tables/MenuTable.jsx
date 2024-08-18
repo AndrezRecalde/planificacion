@@ -15,6 +15,19 @@ export const MenuTableEdit = ({ row, handleEditar }) => {
     );
 };
 
+export const MenuTableAddPermissions = ({ row, handleAddPermission }) => {
+    return (
+        <Menu.Item
+            leftSection={
+                <IconEditCircle style={{ width: rem(15), height: rem(15) }} />
+            }
+            onClick={() => handleAddPermission(row.original)}
+        >
+            Agregar Permisos
+        </Menu.Item>
+    );
+};
+
 /* Menu Action de AGREGAR */
 export const MenuTableAdd = ({ row, title, handleAdd }) => {
     return (

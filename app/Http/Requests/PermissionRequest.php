@@ -24,8 +24,8 @@ class PermissionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'permissions' => 'required|array',
-            'permissions.*' => 'string|exists:permissions,name'
+            'expires_at'    => 'required',
+            'permissions'   => 'required|array',
         ];
     }
 

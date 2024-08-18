@@ -8,8 +8,12 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateActivo;
 use App\Interfaces\Admin\UserInterface;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
+
 
 class UserRepository implements UserInterface
 {
@@ -46,10 +50,19 @@ class UserRepository implements UserInterface
         return $usuarios;
     }
 
-    function assignPermissions(PermissionRequest $request, int $id) : void
+    function assignPermissions(PermissionRequest $request, int $id): void
     {
         $usuario = $this->model::find($id);
         $usuario->givePermissionTo($request->permissions);
+
+        //$permissions = Permission::whereIn('id', $request->permissions)->get();
+
+        foreach ($request->permissions as $permissionId) {
+            DB::table('model_has_permissions')
+                ->where('model_id', $usuario->id)
+                ->where('permission_id', $permissionId)
+                ->update(['expires_at' => $request->expires_at]);
+        }
     }
 
     function store(UserRequest $request): void

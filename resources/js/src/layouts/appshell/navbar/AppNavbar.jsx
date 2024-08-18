@@ -1,16 +1,8 @@
 import { LinksGroup } from "./NavbarLinksGroup";
-import {
-    lCoprasPublicas,
-    lFinanciero,
-    lGestiones,
-    lMaximaAutoridad,
-    lPlanificacion,
-} from "./navlinks/navLinks";
 import { Badge, Group } from "@mantine/core";
 import { Logo, TextSection } from "../../../components";
-
-import classes from "../../../assets/styles/layout/NavbarModule/AppNavbar.module.css";
 import { routes } from "./navlinks/routes";
+import classes from "../../../assets/styles/layout/NavbarModule/AppNavbar.module.css";
 
 export const AppNavbar = ({ role, toggleMobile }) => {
     /* const mockdata =
@@ -26,7 +18,7 @@ export const AppNavbar = ({ role, toggleMobile }) => {
             ? lMaximaAutoridad
             : []; */
 
-    const mockdata = routes.filter(ruta => ruta.role === "DIR_GESTION");
+    const mockdata = routes.filter((ruta) => ruta.role === "DIR_GESTION");
 
     const links = mockdata.map((item) => (
         <LinksGroup {...item} key={item.label} toggleMobile={toggleMobile} />
@@ -46,6 +38,9 @@ export const AppNavbar = ({ role, toggleMobile }) => {
                         GTIC
                     </Badge>
                 </Group>
+                <Badge color="cyan.5" variant="light">
+                    DIR_PLANIFICACION
+                </Badge>
             </div>
             <div className={classes.linksInner}>{links}</div>
 

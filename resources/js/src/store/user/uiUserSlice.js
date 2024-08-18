@@ -5,6 +5,7 @@ export const uiUserSlice = createSlice({
     initialState: {
         isOpenModalUsuario: false,
         isOpenModalStatusUsuario: false,
+        isOpenModalAddPermission: false
     },
     reducers: {
         onOpenModalUsuario: (state, { payload }) => {
@@ -13,8 +14,11 @@ export const uiUserSlice = createSlice({
         onOpenModalStatusUsuario: (state, { payload }) => {
             state.isOpenModalStatusUsuario = payload;
         },
+        onOpenModalAddPermission: (state, { payload }) => {
+            state.isOpenModalAddPermission = payload;
+        }
     },
 });
 
-export const { onOpenModalUsuario, onOpenModalStatusUsuario } =
+export const { onOpenModalUsuario, onOpenModalStatusUsuario, onOpenModalAddPermission } =
     uiUserSlice.actions;

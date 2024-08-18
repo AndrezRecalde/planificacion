@@ -5,6 +5,10 @@ import { authSlice } from "./auth/authSlice";
 import { userSlice } from "./user/userSlice";
 import { uiUserSlice } from "./user/uiUserSlice";
 
+/* PERMISSIONS */
+import { permissionSlice } from "./permission/permissionSlice";
+import { uiPermissionSlice } from "./permission/uiPermissionSlice";
+
 /* LINEAS ESTRATEGIAS DEL PDOT */
 import { lestrategiapdotSlice } from "./lestrategia/lestrategiapdotSlice";
 import { uiLestrategiapdotSlice } from "./lestrategia/uiLestrategiapdotSlice";
@@ -128,4 +132,8 @@ export {
     /* USUARIOS */
     userSlice,
     uiUserSlice,
+
+    /* PERMISSIONS */
+    permissionSlice,
+    uiPermissionSlice,
 };

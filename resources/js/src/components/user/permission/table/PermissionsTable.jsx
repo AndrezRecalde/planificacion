@@ -1,15 +1,17 @@
 import { useCallback, useMemo } from "react";
 import {
+    MenuTableAddPermissions,
     MenuTableEdit,
     TableContent,
     TextSection,
 } from "../../../../components";
 import { useMantineReactTable } from "mantine-react-table";
 import { Badge, List } from "@mantine/core";
-import { useUsuarioStore } from "../../../../hooks";
+import { useUiUsuario, useUsuarioStore } from "../../../../hooks";
 
 export const PermissionsTable = () => {
-    const { isLoading, usuarios } = useUsuarioStore();
+    const { isLoading, usuarios, setActivateUsuario } = useUsuarioStore();
+    const { modalActionAddPermissions } = useUiUsuario();
 
     const columns = useMemo(
         () => [
@@ -52,9 +54,11 @@ export const PermissionsTable = () => {
         [usuarios]
     );
 
-    const handleEditar = useCallback(
+    const handleAddPermission = useCallback(
         (selected) => {
             console.log("clic");
+            modalActionAddPermissions(true);
+            setActivateUsuario(selected);
         },
         [usuarios]
     );
@@ -67,7 +71,7 @@ export const PermissionsTable = () => {
         enableDensityToggle: false,
         enableRowActions: true,
         renderRowActionMenuItems: ({ row }) => (
-            <MenuTableEdit row={row} handleEditar={handleEditar} />
+            <MenuTableAddPermissions row={row} handleAddPermission={handleAddPermission} />
         ),
         mantineTableProps: {
             withColumnBorders: true,

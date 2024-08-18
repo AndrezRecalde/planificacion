@@ -40,6 +40,9 @@ export const AppNavplan = ({ toggleMobile }) => {
                         GPLA
                     </Badge>
                 </Group>
+                <Badge color="cyan.5" variant="light">
+                    DIR_PLANIFICACION
+                </Badge>
             </div>
             <div>
                 <SegmentedControl

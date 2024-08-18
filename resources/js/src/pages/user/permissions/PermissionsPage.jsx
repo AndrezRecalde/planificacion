@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container, Divider } from "@mantine/core";
-import { PermissionsFilterForm, PermissionsTable, TitlePage } from "../../../components";
+import { AddPermissionModal, PermissionsFilterForm, PermissionsTable, TitlePage } from "../../../components";
 import { useDepartamentoStore, useUsuarioStore } from "../../../hooks";
 import Swal from "sweetalert2";
 
@@ -53,6 +53,8 @@ export const PermissionsPage = () => {
 
             <PermissionsFilterForm />
             <PermissionsTable />
+
+            <AddPermissionModal />
         </Container>
     );
 };

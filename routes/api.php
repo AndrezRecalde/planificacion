@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DepartamentoController;
 use App\Http\Controllers\Admin\GadController;
 use App\Http\Controllers\Admin\GobiernoController;
 use App\Http\Controllers\Admin\InstitucionController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\General\ActividadController;
@@ -252,6 +253,11 @@ Route::group([
     /* PLANIFICACION: USUARIOS */
     Route::post('/usuarios', [UserController::class, 'getUsuarios']);
     Route::put('/update/usuario/{id}', [UserAdminController::class, 'update']);
+    Route::put('/assign/permission/usuario/{id}', [UserAdminController::class, 'assignPermissions']);
+
+
+    /* PLANIFICACION: PERMISSIONS */
+    Route::get('/permissions', [PermissionController::class, 'getPermissions']);
 
     /* PLANIFICACION: DEPARTAMENTOS */
     Route::post('/departamentos', [DepartamentoController::class, 'getDepartamentos']);

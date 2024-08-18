@@ -4,6 +4,10 @@ import { useAuthStore } from "./auth/useAuthStore";
 import { useUsuarioStore } from "./user/useUsuarioStore";
 import { useUiUsuario } from "./user/useUiUsuario";
 
+/* PERMISOS */
+import { usePermissionStore } from "./permission/usePermissionStore";
+import { useUiPermission } from "./permission/useUiPermission";
+
 
 /* LINEA ESTRATEGICAS DEL PDOT */
 import { useLestrategiapdotStore } from "./lestrategiapdot/useLestrategiapdotStore";
@@ -75,6 +79,10 @@ export {
     /* USUARIO */
     useUsuarioStore,
     useUiUsuario,
+
+    /* PERMISOS */
+    usePermissionStore,
+    useUiPermission,
 
     /* LINEA ESTRATEGICAS DEL PDOT */
     useLestrategiapdotStore,

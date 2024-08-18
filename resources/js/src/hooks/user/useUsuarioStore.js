@@ -20,14 +20,17 @@ export const useUsuarioStore = () => {
 
     const dispatch = useDispatch();
 
-    const startLoadUsuarios = async ({ activo = null, departamento_id = null }) => {
+    const startLoadUsuarios = async ({
+        activo = null,
+        departamento_id = null,
+    }) => {
         try {
             dispatch(onLoading(true));
             const { data } = await planningApi.post(
                 PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.GET_USUARIOS,
                 {
                     activo,
-                    departamento_id
+                    departamento_id,
                 }
             );
             const { usuarios } = data;
@@ -70,6 +73,22 @@ export const useUsuarioStore = () => {
         }
     };
 
+    const startAssignPermissions = async (usuario) => {
+        try {
+            const { data } = await planningApi.put(
+                `${ PREFIX_ROUTES.PLANIFICACION + API_URL_ROUTES.ASSIGN_PERMISSION }/${usuario.id}`,
+                usuario
+            );
+            dispatch(onLoadMessage(data));
+            setTimeout(() => {
+                dispatch(onLoadMessage(undefined));
+            }, 40);
+        } catch (error) {
+            console.log(error);
+            ExceptionMessageError(error);
+        }
+    };
+
     const startDeleteUsuario = async (usuario) => {
         try {
             const { data } = await planningApi.delete(
@@ -90,11 +109,11 @@ export const useUsuarioStore = () => {
 
     const startClearUsuarios = () => {
         dispatch(onClearUsuario());
-    }
+    };
 
     const setActivateUsuario = (usuario) => {
         dispatch(onSetActivateUsuario(usuario));
-    }
+    };
 
     return {
         isLoading,
@@ -105,8 +124,9 @@ export const useUsuarioStore = () => {
 
         startLoadUsuarios,
         startAddUsuario,
+        startAssignPermissions,
         startDeleteUsuario,
         startClearUsuarios,
-        setActivateUsuario
+        setActivateUsuario,
     };
 };

@@ -11,6 +11,7 @@ import {
     lineapdotSlice,
     odssostenibleSlice,
     opnSlice,
+    permissionSlice,
     proveedorSlice,
     proyectoSlice,
     tipoActividadSlice,
@@ -25,6 +26,7 @@ import {
     uiLineapdotSlice,
     uiOdssostenibleSlice,
     uiOpnSlice,
+    uiPermissionSlice,
     uiProveedorSlice,
     uiProyectoSlice,
     uiTipoActividadSlice,
@@ -40,6 +42,10 @@ export const store = configureStore({
         /* Usuarios */
         usuario: userSlice.reducer,
         uiUsuario: uiUserSlice.reducer,
+
+        /* Permission */
+        permission: permissionSlice.reducer,
+        uiPermission: uiPermissionSlice.reducer,
 
         /* Lineas del PDOT */
         lineapdot: lineapdotSlice.reducer,

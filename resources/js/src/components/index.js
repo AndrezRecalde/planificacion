@@ -9,6 +9,7 @@ import { TitlePage } from "./elements/titles/TitlePage";
 import { TableContent } from "./elements/tables/TableContent";
 import {
     MenuTableEdit,
+    MenuTableAddPermissions,
     MenuTableAdd,
     MenuActionsVE,
 } from "./elements/tables/MenuTable";
@@ -33,6 +34,8 @@ import { ChangePwdForm } from "./user/ChangePwdForm";
 /* Usuarios: Permissions */
 import { PermissionsFilterForm } from "./user/permission/form/PermissionsFilterForm";
 import { PermissionsTable } from "./user/permission/table/PermissionsTable";
+import { AddPermissionModal } from "./user/permission/modal/AddPermissionModal";
+import { AddPermisionForm } from "./user/permission/form/AddPermisionForm";
 
 /* Departamentos */
 import { DepartamentoSelect } from "./administracion/departamentos/form/DepartamentoSelect";
@@ -173,6 +176,7 @@ export {
     TitlePage,
     TableContent,
     MenuTableEdit,
+    MenuTableAddPermissions,
     MenuTableAdd,
     MenuActionsVE,
     Logo,
@@ -195,6 +199,8 @@ export {
     /* USUARIOS: PERMISSIONS */
     PermissionsFilterForm,
     PermissionsTable,
+    AddPermissionModal,
+    AddPermisionForm,
 
     /* DEPARTAMENTOS */
     DepartamentoSelect,

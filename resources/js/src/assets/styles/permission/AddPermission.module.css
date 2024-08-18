@@ -1,0 +1,11 @@
+.pill {
+    background-color: var(--mantine-color-indigo-5);
+    color: white;
+    border: 1px solid var(--mantine-color-indigo-7);
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.pill:hover {
+    background-color: var(--mantine-color-indigo-7); /* Cambia el color de fondo al pasar el ratón */
+}

@@ -19,10 +19,13 @@ export const API_URL_ROUTES = {
     /* USUARIOS */
     GET_USUARIOS: "/usuarios",
     STORE_USUARIO: "/store/usuario",
+    ASSIGN_PERMISSION: "/assign/permission/usuario",
     UPDATE_USUARIO: "/update/usuario",
     UPDATE_STATUS_USUARIO: "/update/status",
     DELETE_USUARIO: "/delete/usuario",
 
+    /* PERMISSIONS */
+    GET_PERMISSIONS: "/permissions",
 
     /* DEPARTAMENTOS */
     GET_DEPARTAMENTOS: "/departamentos",
