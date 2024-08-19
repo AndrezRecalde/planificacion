@@ -96,6 +96,12 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_ODS: "/update/status/odsostenible",
     DELETE_ODS: "/delete/odsostenible",
 
+    /* INSTRUMENTOS DE PLANIFICACION */
+    GET_INSTRUMENTOS: "/instrumentos",
+    STORE_INSTRUMENTO: "/store/instrumento",
+    UPDATE_INSTRUMENTO: "/update/instrumento",
+    DELETE_INSTRUMENTO: "/delete/instrumento",
+
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",
     STORE_TIPO_PROYECTO: "/store/tipo-planificacion",
@@ -173,6 +179,10 @@ export const APP_WORDS = {
 
     /* OBJETIVOS PLAN NACIONAL DE DESARROLLO: OPN */
     OPN_TITLE_MODAL: "Ficha Objetivo Plan Nacional",
+
+
+    /* INSTRUMENTOS DE PLANIFICACION */
+    INSTRUMENTOS_TITLE: "Instrumentos de planificación",
 
 
     /* PROVEEDOR */

@@ -197,9 +197,6 @@ Route::group(
         /* ADMIN: TIPO DE UNIDADES */
         Route::delete('/delete/tipo-unidad/{id}', [TipoUnidadController::class, 'destroy']);
 
-        /* ADMIN: INSTRUMENTOS */
-        Route::delete('/delete/instrumento/{id}', [InstrumentoController::class, 'destroy']);
-
         /* ADMIN: OBJETIVOS */
         Route::delete('/delete/objetivo/{id}', [ObjetivoController::class, 'destroy']);
 
@@ -379,7 +376,8 @@ Route::group([
     /*PLANIFICACION: INSTRUMENTOS */
     Route::post('/instrumentos', [InstrumentoController::class, 'getInstrumentos']);
     Route::post('/store/instrumento', [InstrumentoController::class, 'store']);
-    Route::put('/update/instrumento/{id}', [InstrumentoController::class, 'update']);
+    Route::post('/update/instrumento/{id}', [InstrumentoController::class, 'update']);
+    Route::delete('/delete/instrumento/{id}', [InstrumentoController::class, 'destroy']);
 
     /* PLANIFICACION: OBJETIVOS */
     Route::post('/objetivos', [ObjetivoController::class, 'getObjetivos']);

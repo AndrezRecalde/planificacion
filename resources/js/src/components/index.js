@@ -12,6 +12,7 @@ import {
     MenuTableAddPermissions,
     MenuTableAdd,
     MenuActionsVE,
+    MenuActionsED
 } from "./elements/tables/MenuTable";
 import { Logo } from "./elements/application/Logo";
 import { BtnDarkMode } from "./elements/buttons/BtnDarkMode";
@@ -89,11 +90,16 @@ import { BtnActividadSection } from "./gestiones/actividades/btn/BtnActividadSec
 import { ActividadesTable } from "./gestiones/actividades/table/ActividadesTable";
 
 /* Planificacion */
-/* Instrumentos */
-import { InstrumentosList } from "./planificacion/instrumento/InstrumentosList";
-/* Objetivos */
+    /* Instrumentos */
+import { InstrumentosList } from "./planificacion/instrumento/table/InstrumentosList";
+import { InstrumentoModal } from "./planificacion/instrumento/modal/InstrumentoModal";
+import { InstrumentoForm } from "./planificacion/instrumento/form/InstrumentoForm";
+
+    /* Objetivos */
 import { ObjetivosEstrategicosTable } from "./planificacion/objetivo/table/ObjetivosEstrategicosTable";
-/*Programa */
+
+
+    /*Programa */
 import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFormProgramaPlan";
 import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
 import { ProyectoFromPrograma } from "./planificacion/programa/table/ProyectoFromPrograma";
@@ -179,6 +185,7 @@ export {
     MenuTableAddPermissions,
     MenuTableAdd,
     MenuActionsVE,
+    MenuActionsED,
     Logo,
     BtnDarkMode,
     BtnSearch,
@@ -248,8 +255,12 @@ export {
     BtnActividadSection,
     ActividadesTable,
 
-    /*PLANIFICACION */
+    /*PLANIFICACION: INSTRUMENTOS */
     InstrumentosList,
+    InstrumentoModal,
+    InstrumentoForm,
+
+
     ObjetivosEstrategicosTable,
     FilterFormProgramaPlan,
     ProgramaPlanTable,

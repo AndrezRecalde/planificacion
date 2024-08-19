@@ -1,10 +1,11 @@
 import { Modal } from "@mantine/core";
-import { useUiProveedor } from "../../../../hooks";
+import { useProveedorStore, useUiProveedor } from "../../../../hooks";
 import { ProveedorForm, TextSection } from "../../../../components";
 import { APP_WORDS } from "../../../../helpers";
 import { hasLength, isNotEmpty, useForm } from "@mantine/form";
 
 export const ProveedorModal = () => {
+    const { activateProveedor, setActivateProveedor } = useProveedorStore();
     const { isOpenModalProveedor, modalActionProveedor } = useUiProveedor();
 
     const form = useForm({
@@ -23,6 +24,9 @@ export const ProveedorModal = () => {
     });
 
     const handleCloseModal = () => {
+        if (activateProveedor !== null) {
+            setActivateProveedor(null);
+        }
         modalActionProveedor(0);
         form.reset();
     };

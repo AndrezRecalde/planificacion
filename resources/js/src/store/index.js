@@ -1,6 +1,9 @@
 /* AUTH */
 import { authSlice } from "./auth/authSlice";
 
+/* STORAGE FIELDS */
+import { storageFieldsSlice } from "./storage/storageFieldsSlice";
+
 /* USUARIOS */
 import { userSlice } from "./user/userSlice";
 import { uiUserSlice } from "./user/uiUserSlice";
@@ -45,6 +48,10 @@ import { uiOpnSlice } from "./opn/uiOpnSlice";
 import { odssostenibleSlice } from "./odssostenible/odssostenibleSlice";
 import { uiOdssostenibleSlice } from "./odssostenible/uiOdssostenibleSlice";
 
+/* INSTRUMENTOS DE PLANIFICACION */
+import { instrumentoSlice } from "./instrumento/instrumentoSlice";
+import { uiInstrumentoSlice } from "./instrumento/uiInstrumentoSlice";
+
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
 import { uiTipoProyectoSlice } from "./tipo_proyecto/uiTipoProyectoSlice";
@@ -69,6 +76,9 @@ import { store } from "./store";
 
 export {
     store,
+
+    /* STORAGE FIELDS */
+    storageFieldsSlice,
 
     /* LINEAS ESTRATEGICAS DEL PDOT */
     lestrategiapdotSlice,
@@ -105,6 +115,10 @@ export {
     /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
     odssostenibleSlice,
     uiOdssostenibleSlice,
+
+    /* INSTRUMENTOS DE PLANIFICACION */
+    instrumentoSlice,
+    uiInstrumentoSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

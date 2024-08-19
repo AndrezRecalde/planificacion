@@ -1,5 +1,5 @@
 import { Menu, rem } from "@mantine/core";
-import { IconEditCircle, IconEye, IconPlus } from "@tabler/icons-react";
+import { IconEditCircle, IconEye, IconPlus, IconTrash } from "@tabler/icons-react";
 
 /* Menu Action de EDITAR */
 export const MenuTableEdit = ({ row, handleEditar }) => {
@@ -63,6 +63,31 @@ export const MenuActionsVE = ({ row, handleView, handleEditar }) => {
                 onClick={() => handleView(row.original)}
             >
                 Ver Objetivos
+            </Menu.Item>
+        </>
+    );
+};
+
+export const MenuActionsED = ({ row, handleEditar, handleEliminar }) => {
+    return (
+        <>
+            <Menu.Item
+                leftSection={
+                    <IconEditCircle
+                        style={{ width: rem(15), height: rem(15) }}
+                    />
+                }
+                onClick={() => console.info("editar")}
+            >
+                Editar
+            </Menu.Item>
+            <Menu.Item
+                leftSection={
+                    <IconTrash style={{ width: rem(15), height: rem(15) }} />
+                }
+                onClick={() => console.info("eliminar")}
+            >
+                Eliminar
             </Menu.Item>
         </>
     );

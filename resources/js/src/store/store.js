@@ -7,6 +7,7 @@ import {
     departamentoSlice,
     ejeSlice,
     gobiernoSlice,
+    instrumentoSlice,
     lestrategiapdotSlice,
     lineapdotSlice,
     odssostenibleSlice,
@@ -22,6 +23,7 @@ import {
     uiDepartamentoSlice,
     uiEjeSlice,
     uiGobiernoSlice,
+    uiInstrumentoSlice,
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
     uiOdssostenibleSlice,
@@ -82,6 +84,10 @@ export const store = configureStore({
         /* Objetivos de desarrollo Sostenible */
         odssostenible: odssostenibleSlice.reducer,
         uiOdssostenible: uiOdssostenibleSlice.reducer,
+
+        /* Instrumentos de planificacion */
+        instrumento: instrumentoSlice.reducer,
+        uiInstrumento: uiInstrumentoSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

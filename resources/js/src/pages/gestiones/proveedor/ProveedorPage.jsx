@@ -18,7 +18,6 @@ export const ProveedorPage = () => {
         proveedores,
         startLoadProveedores,
         startClearProveedores,
-        setActivateProveedor,
         message,
         errores,
     } = useProveedorStore();
@@ -59,7 +58,7 @@ export const ProveedorPage = () => {
 
     const handleOpenModal = (e) => {
         e.preventDefault();
-        setActivateProveedor(null);
+        //setActivateProveedor(null);
         modalActionProveedor(1);
     };
 

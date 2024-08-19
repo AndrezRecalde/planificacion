@@ -45,6 +45,10 @@ import { useUiOPN } from "./opn/useUiOPN";
 import { useOdssostenibleStore } from "./odssostenible/useOdssostenibleStore";
 import { useUiOdssostenible } from "./odssostenible/useUiOdssostenible";
 
+/* INSTRUMENTOS DE PLANIFICACION */
+import { useInstrumentoStore } from "./instrumento/useInstrumentoStore";
+import { useUiInstrumento } from "./instrumento/useUiInstrumento";
+
 
 /* TIPO DE PROYECTOS */
 import { useTipoProyectoStore } from "./tipo_proyecto/useTipoProyectoStore";
@@ -119,6 +123,10 @@ export {
     /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
     useOdssostenibleStore,
     useUiOdssostenible,
+
+    /* INSTRUMENTOS DE PLANIFICACION */
+    useInstrumentoStore,
+    useUiInstrumento,
 
     /* TIPO DE PROYECTOS */
     useTipoProyectoStore,
