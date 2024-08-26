@@ -1,12 +1,18 @@
 import { useEffect } from "react";
 import { Container, Group } from "@mantine/core";
-import { BtnSection, InstrumentoModal, InstrumentosList, TitlePage } from "../../../components";
+import {
+    BtnSection,
+    InstrumentoModal,
+    InstrumentosList,
+    TitlePage,
+} from "../../../components";
 import { IconCopyPlus } from "@tabler/icons-react";
 import { APP_WORDS, BTN_TITLES } from "../../../helpers";
 import { useInstrumentoStore, useUiInstrumento } from "../../../hooks";
+import Swal from "sweetalert2";
 
 export const InstrumentosPage = () => {
-    const { startLoadInstrumentos, startClearInstrumentos } =
+    const { startLoadInstrumentos, startClearInstrumentos, message, errores } =
         useInstrumentoStore();
     const { modalActionInstrumento } = useUiInstrumento();
 
@@ -17,6 +23,31 @@ export const InstrumentosPage = () => {
             startClearInstrumentos();
         };
     }, []);
+
+    useEffect(() => {
+        if (message !== undefined) {
+            Swal.fire({
+                icon: message.status,
+                text: message.msg,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            return;
+        }
+    }, [message]);
+
+    useEffect(() => {
+        if (errores !== undefined) {
+            Swal.fire({
+                icon: "error",
+                title: "Opps...",
+                text: errores,
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            return;
+        }
+    }, [errores]);
 
     const handleOpenModal = (e) => {
         e.preventDefault();

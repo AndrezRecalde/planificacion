@@ -15,7 +15,7 @@ import { useInstrumentoStore, useUiInstrumento } from "../../../../hooks";
 import dayjs from "dayjs";
 
 export const InstrumentoForm = ({ form }) => {
-    const { activateInstrumento, setActivateInstrumento } =
+    const { activateInstrumento, setActivateInstrumento, startAddInstrumento } =
         useInstrumentoStore();
     const { modalActionInstrumento } = useUiInstrumento();
 
@@ -32,7 +32,8 @@ export const InstrumentoForm = ({ form }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form.getValues());
+        console.log(form.getTransformedValues());
+        startAddInstrumento(form.getTransformedValues());
         if (activateInstrumento !== null) {
             setActivateInstrumento(null);
         }
@@ -66,8 +67,8 @@ export const InstrumentoForm = ({ form }) => {
                 />
                 <FileInput
                     clearable
-                    label="Upload files"
-                    placeholder="Upload files"
+                    label="Cargar archivo"
+                    placeholder="Cargar archivo del PDOT"
                     accept="application/pdf"
                     key={form.key("archivo")}
                     {...form.getInputProps("archivo")}

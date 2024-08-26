@@ -59,6 +59,9 @@ Route::get('/refresh', [AuthController::class, 'refresh'])->middleware('auth:san
 Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
+
+
+
 Route::group(
     [
         'prefix' => 'public',
@@ -378,6 +381,8 @@ Route::group([
     Route::post('/store/instrumento', [InstrumentoController::class, 'store']);
     Route::post('/update/instrumento/{id}', [InstrumentoController::class, 'update']);
     Route::delete('/delete/instrumento/{id}', [InstrumentoController::class, 'destroy']);
+    Route::get('/{filename}', [InstrumentoController::class, 'exportInstrumentoPDF'])->where('path', '.*');
+
 
     /* PLANIFICACION: OBJETIVOS */
     Route::post('/objetivos', [ObjetivoController::class, 'getObjetivos']);

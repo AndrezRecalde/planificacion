@@ -14,7 +14,7 @@ export const InstrumentoModal = () => {
         mode: "uncontrolled",
         initialValues: {
             nombre_archivo: "",
-            archivo: "",
+            archivo: null,
             fecha_inicio: new Date(),
             fecha_fin: new Date(),
         },

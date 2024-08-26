@@ -98,13 +98,30 @@ export const useInstrumentoStore = () => {
         }
     };
 
+    const startDownloadInstrumento = async (filename) => {
+        try {
+            const response = await planningApi.get(`http://planificacion.test/${filename}`, {
+                responseType: 'blob' // Asegúrate de recibir la respuesta como un blob
+            });
+            const pdfBlob = new Blob([response.data], {
+                type: "application/pdf",
+            });
+            const url = window.open(URL.createObjectURL(pdfBlob));
+
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.log(error);
+            ExceptionMessageError(error);
+        }
+    };
+
     const startClearInstrumentos = () => {
         dispatch(onClearInstrumentos());
-    }
+    };
 
     const setActivateInstrumento = (instrumento) => {
         dispatch(onSetActivateInstrumento(instrumento));
-    }
+    };
 
     return {
         isLoading,
@@ -116,7 +133,8 @@ export const useInstrumentoStore = () => {
         startLoadInstrumentos,
         startAddInstrumento,
         startDeleteInstrumento,
+        startDownloadInstrumento,
         startClearInstrumentos,
-        setActivateInstrumento
+        setActivateInstrumento,
     };
 };

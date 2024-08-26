@@ -10,12 +10,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class InstrumentoController extends Controller
 {
     function getInstrumentos(Request $request): JsonResponse
     {
-        $instrumentos = Instrumento::where('instrumento.fecha_inicio', $request->fecha_inicio)
+        $instrumentos = Instrumento::where('instrumentos.fecha_inicio', $request->fecha_inicio)
                         ->get(['id', 'nombre_archivo', 'archivo', 'fecha_inicio', 'fecha_fin']);
 
         return response()->json(['status' => HTTPStatus::Success, 'instrumentos' => $instrumentos], 200);
@@ -105,5 +107,14 @@ class InstrumentoController extends Controller
             DB::rollback();
             return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
         }
+    }
+
+    function exportInstrumentoPDF(string $filename) : BinaryFileResponse | NotFoundHttpException
+    {
+        $filePath = storage_path("app/{$filename}");
+        if (!file_exists($filePath)) {
+            abort(404, 'El archivo no se encuentra disponible.');
+        }
+        return response()->download($filePath);
     }
 }

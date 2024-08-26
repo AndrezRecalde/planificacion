@@ -101,6 +101,7 @@ export const API_URL_ROUTES = {
     STORE_INSTRUMENTO: "/store/instrumento",
     UPDATE_INSTRUMENTO: "/update/instrumento",
     DELETE_INSTRUMENTO: "/delete/instrumento",
+    DOWNLOAD_INSTRUMENTO: "",
 
     /* TIPOS PROYECTOS */
     GET_TIPO_PROYECTOS: "/tipos-proyectos",
