@@ -140,6 +140,9 @@ import { CategoriapdotForm } from "./planificacion/administracion/categoriaspdot
 
     /* Estrategias de articulacion */
 import { EarticulacionTable } from "./planificacion/administracion/earticulacion/table/EarticulacionTable";
+import { EarticulacionModal } from "./planificacion/administracion/earticulacion/modal/EarticulacionModal";
+import { EarticulacionForm } from "./planificacion/administracion/earticulacion/form/EarticulacionForm";
+
 
     /* Metas del PDOT */
 import { MetaspdotTable } from "./planificacion/administracion/metaspdot/table/MetaspdotTable";
@@ -295,6 +298,8 @@ export {
     CategoriapdotForm,
 
     EarticulacionTable,
+    EarticulacionModal,
+    EarticulacionForm,
 
     MetaspdotTable,
 

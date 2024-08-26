@@ -5,6 +5,7 @@ import {
     competenciapdotSlice,
     componentepdotSlice,
     departamentoSlice,
+    earticulacionSlice,
     ejeSlice,
     gobiernoSlice,
     instrumentoSlice,
@@ -21,6 +22,7 @@ import {
     uiCompetenciapdotSlice,
     uiComponentepdotSlice,
     uiDepartamentoSlice,
+    uiEarticulacionSlice,
     uiEjeSlice,
     uiGobiernoSlice,
     uiInstrumentoSlice,
@@ -84,6 +86,10 @@ export const store = configureStore({
         /* Objetivos de desarrollo Sostenible */
         odssostenible: odssostenibleSlice.reducer,
         uiOdssostenible: uiOdssostenibleSlice.reducer,
+
+        /* Estrategias de Articulacion */
+        earticulacion: earticulacionSlice.reducer,
+        uiEarticulacion: uiEarticulacionSlice.reducer,
 
         /* Instrumentos de planificacion */
         instrumento: instrumentoSlice.reducer,

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useErrorException } from "../../hooks";
 import {
-    onAddDepartamento,
+    //onAddDepartamento,
     onClearDepartamentos,
     onDeleteDepartamento,
     onLoadDepartamentos,
@@ -9,7 +9,7 @@ import {
     onLoading,
     onLoadMessage,
     onSetActivateDepartamento,
-    onUpdateDepartamento,
+    //onUpdateDepartamento,
 } from "../../store/departamento/departamentoSlice";
 import { API_URL_ROUTES, PREFIX_ROUTES } from "../../helpers";
 import planningApi from "../../api/planningApi";

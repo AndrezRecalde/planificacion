@@ -52,6 +52,11 @@ import { uiOdssostenibleSlice } from "./odssostenible/uiOdssostenibleSlice";
 import { instrumentoSlice } from "./instrumento/instrumentoSlice";
 import { uiInstrumentoSlice } from "./instrumento/uiInstrumentoSlice";
 
+/* ESTRATEGIAS DE ARTICULACION */
+import { earticulacionSlice } from "./earticulacion/earticulacionSlice";
+import { uiEarticulacionSlice } from "./earticulacion/uiEarticulacionSlice";
+
+
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
 import { uiTipoProyectoSlice } from "./tipo_proyecto/uiTipoProyectoSlice";
@@ -119,6 +124,10 @@ export {
     /* INSTRUMENTOS DE PLANIFICACION */
     instrumentoSlice,
     uiInstrumentoSlice,
+
+    /* ESTRATEGIAS DE ARTICULACION */
+    earticulacionSlice,
+    uiEarticulacionSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

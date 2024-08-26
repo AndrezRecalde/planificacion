@@ -165,7 +165,6 @@ Route::group(
         Route::delete('/delete/oepdot/{id}', [OepdotController::class, 'destroy']);
 
         /* ADMIN: ESTRATEGIAS DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA  */
-        Route::get('/earticulaciones', [EarticulacionController::class, 'getArticulacionesAdmin']);
         Route::delete('/delete/earticulacion/{id}', [EarticulacionController::class, 'destroy']);
 
         /*ADMIN: METAS DEL PDOT */
@@ -333,9 +332,10 @@ Route::group([
     Route::put('/update/status/oepdot/{id}', [OepdotController::class, 'updateActivo']);
 
     /* PLANIFICACION: ESTRATEGIAS DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA  */
-    Route::get('/earticulaciones', [EarticulacionController::class, 'getArticulaciones']);
+    Route::post('/earticulaciones', [EarticulacionController::class, 'getArticulaciones']);
     Route::post('/store/earticulacion', [EarticulacionController::class, 'store']);
     Route::put('/update/earticulacion/{id}', [EarticulacionController::class, 'update']);
+    Route::put('/update/status/earticulacion/{id}', [EarticulacionController::class, 'updateStatus']);
 
 
     /*PLANIFICACION: METAS DEL PDOT */

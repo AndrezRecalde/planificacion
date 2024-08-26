@@ -7,29 +7,11 @@ import {
 } from "../../../../../components";
 import { useMantineReactTable } from "mantine-react-table";
 import { IconCopyPlus } from "@tabler/icons-react";
-
-const earticulaciones = [
-    {
-        id: 1,
-        nombre_articulacion:
-            "1.1 Desarrollar medidas de adaptación y mitigación al cambio climático y riesgo para disminuir la vulnerabilidad ambiental, económica y social.",
-        activo: true,
-    },
-    {
-        id: 2,
-        nombre_articulacion:
-            "1.2 Manejar de forma integrada las actividades que se desarrollan en el territorio provincial, con el fin de conservar la biodiversidad y disminuir los efectos e impactos sobre los ecosistemas naturales",
-        activo: true,
-    },
-    {
-        id: 3,
-        nombre_articulacion:
-            "1.3 Impulsar la generación de información de flora y fauna la investigación, innovación y producción de servicios ecosistémicos.",
-        activo: false,
-    },
-];
+import { useEarticulacionStore, useUiEarticulacion } from "../../../../../hooks";
 
 export const EarticulacionTable = () => {
+    const { isLoading, earticulaciones, setActivateEarticulacion } = useEarticulacionStore();
+    const { modalActionEarticulacion, modalActionStatusEarticulacion } = useUiEarticulacion();
     const columns = useMemo(
         () => [
             {
@@ -50,21 +32,26 @@ export const EarticulacionTable = () => {
         [earticulaciones]
     );
 
-    const handleActive = useCallback(() => {
+    const handleActive = useCallback((selected) => {
         console.log("clic");
+        setActivateEarticulacion(selected);
+        modalActionStatusEarticulacion(true);
     }, [earticulaciones]);
 
     const handleAgregar = useCallback(() => {
-        console.log("agregar");
+        modalActionEarticulacion(true);
     }, [earticulaciones]);
 
-    const handleEditar = useCallback(() => {
+    const handleEditar = useCallback((selected) => {
         console.log("editar");
+        setActivateEarticulacion(selected);
+        modalActionEarticulacion(true);
     }, [earticulaciones]);
 
     const table = useMantineReactTable({
         columns,
         data: earticulaciones, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        state: { showProgressBars: isLoading },
         enableFacetedValues: true,
         enableDensityToggle: false,
         defaultColumn: { minSize: 80, maxSize: 200, size: 100 },

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EarticulacionRequest extends FormRequest
+class EarticulacionStatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,14 @@ class EarticulacionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_articulacion' => 'required',
-            //'oepdot_id'        => 'required'
+            'activo'    => 'required'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nombre_articulacion.required' =>  'El nombre es obligatorio',
-            //'oepdot_id.required' =>  'Seleccione el Objetivo Estrategico',
-
+            'activo.required' =>  'El status es obligatorio',
         ];
     }
 

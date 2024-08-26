@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,16 +12,25 @@ class Earticulacion extends Model
 {
     use HasFactory;
 
+    protected $table = 'earticulaciones';
+
     // ESTRATEGIA DE ARTICULACIONES / POLITICA PÚBLICA TERRITORIALIZADA
 
     protected $fillable = [
         'nombre_articulacion',
-        'oepdot_id'
+        'activo'
+        //'oepdot_id'
     ];
 
-    function objetivo(): BelongsTo
+    /* function objetivo(): BelongsTo
     {
         return $this->belongsTo(Oepdot::class);
+    } */
+
+    function scopeActivo(Builder $query, $activo)  {
+        if ($activo) {
+            return $query->where('ea.activo', $activo);
+        }
     }
 
     function metas(): HasMany

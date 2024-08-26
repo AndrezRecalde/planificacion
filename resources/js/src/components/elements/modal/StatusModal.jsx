@@ -22,7 +22,7 @@ export const StatusModal = ({
         },
         transformValues: (values) => ({
             ...values,
-            activo: Boolean(values.lineapdot_id) || null,
+            activo: Boolean(values.activo) || null,
         }),
     });
 
@@ -45,8 +45,8 @@ export const StatusModal = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form.getTransformedValues())
-        startAction(form.getTransformedValues());
+        console.log(form.getValues())
+        startAction(form.getValues());
         form.reset();
         modalAction(false);
 

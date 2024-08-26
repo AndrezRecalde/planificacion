@@ -45,6 +45,11 @@ import { useUiOPN } from "./opn/useUiOPN";
 import { useOdssostenibleStore } from "./odssostenible/useOdssostenibleStore";
 import { useUiOdssostenible } from "./odssostenible/useUiOdssostenible";
 
+/* ESTRATEGIAS DE ARTICULACION */
+import { useEarticulacionStore } from "./earticulacion/useEarticulacionStore";
+import { useUiEarticulacion } from "./earticulacion/useUiEarticulacion";
+
+
 /* INSTRUMENTOS DE PLANIFICACION */
 import { useInstrumentoStore } from "./instrumento/useInstrumentoStore";
 import { useUiInstrumento } from "./instrumento/useUiInstrumento";
@@ -123,6 +128,10 @@ export {
     /* OBJETIVOS DE DESARROLLO SOSTENIBLE: ODS */
     useOdssostenibleStore,
     useUiOdssostenible,
+
+    /* ESTRATEGIAS DE ARTICULACION */
+    useEarticulacionStore,
+    useUiEarticulacion,
 
     /* INSTRUMENTOS DE PLANIFICACION */
     useInstrumentoStore,

@@ -96,6 +96,13 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_ODS: "/update/status/odsostenible",
     DELETE_ODS: "/delete/odsostenible",
 
+    /* ESTRATEGIAS DE ARTICULACION */
+    GET_EARTICULACIONES: "/earticulaciones",
+    STORE_EARTICULACION: "/store/earticulacion",
+    UPDATE_EARTICULACION: "/update/earticulacion",
+    UPDATE_STATUS_EARTICULACION: "/update/status/earticulacion",
+    DELETE_EARTICULACION: "/delete/earticulacion",
+
     /* INSTRUMENTOS DE PLANIFICACION */
     GET_INSTRUMENTOS: "/instrumentos",
     STORE_INSTRUMENTO: "/store/instrumento",
@@ -185,6 +192,8 @@ export const APP_WORDS = {
     /* INSTRUMENTOS DE PLANIFICACION */
     INSTRUMENTOS_TITLE: "Instrumentos de planificación",
 
+    /* ESTRATEGIAS DE ARTICULACION */
+    EARTICULACION_TITLE: "Estrategias de Articulación",
 
     /* PROVEEDOR */
     PROVEEDOR_TITLE: "Proveedores",
