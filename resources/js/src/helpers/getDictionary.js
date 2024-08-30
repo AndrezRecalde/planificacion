@@ -103,6 +103,13 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_EARTICULACION: "/update/status/earticulacion",
     DELETE_EARTICULACION: "/delete/earticulacion",
 
+    /* METAS DEL PDOT */
+    GET_METASPDOT: "/metaspdot",
+    STORE_METAPDOT: "/store/metapdot",
+    UPDATE_METAPDOT: "/update/metapdot",
+    UPDATE_STATUS_METAPDOT: "/update/status/metapdot",
+    DELETE_METAPDOT: "/delete/metapdot",
+
     /* INSTRUMENTOS DE PLANIFICACION */
     GET_INSTRUMENTOS: "/instrumentos",
     STORE_INSTRUMENTO: "/store/instrumento",
@@ -184,6 +191,9 @@ export const APP_WORDS = {
     LINEAESTRATEGICA_PLACEHOLDER_NOMBRELINEA: "Nombre de la línea estrategica",
     LINEAESTRATEGICA_SELECT_LINEAPDOT: "Elegir Línea del PDOT",
 
+    /* METAS DEL PDOT */
+    METAPDOT_TITLE: "Metas del PDOT",
+    METAPDOT_TITLE_MODAL: "Ficha Meta del PDOT",
 
     /* OBJETIVOS PLAN NACIONAL DE DESARROLLO: OPN */
     OPN_TITLE_MODAL: "Ficha Objetivo Plan Nacional",

@@ -13,7 +13,8 @@ class Metapdot extends Model
 
     protected $fillable = [
         'nombre_meta',
-        'earticulacion_id'
+        'earticulacion_id',
+        'activo'
     ];
 
     function earticulacion(): BelongsTo

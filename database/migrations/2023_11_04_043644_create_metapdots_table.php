@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_meta');
             $table->unsignedBigInteger('earticulacion_id')->constrained()->cascadeOnDelete();
+            $table->boolean("activo")->default(true);
             $table->timestamps();
 
             // Definir relaciones foráneas

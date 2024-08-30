@@ -49,6 +49,10 @@ import { useUiOdssostenible } from "./odssostenible/useUiOdssostenible";
 import { useEarticulacionStore } from "./earticulacion/useEarticulacionStore";
 import { useUiEarticulacion } from "./earticulacion/useUiEarticulacion";
 
+/* METAS DEL PDOT */
+import { useMetapdotStore } from "./metapdot/useMetapdotStore";
+import { useUiMetapdot } from "./metapdot/useUiMetapdot";
+
 
 /* INSTRUMENTOS DE PLANIFICACION */
 import { useInstrumentoStore } from "./instrumento/useInstrumentoStore";
@@ -132,6 +136,10 @@ export {
     /* ESTRATEGIAS DE ARTICULACION */
     useEarticulacionStore,
     useUiEarticulacion,
+
+    /* METAS DEL PDOT */
+    useMetapdotStore,
+    useUiMetapdot,
 
     /* INSTRUMENTOS DE PLANIFICACION */
     useInstrumentoStore,

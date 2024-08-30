@@ -146,6 +146,9 @@ import { EarticulacionForm } from "./planificacion/administracion/earticulacion/
 
     /* Metas del PDOT */
 import { MetaspdotTable } from "./planificacion/administracion/metaspdot/table/MetaspdotTable";
+import { MetapdotModal } from "./planificacion/administracion/metaspdot/modal/MetapdotModal";
+import { MetapdotForm } from "./planificacion/administracion/metaspdot/form/MetapdotForm";
+
 
     /* Tipos de Planificacion */
 import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/PlanificaciontiposTable";
@@ -302,6 +305,8 @@ export {
     EarticulacionForm,
 
     MetaspdotTable,
+    MetapdotModal,
+    MetapdotForm,
 
     PlanificaciontiposTable,
 

@@ -168,7 +168,6 @@ Route::group(
         Route::delete('/delete/earticulacion/{id}', [EarticulacionController::class, 'destroy']);
 
         /*ADMIN: METAS DEL PDOT */
-        Route::get('/metaspdot', [MetapdotController::class, 'getMetasPDOTAdmin']);
         Route::delete('/delete/metapdot/{id}', [MetapdotController::class, 'destroy']);
 
         /* ADMIN: GESTION DEL PDOT */
@@ -339,9 +338,10 @@ Route::group([
 
 
     /*PLANIFICACION: METAS DEL PDOT */
-    Route::get('/metaspdot', [MetapdotController::class, 'getMetasForArticulaciones']);
+    Route::post('/metaspdot', [MetapdotController::class, 'getMetas']);
     Route::post('/store/metapdot', [MetapdotController::class, 'store']);
     Route::put('/update/metapdot/{id}', [MetapdotController::class, 'update']);
+    Route::put('/update/status/metapdot/{id}', [MetapdotController::class, 'updateStatus']);
 
 
     /* PLANIFICACION: OBJETIVOS ESTRATEGICOS INSTITUCIONALES */

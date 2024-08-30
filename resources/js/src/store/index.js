@@ -56,6 +56,10 @@ import { uiInstrumentoSlice } from "./instrumento/uiInstrumentoSlice";
 import { earticulacionSlice } from "./earticulacion/earticulacionSlice";
 import { uiEarticulacionSlice } from "./earticulacion/uiEarticulacionSlice";
 
+/* METAS DEL PDOT */
+import { metapdotSlice } from "./metapdot/metapdotSlice";
+import { uiMetapdotSlice } from "./metapdot/uiMetapdotSlice";
+
 
 /* TIPO DE PROYECTOS */
 import { tipoProyectoSlice } from "./tipo_proyecto/tipoProyectoSlice";
@@ -128,6 +132,10 @@ export {
     /* ESTRATEGIAS DE ARTICULACION */
     earticulacionSlice,
     uiEarticulacionSlice,
+
+    /* METAS DEL PDOT */
+    metapdotSlice,
+    uiMetapdotSlice,
 
     /* TIPO DE PROYECTOS */
     tipoProyectoSlice,

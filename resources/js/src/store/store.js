@@ -11,6 +11,7 @@ import {
     instrumentoSlice,
     lestrategiapdotSlice,
     lineapdotSlice,
+    metapdotSlice,
     odssostenibleSlice,
     opnSlice,
     permissionSlice,
@@ -28,6 +29,7 @@ import {
     uiInstrumentoSlice,
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
+    uiMetapdotSlice,
     uiOdssostenibleSlice,
     uiOpnSlice,
     uiPermissionSlice,
@@ -90,6 +92,10 @@ export const store = configureStore({
         /* Estrategias de Articulacion */
         earticulacion: earticulacionSlice.reducer,
         uiEarticulacion: uiEarticulacionSlice.reducer,
+
+        /* Metas del PDOT */
+        metapdot: metapdotSlice.reducer,
+        uiMetapdot: uiMetapdotSlice.reducer,
 
         /* Instrumentos de planificacion */
         instrumento: instrumentoSlice.reducer,
