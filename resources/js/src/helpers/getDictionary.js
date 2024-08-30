@@ -195,6 +195,10 @@ export const APP_WORDS = {
     METAPDOT_TITLE: "Metas del PDOT",
     METAPDOT_TITLE_MODAL: "Ficha Meta del PDOT",
 
+
+    /* TIPOS DE PLANIFICACIÓN */
+    TIPOSPLANIFICACION_TITLE: "Tipos de planificación",
+
     /* OBJETIVOS PLAN NACIONAL DE DESARROLLO: OPN */
     OPN_TITLE_MODAL: "Ficha Objetivo Plan Nacional",
 

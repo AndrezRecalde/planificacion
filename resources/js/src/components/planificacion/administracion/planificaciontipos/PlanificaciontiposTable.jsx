@@ -60,7 +60,7 @@ export const PlanificaciontiposTable = () => {
         enableFacetedValues: true,
         enableDensityToggle: false,
         defaultColumn: { minSize: 80, maxSize: 200, size: 100 },
-
+        //state: { showProgressBars: isLoading },
         //enableColumnFilters: false,
         //enablePagination: false,
         //enableSorting: false,
