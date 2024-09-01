@@ -37,7 +37,6 @@ import { CategoriaspdotPage } from "./planificacion/administracion/categoriaspdo
 import { EarticulacionPage } from "./planificacion/administracion/earticulacion/EarticulacionPage";
 import { MetaspdotPage } from "./planificacion/administracion/metaspdot/MetaspdotPage";
 import { PlanificacionTiposPage } from "./planificacion/administracion/planificaciontipos/PlanificacionTiposPage";
-import { ProgramasAdminPage } from "./planificacion/administracion/programas/ProgramasAdminPage";
 import { EjesPage } from "./planificacion/administracion/eje/EjesPage";
 import { GobiernosPage } from "./planificacion/administracion/gobierno/GobiernosPage";
 import { ObjetivosPlanNacional } from "./planificacion/administracion/opn/ObjetivosPlanNacional";
@@ -80,7 +79,6 @@ export {
     EarticulacionPage,
     MetaspdotPage,
     PlanificacionTiposPage,
-    ProgramasAdminPage,
     EjesPage,
     GobiernosPage,
     ObjetivosPlanNacional,

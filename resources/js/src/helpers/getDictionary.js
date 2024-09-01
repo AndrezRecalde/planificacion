@@ -129,6 +129,13 @@ export const API_URL_ROUTES = {
     UPDATE_TIPO_ACTIVIDADES: "/update/tipo-actividad",
     DELETE_TIPO_ACTIVIDADES: "/delete/tipo-actividad",
 
+    /* TIPOS DE PLANIFICACION */
+    GET_PLANIFICACIONTIPOS: "/tipos-planificacion",
+    STORE_PLANIFICACIONTIPO: "/store/tipo-planificacion",
+    UPDATE_PLANIFICACIONTIPO: "/update/tipo-planificacion",
+    UPDATE_STATUS_PLANIFICACIONTIPO: "/update/status/tipo-planificacion",
+    DELETE_PLANIFICACIONTIPO: "/delete/tipo-planificacion",
+
 
     /** PROVEEDORES */
     GET_PROVEEDORES: "/proveedores",
@@ -198,6 +205,8 @@ export const APP_WORDS = {
 
     /* TIPOS DE PLANIFICACIÓN */
     TIPOSPLANIFICACION_TITLE: "Tipos de planificación",
+    TIPOSPLANIFICACION_TITLE_MODAL: "Ficha de tipos de planificación",
+
 
     /* OBJETIVOS PLAN NACIONAL DE DESARROLLO: OPN */
     OPN_TITLE_MODAL: "Ficha Objetivo Plan Nacional",

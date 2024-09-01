@@ -16,7 +16,6 @@ import {
     OdssosteniblePage,
     PermissionsPage,
     PlanificacionTiposPage,
-    ProgramasAdminPage,
     ProgramasPlanPage,
 } from "../../../pages";
 
@@ -49,10 +48,7 @@ export const PlanificacionPages = () => {
                 path="tipos-planificacion"
                 element={<PlanificacionTiposPage />}
             />
-            <Route
-                path="planificar-programas"
-                element={<ProgramasAdminPage />}
-            />
+
 
              {/* ADMINISTRAR GOBIERNO */}
              <Route path="ejes" element={<EjesPage />} />

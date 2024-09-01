@@ -121,7 +121,7 @@ export const routes = [
                         label: "Tipos de Planificación",
                         link: "/gpla/tipos-planificacion",
                     },
-                    { label: "Programas", link: "/gpla/planificar-programas" },
+                    //{ label: "Programas", link: "/gpla/planificar-programas" },
                 ],
             },
             {

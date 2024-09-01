@@ -362,6 +362,8 @@ Route::group([
     Route::get('/tipos-planificacion', [PlanificaciontipoController::class, 'getTiposPlanificaciones']);
     Route::post('/store/tipo-planificacion', [PlanificaciontipoController::class, 'store']);
     Route::put('/update/tipo-planificacion/{id}', [PlanificaciontipoController::class, 'update']);
+    Route::put('/update/status/tipo-planificacion/{id}', [PlanificaciontipoController::class, 'updateStatus']);
+
 
 
     /* PLANIFICACION: TIPOS DE PROYECTOS */

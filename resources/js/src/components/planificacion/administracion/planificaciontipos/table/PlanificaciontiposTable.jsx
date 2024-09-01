@@ -5,23 +5,19 @@ import {
     MenuTableEdit,
     BtnSection,
     TableContent,
-} from "../../../../components";
+} from "../../../..";
 import { IconCopyPlus } from "@tabler/icons-react";
-
-const planificaciontipos = [
-    {
-        id: 1,
-        nombre_planificacion: "PEI",
-        activo: true,
-    },
-    {
-        id: 2,
-        nombre_planificacion: "PDOT",
-        activo: true,
-    },
-];
+import {
+    usePlanificacionTipoStore,
+    useUiPlanificacionTipo,
+} from "../../../../../hooks";
 
 export const PlanificaciontiposTable = () => {
+    const { isLoading, planificacionTipos, setActivatePlanificacionTipo } =
+        usePlanificacionTipoStore();
+    const { modalActionPlanificacionTipo, modalActionStatusPlanificacionTipo } =
+        useUiPlanificacionTipo();
+
     const columns = useMemo(
         () => [
             {
@@ -39,27 +35,36 @@ export const PlanificaciontiposTable = () => {
                 ),
             },
         ],
-        [planificaciontipos]
+        [planificacionTipos]
     );
 
-    const handleActive = useCallback(() => {
-        console.log("clic");
-    }, [planificaciontipos]);
+    const handleActive = useCallback(
+        (selected) => {
+            setActivatePlanificacionTipo(selected);
+            modalActionStatusPlanificacionTipo(true);
+        },
+        [planificacionTipos]
+    );
 
     const handleAgregar = useCallback(() => {
-        console.log("agregar");
-    }, [planificaciontipos]);
+        modalActionPlanificacionTipo(true);
+    }, [planificacionTipos]);
 
-    const handleEditar = useCallback(() => {
-        console.log("editar");
-    }, [planificaciontipos]);
+    const handleEditar = useCallback(
+        (selected) => {
+            setActivatePlanificacionTipo(selected);
+            modalActionPlanificacionTipo(true);
+        },
+        [planificacionTipos]
+    );
 
     const table = useMantineReactTable({
         columns,
-        data: planificaciontipos, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        data: planificacionTipos, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
         enableFacetedValues: true,
         enableDensityToggle: false,
         defaultColumn: { minSize: 80, maxSize: 200, size: 100 },
+        state: { showProgressBars: isLoading },
         //state: { showProgressBars: isLoading },
         //enableColumnFilters: false,
         //enablePagination: false,
@@ -70,6 +75,7 @@ export const PlanificaciontiposTable = () => {
         ),
         renderTopToolbarCustomActions: ({ table }) => (
             <BtnSection
+                disabled={true}
                 heigh={30}
                 fontSize={12}
                 icon={IconCopyPlus}

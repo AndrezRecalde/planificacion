@@ -15,6 +15,7 @@ import {
     odssostenibleSlice,
     opnSlice,
     permissionSlice,
+    planificacionTipoSlice,
     proveedorSlice,
     proyectoSlice,
     tipoActividadSlice,
@@ -33,6 +34,7 @@ import {
     uiOdssostenibleSlice,
     uiOpnSlice,
     uiPermissionSlice,
+    uiPlanificacionTipoSlice,
     uiProveedorSlice,
     uiProyectoSlice,
     uiTipoActividadSlice,
@@ -100,6 +102,10 @@ export const store = configureStore({
         /* Instrumentos de planificacion */
         instrumento: instrumentoSlice.reducer,
         uiInstrumento: uiInstrumentoSlice.reducer,
+
+        /* Tipos de Planificacion */
+        planificacionTipo: planificacionTipoSlice.reducer,
+        uiPlanificacionTipo: uiPlanificacionTipoSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

@@ -68,11 +68,13 @@ export const BtnSection = ({
     mb = 0,
     mt = 0,
     children,
+    disabled = false
 }) => {
     return (
         <Button
             mt={mt}
             mb={mb}
+            disabled={disabled}
             radius={radius}
             color="indigo.7"
             variant={variant}

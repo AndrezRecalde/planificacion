@@ -11,7 +11,8 @@ class Planificaciontipo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nombre_planificacion'
+        'nombre_planificacion',
+        'activo'
     ];
 
     function proyectos(): HasMany

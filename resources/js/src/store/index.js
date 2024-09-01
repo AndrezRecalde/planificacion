@@ -69,6 +69,11 @@ import { uiTipoProyectoSlice } from "./tipo_proyecto/uiTipoProyectoSlice";
 import { tipoActividadSlice } from "./tipo_actividad/tipoActividadSlice";
 import { uiTipoActividadSlice } from "./tipo_actividad/uiTipoActividadSlice";
 
+/* TIPOS DE PLANIFICACION */
+import { planificacionTipoSlice } from "./planificaciontipo/planificacionTipoSlice";
+import { uiPlanificacionTipoSlice } from "./planificaciontipo/uiPlanificacionTipoSlice";
+
+
 /* PROVEEDORES */
 import { proveedorSlice } from "./proveedor/proveedorSlice";
 import { uiProveedorSlice } from "./proveedor/uiProveedorSlice";
@@ -144,6 +149,11 @@ export {
     /* TIPO ACTIVIDADES */
     tipoActividadSlice,
     uiTipoActividadSlice,
+
+    /* TIPO DE PLANIFICACION */
+    planificacionTipoSlice,
+    uiPlanificacionTipoSlice,
+
 
     /* GESTIONES: PROVEEDORES */
     proveedorSlice,

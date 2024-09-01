@@ -151,7 +151,10 @@ import { MetapdotForm } from "./planificacion/administracion/metaspdot/form/Meta
 
 
     /* Tipos de Planificacion */
-import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/PlanificaciontiposTable";
+import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/table/PlanificaciontiposTable";
+import { PlanificacionTipoModal } from "./planificacion/administracion/planificaciontipos/modal/PlanificacionTipoModal";
+import { PlanificacionTipoForm } from "./planificacion/administracion/planificaciontipos/form/PlanificacionTipoForm";
+
 
     /* Ejes del Gobierno */
 import { EjeTable } from "./planificacion/administracion/ejes/table/EjeTable";
@@ -309,6 +312,8 @@ export {
     MetapdotForm,
 
     PlanificaciontiposTable,
+    PlanificacionTipoModal,
+    PlanificacionTipoForm,
 
     EjeTable,
     EjeModal,

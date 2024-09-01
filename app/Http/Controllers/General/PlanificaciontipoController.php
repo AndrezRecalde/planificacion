@@ -5,6 +5,7 @@ namespace App\Http\Controllers\General;
 use App\Enums\HTTPStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlanificaciontipoRequest;
+use App\Http\Requests\StatusRequest;
 use App\Models\Planificaciontipo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class PlanificaciontipoController extends Controller
 {
     function getTiposPlanificaciones(): JsonResponse
     {
-        $tipos = Planificaciontipo::get(['id', 'nombre_planificacion']);
+        $tipos = Planificaciontipo::get(['id', 'nombre_planificacion', 'activo']);
 
         return response()->json(['status' => HTTPStatus::Success, 'tipos' => $tipos], 200);
     }
@@ -29,6 +30,21 @@ class PlanificaciontipoController extends Controller
     }
 
     function update(PlanificaciontipoRequest $request, int $id): JsonResponse
+    {
+        $planificacionTipo = Planificaciontipo::find($id);
+        try {
+            if ($planificacionTipo) {
+                $planificacionTipo->update($request->validated());
+                return response()->json(['status' => HTTPStatus::Success, 'msg' => HTTPStatus::Updated], 201);
+            } else {
+                return response()->json(['status' => HTTPStatus::Error, 'msg' => HTTPStatus::NotFound], 404);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['status' => HTTPStatus::Error, 'msg' => $th->getMessage()], 500);
+        }
+    }
+
+    function updateStatus(StatusRequest $request, int $id): JsonResponse
     {
         $planificacionTipo = Planificaciontipo::find($id);
         try {
