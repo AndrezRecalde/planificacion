@@ -28,6 +28,8 @@ class ProgramaRepository implements ProgramaInterface
             ->join('planificaciontipos as pt', 'pt.id', 'p.planificaciontipo_id')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
             ->byDepartamentoId($request->departamento_id)
+            ->codigo($request->codigo_programa)
+            ->byPlanificacionId($request->planificaciontipo_id)
             ->get();
 
         return $programas;
@@ -37,6 +39,8 @@ class ProgramaRepository implements ProgramaInterface
     {
 
         $programa = $this->model::create($request->validated());
+        $programa->departamentos()->attach($request->departamentos);
+
         $codigoComponente = Programa::from('programas as p')
             ->selectRaw('p.id, comp.nombre_componente')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
@@ -50,6 +54,11 @@ class ProgramaRepository implements ProgramaInterface
     function update(ProgramaRequest $request, Programa $programa): void
     {
         $programa->update($request->validated());
+
+        if ($request->filled('departamentos')) {
+            $programa->departamentos()->detach();
+            $programa->departamentos()->sync($request->departamentos);
+        }
     }
 
     function updateActivo(ProgramaStatus $request, Programa $programa): void
@@ -60,6 +69,7 @@ class ProgramaRepository implements ProgramaInterface
     function destroy(Programa $programa): void
     {
         $programa->delete();
+        $programa->departamentos()->detach();
     }
 
     function findById(int $id): Programa | null

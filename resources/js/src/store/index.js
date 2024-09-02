@@ -73,6 +73,10 @@ import { uiTipoActividadSlice } from "./tipo_actividad/uiTipoActividadSlice";
 import { planificacionTipoSlice } from "./planificaciontipo/planificacionTipoSlice";
 import { uiPlanificacionTipoSlice } from "./planificaciontipo/uiPlanificacionTipoSlice";
 
+/* PROGRAMAS */
+import { programaSlice } from "./programa/programaSlice";
+import { uiProgramaSlice } from "./programa/uiProgramaSlice";
+
 
 /* PROVEEDORES */
 import { proveedorSlice } from "./proveedor/proveedorSlice";
@@ -154,6 +158,9 @@ export {
     planificacionTipoSlice,
     uiPlanificacionTipoSlice,
 
+    /* PROGRAMAS */
+    programaSlice,
+    uiProgramaSlice,
 
     /* GESTIONES: PROVEEDORES */
     proveedorSlice,

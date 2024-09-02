@@ -24,18 +24,20 @@ class ProgramaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre_programa' => 'required',
-            'planificaciontipo_id' => 'required',
-            'objetivo_id' => 'required'
+            'nombre_programa'       => 'required',
+            'planificaciontipo_id'  => 'required',
+            'objetivo_id'           => 'required',
+            'departamentos'         => 'required'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nombre_programa.required' =>  'El nombre del programa es obligatorio',
+            'nombre_programa.required'      =>  'El nombre del programa es obligatorio',
             'planificaciontipo_id.required' =>  'Elija el tipo de planificación',
-            'objetivo_id.required' =>  'Elija el objetivo',
+            'objetivo_id.required'          =>  'Elija el objetivo',
+            'departamentos.required'        =>  'Elija al menos un departamento',
 
         ];
     }

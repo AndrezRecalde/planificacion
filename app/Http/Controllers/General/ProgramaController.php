@@ -50,7 +50,7 @@ class ProgramaController extends Controller
         }
     }
 
-    function updateActivo(ProgramaStatus $request, int $id): JsonResponse
+    function updateStatus(ProgramaStatus $request, int $id): JsonResponse
     {
         $programa = $this->programaRepository->findById($id);
         try {

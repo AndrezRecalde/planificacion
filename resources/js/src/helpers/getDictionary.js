@@ -136,6 +136,12 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_PLANIFICACIONTIPO: "/update/status/tipo-planificacion",
     DELETE_PLANIFICACIONTIPO: "/delete/tipo-planificacion",
 
+    /* PROGRAMAS */
+    GET_PROGRAMAS: "/programas",
+    STORE_PROGRAMA: "/store/programa",
+    UPDATE_PROGRAMA: "/update/programa",
+    UPDATE_STATUS_PROGRAMA: "/update/status/programa",
+    DELETE_PROGRAMA: "/delete/programa",
 
     /** PROVEEDORES */
     GET_PROVEEDORES: "/proveedores",
@@ -233,7 +239,12 @@ export const APP_WORDS = {
 
 
     /* PROGRAMA */
-    PROGRAMA_TITLE: "Programas",
+    PROGRAMA_TITLE: "Programas estratégicos",
+    PROGRAMA_TITLE_MODAL: "Ficha Programa",
+
+    PROGRAMA_TEXT_NAME: "Código de programa",
+    PROGRAMA_PLACEHOLDER_NAME: "Digite el código del programa",
+
 
     /* PROYECTO */
     PROYECTO_ADD_MENU: "Agregar proyecto",

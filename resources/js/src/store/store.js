@@ -16,6 +16,7 @@ import {
     opnSlice,
     permissionSlice,
     planificacionTipoSlice,
+    programaSlice,
     proveedorSlice,
     proyectoSlice,
     tipoActividadSlice,
@@ -35,6 +36,7 @@ import {
     uiOpnSlice,
     uiPermissionSlice,
     uiPlanificacionTipoSlice,
+    uiProgramaSlice,
     uiProveedorSlice,
     uiProyectoSlice,
     uiTipoActividadSlice,
@@ -106,6 +108,10 @@ export const store = configureStore({
         /* Tipos de Planificacion */
         planificacionTipo: planificacionTipoSlice.reducer,
         uiPlanificacionTipo: uiPlanificacionTipoSlice.reducer,
+
+        /* Programas */
+        programa: programaSlice.reducer,
+        uiPrograma: uiProgramaSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,

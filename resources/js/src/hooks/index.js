@@ -72,6 +72,10 @@ import { useUiTipoActividad } from "./tipo_actividad/useUiTipoActividad";
 import { usePlanificacionTipoStore } from "./tipo_planificacion/usePlanificacionTipoStore";
 import { useUiPlanificacionTipo } from "./tipo_planificacion/useUiPlanificacionTipo";
 
+/* PROGRAMAS */
+import { useProgramaStore } from "./programa/useProgramaStore";
+import { useUiPrograma } from "./programa/useUiPrograma";
+
 
 /* DEPARTAMENTOS */
 import { useDepartamentoStore } from "./departamento/useDepartamentoStore";
@@ -160,6 +164,10 @@ export {
     /* TIPO DE PLANIFICACION */
     usePlanificacionTipoStore,
     useUiPlanificacionTipo,
+
+    /* PROGRAMAS */
+    useProgramaStore,
+    useUiPrograma,
 
     /* DEPARTAMENTO */
     useDepartamentoStore,

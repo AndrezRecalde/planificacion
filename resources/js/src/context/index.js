@@ -19,6 +19,10 @@ import {
     DepartamentoFormProvider,
     useDepartamentoFormContext,
     useDepartamentoForm,
+
+    ProgramaFormProvider,
+    useProgramaFormContext,
+    useProgramaForm,
 } from "./fields/useFilterFormsContext";
 
 export {
@@ -46,4 +50,9 @@ export {
     DepartamentoFormProvider,
     useDepartamentoFormContext,
     useDepartamentoForm,
+
+    /* FORM SELECT FILTER PROGRAMAS */
+    ProgramaFormProvider,
+    useProgramaFormContext,
+    useProgramaForm,
 };

@@ -104,6 +104,7 @@ import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFo
 import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
 import { ProyectoFromPrograma } from "./planificacion/programa/table/ProyectoFromPrograma";
 import { ProgressPrograma } from "./planificacion/programa/table/ProgressPrograma";
+import { CodigoProgramaText } from "./planificacion/programa/form/CodigoProgramaText";
 
 /* Consolidado */
 import { FilterConsolidado } from "./planificacion/consolidado/form/FilterConsolidado";
@@ -154,6 +155,7 @@ import { MetapdotForm } from "./planificacion/administracion/metaspdot/form/Meta
 import { PlanificaciontiposTable } from "./planificacion/administracion/planificaciontipos/table/PlanificaciontiposTable";
 import { PlanificacionTipoModal } from "./planificacion/administracion/planificaciontipos/modal/PlanificacionTipoModal";
 import { PlanificacionTipoForm } from "./planificacion/administracion/planificaciontipos/form/PlanificacionTipoForm";
+import { PlanificacionTipoSelect } from "./planificacion/administracion/planificaciontipos/form/PlanificacionTipoSelect";
 
 
     /* Ejes del Gobierno */
@@ -275,6 +277,7 @@ export {
     ProgramaPlanTable,
     ProyectoFromPrograma,
     ProgressPrograma,
+    CodigoProgramaText,
 
     /* CONSOLIDADO */
     FilterConsolidado,
@@ -314,6 +317,7 @@ export {
     PlanificaciontiposTable,
     PlanificacionTipoModal,
     PlanificacionTipoForm,
+    PlanificacionTipoSelect,
 
     EjeTable,
     EjeModal,

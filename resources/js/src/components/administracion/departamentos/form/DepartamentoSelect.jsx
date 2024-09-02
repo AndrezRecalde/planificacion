@@ -1,16 +1,16 @@
 import { Select } from "@mantine/core";
 import { useDepartamentoStore } from "../../../../hooks";
-import { useDepartamentoFormContext } from "../../../../context";
+//import { useDepartamentoFormContext } from "../../../../context";
 
-export const DepartamentoSelect = () => {
-    const form = useDepartamentoFormContext();
+export const DepartamentoSelect = ({ rootContext }) => {
+    const form = rootContext();
     const { departamentos } = useDepartamentoStore();
 
     return (
         <Select
             clearable
             label="Departamento"
-            description="Debe filtrar el departamento para visualizar a sus responsables"
+            //description="Debe filtrar el departamento para visualizar a sus responsables"
             placeholder="Seleccione departamento a filtrar"
             data={departamentos.map((departamento) => {
                 return {

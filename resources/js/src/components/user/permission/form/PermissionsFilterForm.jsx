@@ -3,6 +3,7 @@ import { BtnSubmit, DepartamentoSelect, FieldFilterForm } from "../../../../comp
 import {
     DepartamentoFormProvider,
     useDepartamentoForm,
+    useDepartamentoFormContext,
 } from "../../../../context";
 import { useUsuarioStore } from "../../../../hooks";
 import { IconSearch } from "@tabler/icons-react";
@@ -36,7 +37,7 @@ export const PermissionsFilterForm = () => {
                     component="form"
                     onSubmit={form.onSubmit((_, e) => handleSubmit(e))}
                 >
-                    <DepartamentoSelect />
+                    <DepartamentoSelect rootContext={useDepartamentoFormContext} />
                     <BtnSubmit IconSection={IconSearch} fontSize={16}>
                         {BTN_TITLES.BTN_SEARCH}
                     </BtnSubmit>
