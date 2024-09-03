@@ -14,3 +14,6 @@ export const [
 
 export const [ProgramaFormProvider, useProgramaFormContext, useProgramaForm] =
     createFormContext();
+
+export const [ObjetivoFormProvider, useObjetivoFormContext, useObjetivoForm] =
+    createFormContext();

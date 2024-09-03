@@ -245,6 +245,9 @@ export const APP_WORDS = {
     PROGRAMA_TEXT_NAME: "Código de programa",
     PROGRAMA_PLACEHOLDER_NAME: "Digite el código del programa",
 
+    /* OBJETIVOS ESTRATEGICOS */
+    OBJETIVO_TITLE: "Objetivos estratégicos",
+    OBJETIVO_TITLE_MODAL: "Ficha de objetivos estratégicos",
 
     /* PROYECTO */
     PROYECTO_ADD_MENU: "Agregar proyecto",

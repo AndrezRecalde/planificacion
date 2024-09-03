@@ -24,6 +24,7 @@ import { BtnCombobox } from "./elements/combobox/BtnCombobox";
 import { AlertSection } from "./elements/alert/AlertSection";
 import { StatusModal } from "./elements/modal/StatusModal";
 import { FieldFilterForm } from "./elements/fields/FieldFilterForm";
+import { DateYearForm } from "./elements/fields/DateYearForm";
 
 /* Auth */
 import { AuthForm } from "./auth/AuthForm";
@@ -98,6 +99,10 @@ import { InstrumentoForm } from "./planificacion/instrumento/form/InstrumentoFor
 
     /* Objetivos */
 import { ObjetivosEstrategicosTable } from "./planificacion/objetivo/table/ObjetivosEstrategicosTable";
+import { ObjetivosEstrategicosModal } from "./planificacion/objetivo/modal/ObjetivosEstrategicosModal";
+import { ObjetivosEstrategicosForm } from "./planificacion/objetivo/form/ObjetivosEstrategicosForm";
+import { ObjetivosFilterForm } from "./planificacion/objetivo/form/ObjetivosFilterForm";
+
 
 
     /*Programa */
@@ -131,6 +136,8 @@ import { CompetenciapdotTable } from "./planificacion/administracion/competencia
 import { CompetenciaDetail } from "./planificacion/administracion/competenciaspdot/table/CompetenciaDetail";
 import { CompetenciapdotModal } from "./planificacion/administracion/competenciaspdot/modal/CompetenciapdotModal";
 import { CompetenciapdotForm } from "./planificacion/administracion/competenciaspdot/form/CompetenciapdotForm";
+import { CompetenciaspdotSelect } from "./planificacion/administracion/competenciaspdot/form/CompetenciaspdotSelect";
+
 
     /* Componentes del PDOT */
 import { ComponentepdotTable } from "./planificacion/administracion/componentespdot/table/ComponentepdotTable";
@@ -211,6 +218,7 @@ export {
     AlertSection,
     StatusModal,
     FieldFilterForm,
+    DateYearForm,
 
     /* USUARIOS */
     AuthForm,
@@ -276,7 +284,13 @@ export {
     InstrumentoForm,
 
 
+    /* OBJETIVOS ESTRATEGICOS */
     ObjetivosEstrategicosTable,
+    ObjetivosEstrategicosModal,
+    ObjetivosEstrategicosForm,
+    ObjetivosFilterForm,
+
+    /* PROGRAMAS DE PLANIFICACION */
     FilterFormProgramaPlan,
     ProgramaPlanTable,
     ProgramaPlanModal,
@@ -303,6 +317,7 @@ export {
     CompetenciaDetail,
     CompetenciapdotModal,
     CompetenciapdotForm,
+    CompetenciaspdotSelect,
 
     ComponentepdotTable,
     ComponentepdotModal,

@@ -118,6 +118,12 @@ class Objetivo extends Model
         }
     }
 
+    function scopeAnio(Builder $query, $anio_cumplimiento) {
+        if ($anio_cumplimiento) {
+            return $query->where('o.anio_cumplimiento', $anio_cumplimiento);
+        }
+    }
+
     protected static function boot()
     {
         parent::boot();

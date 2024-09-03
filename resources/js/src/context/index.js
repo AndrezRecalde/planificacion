@@ -23,6 +23,10 @@ import {
     ProgramaFormProvider,
     useProgramaFormContext,
     useProgramaForm,
+
+    ObjetivoFormProvider,
+    useObjetivoFormContext,
+    useObjetivoForm
 } from "./fields/useFilterFormsContext";
 
 export {
@@ -55,4 +59,9 @@ export {
     ProgramaFormProvider,
     useProgramaFormContext,
     useProgramaForm,
+
+    /* FORM SELECT FILTER OBJETIVOS */
+    ObjetivoFormProvider,
+    useObjetivoFormContext,
+    useObjetivoForm
 };

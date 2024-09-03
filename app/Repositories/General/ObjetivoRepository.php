@@ -64,6 +64,7 @@ class ObjetivoRepository implements ObjetivoInterface
             })
             ->byLestrategiapdotId($request->lestrategiapdot_id)
             ->byCompetenciapdotId($request->competenciapdot_id)
+            ->anio($request->anio_cumplimiento)
             ->get();
 
         return $objetivos;

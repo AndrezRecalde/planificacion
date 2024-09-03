@@ -1,31 +1,53 @@
+import { useEffect } from "react";
 import { Container, Divider, Group } from "@mantine/core";
-import { BtnSection, TextSection, TitlePage } from "../../../components";
+import {
+    BtnSection,
+    ObjetivosFilterForm,
+    TitlePage,
+} from "../../../components";
 import { ObjetivosEstrategicosTable } from "../../../components";
-import { IconCopyPlus } from "@tabler/icons-react";
+import { IconSquarePlus2 } from "@tabler/icons-react";
+import { APP_WORDS, BTN_TITLES } from "../../../helpers";
+import { useCompetenciapdotStore, useDepartamentoStore } from "../../../hooks";
 
 export const ObjetivosEstrategicosPage = () => {
+    const usuario = JSON.parse(localStorage.getItem("service_user"));
+    const { startLoadDepartamentos, startClearDepartamentos } =
+        useDepartamentoStore();
+    const { startLoadCompetenciaspdot, startClearCompetenciapdot } =
+        useCompetenciapdotStore();
+
+    useEffect(() => {
+        startLoadDepartamentos({ institucion_id: usuario.institucion_id });
+        startLoadCompetenciaspdot({ activo: true });
+
+        return () => {
+            startClearDepartamentos();
+            startClearCompetenciapdot();
+        };
+    }, []);
+
     return (
         <Container size="xxl">
             <Group justify="space-between">
                 <div>
                     <TitlePage order={2} ta="left">
-                        Objetivos estrategicos
+                        {APP_WORDS.OBJETIVO_TITLE}
                     </TitlePage>
-                    <TextSection fw={500} tt="">
-                        GPLA tiene 5 objetivos estrategicos documentados
-                    </TextSection>
                 </div>
                 <div>
                     <BtnSection
                         mb={20}
-                        icon={IconCopyPlus}
+                        icon={IconSquarePlus2}
                         handleAction={() => console.log("clic")}
                     >
-                        Agregar
+                        {BTN_TITLES.BTN_ADD}
                     </BtnSection>
                 </div>
             </Group>
             <Divider my="md" />
+            <ObjetivosFilterForm />
+
             <ObjetivosEstrategicosTable />
         </Container>
     );
