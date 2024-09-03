@@ -396,7 +396,7 @@ Route::group([
     Route::post('/programas', [ProgramaController::class, 'getProgramas']);
     Route::post('/store/programa', [ProgramaController::class, 'store']);
     Route::put('/update/programa/{id}', [ProgramaController::class, 'update']);
-    Route::put('/update/status/programa/{id}', [ProgramaController::class, 'update']);
+    Route::put('/update/status/programa/{id}', [ProgramaController::class, 'updateStatus']);
 
     /* PLANIFICACION: TABLEROS */ //TODO: PODRIA MIGRAR ESTAS RUTAS A UN NUEVO ROLE: COORD_INSTI
     Route::post('/tableros', [TableroController::class, 'getTableros']);

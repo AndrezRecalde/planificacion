@@ -53,14 +53,14 @@ class Programa extends Model
     function scopeCodigo(Builder $query, $codigo_programa)
     {
         if ($codigo_programa) {
-            return $query->where('ob.codigo_programa', 'LIKE', '%' . $codigo_programa . '%');
+            return $query->where('p.codigo_programa', 'LIKE', '%' . $codigo_programa . '%');
         }
     }
 
     function scopeByPlanificacionId(Builder $query, $planificaciontipo_id)
     {
         if ($planificaciontipo_id) {
-            return $query->where('ob.planificaciontipo_id', $planificaciontipo_id);
+            return $query->where('p.planificaciontipo_id', $planificaciontipo_id);
         }
     }
 
