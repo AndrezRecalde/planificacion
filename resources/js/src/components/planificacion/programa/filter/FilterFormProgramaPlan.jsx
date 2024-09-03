@@ -13,8 +13,12 @@ import {
     useProgramaForm,
     useProgramaFormContext,
 } from "../../../../context";
+import { useProgramaStore } from "../../../../hooks";
 
 export const FilterFormProgramaPlan = () => {
+
+    const { startLoadProgramas } = useProgramaStore();
+
     const form = useProgramaForm({
         mode: "uncontrolled",
         initialValues: {
@@ -32,6 +36,7 @@ export const FilterFormProgramaPlan = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(form.getTransformedValues());
+        startLoadProgramas(form.getTransformedValues());
     };
 
     return (

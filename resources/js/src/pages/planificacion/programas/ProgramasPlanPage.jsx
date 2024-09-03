@@ -1,19 +1,22 @@
 import { useEffect } from "react";
-import { Container, Stack } from "@mantine/core";
+import { Container, Group, Stack } from "@mantine/core";
 import {
     TitlePage,
     FilterFormProgramaPlan,
     ProgramaPlanTable,
     ProyectoFromPrograma,
     StatusModal,
+    BtnSection,
+    ProgramaPlanModal,
 } from "../../../components";
-import { APP_WORDS } from "../../../helpers";
+import { APP_WORDS, BTN_TITLES } from "../../../helpers";
 import {
     useDepartamentoStore,
     usePlanificacionTipoStore,
     useProgramaStore,
     useUiPrograma,
 } from "../../../hooks";
+import { IconSquarePlus } from "@tabler/icons-react";
 import Swal from "sweetalert2";
 import classes from "../../gestiones/proyecto/ProyectoModule/Proyecto.module.css";
 
@@ -28,7 +31,8 @@ export const ProgramasPlanPage = () => {
         errores,
     } = useProgramaStore();
 
-    const { isOpenModalStatusPrograma, modalActionStatusPrograma } = useUiPrograma();
+    const { isOpenModalStatusPrograma, modalActionStatusPrograma, modalActionPrograma } =
+        useUiPrograma();
 
     const { startLoadDepartamentos, startClearDepartamentos } =
         useDepartamentoStore();
@@ -71,16 +75,33 @@ export const ProgramasPlanPage = () => {
         }
     }, [errores]);
 
+    const handleOpenModal = (e) => {
+        e.preventDefault();
+        modalActionPrograma(true);
+    }
+
     return (
         <Container size="xxl">
-            <TitlePage order={2} ta="left">
-                {APP_WORDS.PROGRAMA_TITLE}
-            </TitlePage>
+            <Group justify="space-between">
+                <TitlePage order={2} ta="left">
+                    {APP_WORDS.PROGRAMA_TITLE}
+                </TitlePage>
+                <BtnSection
+                    heigh={30}
+                    fontSize={12}
+                    icon={IconSquarePlus}
+                    handleAction={handleOpenModal}
+                >
+                    {BTN_TITLES.BTN_ADD}
+                </BtnSection>
+            </Group>
             <Stack>
                 <FilterFormProgramaPlan />
-                <ProgramaPlanTable />
-                <ProyectoFromPrograma classes={classes} />
+                {/* <ProgramaPlanTable />
+                <ProyectoFromPrograma classes={classes} /> */}
             </Stack>
+
+            <ProgramaPlanModal />
 
             <StatusModal
                 isOpenModal={isOpenModalStatusPrograma}

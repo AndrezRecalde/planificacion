@@ -21,6 +21,11 @@ class Departamento extends Model
         'acronimo_id'
     ];
 
+    function programas(): BelongsToMany
+    {
+        return $this->belongsToMany(Programa::class, 'programa_departamento');
+    }
+
     function institucion(): BelongsTo
     {
         return $this->belongsTo(Institucion::class);

@@ -1,8 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useMantineReactTable } from "mantine-react-table";
-import { BtnActiveStatus, BtnSection, MenuActionsVE, TableContent } from "../../../../components";
-import { BTN_TITLES } from "../../../../helpers";
-import { IconCopyPlus } from "@tabler/icons-react";
+import { BtnActiveStatus, MenuTableView, TableContent } from "../../../../components";
 
 
 const programas = [
@@ -74,13 +72,6 @@ export const ProgramaPlanTable = (props) => {
         console.log('clic');
     }, [programas]);
 
-    const handleEditar = useCallback(
-        (selected) => {
-            console.log('clic');
-        },
-        [programas]
-    );
-
     const handleVer = useCallback(
         (selected) => {
             console.log('clic');
@@ -95,22 +86,11 @@ export const ProgramaPlanTable = (props) => {
         enableFacetedValues: true,
         enableRowActions: true,
         renderRowActionMenuItems: ({ row }) => (
-            <MenuActionsVE
+            <MenuTableView
                 row={row}
                 handleView={handleVer}
-                handleEditar={handleEditar}
             />
-        ),
-        renderTopToolbarCustomActions: ({ table }) => (
-            <BtnSection
-                heigh={30}
-                fontSize={12}
-                icon={IconCopyPlus}
-                handleAction={handleAgregar}
-            >
-                {BTN_TITLES.BTN_ADD}
-            </BtnSection>
-        ),
+        )
     });
   return (
     <TableContent table={table} />

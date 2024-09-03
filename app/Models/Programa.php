@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 
 class Programa extends Model
 {
@@ -23,7 +24,7 @@ class Programa extends Model
 
     function departamentos(): BelongsToMany
     {
-        return $this->belongsToMany(Departamento::class);
+        return $this->belongsToMany(Departamento::class, 'programa_departamento');
     }
 
     function planificaciontipo(): BelongsTo
@@ -44,8 +45,12 @@ class Programa extends Model
     function scopeByDepartamentoId(Builder $query, $departamento_id)
     {
         if ($departamento_id) {
-            return $query->whereHas('departamentos', function ($q) use ($departamento_id) {
-                $q->whereIn('departamento_id', $departamento_id);
+            return $query->whereExists(function ($query) use ($departamento_id) {
+                $query->select(DB::raw(1))
+                    ->from('departamentos')
+                    ->join('programa_departamento', 'departamentos.id', '=', 'programa_departamento.departamento_id')
+                    ->whereColumn('programa_departamento.programa_id', 'p.id')
+                    ->where('departamentos.id', $departamento_id);
             });
         }
     }

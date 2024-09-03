@@ -36,6 +36,7 @@ export const useProgramaStore = () => {
                 }
             );
             const { programas } = data;
+            //console.log(programas)
             dispatch(onLoadProgramas(programas));
         } catch (error) {
             console.log(error);

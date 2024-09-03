@@ -24,7 +24,7 @@ class ProgramaRepository implements ProgramaInterface
     {
 
         $programas = $this->model::from('programas as p')
-            ->selectRaw('p.id, p.nombre_programa, p.codigo_programa, pt.nombre_planificacion, o.indicadorpdot')
+            ->selectRaw('p.id, p.nombre_programa, p.codigo_programa, pt.nombre_planificacion, o.nombre_objetivo')
             ->join('planificaciontipos as pt', 'pt.id', 'p.planificaciontipo_id')
             ->join('objetivos as o', 'o.id', 'p.objetivo_id')
             ->byDepartamentoId($request->departamento_id)
@@ -69,7 +69,7 @@ class ProgramaRepository implements ProgramaInterface
     function destroy(Programa $programa): void
     {
         $programa->delete();
-        $programa->departamentos()->detach();
+        //$programa->departamentos()->detach();
     }
 
     function findById(int $id): Programa | null

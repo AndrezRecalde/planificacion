@@ -12,7 +12,8 @@ import {
     MenuTableAddPermissions,
     MenuTableAdd,
     MenuActionsVE,
-    MenuActionsED
+    MenuActionsED,
+    MenuTableView
 } from "./elements/tables/MenuTable";
 import { Logo } from "./elements/application/Logo";
 import { BtnDarkMode } from "./elements/buttons/BtnDarkMode";
@@ -102,6 +103,8 @@ import { ObjetivosEstrategicosTable } from "./planificacion/objetivo/table/Objet
     /*Programa */
 import { FilterFormProgramaPlan } from "./planificacion/programa/filter/FilterFormProgramaPlan";
 import { ProgramaPlanTable } from "./planificacion/programa/table/ProgramaPlanTable";
+import { ProgramaPlanModal } from "./planificacion/programa/modal/ProgramaPlanModal";
+import { ProgramaForm } from "./planificacion/programa/form/ProgramaForm";
 import { ProyectoFromPrograma } from "./planificacion/programa/table/ProyectoFromPrograma";
 import { ProgressPrograma } from "./planificacion/programa/table/ProgressPrograma";
 import { CodigoProgramaText } from "./planificacion/programa/form/CodigoProgramaText";
@@ -197,6 +200,7 @@ export {
     MenuTableAdd,
     MenuActionsVE,
     MenuActionsED,
+    MenuTableView,
     Logo,
     BtnDarkMode,
     BtnSearch,
@@ -275,6 +279,8 @@ export {
     ObjetivosEstrategicosTable,
     FilterFormProgramaPlan,
     ProgramaPlanTable,
+    ProgramaPlanModal,
+    ProgramaForm,
     ProyectoFromPrograma,
     ProgressPrograma,
     CodigoProgramaText,

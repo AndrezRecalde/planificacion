@@ -10,7 +10,6 @@ export const DepartamentoSelect = ({ rootContext }) => {
         <Select
             clearable
             label="Departamento"
-            //description="Debe filtrar el departamento para visualizar a sus responsables"
             placeholder="Seleccione departamento a filtrar"
             data={departamentos.map((departamento) => {
                 return {

@@ -92,3 +92,16 @@ export const MenuActionsED = ({ row, handleEditar, handleEliminar }) => {
         </>
     );
 };
+
+export const MenuTableView = ({ row, handleView }) => {
+    return (
+        <Menu.Item
+            leftSection={
+                <IconEye style={{ width: rem(15), height: rem(15) }} />
+            }
+            onClick={() => handleView(row.original)}
+        >
+            Ver
+        </Menu.Item>
+    );
+};
