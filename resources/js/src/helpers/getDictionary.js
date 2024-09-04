@@ -143,6 +143,13 @@ export const API_URL_ROUTES = {
     UPDATE_STATUS_PROGRAMA: "/update/status/programa",
     DELETE_PROGRAMA: "/delete/programa",
 
+    /* OBJETIVOS */
+    GET_OBJETIVOS: "/objetivos",
+    STORE_OBJETIVO: "/store/objetivo",
+    UPDATE_OBJETIVO: "/update/objetivo",
+    UPDATE_STATUS_OBJETIVO: "/update/status/objetivo",
+    DELETE_OBJETIVO: "/delete/objetivo",
+
     /** PROVEEDORES */
     GET_PROVEEDORES: "/proveedores",
     STORE_PROVEEDOR: "/store/proveedor",

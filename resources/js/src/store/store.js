@@ -12,6 +12,7 @@ import {
     lestrategiapdotSlice,
     lineapdotSlice,
     metapdotSlice,
+    objetivoSlice,
     odssostenibleSlice,
     opnSlice,
     permissionSlice,
@@ -32,6 +33,7 @@ import {
     uiLestrategiapdotSlice,
     uiLineapdotSlice,
     uiMetapdotSlice,
+    uiObjetivoSlice,
     uiOdssostenibleSlice,
     uiOpnSlice,
     uiPermissionSlice,
@@ -112,6 +114,10 @@ export const store = configureStore({
         /* Programas */
         programa: programaSlice.reducer,
         uiPrograma: uiProgramaSlice.reducer,
+
+        /* Objetivos */
+        objetivo: objetivoSlice.reducer,
+        uiObjetivo: uiObjetivoSlice.reducer,
 
         /* Departamentos */
         departamento: departamentoSlice.reducer,
